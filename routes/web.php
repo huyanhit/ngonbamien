@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', function () {
-    return view('app');
+    return view('pages.home');
+});
+
+Route::get('/san-pham', function () {
+    return view('pages.shop-grid');
+});
+
+Route::get('/banh-trang-tron', function () {
+    return view('pages.shop-detail');
 });
