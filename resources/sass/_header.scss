@@ -161,15 +161,14 @@
 }
 
 .header__logo {
-    padding: 15px 0;
-
+    padding: 5px 0;
     a {
         display: inline-block;
     }
 }
 
 .header__menu {
-    padding: 24px 0;
+    padding: 14px 0;
     ul {
         li {
             list-style: none;
@@ -249,8 +248,7 @@
 
 .header__cart {
     text-align: right;
-    padding: 24px 0;
-
+    padding: 14px 0;
     ul {
         display: inline-block;
         margin-right: 25px;

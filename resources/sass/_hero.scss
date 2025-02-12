@@ -2,11 +2,9 @@
   Hero
 -----------------------*/
 .hero {
-    padding-bottom: 50px;
-
+    padding-bottom: 20px;
     &.hero-normal {
         padding-bottom: 30px;
-
         .hero__categories {
             position: relative;
             ul {
@@ -29,9 +27,8 @@
 .hero__categories__all {
     background: $primary-color;
     position: relative;
-    padding: 10px 25px 10px 40px;
+    padding: 10px 20px 10px 20px;
     cursor: pointer;
-
     i {
         font-size: 16px;
         color: $white-color;
@@ -56,13 +53,11 @@
 }
 
 .hero__categories {
-
     ul {
         border: 1px solid $border;
-        padding-left: 40px;
-        padding-top: 10px;
-        padding-bottom: 12px;
-
+        padding-left: 20px;
+        padding-top: 8px;
+        padding-bottom: 10px;
         li {
             list-style: none;
 
@@ -78,7 +73,7 @@
 
 .hero__search {
     overflow: hidden;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 .hero__search__form {
@@ -159,16 +154,17 @@
 
 .hero__search__phone__text {
     overflow: hidden;
-
     h5 {
         color: $normal-color;
         font-weight: 700;
-        margin-bottom: 5px;
+        margin-bottom: 0px;
     }
 
     span {
         font-size: 14px;
         color: $para-color;
+        text-align: right;
+        display: block;
     }
 }
 

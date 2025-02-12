@@ -4,7 +4,6 @@
 .categories__item {
     height: 270px;
     position: relative;
-
     h5 {
         position: absolute;
         left: 0;
@@ -27,11 +26,9 @@
 }
 
 .categories__slider {
-
     .col-lg-3 {
         max-width: 100%;
     }
-
     &.owl-carousel {
 
         .owl-nav {
@@ -45,14 +42,14 @@
                 text-align: center;
                 border: 1px solid $border;
                 position: absolute;
-                left: -35px;
+                left: 15px;
                 top: 50%;
                 -webkit-transform: translateY(-35px);
                 background: $white-color;
 
                 &.owl-next {
                     left: auto;
-                    right: -35px;
+                    right: 15px;
                 }
             }
         }
@@ -63,14 +60,13 @@
   Featured
 -----------------------*/
 .featured {
-    padding-top: 80px;
-    padding-bottom: 40px;
+    padding-top: 30px;
+    padding-bottom: 10px;
 }
 
 .featured__controls {
     text-align: center;
-    margin-bottom: 50px;
-
+    margin-bottom: 30px;
     ul {
 
         li {
@@ -108,8 +104,7 @@
 }
 
 .featured__item {
-    margin-bottom: 50px;
-
+    margin-bottom: 20px;
     &:hover {
 
         .featured__item__pic {
@@ -232,7 +227,7 @@
                 font-size: 14px;
                 color: #636363;
                 margin-right: 10px;
-                line-height: 30px;
+                line-height: 0;
                 text-align: center;
 
                 span {
@@ -284,14 +279,13 @@
   Form BLog
 -----------------------*/
 .from-blog {
-    padding-top: 50px;
-    padding-bottom: 50px;
-
+    padding-top: 30px;
+    padding-bottom: 30px;
     .blog__item {
         margin-bottom: 30px;
     }
 }
 
 .from-blog__title {
-    margin-bottom: 70px;
+    margin-bottom: 40px;
 }

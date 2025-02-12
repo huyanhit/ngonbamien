@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-659a05b4.css",
+    "file": "assets/app-a546706b.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -41,7 +41,7 @@
     "src": "resources/fonts/fontawesome-webfont.woff2"
   },
   "resources/js/app.js": {
-    "file": "assets/app-69965915.js",
+    "file": "assets/app-cf27110c.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

@@ -29,6 +29,7 @@ return new class extends Migration
             $table->integer('price_sale')->nullable();
             $table->integer('price');
             $table->integer('active');
+            $table->softDeletes();
             
             $table->timestamps();
         });

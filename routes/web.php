@@ -45,6 +45,8 @@ Route::resource('/cart', CartController::class);
 Route::get('/counter', [HomeController::class, 'counter'])->name('page.counter');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/phan-loai/{name}', [CategoryProductController::class, 'show'])->name('phan-loai');
+
+Route::get('/san-pham', [ProductController::class, 'index'])->name('cua-hang');
 Route::get('/san-pham/{name}', [ProductController::class, 'show'])->name('san-pham');
 Route::get('/dat-hang', [CheckController::class, 'index'])->name('dat-hang');
 Route::get('/tra-cuu-don-hang', [OrderController::class, 'search'])->name('tra-cuu-don-hang');
@@ -56,7 +58,6 @@ Route::get('/dich-vu/{service}', [ServiceController::class, 'show'])->name('dich
 Route::get('/hang-san-xuat/{service}', [ProducerController::class, 'show'])->name('hang-san-xuat');
 Route::get('/so-sanh/{product}/{product2?}', [ProductController::class, 'compare'])->name('so-sanh');
 Route::post('/lien-he', [PageController::class, 'saveContact'])->name('lien-he');
-
 
 Route::get('/thong-tin', [NewsController::class, 'index'])->name('news.index');
 Route::get('/thong-tin/{name}', [NewsController::class, 'index'])->name('news.show');
