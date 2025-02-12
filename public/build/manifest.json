@@ -1,0 +1,48 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-659a05b4.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/fonts/ElegantIcons.eot": {
+    "file": "assets/ElegantIcons-912b4fcc.eot",
+    "src": "resources/fonts/ElegantIcons.eot"
+  },
+  "resources/fonts/ElegantIcons.svg": {
+    "file": "assets/ElegantIcons-91f068a0.svg",
+    "src": "resources/fonts/ElegantIcons.svg"
+  },
+  "resources/fonts/ElegantIcons.ttf": {
+    "file": "assets/ElegantIcons-7be552fc.ttf",
+    "src": "resources/fonts/ElegantIcons.ttf"
+  },
+  "resources/fonts/ElegantIcons.woff": {
+    "file": "assets/ElegantIcons-be1825e5.woff",
+    "src": "resources/fonts/ElegantIcons.woff"
+  },
+  "resources/fonts/fontawesome-webfont.eot": {
+    "file": "assets/fontawesome-webfont-7bfcab6d.eot",
+    "src": "resources/fonts/fontawesome-webfont.eot"
+  },
+  "resources/fonts/fontawesome-webfont.svg": {
+    "file": "assets/fontawesome-webfont-ad615792.svg",
+    "src": "resources/fonts/fontawesome-webfont.svg"
+  },
+  "resources/fonts/fontawesome-webfont.ttf": {
+    "file": "assets/fontawesome-webfont-aa58f33f.ttf",
+    "src": "resources/fonts/fontawesome-webfont.ttf"
+  },
+  "resources/fonts/fontawesome-webfont.woff": {
+    "file": "assets/fontawesome-webfont-ba0c59de.woff",
+    "src": "resources/fonts/fontawesome-webfont.woff"
+  },
+  "resources/fonts/fontawesome-webfont.woff2": {
+    "file": "assets/fontawesome-webfont-2adefcbc.woff2",
+    "src": "resources/fonts/fontawesome-webfont.woff2"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-69965915.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}
