@@ -1,6 +1,6 @@
 {
   "resources/css/admin.css": {
-    "file": "assets/admin-3bca098c.css",
+    "file": "assets/admin-42c2cd97.css",
     "isEntry": true,
     "src": "resources/css/admin.css"
   },
@@ -25,6 +25,26 @@
     "file": "assets/ElegantIcons-be1825e5.woff",
     "src": "resources/fonts/ElegantIcons.woff"
   },
+  "resources/fonts/boxicons.eot": {
+    "file": "assets/boxicons-c23887bb.eot",
+    "src": "resources/fonts/boxicons.eot"
+  },
+  "resources/fonts/boxicons.ttf": {
+    "file": "assets/boxicons-47509a2d.ttf",
+    "src": "resources/fonts/boxicons.ttf"
+  },
+  "resources/fonts/boxicons.woff": {
+    "file": "assets/boxicons-d5d511cf.woff",
+    "src": "resources/fonts/boxicons.woff"
+  },
+  "resources/fonts/boxicons.woff2": {
+    "file": "assets/boxicons-4b87cbc7.woff2",
+    "src": "resources/fonts/boxicons.woff2"
+  },
+  "resources/fonts/boxiconsd41d.svg": {
+    "file": "assets/boxiconsd41d-0b7f8ae7.svg",
+    "src": "resources/fonts/boxiconsd41d.svg"
+  },
   "resources/fonts/fontawesome-webfont.eot": {
     "file": "assets/fontawesome-webfont-7bfcab6d.eot",
     "src": "resources/fonts/fontawesome-webfont.eot"
@@ -44,6 +64,142 @@
   "resources/fonts/fontawesome-webfont.woff2": {
     "file": "assets/fontawesome-webfont-2adefcbc.woff2",
     "src": "resources/fonts/fontawesome-webfont.woff2"
+  },
+  "resources/fonts/la-brands-400.eot": {
+    "file": "assets/la-brands-400-c0e32387.eot",
+    "src": "resources/fonts/la-brands-400.eot"
+  },
+  "resources/fonts/la-brands-400.svg": {
+    "file": "assets/la-brands-400-af7a9c33.svg",
+    "src": "resources/fonts/la-brands-400.svg"
+  },
+  "resources/fonts/la-brands-400.ttf": {
+    "file": "assets/la-brands-400-fbc98702.ttf",
+    "src": "resources/fonts/la-brands-400.ttf"
+  },
+  "resources/fonts/la-brands-400.woff": {
+    "file": "assets/la-brands-400-14c63377.woff",
+    "src": "resources/fonts/la-brands-400.woff"
+  },
+  "resources/fonts/la-brands-400.woff2": {
+    "file": "assets/la-brands-400-ff70c9bc.woff2",
+    "src": "resources/fonts/la-brands-400.woff2"
+  },
+  "resources/fonts/la-brands-400d41d.eot": {
+    "file": "assets/la-brands-400-c0e32387.eot",
+    "src": "resources/fonts/la-brands-400.eot"
+  },
+  "resources/fonts/la-regular-400.eot": {
+    "file": "assets/la-regular-400-7dc456f0.eot",
+    "src": "resources/fonts/la-regular-400.eot"
+  },
+  "resources/fonts/la-regular-400.svg": {
+    "file": "assets/la-regular-400-8606b583.svg",
+    "src": "resources/fonts/la-regular-400.svg"
+  },
+  "resources/fonts/la-regular-400.ttf": {
+    "file": "assets/la-regular-400-4b6ab8d0.ttf",
+    "src": "resources/fonts/la-regular-400.ttf"
+  },
+  "resources/fonts/la-regular-400.woff": {
+    "file": "assets/la-regular-400-7711fabc.woff",
+    "src": "resources/fonts/la-regular-400.woff"
+  },
+  "resources/fonts/la-regular-400.woff2": {
+    "file": "assets/la-regular-400-51ca2c00.woff2",
+    "src": "resources/fonts/la-regular-400.woff2"
+  },
+  "resources/fonts/la-regular-400d41d.eot": {
+    "file": "assets/la-regular-400-7dc456f0.eot",
+    "src": "resources/fonts/la-regular-400.eot"
+  },
+  "resources/fonts/la-solid-900.eot": {
+    "file": "assets/la-solid-900-8a57f8a9.eot",
+    "src": "resources/fonts/la-solid-900.eot"
+  },
+  "resources/fonts/la-solid-900.svg": {
+    "file": "assets/la-solid-900-36bf86c3.svg",
+    "src": "resources/fonts/la-solid-900.svg"
+  },
+  "resources/fonts/la-solid-900.ttf": {
+    "file": "assets/la-solid-900-07ce3559.ttf",
+    "src": "resources/fonts/la-solid-900.ttf"
+  },
+  "resources/fonts/la-solid-900.woff": {
+    "file": "assets/la-solid-900-a0d21b2a.woff",
+    "src": "resources/fonts/la-solid-900.woff"
+  },
+  "resources/fonts/la-solid-900.woff2": {
+    "file": "assets/la-solid-900-10a68e01.woff2",
+    "src": "resources/fonts/la-solid-900.woff2"
+  },
+  "resources/fonts/la-solid-900d41d.eot": {
+    "file": "assets/la-solid-900-8a57f8a9.eot",
+    "src": "resources/fonts/la-solid-900.eot"
+  },
+  "resources/fonts/materialdesignicons-webfont9445.eot": {
+    "file": "assets/materialdesignicons-webfont9445-67d24abe.eot",
+    "src": "resources/fonts/materialdesignicons-webfontd41d.eot"
+  },
+  "resources/fonts/materialdesignicons-webfont9445.ttf": {
+    "file": "assets/materialdesignicons-webfont9445-a58ecb54.ttf",
+    "src": "resources/fonts/materialdesignicons-webfont9445.ttf"
+  },
+  "resources/fonts/materialdesignicons-webfont9445.woff": {
+    "file": "assets/materialdesignicons-webfont9445-80bb28b3.woff",
+    "src": "resources/fonts/materialdesignicons-webfont9445.woff"
+  },
+  "resources/fonts/materialdesignicons-webfont9445.woff2": {
+    "file": "assets/materialdesignicons-webfont9445-c1c004a9.woff2",
+    "src": "resources/fonts/materialdesignicons-webfont9445.woff2"
+  },
+  "resources/fonts/materialdesignicons-webfontd41d.eot": {
+    "file": "assets/materialdesignicons-webfont9445-67d24abe.eot",
+    "src": "resources/fonts/materialdesignicons-webfontd41d.eot"
+  },
+  "resources/fonts/remixicone85e.eot": {
+    "file": "assets/remixicone85e-25af6e92.eot",
+    "src": "resources/fonts/remixicone85e.eot"
+  },
+  "resources/fonts/remixicone85e.svg": {
+    "file": "assets/remixicone85e-ddb063ff.svg",
+    "src": "resources/fonts/remixicone85e.svg"
+  },
+  "resources/fonts/remixicone85e.ttf": {
+    "file": "assets/remixicone85e-4022c89b.ttf",
+    "src": "resources/fonts/remixicone85e.ttf"
+  },
+  "resources/fonts/remixicone85e.woff": {
+    "file": "assets/remixicone85e-52976819.woff",
+    "src": "resources/fonts/remixicone85e.woff"
+  },
+  "resources/fonts/remixicone85e.woff2": {
+    "file": "assets/remixicone85e-b0d0b7e5.woff2",
+    "src": "resources/fonts/remixicone85e.woff2"
+  },
+  "resources/images/auth-one-bg.jpg": {
+    "file": "assets/auth-one-bg-85095c4e.jpg",
+    "src": "resources/images/auth-one-bg.jpg"
+  },
+  "resources/images/flags/us.svg": {
+    "file": "assets/us-e8272934.svg",
+    "src": "resources/images/flags/us.svg"
+  },
+  "resources/images/sidebar/img-1.jpg": {
+    "file": "assets/img-1-83ab24c3.jpg",
+    "src": "resources/images/sidebar/img-1.jpg"
+  },
+  "resources/images/sidebar/img-2.jpg": {
+    "file": "assets/img-2-54d3615d.jpg",
+    "src": "resources/images/sidebar/img-2.jpg"
+  },
+  "resources/images/sidebar/img-3.jpg": {
+    "file": "assets/img-3-9f918a9b.jpg",
+    "src": "resources/images/sidebar/img-3.jpg"
+  },
+  "resources/images/sidebar/img-4.jpg": {
+    "file": "assets/img-4-d7136dca.jpg",
+    "src": "resources/images/sidebar/img-4.jpg"
   },
   "resources/js/app.js": {
     "file": "assets/app-cd023083.js",
