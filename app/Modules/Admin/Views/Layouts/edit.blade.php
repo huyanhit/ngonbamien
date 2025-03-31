@@ -1,6 +1,5 @@
 @extends('Admin::Layouts.admin')
 @section('content')
-
 <div id="insert" class="container">
 	<h3 class="title-insert text-center">
 	@if(isset($data))
