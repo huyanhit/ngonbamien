@@ -1,5 +1,5 @@
 @extends('Admin::Layouts.admin')
-    @section('content')
+@section('content')
     <div class="container">
         <div class="row justify-content-center dashboard">
             <div class="col-md-12">
@@ -45,6 +45,5 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div></div>
 @endsection
