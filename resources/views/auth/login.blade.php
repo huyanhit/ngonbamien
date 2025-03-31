@@ -1,4 +1,4 @@
-<x-admin-layout>
+<x-guest-layout>
     <div class="auth-page-wrapper pt-5">
         <!-- auth page bg -->
         <div class="auth-one-bg-position auth-one-bg" id="auth-particles">
@@ -119,4 +119,4 @@
         </footer>
         <!-- end Footer -->
     </div>
-</x-admin-layout>
+</x-guest-layout>
