@@ -2,7 +2,9 @@
     <div class="auth-page-wrapper pt-5">
         <!-- auth page bg -->
         <div class="auth-one-bg-position auth-one-bg" id="auth-particles">
-            <div class="bg-overlay"></div>
+            <div class="bg-overlay">
+                 <x-auth-session-status class="mb-4" :status="session('status')" />
+            </div>
             <div class="shape">
                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1440 120">
                     <path d="M 0,36 C 144,53.6 432,123.2 720,124 C 1008,124.8 1296,56.8 1440,40L1440 140L0 140z"></path>
@@ -30,38 +32,45 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6 col-xl-5">
                         <div class="card mt-4">
-
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
                                     <h5 class="text-primary">Welcome Back !</h5>
                                     <p class="text-muted">Sign in to continue to Velzon.</p>
                                 </div>
                                 <div class="p-2 mt-4">
-                                    <form action="https://themesbrand.com/velzon/html/default/index.html">
-
+                                    <form method="POST" action="{{ route('login') }}">
+                                        @csrf
                                         <div class="mb-3">
-                                            <label for="username" class="form-label">Username</label>
-                                            <input type="text" class="form-control" id="username" placeholder="Enter username">
+                                            <x-input-label for="email" :value="__('Email')" />
+                                            <x-text-input id="email" class="form-control" id="username" placeholder="Enter username" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                         </div>
-
                                         <div class="mb-3">
                                             <div class="float-end">
-                                                <a href="auth-pass-reset-basic.html" class="text-muted">Forgot password?</a>
+                                                @if (Route::has('password.request'))
+                                                    <a href="{{ route('password.request') }}" class="text-muted">Forgot password?</a>
+                                                @endif
                                             </div>
-                                            <label class="form-label" for="password-input">Password</label>
+                                            <x-input-label class="form-label" for="password" value="Mật khẩu" />
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input type="password" class="form-control pe-5 password-input" placeholder="Enter password" id="password-input">
+                                                <x-text-input class="form-control pe-5 password-input" placeholder="Enter password" id="password-input"
+                                                              type="password"
+                                                              name="password"
+                                                              required autocomplete="current-password" />
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                                <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                             </div>
                                         </div>
 
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="auth-remember-check" name="remember">
                                             <label class="form-check-label" for="auth-remember-check">Remember me</label>
                                         </div>
 
                                         <div class="mt-4">
-                                            <button class="btn btn-success w-100" type="submit">Sign In</button>
+                                            <x-primary-button class="btn btn-success w-100" >
+                                                Đăng nhập
+                                            </x-primary-button>
                                         </div>
 
                                         <div class="mt-4 text-center">
@@ -110,48 +119,4 @@
         </footer>
         <!-- end Footer -->
     </div>
-    <!-- Session Status -->
-{{--    <x-auth-session-status class="mb-4" :status="session('status')" />--}}
-
-{{--    <form method="POST" action="{{ route('login') }}">--}}
-{{--        @csrf--}}
-
-{{--        <!-- Email Address -->--}}
-{{--        <div>--}}
-{{--            <x-input-label for="email" :value="__('Email')" />--}}
-{{--            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />--}}
-{{--            <x-input-error :messages="$errors->get('email')" class="mt-2" />--}}
-{{--        </div>--}}
-
-{{--        <!-- Password -->--}}
-{{--        <div class="mt-4">--}}
-{{--            <x-input-label for="password" value="Mật khẩu" />--}}
-{{--            <x-text-input id="password" class="block mt-1 w-full"--}}
-{{--                            type="password"--}}
-{{--                            name="password"--}}
-{{--                            required autocomplete="current-password" />--}}
-
-{{--            <x-input-error :messages="$errors->get('password')" class="mt-2" />--}}
-{{--        </div>--}}
-
-{{--        <!-- Remember Me -->--}}
-{{--        <div class="block mt-4">--}}
-{{--            <label for="remember_me" class="inline-flex items-center">--}}
-{{--                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">--}}
-{{--                <span class="ms-2 text-sm text-gray-600">Ghi nhớ đăng nhập</span>--}}
-{{--            </label>--}}
-{{--        </div>--}}
-
-{{--        <div class="flex items-center justify-end mt-4">--}}
-{{--            @if (Route::has('password.request'))--}}
-{{--                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">--}}
-{{--                    Quên mật khẩu--}}
-{{--                </a>--}}
-{{--            @endif--}}
-
-{{--            <x-primary-button class="ms-3">--}}
-{{--                Đăng nhập--}}
-{{--            </x-primary-button>--}}
-{{--        </div>--}}
-{{--    </form>--}}
 </x-guest-layout>

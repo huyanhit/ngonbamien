@@ -1,11 +1,11 @@
 {
   "resources/css/admin.css": {
-    "file": "assets/admin-42c2cd97.css",
+    "file": "assets/admin-db794802.css",
     "isEntry": true,
     "src": "resources/css/admin.css"
   },
   "resources/css/app.css": {
-    "file": "assets/app-b8f06f0e.css",
+    "file": "assets/app-937c3ba2.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -91,7 +91,7 @@
   },
   "resources/fonts/la-regular-400.eot": {
     "file": "assets/la-regular-400-7dc456f0.eot",
-    "src": "resources/fonts/la-regular-400.eot"
+    "src": "resources/fonts/la-regular-400d41d.eot"
   },
   "resources/fonts/la-regular-400.svg": {
     "file": "assets/la-regular-400-8606b583.svg",
@@ -111,11 +111,11 @@
   },
   "resources/fonts/la-regular-400d41d.eot": {
     "file": "assets/la-regular-400-7dc456f0.eot",
-    "src": "resources/fonts/la-regular-400.eot"
+    "src": "resources/fonts/la-regular-400d41d.eot"
   },
   "resources/fonts/la-solid-900.eot": {
     "file": "assets/la-solid-900-8a57f8a9.eot",
-    "src": "resources/fonts/la-solid-900.eot"
+    "src": "resources/fonts/la-solid-900d41d.eot"
   },
   "resources/fonts/la-solid-900.svg": {
     "file": "assets/la-solid-900-36bf86c3.svg",
@@ -135,11 +135,11 @@
   },
   "resources/fonts/la-solid-900d41d.eot": {
     "file": "assets/la-solid-900-8a57f8a9.eot",
-    "src": "resources/fonts/la-solid-900.eot"
+    "src": "resources/fonts/la-solid-900d41d.eot"
   },
   "resources/fonts/materialdesignicons-webfont9445.eot": {
     "file": "assets/materialdesignicons-webfont9445-67d24abe.eot",
-    "src": "resources/fonts/materialdesignicons-webfontd41d.eot"
+    "src": "resources/fonts/materialdesignicons-webfont9445.eot"
   },
   "resources/fonts/materialdesignicons-webfont9445.ttf": {
     "file": "assets/materialdesignicons-webfont9445-a58ecb54.ttf",
@@ -155,7 +155,7 @@
   },
   "resources/fonts/materialdesignicons-webfontd41d.eot": {
     "file": "assets/materialdesignicons-webfont9445-67d24abe.eot",
-    "src": "resources/fonts/materialdesignicons-webfontd41d.eot"
+    "src": "resources/fonts/materialdesignicons-webfont9445.eot"
   },
   "resources/fonts/remixicone85e.eot": {
     "file": "assets/remixicone85e-25af6e92.eot",
