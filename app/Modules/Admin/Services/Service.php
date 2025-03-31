@@ -275,9 +275,7 @@ class Service {
     private function paginateArray($items, $perPage = 15, $page = null, $options = []){
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);
-        $paginator = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
-
-        return $paginator;
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 
     private function validateData($request, $data, $skip = false){
@@ -300,13 +298,10 @@ class Service {
                 $arrayValidate[$key] = $strReplace;
             }
         }
-
         $this->validateFile($arrayInsert,  $request->file());
-
         if(empty($arrayValidate)){
             return true;
         }
-
         return $request->validate($arrayValidate);
     }
 

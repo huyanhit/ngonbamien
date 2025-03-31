@@ -1,4 +1,9 @@
 {
+  "resources/css/admin.css": {
+    "file": "assets/admin-3bca098c.css",
+    "isEntry": true,
+    "src": "resources/css/admin.css"
+  },
   "resources/css/app.css": {
     "file": "assets/app-b8f06f0e.css",
     "isEntry": true,
@@ -41,7 +46,7 @@
     "src": "resources/fonts/fontawesome-webfont.woff2"
   },
   "resources/js/app.js": {
-    "file": "assets/app-cf27110c.js",
+    "file": "assets/app-cd023083.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }
