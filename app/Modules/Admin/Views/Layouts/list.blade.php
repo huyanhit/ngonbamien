@@ -5,33 +5,37 @@
 		<thead>
 			<tr>
 				<td width="3%" class="text-center">
-					<input type="checkbox" name="checkall" id="checkAll">
+					<input type="checkbox" name="checkall" id="checkAll" class="form-check-input">
 					{{ csrf_field() }}
 				</td>
 				@foreach($list as $key => $val)
 					@if(!isset($val['hidden']))
 					<td width="{{isset($val['width'])?$val['width']:''}}%">
-						<span class="title">{{isset($val['title'])?$val['title']:''}}</span>
-						@if(!isset($val['sort']) || ($val['sort'] != 'hidden'))
-						<span class="sort" title="Sắp Xếp">
-							<a href="{{Request::url()}}{{(Session::get('page') != null)?
-                                '?page='.Session::get('page').'&order='.$key.'&by=asc': '?order='.$key.'&by=asc'}}">
-								<i class="
-								@if(($sort['order'] == $key)&&($sort['by'] == 'asc'))
-									{{'active'}}
-								@endif
-								fa fa-sort-asc" aria-hidden="true"></i>
-							</a>
-							<a href="{{Request::url()}}{{(Session::get('page') != null)?
-                                '?page='.Session::get('page').'&order='.$key.'&by=desc': '?order='.$key.'&by=desc'}}">
-								<i class="
-								@if(($sort['order'] == $key)&&($sort['by'] == 'desc'))
-									{{'active'}}
-								@endif
-								fa fa-sort-desc" aria-hidden="true"></i>
-							</a>
-						</span>
-						@endif
+                        <div class="d-flex flex-fill">
+                            <span class="flex-grow-1">{{isset($val['title'])?$val['title']:''}}</span>
+                            @if(!isset($val['sort']) || ($val['sort'] != 'hidden'))
+                                <span class="flex-shrink-1 d-flex" title="Sắp Xếp">
+                                    @if(($sort['order'] == $key))
+                                        @if($sort['by'] == 'asc')
+                                            <a href="{{Request::url()}}{{(Session::get('page') != null)?
+                                            '?page='.Session::get('page').'&order='.$key.'&by=asc': '?order='.$key.'&by='}}">
+                                                <i class="ri-arrow-up-s-fill" aria-hidden="true"></i>
+                                            </a>
+                                        @else
+                                            <a href="{{Request::url()}}{{(Session::get('page') != null)?
+                                                '?page='.Session::get('page').'&order='.$key.'&by=desc': '?order='.$key.'&by=asc'}}">
+                                                <i class="ri-arrow-down-s-fill" aria-hidden="true"></i>
+                                            </a>
+                                        @endif
+                                    @else
+                                        <a href="{{Request::url()}}{{(Session::get('page') != null)?
+                                            '?page='.Session::get('page').'&order='.$key.'&by=desc': '?order='.$key.'&by=desc'}}">
+                                            <i class="ri-expand-up-down-fill" aria-hidden="true"></i>
+                                        </a>
+                                    @endif
+                                </span>
+                            @endif
+                        </div>
 					</td>
 					@endif
 				@endforeach
@@ -51,13 +55,13 @@
 						@if(isset($val['filter']['type']))
 							@switch($val['filter']['type'])
 								@case('text')
-									{{Form::input('text', $key, $val['filter']['value'], array('class' => '', 'placeholder' => $key))}}
+									{{Form::input('text', $key, $val['filter']['value'], array('class' => 'form-control', 'placeholder' => $key))}}
 								@break
 								@case('select')
-									{{Form::select($key, $val['data'], isset($val['filter']['value'])? $val['filter']['value']: null, array('class'=>''))}}
+									{{Form::select($key, $val['data'], isset($val['filter']['value'])? $val['filter']['value']: null, array('class' => 'form-control'))}}
 								@break
 								@default
-									{{Form::input('text',$key, $val['filter']['value'], array('class' => '', 'placeholder' => $key))}}
+									{{Form::input('text',$key, $val['filter']['value'], array('class' => 'form-control', 'placeholder' => $key))}}
 								@break
 							@endswitch
 						@endif
@@ -66,7 +70,7 @@
 				@endforeach
 				<td colspan="2" class="text-center">
 					<div class="group-button">
-						<input type="submit" name="submit" value="Lọc">
+						<input type="submit" class="btn btn-secondary" name="submit" value="Lọc">
 						@if(isset($control['add_reference']))
 							<a class="btn btn-insert" href="{{Request::root()}}/{{$control['add_reference']['link']}}"> {{$control['add_reference']['title']}} </a>
 						@endif
