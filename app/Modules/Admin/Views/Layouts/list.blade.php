@@ -4,13 +4,13 @@
 	<table class="table table-bordered table-hover table-striped">
 		<thead>
 			<tr>
-				<td width="3%" class="text-center">
+				<th width="3%" class="text-center">
 					<input type="checkbox" name="checkall" id="checkAll" class="form-check-input">
 					{{ csrf_field() }}
-				</td>
+				</th>
 				@foreach($list as $key => $val)
 					@if(!isset($val['hidden']))
-					<td width="{{isset($val['width'])?$val['width']:''}}%">
+					<th width="{{isset($val['width'])?$val['width']:''}}%">
                         <div class="d-flex flex-fill">
                             <span class="flex-grow-1">{{isset($val['title'])?$val['title']:''}}</span>
                             @if(!isset($val['sort']) || ($val['sort'] != 'hidden'))
@@ -36,18 +36,18 @@
                                 </span>
                             @endif
                         </div>
-					</td>
+					</th>
 					@endif
 				@endforeach
-				<td width="8%" class="text-center">
+				<th width="8%" class="text-center">
 					Thực Hiện
-				</td>
+				</th>
 			</tr>
 		</thead>
 		<form id="filter" method="get" action="{{Request::url().$url_sort}}">
 			<tr class="filter-list">
-				<td class="text-center">
-					#
+				<td class="text-center align-middle">
+                    #
 				</td>
 				@foreach($list as $key => $val)
 					@if(!isset($val['hidden']))
