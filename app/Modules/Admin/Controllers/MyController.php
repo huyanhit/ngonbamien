@@ -113,11 +113,11 @@ class MyController extends BaseController
     public function index(){
         $this->init($this->view);
         $this->view['data'] = $this->service->generateList($this->view);
-        return view('Admin::Layouts.list', $this->view);
+        return view('Admin::list', $this->view);
 	}
 
     public function create(){
-        return view('Admin::Layouts.insert', $this->view);
+        return view('Admin::insert', $this->view);
     }
 
     public function store(){
@@ -140,7 +140,7 @@ class MyController extends BaseController
         }
         //$this->view = $this->getDataReference($id, $this->view);
 
-        return view('Admin::Layouts.insert', $this->view);
+        return view('Admin::insert', $this->view);
     }
 
     public function edit($id){
@@ -151,7 +151,7 @@ class MyController extends BaseController
         }
         // $this->view = $this->getDataReference($id, $this->view);
 
-        return view('Admin::Layouts.edit', $this->view);
+        return view('Admin::edit', $this->view);
     }
 
     public function update($id){

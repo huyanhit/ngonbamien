@@ -11,7 +11,8 @@ use Illuminate\Support\ServiceProvider;
 
 class ModulesServiceProvider extends  ServiceProvider
 {
-    public function boot(){
+    public function boot(): void
+    {
         $listModule = config("app.modules");
         foreach ($listModule as $module) {
             if(file_exists(__DIR__.'/'.$module.'/routes.php')) {

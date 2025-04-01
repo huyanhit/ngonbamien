@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class AdminLogin extends Controller
 {
     public function index(){
-        return view('Admin::Layouts.login');
+        return view('Admin::Components.login');
     }
 
     public function store(Request $request){

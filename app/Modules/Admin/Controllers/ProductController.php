@@ -18,18 +18,21 @@ class ProductController extends MyController
         $this->view['resource'] = $this->request->segment(2);
         $this->view['form'] = array(
             'product_category_id' => array(
-                'title'=> 'Loại',
-                'data' => $this->renderSelectByTable($this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'),
-                'type' => self::SELECT,
-                'validate' => 'required'
+                'title'    => 'Loại',
+                'data'     => $this->renderSelectByTable($this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'),
+                'type'     => self::SELECT,
+                'validate' => 'required',
+                'column'   => 2,
+                'group'    => 1,
             ),
             'producer_id' => array(
                 'title'=> 'Nhà sản xuất',
                 'data' => $this->renderSelectByTable($this->getDataTable('producers', ['active' => 1], null), 'id', 'title'),
                 'type' => self::SELECT,
-                'validate' => 'required'
+                'validate' => 'required',
+                'column'   => 2,
+                'group'    => 1,
             ),
-
 
             'sku'          => array('title'=> 'Mã hàng hóa', 'type' => self::TEXT, 'validate' => 'max:50'),
             'title'        => array('title'=> 'Tên', 'type' => self::TEXT, 'validate' => 'required|max:255'),
