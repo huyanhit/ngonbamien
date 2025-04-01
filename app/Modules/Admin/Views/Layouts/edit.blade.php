@@ -16,8 +16,8 @@
 						{{Form::input('hidden', $key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null), array())}}
 					@break
                     @case('has_many')
-                        <label class="control-label col-sm-3">{{$val['title']}}</label>
-                        <div class="col-sm-9">
+                        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+                        <div class="col-sm-9 my-1">
                             <div id="product_option"></div>
                             <div class="options_append">
                                 <div class="row append">
@@ -47,8 +47,8 @@
                         </div>
                     @break
 					@case('text')
-						<label class="control-label col-sm-3">{{$val['title']}}</label>
-						<div class="col-sm-9">
+						<label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+						<div class="col-sm-9 my-1">
 							{{Form::input('text', $key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
 								array('class' => 'form-control text', 'placeholder' => isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
 							@error($key)
@@ -57,8 +57,8 @@
 						</div>
 					@break
                     @case('date')
-                    <label class="control-label col-sm-3">{{$val['title']}}</label>
-                    <div class="col-sm-9">
+                    <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+                    <div class="col-sm-9 my-1">
                         {{Form::input('text', $key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
                             array('id' => 'datepicker','class' => 'form-control text','data-date-format'=> "dd/mm/yyyy", 'placeholder' =>'dd/mm/yyyy'))}}
                         <script type="text/javascript">
@@ -71,8 +71,8 @@
                     </div>
                     @break
 					@case('password')
-						<label class="control-label col-sm-3">{{$val['title']}}</label>
-						<div class="col-sm-9">
+						<label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+						<div class="col-sm-9 my-1">
 							{{Form::input('password', $key, null , array('class' => 'form-control text', 'placeholder' => isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
 							@error($key)
 							<span class="alert alert-danger">{{ $message }}</span>
@@ -80,8 +80,8 @@
 						</div>
 					@break
                     @case('confirm')
-                    <label class="control-label col-sm-3">{{$val['title']}}</label>
-                    <div class="col-sm-9">
+                    <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+                    <div class="col-sm-9 my-1">
                         {{Form::input('password', $key, null , array('class' => 'form-control text', 'placeholder' => isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
                         @error($key)
                         <span class="alert alert-danger">{{ $message }}</span>
@@ -89,8 +89,8 @@
                     </div>
                     @break
 					@case('select')
-						<label class="control-label col-sm-3">{{$val['title']}}</label>
-						<div class="col-sm-9">
+						<label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+						<div class="col-sm-9 my-1">
 							@if(isset($val['ajax']))
 								@switch($val['ajax']['type'])
 									@case ('select')
@@ -107,8 +107,8 @@
 						</div>
 					@break
 					@case('area')
-						<label class="control-label col-sm-3">{{$val['title']}}</label>
-						<div class="col-sm-9">
+						<label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+						<div class="col-sm-9 my-1">
 							@include('ckfinder::setup')
 							{{Form::textarea($key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
 							array('id'=>$key.'area', 'class'=>'form-control', 'placeholder'=>isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
@@ -122,8 +122,8 @@
 						@include('ckfinder::setup')
 					@break
                     @case('images')
-                    <label class="control-label col-sm-3">{{$val['title']}}</label>
-                    <div class="col-sm-9">
+                    <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+                    <div class="col-sm-9 my-1">
                         <span class="images mt-3">
 							<p class="image_box_{{$key}}">
 								@if(!empty($data[$key]))
@@ -137,7 +137,7 @@
 							</p>
                         </span>
 						<span class="inline">
-                            {{ Form::file($key.'[]', array('multiple', 'key'=> $key, 'class'=>'upload_images_field')) }}
+                            {{ Form::file($key.'[]', array('multiple', 'key'=> $key, 'class'=>'form-control upload_images_field')) }}
                         </span>
                         @error($key)
                         	<span class="alert alert-danger">{{ $message }}</span>
@@ -145,11 +145,11 @@
                     </div>
                     @break
 					@case('image')
-                        <label class="control-label col-sm-3">{{$val['title']}}</label>
-                        <div class="col-sm-9">
+                        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+                        <div class="col-sm-9 my-1">
 							<span class="inline image_box_{{$key}}"><img src="{{route('get-image-resource', $data[$key])}}"></span>
 							<span class="inline">
-                                {{Form::file($key, array('key'=> $key, 'class'=>'upload_images_field', 'value' => isset($data[$key])? $data[$key]: (isset($val['value'])? $val['value']: null)))}}
+                                {{Form::file($key, array('key'=> $key, 'class'=>'form-control upload_images_field', 'value' => isset($data[$key])? $data[$key]: (isset($val['value'])? $val['value']: null)))}}
                             </span>
                             @error($key)
                             	<span class="alert alert-danger">{{ $message }}</span>
@@ -157,11 +157,11 @@
                         </div>
 					@break
 					@case('image_id')
-						<label class="control-label col-sm-3">{{$val['title']}}</label>
-						<div class="col-sm-9">
+						<label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+						<div class="col-sm-9 my-1">
 							<span class="inline image_box_{{$key}}"><img onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $data[$key])}}"></span>
 							<span class="inline">
-								{{Form::file($key, array('key'=> $key, 'class'=>'upload_images_field',
+								{{Form::file($key, array('key'=> $key, 'class'=>'form-control upload_images_field',
 								'value'=> isset($data[$key])? route('get-image-thumbnail', $data[$key]): (isset($val['value'])? route('get-image-thumbnail', $val['value']): null)))}}
 							</span>
 							@error($key)
@@ -170,8 +170,8 @@
 						</div>
 					@break
 					@case('file')
-						<label class="control-label col-sm-3">{{$val['title']}}</label>
-						<div class="col-sm-9">
+						<label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+						<div class="col-sm-9 my-1">
 							<span class="inline text_box">{{preg_replace('/(.)*(?:\/)/','',isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null))}}</span>
 							<span class="inline">
 								{{Form::file($key, array('id'=>'feature', 'class'=>'form-control' , 'value'=>isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null)))}}
@@ -183,8 +183,8 @@
 					@break
 
 					@case('check')
-						<label class="control-label col-sm-3">{{$val['title']}}</label>
-						<div class="col-sm-9">
+						<label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+						<div class="col-sm-9 my-1">
 							<span class="check">
 								{{Form::input('hidden', $key, 0)}}
 								{{Form::checkbox($key, 1, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null))}}
@@ -198,8 +198,8 @@
 			</div>
 		@endforeach
 	 	<div class="form-group">
-	    	<div class="control-label col-sm-3"></div>
-	    	<div class="col-sm-9">
+	    	<div class="control-label py-2 text-end lh-lg col-sm-3"></div>
+	    	<div class="col-sm-9 my-1">
 	      		<input type="submit" id="submit" name="submit" value="Save & Back List">
 	      		<input type="submit" id="submit" name="submit_edit" value="Save & Edit">
                 @if(Request::get('back'))

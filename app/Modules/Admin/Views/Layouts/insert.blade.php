@@ -1,7 +1,7 @@
 @extends('Admin::Layouts.admin')
 @section('content')
-	<div id="insert" class="container">
-		<h3 class="title-insert text-center">
+	<div id="insert" class=" col-9">
+		<h3 class="title-insert text-center text-uppercase">
 			Thêm Mới
 		</h3>
 		<form class="form-horizontal" method="post" action="{{ route($resource.'.store') }}" enctype="multipart/form-data">
@@ -13,8 +13,8 @@
 							{{Form::input('hidden', $key, isset($val['value'])?$val['value']:(isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null)), array())}}
 						@break
                         @case('has_many')
-                            <label class="control-label col-sm-3">{{$val['title']}}</label>
-                            <div class="col-sm-9">
+                            <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+                            <div class="col-sm-9 my-1">
                                 <div id="product_option"></div>
                                 <div class="options_append">
                                     <div class="row append">
@@ -35,8 +35,8 @@
                             </div>
                         @break
 						@case('text')
-							<label class="control-label col-sm-3">{{$val['title']}}</label>
-							<div class="col-sm-9">
+							<label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+							<div class="col-sm-9 my-1">
 								{{Form::input('text', $key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
 								 	array('class' => 'form-control text', 'placeholder' => isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
 								@error($key)
@@ -45,8 +45,8 @@
 							</div>
 						@break
                         @case('date')
-                        <label class="control-label col-sm-3">{{$val['title']}}</label>
-                        <div class="col-sm-9">
+                        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+                        <div class="col-sm-9 my-1">
                             {{Form::input('text', $key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
                                 array('id' => 'datepicker','class' => 'form-control text','data-date-format'=> "dd/mm/yyyy", 'placeholder' =>'dd/mm/yyyy'))}}
                             <script type="text/javascript">
@@ -59,8 +59,8 @@
                         </div>
                         @break
 						@case('password')
-							<label class="control-label col-sm-3">{{$val['title']}}</label>
-							<div class="col-sm-9">
+							<label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+							<div class="col-sm-9 my-1">
 								{{Form::input('password', $key, null , array('class' => 'form-control text', 'placeholder' => isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
 								@error($key)
 								<span class="alert alert-danger">{{ $message }}</span>
@@ -68,8 +68,8 @@
 							</div>
 						@break
                         @case('confirm')
-                        <label class="control-label col-sm-3">{{$val['title']}}</label>
-                        <div class="col-sm-9">
+                        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+                        <div class="col-sm-9 my-1">
                             {{Form::input('password', $key, null , array('class' => 'form-control text', 'placeholder' => isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
                             @error($key)
                             <span class="alert alert-danger">{{ $message }}</span>
@@ -77,8 +77,8 @@
                         </div>
                         @break
 						@case('select')
-							<label class="control-label col-sm-3">{{$val['title']}}</label>
-							<div class="col-sm-9">
+							<label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+							<div class="col-sm-9 my-1">
 								@if(isset($val['ajax']) && isset($val['data']))
 									@switch($val['ajax']['type'])
 										@case ('select')
@@ -95,8 +95,8 @@
 							</div>
 						@break
 						@case('area')
-							<label class="control-label col-sm-3">{{$val['title']}}</label>
-							<div class="col-sm-9">
+							<label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+							<div class="col-sm-9 my-1">
 								{{Form::textarea($key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
 								array('id'=>$key.'area', 'class'=>'form-control', 'placeholder'=>isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
 								@error($key)
@@ -109,13 +109,13 @@
 							@include('ckfinder::setup')
 						@break
                         @case('images')
-						<label class="control-label col-sm-3">{{$val['title']}}</label>
-						<div class="col-sm-9">
+						<label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+						<div class="col-sm-9 my-1">
 							<span class="images mt-3">
 								<p class="image_box_{{$key}}"></p>
 							</span>
 							<span class="inline">
-								{{ Form::file($key.'[]', array('multiple', 'key'=> $key, 'class'=>'upload_images_field')) }}
+								{{ Form::file($key.'[]', array('multiple', 'key'=> $key, 'class'=>'form-control upload_images_field')) }}
 							</span>
 							@error($key)
 								<span class="alert alert-danger">{{ $message }}</span>
@@ -123,11 +123,11 @@
 						</div>
 						@break
 						@case('image')
-							<label class="control-label col-sm-3">{{$val['title']}}</label>
-							<div class="col-sm-9">
+							<label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+							<div class="col-sm-9 my-1">
 								<span class="inline image_box_{{$key}}"></span>
 								<span class="inline">
-									{{Form::file($key, array('key'=> $key, 'class'=> 'upload_images_field', 'value' => ''))}}
+									{{Form::file($key, array('key'=> $key, 'class'=> 'form-control upload_images_field', 'value' => ''))}}
 								</span>
 								@error($key)
 									<span class="alert alert-danger">{{ $message }}</span>
@@ -135,11 +135,11 @@
 							</div>
 						@break
 						@case('image_id')
-							<label class="control-label col-sm-3">{{$val['title']}}</label>
-							<div class="col-sm-9">
+							<label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+							<div class="col-sm-9 my-1">
 								<span class="inline image_box_{{$key}}"></span>
 								<span class="inline">
-									{{ Form::file($key, array('key'=> $key, 'class'=>'upload_images_field', 'value'=> '')) }}
+									{{ Form::file($key, array('key'=> $key, 'class'=>'form-control upload_images_field', 'value'=> '')) }}
 								</span>
 								@error($key)
 									<span class="alert alert-danger">{{ $message }}</span>
@@ -147,8 +147,8 @@
 							</div>
 						@break
 						@case('file')
-							<label class="control-label col-sm-3">{{$val['title']}}</label>
-							<div class="col-sm-9">
+							<label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+							<div class="col-sm-9 my-1">
 								<span class="inline text_box">{{preg_replace('/(.)*(?:\/)/','',isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null))}}</span>
 								<span class="inline">
 								{{Form::file($key, array('id'=>'feature', 'class'=>'form-control' , 'value'=> ''))}}
@@ -159,10 +159,10 @@
 							</div>
 						@break
 						@case('check')
-							<label class="control-label col-sm-3">{{$val['title']}}</label>
-							<div class="col-sm-9">
-								<div class="check">
-									{{Form::checkbox($key, 1, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null))}}
+							<label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+							<div class="col-sm-9 my-1">
+                                <div class="form-check mt-2">
+									{{Form::checkbox($key, 1, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null), array('class'=>'form-check-input'))}}
 								</div>
 								@error($key)
 								<span class="alert alert-danger">{{ $message }}</span>
@@ -172,40 +172,27 @@
 					@endswitch
 				</div>
 			@endforeach
-			<div class="form-group">
-				<div class="control-label col-sm-3"></div>
-				<div class="col-sm-9">
-					<input type="submit" id="submit" name="submit" value="Lưu">
-					<input type="submit" id="submit" name="submit_edit" value="Lưu & Chỉnh Sửa Tiếp">
+			<div class="form-group text-center">
+				<div class="col-12 mb-3">
+					<input type="submit" id="submit" name="submit" value="Lưu" class="btn btn-success">
+					<input type="submit" id="submit" name="submit_edit" value="Lưu & Chỉnh Sửa Tiếp" class="btn btn-secondary">
                     @if(Request::get('back'))
-                        <a class="btn btn-second" href="{{Request::root()}}/{{urldecode(Request::get('back'))}}"> Quay lại </a>
+                        <a class="btn btn-info" href="{{Request::root()}}/{{urldecode(Request::get('back'))}}"> Quay lại </a>
                     @else
-                        <a class="btn btn-second prefix_link" href="{{ route($resource.'.index') }}"> Hủy </a>
+                        <a class="btn btn-danger prefix_link" href="{{ route($resource.'.index') }}"> Hủy </a>
                     @endif
                     @if(isset($data['id']))
                         <span class="option-order">
 						@if(isset($control['next']))
-                            <a class="btn btn-second" href="{{Request::root()}}/{{$control['next']['link']}}/{{$data['id']}}"> {{$control['next']['title']}} <i title="{{$control['next']['title']}}" class="fa fa-chevron-right"></i></a>
+                            <a class="btn btn-info" href="{{Request::root()}}/{{$control['next']['link']}}/{{$data['id']}}"> {{$control['next']['title']}} <i title="{{$control['next']['title']}}" class="fa fa-chevron-right"></i></a>
                         @endif
                         @if(isset($control['prev']))
-                            <a class="btn btn-second" href="{{Request::root()}}/{{$control['prev']['link']}}/{{$data['id']}}"><i title="{{$control['prev']['title']}}" class="fa fa-chevron-left" aria-hidden="true">{{$control['next']['title']}}</i></a>
+                            <a class="btn btn-info" href="{{Request::root()}}/{{$control['prev']['link']}}/{{$data['id']}}"><i title="{{$control['prev']['title']}}" class="fa fa-chevron-left" aria-hidden="true">{{$control['next']['title']}}</i></a>
                         @endif
 					    </span>
                     @endif
 				</div>
 			</div>
 		</form>
-	</div>
-	<div id="footer">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-8 menu">
-					Admin theme
-				</div>
-				<div class="col-md-4 text-right">
-					Copyright @ Huy Lê
-				</div>
-			</div>
-		</div>
 	</div>
 @endsection
