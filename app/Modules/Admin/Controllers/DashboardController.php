@@ -36,7 +36,7 @@ class DashboardController extends MyController
 
     public function index(){
         $page = PageModel::count();
-        return view('Admin::Components.dashboard', [
+        return view('Admin::dashboard', [
             'data'=>[
                 [
                     'title'      => 'Loại sản phẩm',

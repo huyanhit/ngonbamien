@@ -1,6 +1,6 @@
 @extends('Admin::Layouts.admin')
 @section('content')
-<div id="list" class="container-fluid">
+<div id="list">
 	<table class="table table-bordered table-hover table-striped">
 		<thead>
 			<tr>

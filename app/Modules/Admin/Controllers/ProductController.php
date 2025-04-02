@@ -23,7 +23,6 @@ class ProductController extends MyController
                 'type'     => self::SELECT,
                 'validate' => 'required',
                 'column'   => 2,
-                'group'    => 1,
             ),
             'producer_id' => array(
                 'title'=> 'Nhà sản xuất',
@@ -31,7 +30,6 @@ class ProductController extends MyController
                 'type' => self::SELECT,
                 'validate' => 'required',
                 'column'   => 2,
-                'group'    => 1,
             ),
 
             'sku'          => array('title'=> 'Mã hàng hóa', 'type' => self::TEXT, 'validate' => 'max:50'),
@@ -47,17 +45,17 @@ class ProductController extends MyController
             'company_offer'  => array('title'=> 'Ưu đãi từ Công Ty', 'type' => self::AREA),
             'producer_offer' => array('title'=> 'Ưu đãi từ Hãng', 'type' => self::AREA),
 
-            'is_new'       => array('title'=> 'Sản phẩm mới', 'type' => self::CHECK, 'validate' => 'numeric|max:1'),
-            'is_promotion' => array('title'=> 'Khuyến mãi', 'type' => self::CHECK, 'validate' => 'numeric|max:1'),
-            'is_hot'       => array('title'=> 'Bán chạy', 'type' => self::CHECK, 'validate' => 'numeric|max:1'),
+            'price_root'   => array('title'=> 'Giá nhập', 'type' => self::TEXT, 'validate' => 'nullable|numeric', 'column' => 2),
+            'price_pro'    => array('title'=> 'Giá nhà sản xuất', 'type' => self::TEXT, 'validate' => 'nullable|numeric', 'column' => 2),
+            'price'        => array('title'=> 'Giá bán', 'type' => self::TEXT, 'validate' => 'nullable|numeric', 'column' => 2),
+            'product_option' => array('title'=> 'Thêm lựa chọn', 'type' => self::HAS_MANY, 'update' => ['group_title', 'title', 'price'], 'column' => 2),
 
-            'price_root'   => array('title'=> 'Giá nhập', 'type' => self::TEXT, 'validate' => 'nullable|numeric'),
-            'price_pro'    => array('title'=> 'Giá nhà sản xuất', 'type' => self::TEXT, 'validate' => 'nullable|numeric'),
-            'price'        => array('title'=> 'Giá bán', 'type' => self::TEXT, 'validate' => 'nullable|numeric'),
-            'product_option' => array('title'=> 'Thêm lựa chọn', 'type' => self::HAS_MANY, 'update' => ['group_title', 'title', 'price']),
+            'is_new'       => array('title'=> 'Sản phẩm mới', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2),
+            'is_promotion' => array('title'=> 'Khuyến mãi', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2),
+            'is_hot'       => array('title'=> 'Bán chạy', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2),
 
-            'instalment'   => array('title'=> 'Cho trả góp', 'type' => self::CHECK),
-            'active'       => array('title'=> 'Cho hiển thị', 'type' => 'check')
+            'instalment'   => array('title'=> 'Cho trả góp', 'type' => self::CHECK, 'column' => 2),
+            'active'       => array('title'=> 'Cho hiển thị', 'type' => 'check', 'column' => 2)
         );
 
         $this->view['list'] = array(

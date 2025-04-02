@@ -11,8 +11,8 @@
                 <div class="options_append">
                     <div class="row append">
                     </div>
-                    <div class="d-flex mt-3">
-                        <div class="mr-2"><span onclick="addHtmlOption(this)" class="bg-info text-white px-2 py-1"> Thêm lựa chọn </span></div>
+                    <div class="d-flex">
+                        <div class="mr-2"><span onclick="addHtmlOption(this)" class="btn btn-info"> Thêm lựa chọn </span></div>
                     </div>
                 </div>
                 <script>
@@ -102,10 +102,10 @@
             @break
         @case('images')
             <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
-            <div class="col-sm-9 my-1">
-                                <span class="images mt-3">
-                                    <p class="image_box_{{$key}}"></p>
-                                </span>
+            <div class="col-sm-9">
+                <span class="images">
+                    <span class="image_box_{{$key}}"></span>
+                </span>
                 <span class="inline">
                                     {{ Form::file($key.'[]', array('multiple', 'key'=> $key, 'class'=>'form-control upload_images_field')) }}
                                 </span>
@@ -131,8 +131,8 @@
             <div class="col-sm-9 my-1">
                 <span class="inline image_box_{{$key}}"></span>
                 <span class="inline">
-                                        {{ Form::file($key, array('key'=> $key, 'class'=>'form-control upload_images_field', 'value'=> '')) }}
-                                    </span>
+                    {{ Form::file($key, array('key'=> $key, 'class'=>'form-control upload_images_field', 'value'=> '')) }}
+                </span>
                 @error($key)
                 <span class="alert alert-danger">{{ $message }}</span>
                 @enderror

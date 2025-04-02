@@ -19,10 +19,8 @@ class MyController extends BaseController
     const AREA        = 'area';
     const CODE        = 'code';
     const TEXT        = 'text';
-    const HAS_MANY     = 'has_many';
-    const HAS_PIVOT     = 'has_pivot';
-
-
+    const HAS_MANY    = 'has_many';
+    const HAS_PIVOT   = 'has_pivot';
 
     public $request;
     public $service;
@@ -138,7 +136,6 @@ class MyController extends BaseController
         }else{
             $this->view['data'] = $this->hookData;
         }
-        //$this->view = $this->getDataReference($id, $this->view);
 
         return view('Admin::insert', $this->view);
     }
@@ -149,13 +146,11 @@ class MyController extends BaseController
         }else{
             $this->view['data'] = $this->hookData;
         }
-        // $this->view = $this->getDataReference($id, $this->view);
 
         return view('Admin::edit', $this->view);
     }
 
     public function update($id){
-        // $this->view = $this->getDataReference($id, $this->view);
         $this->service->editData($this->request, $id, $this->view);
         if($this->request->get('submit')){
             if($this->request->get('back')){
@@ -195,32 +190,4 @@ class MyController extends BaseController
     public function getDataTable($table, $where = null, $select = null){
         return $this->service->getDataTable($table, $where, $select);
     }
-
-    /*private function getDataReference($id, $view){
-        foreach ($view['form'] as $key => $val){
-            if(isset($val['reference'])){
-                if(isset($val['reference']['text'])){
-                    switch ($val['reference']['text']){
-                        case 'sequence':
-                            $view['data'][$key] = $this->service->importModel($key)->where($val['reference']['primary_id'], $id)->orderby($val['reference']['text'],'asc')->get();
-                            break;
-                        default:
-                            $view['data'][$key] = $this->service->importModel($key)->where($val['reference']['primary_id'], $id)->get();
-                            break;
-                    }
-                }else{
-                    $view['data'][$key] = $this->service->importModel($key)->where($val['reference']['primary_id'], $id)->get();
-                }
-                if(isset($val['remove_key']) && $val['remove_key']){
-                    foreach ($val['data'] as $key => $value){
-                        if($id == $value['id']){
-                            unset($val['data'][$key]);
-                        }
-                    }
-                }
-            }
-        }
-
-        return $view;
-    }*/
 }
