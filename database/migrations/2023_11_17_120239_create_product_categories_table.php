@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('product_categories', function (Blueprint $table) {
             $table->id();
             $table->integer('parent_id');
-            $table->string('name');
             $table->string('title');
-            $table->string('icon')->default('<i class="bi bi-app-indicator"></i>');
+            $table->text('content')->nullable();
+            $table->string('icon')->nullable();
+            $table->string('banner')->nullable();
+            $table->integer('image_id')->nullable();
             $table->integer('index')->default(1);
             $table->integer('active')->default(0);
             $table->timestamps();

@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Session;
 class MyController extends BaseController
 {
     const CHOOSE      = 'choose';
-
     const CHECK       = 'check';
     const IMAGE_ID    = 'image_id';
     const IMAGE       = 'image';
@@ -19,6 +18,8 @@ class MyController extends BaseController
     const AREA        = 'area';
     const CODE        = 'code';
     const TEXT        = 'text';
+
+    const NUMBER      = 'number';
     const HAS_MANY    = 'has_many';
     const HAS_PIVOT   = 'has_pivot';
 

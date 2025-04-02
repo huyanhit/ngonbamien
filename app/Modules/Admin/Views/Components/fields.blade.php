@@ -36,6 +36,16 @@
                 @enderror
             </div>
             @break
+        @case('number')
+            <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+            <div class="col-sm-9 my-1">
+                {{Form::input('number', $key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
+                     array('class' => 'form-control number', 'placeholder' => isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
+                @error($key)
+                <span class="alert alert-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            @break
         @case('date')
             <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
             <div class="col-sm-9 my-1">
@@ -153,7 +163,7 @@
         @case('check')
             <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
             <div class="col-sm-9 my-1">
-                <div class="form-check mt-2">
+                <div class="form-check form-switch mt-2">
                     {{Form::checkbox($key, 1, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null), array('class'=>'form-check-input'))}}
                 </div>
                 @error($key)
