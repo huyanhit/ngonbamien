@@ -13,7 +13,6 @@
         <script src="{{Request::root()}}/js/admin.js" type="text/javascript"></script>
         <script src="{{Request::root()}}/js/admin-ajax.js" type="text/javascript"></script>
         <script src="{{Request::root()}}/js/ckeditor/ckeditor.js" type="text/javascript"></script>
-
         @vite(['resources/css/admin.css'])
     </head>
 

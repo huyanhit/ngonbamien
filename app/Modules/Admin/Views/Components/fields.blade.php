@@ -111,6 +111,7 @@
             @include('ckfinder::setup')
             @break
         @case('images')
+
             <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
             <div class="col-sm-9">
                 <span class="images">
@@ -149,6 +150,7 @@
             </div>
             @break
         @case('file')
+
             <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
             <div class="col-sm-9 my-1">
                 <span class="inline text_box">{{preg_replace('/(.)*(?:\/)/','',isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null))}}</span>
