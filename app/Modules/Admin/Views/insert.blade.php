@@ -8,7 +8,7 @@
                          <div class="card-body">
                              @foreach($form as $key => $val)
                                  @if((isset($val['column']) && $val['column'] == 1) || !isset($val['column']))
-                                     @include('Admin::Components.fields', ['key' => $key, 'val'=> $val])
+                                     @include('Admin::Components.inserts', ['key' => $key, 'val'=> $val])
                                  @endif
                              @endforeach
                          </div>
@@ -42,7 +42,7 @@
                         <div class="card-body">
                             @foreach($form as $key => $val)
                                 @if(isset($val['column']) && $val['column'] == 2)
-                                    @include('Admin::Components.fields', ['key' => $key, 'val'=> $val])
+                                    @include('Admin::Components.inserts', ['key' => $key, 'val'=> $val])
                                 @endif
                             @endforeach
                         </div>

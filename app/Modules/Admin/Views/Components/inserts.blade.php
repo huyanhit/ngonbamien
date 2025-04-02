@@ -111,7 +111,6 @@
             @include('ckfinder::setup')
             @break
         @case('images')
-
             <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
             <div class="col-sm-9">
                 <span class="images">

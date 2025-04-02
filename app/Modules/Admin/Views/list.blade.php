@@ -202,9 +202,9 @@
                         @endif
                     @endforeach
                     <td class="action_row text-center">
-                        <a title="Sao Chép" href="{{route($resource.'.show', $l_value['id'])}}"> <i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
-                        <a title="Chỉnh Sửa" href="{{route($resource.'.edit', $l_value['id'])}}"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        <a title="Xóa" class="ajax_delete" href="javascript:void(0)" url="{{ route($resource.'.destroy', $l_value['id'])}} "><i class="fa fa-minus-square-o" aria-hidden="true"></i></a>
+                        <a title="Sao Chép" href="{{route($resource.'.show', $l_value['id'])}}" class="btn btn-secondary btn-sm"><i class="ri ri-file-copy-line" aria-hidden="true"></i></a>
+                        <a title="Chỉnh Sửa" href="{{route($resource.'.edit', $l_value['id'])}}" class="btn btn-info btn-sm"><i class="ri ri-pencil-line" aria-hidden="true"></i></a>
+                        <a title="Xóa" class="btn btn-danger ajax_delete btn-sm" href="javascript:void(0)" url="{{ route($resource.'.destroy', $l_value['id'])}}"><i class="ri ri-close-line" aria-hidden="true"></i></a>
                     </td>
                 </tr>
                 @endforeach
