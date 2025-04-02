@@ -3,7 +3,7 @@
     @switch($val['type'])
         @case('hidden')
             {{Form::input('hidden', $key, isset($val['value'])?$val['value']:(isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null)), array())}}
-            @break
+        @break
         @case('has_many')
             <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
             <div class="col-sm-9 my-1">
@@ -51,10 +51,10 @@
             <div class="col-sm-9 my-1">
                 {{Form::input('text', $key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
                     array('id' => 'datepicker','class' => 'form-control text','data-date-format'=> "dd/mm/yyyy", 'placeholder' =>'dd/mm/yyyy'))}}
-                <script type="text/javascript">
-                    $('#datepicker').datepicker({weekStart: 1,daysOfWeekHighlighted: "6,0", autoclose: true,todayHighlight: true,});
-                    $('#datepicker').datepicker("setDate", new Date());
-                </script>
+                    <script type="text/javascript">
+                        $('#datepicker').datepicker({weekStart: 1,daysOfWeekHighlighted: "6,0", autoclose: true,todayHighlight: true,});
+                        $('#datepicker').datepicker("setDate", new Date());
+                    </script>
                 @error($key)
                 <span class="alert alert-danger">{{ $message }}</span>
                 @enderror
@@ -117,8 +117,8 @@
                     <span class="image_box_{{$key}}"></span>
                 </span>
                 <span class="inline">
-                                    {{ Form::file($key.'[]', array('multiple', 'key'=> $key, 'class'=>'form-control upload_images_field')) }}
-                                </span>
+                    {{ Form::file($key.'[]', array('multiple', 'key'=> $key, 'class'=>'form-control upload_images_field')) }}
+                </span>
                 @error($key)
                 <span class="alert alert-danger">{{ $message }}</span>
                 @enderror
@@ -129,8 +129,8 @@
             <div class="col-sm-9 my-1">
                 <span class="inline image_box_{{$key}}"></span>
                 <span class="inline">
-                                        {{Form::file($key, array('key'=> $key, 'class'=> 'form-control upload_images_field', 'value' => ''))}}
-                                    </span>
+                    {{Form::file($key, array('key'=> $key, 'class'=> 'form-control upload_images_field', 'value' => ''))}}
+                </span>
                 @error($key)
                 <span class="alert alert-danger">{{ $message }}</span>
                 @enderror
@@ -153,8 +153,8 @@
             <div class="col-sm-9 my-1">
                 <span class="inline text_box">{{preg_replace('/(.)*(?:\/)/','',isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null))}}</span>
                 <span class="inline">
-                                    {{Form::file($key, array('id'=>'feature', 'class'=>'form-control' , 'value'=> ''))}}
-                                </span>
+                    {{Form::file($key, array('id'=>'feature', 'class'=>'form-control' , 'value'=> ''))}}
+                </span>
                 @error($key)
                 <span class="alert alert-danger">{{ $message }}</span>
                 @enderror

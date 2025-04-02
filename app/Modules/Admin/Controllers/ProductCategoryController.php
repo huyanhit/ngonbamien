@@ -39,14 +39,6 @@ class ProductCategoryController extends MyController
                     'value' => '',
                 ),
             ),
-            'name' => array(
-                'title' => 'Tên',
-                'width' => 10,
-                'filter' => array(
-                    'type' => self::TEXT,
-                    'value' => '',
-                )
-            ),
             'title' => array(
                 'title'=> 'Tiều đề',
                 'width' => 10,
@@ -62,10 +54,10 @@ class ProductCategoryController extends MyController
                 'update'=> true,
                 'data' => array(null => self::CHOOSE , 0 => 'UnActive', 1 => 'Active'),
                 'views' => array(
-                    'type' => self::CHECK ,
+                    'type' => self::CHECK,
                 ),
                 'filter' => array(
-                    'type' => 'select',
+                    'type' => self::SELECT,
                     'value' => '',
                 ),
             )
