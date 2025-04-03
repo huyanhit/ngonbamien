@@ -11,12 +11,23 @@
                 <div id="product_option"></div>
                 <div class="options_append_{{$key}}">
                     <div class="append">
-                        <div class="card border">
-                            @foreach($val['form'] as $skey => $sval)
-                                @include('Admin::Components.inserts', ['key' => $key.'_insert['.$skey.'][]', 'val'=> $sval])
+                        @if(isset($data->$key))
+                            @foreach($data->$key as $k => $items)
+                                <div class="card border p-2">
+                                    @foreach($val['form'] as $skey => $sval)
+                                        @include('Admin::Components.sub_inserts', ['name' => $key.'_insert['.$skey.'][]', 'key' => $skey, 'val'=> $sval, 'data'=> $items])
+                                    @endforeach
+                                    <div onclick="removeOption(this)" class="text-center my-2"><button class="btn btn-danger pull-right">Xóa</button></div>
+                                </div>
                             @endforeach
-                            <div onclick="removeOption(this)" class="text-center my-2"><button class="btn btn-danger pull-right">Xóa</button></div>
-                        </div>
+                        @else
+                            <div class="card border">
+                                @foreach($val['form'] as $skey => $sval)
+                                    @include('Admin::Components.inserts', ['key' => $key.'_insert['.$skey.'][]', 'val'=> $sval])
+                                @endforeach
+                                <div onclick="removeOption(this)" class="text-center my-2"><button class="btn btn-danger pull-right">Xóa</button></div>
+                            </div>
+                        @endif
                     </div>
                     <div class="d-flex">
                         <div class="mr-2">
@@ -124,7 +135,7 @@
             @break
         @case('images')
             <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
-            <div class="col-sm-9">
+            <div class="col-sm-9 my-1">
                 <span class="images">
                     <span class="image_box_{{$key}}"></span>
                 </span>

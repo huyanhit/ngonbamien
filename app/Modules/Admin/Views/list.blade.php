@@ -96,7 +96,7 @@
                                         <td class="text-center">
                                             @if(!empty($l_value[$key]))
                                                 @foreach (explode(',', $l_value[$key]) as $item)
-                                                    <span><img onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $item)}}"></span>
+                                                    <span><img class="avatar-sm my-1 border rounded" onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $item)}}"></span>
                                                 @endforeach
                                             @endif
                                         </td>
@@ -104,10 +104,10 @@
                                     @case('image')
                                         <td class="text-center">
                                         @if(empty($val['update']) )
-                                            <span><img onerror="this.src='/images/no-image.png'" src="{{$l_value[$key]}}"></span>
+                                            <span><img class="avatar-sm my-1 border rounded" onerror="this.src='/images/no-image.png'" src="{{$l_value[$key]}}"></span>
                                         @else
                                             <span class="can_update_text" type="{{$val['views']['type']}}" field="{{$key}}" uid="{{$l_value['id']}}">
-                                                <span><img onerror="this.src='/images/no-image.png'" src="{{$l_value[$key]}}"></span>
+                                                <span><img class="avatar-sm my-1 border rounded" onerror="this.src='/images/no-image.png'" src="{{$l_value[$key]}}"></span>
                                             </span>
                                         @endif
                                         </td>
@@ -115,11 +115,11 @@
                                     @case('image_id')
                                         <td class="text-center">
                                         @if(empty($val['update']) )
-                                            <span><img onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $l_value[$key])}}"></span>
+                                            <span><img class="avatar-sm my-1 border rounded" onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $l_value[$key])}}"></span>
                                         @else
                                             <span class="can_update_text" type="{{$val['views']['type']}}" field="{{$key}}" uid="{{$l_value['id']}}">
                                                 @if($l_value[$key])
-                                                <span><img onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $l_value[$key])}}"></span>
+                                                <span><img class="avatar-sm my-1 border rounded" onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $l_value[$key])}}"></span>
                                                 @endif
                                             </span>
                                         @endif

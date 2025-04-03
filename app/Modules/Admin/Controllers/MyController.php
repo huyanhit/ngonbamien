@@ -123,10 +123,10 @@ class MyController extends BaseController
         $id = $this->service->addData($this->request, $this->view);
 
         if($this->request->get('submit')){
-            return redirect(route($this->view['resource'].'.index'));
+            return redirect(route($this->view['resource'].'.index'))->with('message_insert', 'Thêm thành công');
         }
         if($this->request->get('submit_edit')){
-            return redirect(route($this->view['resource'].'.edit', [$id]));
+            return redirect(route($this->view['resource'].'.edit', [$id]))->with('message_insert', 'Thêm thành công');
         }
 
         return $id;
@@ -156,13 +156,16 @@ class MyController extends BaseController
         $this->service->editData($this->request, $id, $this->view);
         if($this->request->get('submit')){
             if($this->request->get('back')){
-                return redirect($this->request('back').Session::get('url_sort'));
+                return redirect($this->request('back').Session::get('url_sort'))
+                    ->with('message_update', 'Cập nhật thành công');
             }else{
-                return redirect(route($this->view['resource'].'.index').Session::get('url_sort'));
+                return redirect(route($this->view['resource'].'.index').Session::get('url_sort'))
+                    ->with('message_update', 'Cập nhật thành công');
             }
         }
         if($this->request->get('submit_edit')){
-            return redirect(route($this->view['resource'].'.edit', $id));
+            return redirect(route($this->view['resource'].'.edit', $id))
+                ->with('message_update', 'Cập nhật thành công');
         }
 
         return $id;

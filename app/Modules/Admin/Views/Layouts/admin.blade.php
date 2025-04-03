@@ -8,6 +8,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name', 'Administrator') }}</title>
         @vite(['resources/css/admin.css'])
+        <link href="{{Request::root()}}/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
         <script src="{{Request::root()}}/js/jquery-1.10.2.min.js" type="text/javascript"></script>
         <script src="{{Request::root()}}/js/admin.js" type="text/javascript"></script>
         <script src="{{Request::root()}}/js/admin-ajax.js" type="text/javascript"></script>
@@ -896,9 +897,34 @@
         <script src="{{Request::root()}}/js/admin/plugins.js"></script>
 
         <!-- dropzone js -->
-        <script src="{{Request::root()}}/libs/dropzone/dropzone-min.js"></script>
+        <script src="{{Request::root()}}/libs/dropzone/dropzone-min.js"></script> <!-- Sweet Alerts js -->
+        <script src="{{Request::root()}}/libs/sweetalert2/sweetalert2.min.js"></script>
 
         <!-- App js -->
         <script src="{{Request::root()}}/js/admin/app.js"></script>
+
+        <script>
+                @if($message = session('message_insert'))
+                    Swal.fire(
+                    'Thông báo',
+                    '{{ $message }}',
+                    'success'
+                    )
+                @endif
+                @if($message = session('message_update'))
+                Swal.fire(
+                    'Thông báo',
+                    '{{ $message }}',
+                    'success'
+                )
+                @endif
+                @if($message = session('message_error'))
+                Swal.fire(
+                    'Cảnh báo',
+                    '{{ $message }}',
+                    'danger'
+                )
+               @endif
+        </script>
     </body>
 </html>

@@ -11,17 +11,16 @@
             <div class="options_append_{{$key}}">
                 <div class="update">
                     @foreach($data->$key as $k => $items)
-                        <div class="card border">
+                        <div class="card border p-2">
                             @foreach($val['form'] as $skey => $sval)
                                 @include('Admin::Components.sub_updates', ['name' => $key.'_update['.$k.']['.$skey.']', 'key' => $skey, 'val'=> $sval, 'data'=> $items])
-                                {{--{{ Form::input('text', $key.'_update['.$k.']['.$field.']', $items->$field)}}--}}
                             @endforeach
                             <div onclick="removeOption(this)" class="text-center my-2"><button class="btn btn-danger pull-right">Xóa</button></div>
                         </div>
                     @endforeach
                 </div>
                 <div class="append">
-                    <div class="card border">
+                    <div class="card border p-2">
                         @foreach($val['form'] as $skey => $sval)
                             @include('Admin::Components.inserts', ['key' => $key.'_insert['.$skey.'][]', 'val'=> $sval])
                         @endforeach
@@ -138,18 +137,18 @@
         <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
         <div class="col-sm-9 my-1">
             <span class="images mt-3">
-                <p class="image_box_{{$key}}">
+                <span class="image_box_{{$key}}">
                     @if(!empty($data[$key]))
                         @foreach(explode(',', $data[$key]) as $item)
                             @if($item)
                                 <span class="images-group images-delete" url="{{ route($resource.'.update', $data['id']) }}" fid="{{$item}}">
-                                    <img  onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $item)}}">
+                                    <img class="avatar-lg my-1 border rounded"  onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $item)}}">
                                     <span><i class="fa fa-close" aria-hidden="true"></i></span>
                                 </span>
                             @endif
                         @endforeach
                     @endif
-                </p>
+                </span>
             </span>
             <span class="inline">
                 {{ Form::file($key.'[]', array('multiple', 'key'=> $key, 'class'=>'form-control upload_images_field')) }}
@@ -175,13 +174,16 @@
     @case('image_id')
         <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
         <div class="col-sm-9 my-1">
-            <span class="inline image_box_{{$key}}">
-                @if(isset($data[$key]))
-                    <img class="avatar-lg border my-2" onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $data[$key])}}"></span>
-                @endif
+                <span class="inline image_box_{{$key}}">
+                    @if(isset($data[$key]))
+                        <img class="avatar-lg border my-2" onerror="this.src='/images/no-image.png'"
+                             src="{{route('get-image-thumbnail', $data[$key])}}">
+                    @endif
+                </span>
                 <span class="inline">
                     {{Form::file($key, array('key'=> $key, 'class'=>'form-control upload_images_field',
-                    'value'=> isset($data[$key])? route('get-image-thumbnail', $data[$key]): (isset($val['value'])? route('get-image-thumbnail', $val['value']): null)))}}
+                    'value'=> isset($data[$key])? route('get-image-thumbnail', $data[$key]):
+                        (isset($val['value'])? route('get-image-thumbnail', $val['value']): null)))}}
                 </span>
             @error($key)
                 <span class="alert alert-danger">{{ $message }}</span>
