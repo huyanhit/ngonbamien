@@ -111,7 +111,11 @@
                         @break
                 @endswitch
             @else
-                {{Form::select($key, $val['data'], isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null), array('class'=>'form-control select'))}}
+                {{
+                    Form::select($key, $val['data'],
+                    isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
+                    array('class'=>'form-control select'))
+                }}
             @endif
             @error($key)
             <label class="alert alert-danger">{{ $message }}</label>
@@ -141,9 +145,12 @@
                     @if(!empty($data[$key]))
                         @foreach(explode(',', $data[$key]) as $item)
                             @if($item)
-                                <span class="images-group images-delete" url="{{ route($resource.'.update', $data['id']) }}" fid="{{$item}}">
-                                    <img class="avatar-lg my-1 border rounded"  onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $item)}}">
-                                    <span><i class="fa fa-close" aria-hidden="true"></i></span>
+                                <span class="images-group images-delete"
+                                    url="{{ route($resource.'.update', $data['id']) }}" fid="{{$item}}">
+                                    <img class="avatar-lg my-1 border rounded"
+                                        onerror="this.src='/images/no-image.png'"
+                                        src="{{route('get-image-thumbnail', $item)}}">
+                                        <span><i class="fa fa-close" aria-hidden="true"></i></span>
                                 </span>
                             @endif
                         @endforeach
@@ -162,9 +169,14 @@
         <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
         <div class="col-sm-9 my-1">
             <span class="inline image_box_{{$key}}">
-                <img class="avatar-lg border my-2" src="{{route('get-image-resource', $data[$key])}}" onerror="this.src='/images/no-image.png'"></span>
+                <img class="avatar-lg border my-2"
+                     src="{{route('get-image-resource', $data[$key])}}"
+                     onerror="this.src='/images/no-image.png'"></span>
             <span class="inline">
-                {{Form::file($key, array('key'=> $key, 'class'=>'form-control upload_images_field', 'value' => isset($data[$key])? $data[$key]: (isset($val['value'])? $val['value']: null)))}}
+                {{
+                    Form::file($key, array('key'=> $key, 'class'=>'form-control upload_images_field',
+                    'value' => isset($data[$key])? $data[$key]: (isset($val['value'])? $val['value']: null)))
+                }}
             </span>
             @error($key)
                 <span class="alert alert-danger">{{ $message }}</span>
@@ -181,9 +193,11 @@
                     @endif
                 </span>
                 <span class="inline">
-                    {{Form::file($key, array('key'=> $key, 'class'=>'form-control upload_images_field',
-                    'value'=> isset($data[$key])? route('get-image-thumbnail', $data[$key]):
-                        (isset($val['value'])? route('get-image-thumbnail', $val['value']): null)))}}
+                    {{
+                        Form::file($key, array('key'=> $key, 'class'=>'form-control upload_images_field',
+                        'value'=> isset($data[$key])? route('get-image-thumbnail', $data[$key]):
+                        (isset($val['value'])? route('get-image-thumbnail', $val['value']): null)))
+                    }}
                 </span>
             @error($key)
                 <span class="alert alert-danger">{{ $message }}</span>
@@ -195,10 +209,16 @@
         <div class="col-sm-9 my-1">
             <span class="inline text_box">{{preg_replace('/(.)*(?:\/)/','',isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null))}}</span>
             <span class="inline">
-                {{Form::file($key, array('id'=>'feature', 'class'=>'form-control' , 'value'=>isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null)))}}
+                {{
+                    Form::file($key,  array(
+                        'id'=>'feature',
+                        'class'=>'form-control',
+                        'value'=>isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null))
+                    )
+                }}
             </span>
             @error($key)
-            <span class="alert alert-danger">{{ $message }}</span>
+                <span class="alert alert-danger">{{ $message }}</span>
             @enderror
         </div>
         @break
@@ -207,7 +227,10 @@
         <div class="col-sm-9 my-1">
             <div class="form-check form-switch mt-2">
                 {{Form::input('hidden', $key, 0)}}
-                {{Form::checkbox($key, 1, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null), array('class'=>'form-check-input'))}}
+                {{
+                    Form::checkbox($key, 1, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
+                    array('class'=>'form-check-input'))
+                }}
                 </span>
                 @error($key)
                     <span class="alert alert-danger">{{ $message }}</span>

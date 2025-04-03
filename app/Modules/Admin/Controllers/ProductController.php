@@ -135,17 +135,6 @@ class ProductController extends MyController
                     'value' => '',
                 ),
             ),
-            'price'  => array(
-                'title'=> 'Giá bán',
-                'width' => 5,
-                'views' => array(
-                    'type' => self::TEXT ,
-                ),
-                'filter' => array(
-                    'type' => self::TEXT,
-                    'value' => '',
-                ),
-            ),
             'active' => array(
                 'title' => 'Hiển thị',
                 'width' => 5,
