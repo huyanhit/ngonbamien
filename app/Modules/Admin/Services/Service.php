@@ -190,8 +190,8 @@ class Service {
         if(isset($data['data'][$key.'_update'])) {
             foreach ($model->$key as $k => $item) {
                 if (isset($data['data'][$key.'_update'][$k])) {
-                    foreach ($data["form"][$key]['update'] as $field) {
-                        $model->$key[$k]->$field = $data['data'][$key.'_update'][$k][$field];
+                    foreach ($data["form"][$key]['form'] as $skey => $sval) {
+                        $model->$key[$k]->$skey = $data['data'][$key.'_update'][$k][$skey];
                     }
                 } else {
                     $model->$key()->whereId($model->$key[$k]->id)->delete();
@@ -203,11 +203,12 @@ class Service {
 
         if(isset($data['data'][$key.'_insert'])){
             $group = [];
-            foreach ($data['data'][$key.'_insert'] as $ks =>  $fields) {
+            foreach ($data['data'][$key.'_insert'] as $ks => $fields) {
                 foreach ($fields as $k => $field) {
                     $group[$k][$ks] = $field;
                 }
             }
+
             $model->$key()->createMany($group);
         }
     }

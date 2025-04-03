@@ -10,9 +10,10 @@ class ProductOptionModel extends Model
     use HasFactory;
     protected $table = 'product_option';
 
-    protected $fillable=[
-        'group_title',
+    protected $fillable = [
+        'option_price_id',
         'title',
+        'price_root',
         'price'
     ];
 }

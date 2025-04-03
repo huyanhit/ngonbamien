@@ -121,6 +121,7 @@ class MyController extends BaseController
 
     public function store(){
         $id = $this->service->addData($this->request, $this->view);
+
         if($this->request->get('submit')){
             return redirect(route($this->view['resource'].'.index'));
         }

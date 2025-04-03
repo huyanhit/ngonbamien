@@ -19,7 +19,8 @@ class OrderController extends MyController
         $this->view['resource'] = $this->request->segment(2);
         $this->view['form'] = array(
             'sex' => array('title'=> 'Giới tính',
-                'data'=> array(1 => 'Anh', 2 => 'Chị'), 'type' =>  self::SELECT),
+                'data' => array(1 => 'Anh', 2 => 'Chị')
+            , 'type' =>  self::SELECT),
             'name' => array('title'=> 'Tên khách', 'type' => self::TEXT, 'validate' => 'required|max:255'),
             'phone' => array('title'=> 'Điện thoại khách', 'type' => self::TEXT, 'validate' => 'required|max:50'),
             'note' => array('title'=> 'Ghi chú', 'type' => self::AREA, 'validate' => 'required'),

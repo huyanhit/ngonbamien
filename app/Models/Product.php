@@ -6,7 +6,6 @@ use App\Traits\Filterable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Illuminate\Tests\Integration\Database\EloquentHasManyThroughTest\Category;
@@ -56,6 +55,8 @@ class Product extends Model
 
     public function product_option(): HasMany
     {
-        return $this->hasMany(ProductOption::class, 'product_id')->select('product_option.id','product_option.group_title','product_option.title','product_option.price');
+        return $this->hasMany(ProductOption::class, 'product_id')
+            ->select('product_option.id', 'product_option.option_type_id', 'product_option.title',
+                'product_option.price_root', 'product_option.price');
     }
 }

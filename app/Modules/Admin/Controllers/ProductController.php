@@ -28,10 +28,8 @@ class ProductController extends MyController
                 'title'=> 'Nhà sản xuất',
                 'data' => $this->renderSelectByTable($this->getDataTable('producers', ['active' => 1], null), 'id', 'title'),
                 'type' => self::SELECT,
-                'validate' => 'required',
                 'column'   => 2,
             ),
-
             'sku'          => array('title'=> 'Mã hàng hóa', 'type' => self::TEXT, 'validate' => 'max:50'),
             'title'        => array('title'=> 'Tên', 'type' => self::TEXT, 'validate' => 'required|max:255'),
             'keywords'     => array('title'=> 'Từ khóa Seo sản phẩm', 'type' => self::TEXT, 'validate' => 'max:1000'),
@@ -41,20 +39,23 @@ class ProductController extends MyController
 
             'description'  => array('title'=> 'Thông số kỹ thuật', 'type' => self::AREA),
             'content'      => array('title'=> 'Chi tiết', 'type' => self::AREA),
-
-            'company_offer'  => array('title'=> 'Ưu đãi từ Công Ty', 'type' => self::AREA),
-            'producer_offer' => array('title'=> 'Ưu đãi từ Hãng', 'type' => self::AREA),
-
-            'price_root'   => array('title'=> 'Giá nhập', 'type' => self::TEXT, 'validate' => 'nullable|numeric', 'column' => 2),
-            'price_pro'    => array('title'=> 'Giá nhà sản xuất', 'type' => self::TEXT, 'validate' => 'nullable|numeric', 'column' => 2),
-            'price'        => array('title'=> 'Giá bán', 'type' => self::TEXT, 'validate' => 'nullable|numeric', 'column' => 2),
-            'product_option' => array('title'=> 'Thêm lựa chọn', 'type' => self::HAS_MANY, 'update' => ['group_title', 'title', 'price'], 'column' => 2),
-
+            'product_option' => array('title'=> 'Giá', 'type' => self::HAS_MANY,
+                 'form' => [
+                     'option_price_id' => array(
+                         'title'=> 'Phân loại',
+                         'data'=> array(1 => 'Trọng lượng, Kích thước, Loại hàng', 2 => 'Hình ảnh',  3 => 'Màu sắc'),
+                         'type' => self::SELECT,
+                         'validate' => 'required',
+                     ),
+                     'title'      => array('title'=> 'Mô tả', 'type' => self::TEXT, 'validate' => 'required|max:255', 'placeholder'=>''),
+                     'price_root' => array('title'=> 'Giá nhập', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'VND'),
+                     'price'      => array('title'=> 'Giá bán', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'VND')
+                 ], 'column' => 2
+            ),
             'is_new'       => array('title'=> 'Sản phẩm mới', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2),
             'is_promotion' => array('title'=> 'Khuyến mãi', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2),
             'is_hot'       => array('title'=> 'Bán chạy', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2),
 
-            'instalment'   => array('title'=> 'Cho trả góp', 'type' => self::CHECK, 'column' => 2),
             'active'       => array('title'=> 'Cho hiển thị', 'type' => 'check', 'column' => 2)
         );
 

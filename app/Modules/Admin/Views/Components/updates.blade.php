@@ -8,25 +8,40 @@
         <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
         <div class="col-sm-9 my-1">
             <div id="product_option"></div>
-            <div class="options_append">
-                <div class="row append">
+            <div class="options_append_{{$key}}">
+                <div class="update">
                     @foreach($data->$key as $k => $items)
-                        <div class="col-12 mt-1">
-                            @foreach($val['update'] as $field)
-                                {{ Form::input('text', $key.'_update['.$k.']['.$field.']' , $items->$field)}}
+                        <div class="card border">
+                            @foreach($val['form'] as $skey => $sval)
+                                @include('Admin::Components.sub_updates', ['name' => $key.'_update['.$k.']['.$skey.']', 'key' => $skey, 'val'=> $sval, 'data'=> $items])
+                                {{--{{ Form::input('text', $key.'_update['.$k.']['.$field.']', $items->$field)}}--}}
                             @endforeach
-                            <span onclick="removeOption(this)" class="bg-info text-white px-2 py-1"> Xóa </span>
+                            <div onclick="removeOption(this)" class="text-center my-2"><button class="btn btn-danger pull-right">Xóa</button></div>
                         </div>
                     @endforeach
                 </div>
-                <div class="d-flex mt-3">
-                    <div class="mr-2"><span onclick="addHtmlOption(this)" class="bg-info text-white px-2 py-1"> Thêm lựa chọn </span></div>
+                <div class="append">
+                    <div class="card border">
+                        @foreach($val['form'] as $skey => $sval)
+                            @include('Admin::Components.inserts', ['key' => $key.'_insert['.$skey.'][]', 'val'=> $sval])
+                        @endforeach
+                        <div onclick="removeOption(this)" class="text-center my-2"><button class="btn btn-danger pull-right">Xóa</button></div>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="mr-2">
+                        <span onclick="addHtmlOption(this)" class="btn btn-info">
+                             Thêm phân loại
+                        </span>
+                    </div>
                 </div>
             </div>
             <script>
+                let optionAppend = $('.options_append_{{$key}}').find(".append")
+                let html = optionAppend.html();
+                optionAppend.find(".card").remove();
                 function addHtmlOption(e){
-                    let html = '<div class="col-12 mt-1">@foreach($val['update'] as $field) {{ Form::input('text', $key.'_insert['.$field.'][]' , '')}} @endforeach </div>';
-                    $(e).parents(".options_append").find(".append").append(html);
+                    optionAppend.prepend(html);
                 }
                 function removeOption(e){
                     $(e).parent().remove();
@@ -39,6 +54,16 @@
         <div class="col-sm-9 my-1">
             {{Form::input('text', $key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
                 array('class' => 'form-control text', 'placeholder' => isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
+            @error($key)
+            <span class="alert alert-danger">{{ $message }}</span>
+            @enderror
+        </div>
+        @break
+    @case('number')
+        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+        <div class="col-sm-9 my-1">
+            {{Form::input('text', $key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
+                array('class' => 'form-control number', 'placeholder' => isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
             @error($key)
             <span class="alert alert-danger">{{ $message }}</span>
             @enderror
@@ -116,10 +141,12 @@
                 <p class="image_box_{{$key}}">
                     @if(!empty($data[$key]))
                         @foreach(explode(',', $data[$key]) as $item)
-                            <span class="images-group images-delete" url="{{ route($resource.'.update', $data['id']) }}" fid="{{$item}}">
-                                <img  onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $item)}}">
-                                <span><i class="fa fa-close" aria-hidden="true"></i></span>
-                            </span>
+                            @if($item)
+                                <span class="images-group images-delete" url="{{ route($resource.'.update', $data['id']) }}" fid="{{$item}}">
+                                    <img  onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $item)}}">
+                                    <span><i class="fa fa-close" aria-hidden="true"></i></span>
+                                </span>
+                            @endif
                         @endforeach
                     @endif
                 </p>
@@ -149,11 +176,13 @@
         <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
         <div class="col-sm-9 my-1">
             <span class="inline image_box_{{$key}}">
-                <img class="avatar-lg border my-2" onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $data[$key])}}"></span>
-            <span class="inline">
-                {{Form::file($key, array('key'=> $key, 'class'=>'form-control upload_images_field',
-                'value'=> isset($data[$key])? route('get-image-thumbnail', $data[$key]): (isset($val['value'])? route('get-image-thumbnail', $val['value']): null)))}}
-            </span>
+                @if(isset($data[$key]))
+                    <img class="avatar-lg border my-2" onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $data[$key])}}"></span>
+                @endif
+                <span class="inline">
+                    {{Form::file($key, array('key'=> $key, 'class'=>'form-control upload_images_field',
+                    'value'=> isset($data[$key])? route('get-image-thumbnail', $data[$key]): (isset($val['value'])? route('get-image-thumbnail', $val['value']): null)))}}
+                </span>
             @error($key)
                 <span class="alert alert-danger">{{ $message }}</span>
             @enderror
@@ -177,10 +206,11 @@
             <div class="form-check form-switch mt-2">
                 {{Form::input('hidden', $key, 0)}}
                 {{Form::checkbox($key, 1, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null), array('class'=>'form-check-input'))}}
-            </span>
-            @error($key)
-                <span class="alert alert-danger">{{ $message }}</span>
-            @enderror
+                </span>
+                @error($key)
+                    <span class="alert alert-danger">{{ $message }}</span>
+                @enderror
+            </div>
         </div>
         @break
 @endswitch

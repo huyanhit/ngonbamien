@@ -2,23 +2,35 @@
 <div class="row form-group">
     @switch($val['type'])
         @case('hidden')
-            {{Form::input('hidden', $key, isset($val['value'])?$val['value']:(isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null)), array())}}
+            {{Form::input('hidden', $key, isset($val['value'])?$val['value']:
+                (isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null)), array())}}
         @break
         @case('has_many')
             <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
             <div class="col-sm-9 my-1">
                 <div id="product_option"></div>
-                <div class="options_append">
-                    <div class="row append">
+                <div class="options_append_{{$key}}">
+                    <div class="append">
+                        <div class="card border">
+                            @foreach($val['form'] as $skey => $sval)
+                                @include('Admin::Components.inserts', ['key' => $key.'_insert['.$skey.'][]', 'val'=> $sval])
+                            @endforeach
+                            <div onclick="removeOption(this)" class="text-center my-2"><button class="btn btn-danger pull-right">Xóa</button></div>
+                        </div>
                     </div>
                     <div class="d-flex">
-                        <div class="mr-2"><span onclick="addHtmlOption(this)" class="btn btn-info"> Thêm lựa chọn </span></div>
+                        <div class="mr-2">
+                            <span onclick="addHtmlOption(this)" class="btn btn-info">
+                                 Thêm phân loại
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <script>
+                    let optionAppend = $('.options_append_{{$key}}').find(".append")
+                    let html = optionAppend.html();
                     function addHtmlOption(e){
-                        let html = '<div class="col-12 mt-1">@foreach($val['update'] as $field) {{ Form::input('text', $key.'_insert['.$field.'][]' , '')}} @endforeach </div>';
-                        $(e).parents(".options_append").find(".append").append(html);
+                        optionAppend.prepend(html);
                     }
                     function removeOption(e){
                         $(e).parent().remove();
@@ -149,7 +161,6 @@
             </div>
             @break
         @case('file')
-
             <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
             <div class="col-sm-9 my-1">
                 <span class="inline text_box">{{preg_replace('/(.)*(?:\/)/','',isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null))}}</span>

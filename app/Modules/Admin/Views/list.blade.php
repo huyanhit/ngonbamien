@@ -118,7 +118,9 @@
                                             <span><img onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $l_value[$key])}}"></span>
                                         @else
                                             <span class="can_update_text" type="{{$val['views']['type']}}" field="{{$key}}" uid="{{$l_value['id']}}">
+                                                @if($l_value[$key])
                                                 <span><img onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $l_value[$key])}}"></span>
+                                                @endif
                                             </span>
                                         @endif
                                         </td>

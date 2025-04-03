@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->integer('product_category_id')->nullable();
-            $table->string('code')->nullable();
+            $table->integer('producer_id')->nullable();
+            $table->string('sku')->nullable();
             $table->string('title');
             $table->integer('image_id')->nullable();
             $table->text('description')->nullable();
@@ -30,7 +31,7 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('active');
             $table->softDeletes();
-            
+
             $table->timestamps();
         });
     }
