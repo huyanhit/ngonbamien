@@ -42,14 +42,16 @@
                                 </a>
                             </div>
 
-                            <button type="button" class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger" id="topnav-hamburger-icon">
-                            <span class="hamburger-icon">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </span>
+                            <button type="button"
+                                    class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger"
+                                    id="topnav-hamburger-icon"
+                                    onclick="setSidebarSize(this)">
+                                    <span class="hamburger-icon">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </span>
                             </button>
-
                             <!-- App Search-->
                             <form class="app-search d-none d-md-block">
                                 <div class="position-relative">
@@ -941,12 +943,16 @@
 
             let layout = 'vertical';
             let theme  = 'light';
+            let sidebarSize  = 'lg';
 
             let dataLayout = sessionStorage.getItem("data-layout")?? '';
             document.documentElement.setAttribute("data-layout", dataLayout);
             let dataTheme = sessionStorage.getItem("data-bs-theme")?? '';
             document.documentElement.setAttribute("data-bs-theme", dataTheme);
             document.documentElement.setAttribute("data-sidebar", dataTheme);
+            let dataSidebarSize = sessionStorage.getItem("data-sidebar-size")?? '';
+            document.documentElement.setAttribute("data-sidebar-size", dataSidebarSize);
+
 
             const setDataLayout = function () {
                 layout = layout === 'horizontal'? 'vertical': 'horizontal';
@@ -959,6 +965,13 @@
                 sessionStorage.setItem("data-bs-theme", theme);
                 document.documentElement.setAttribute("data-bs-theme", theme);
                 document.documentElement.setAttribute("data-sidebar", theme);
+            }
+
+            const setSidebarSize = function (e) {
+                sidebarSize = sidebarSize === 'lg'? 'sm': 'lg';
+                sessionStorage.setItem("data-sidebar-size", sidebarSize);
+                document.documentElement.setAttribute("data-sidebar-size", sidebarSize);
+                $(e).children().toggleClass('open');
             }
         </script>
     </body>
