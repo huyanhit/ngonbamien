@@ -861,16 +861,16 @@
                             <div class="col-12">
                                 @switch(Route::currentRouteName())
                                     @case('products.index')
-                                        <x-admin-breadcrumb name="products" :data="['title' => 'Danh sách sản phẩm']"/>
+                                        @include('Admin::Components.breadcrumb', ['name'=>'products', 'title' => 'Danh sách sản phẩm'])
                                     @break
                                     @case('products.create')
-                                        <x-admin-breadcrumb name="products-create" :data="['title' => 'Thêm sản phẩm']"/>
-                                        @break
+                                        @include('Admin::Components.breadcrumb', ['name'=>'products-create', 'title' => 'Thêm sản phẩm'])
+                                    @break
                                     @case('products.update')
-                                        <x-admin-breadcrumb name="products-update" :data="['title' => 'Sửa sản phẩm']"/>
-                                        @break
+                                        @include('Admin::Components.breadcrumb', ['name'=>'products-update', 'title' => 'Sửa sản phẩm'])
+                                    @break
                                     @default
-                                        <x-admin-breadcrumb name="dashboard" :data="['title' => 'Tổng quan']"/>
+                                        @include('Admin::Components.breadcrumb', ['name'=>'dashboard', 'title' => 'Tổng quan'])
                                     @break
                                 @endswitch
                             </div>
