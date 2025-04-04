@@ -47,7 +47,6 @@ Breadcrumbs::for('hang-san-xuat', function ($trail, $data) {
     $trail->push($data['producer_title'], route('hang-san-xuat', $data['producer_name']));
 });
 
-
 Breadcrumbs::for('phan-loai', function ($trail, $data) {
     $trail->parent('home');
     $trail->push($data['category_title'], route('phan-loai', $data['category_name']));

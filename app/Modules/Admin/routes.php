@@ -21,6 +21,7 @@ Route::middleware(['web'])->group(function () {
         Route::post('images-destroy', [ImageController::class, 'imagesDestroy'])->name('images-destroy');
     });
     Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace'=>'App\Modules\Admin\Controllers'], function ()  {
+        Route::resource('dashboard', 'DashboardController');
         Route::resource('products', 'ProductController');
         Route::resource('product-categories', 'ProductCategoryController');
         Route::resource('images', 'ImageController');
@@ -33,7 +34,6 @@ Route::middleware(['web'])->group(function () {
         Route::resource('pages', 'PageController');
         Route::resource('contacts', 'ContactController');
         Route::resource('menus', 'MenuController');
-        Route::resource('dashboard', 'DashboardController');
 
         Route::resource('producer', 'ProducerController');
         Route::resource('order-status', 'OrderStatusController');

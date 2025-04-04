@@ -8,7 +8,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name', 'Administrator') }}</title>
         @vite(['resources/css/admin.css'])
-        <link href="{{Request::root()}}/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+        <link   href="{{Request::root()}}/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
         <script src="{{Request::root()}}/js/jquery-1.10.2.min.js" type="text/javascript"></script>
         <script src="{{Request::root()}}/js/admin/layout.js"></script>
         <script src="{{Request::root()}}/js/admin.js" type="text/javascript"></script>
@@ -136,7 +136,6 @@
                                 </div>
                             </form>
                         </div>
-
                         <div class="d-flex align-items-center">
                             <div class="dropdown d-md-none topbar-head-dropdown header-item">
                                 <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -728,7 +727,6 @@
                     </div>
                 </div>
             </header>
-            <!-- removeNotificationModal -->
             <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -861,15 +859,20 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-12">
-                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0">Create Product</h4>
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
-                                            <li class="breadcrumb-item active">Create Product</li>
-                                        </ol>
-                                    </div>
-                                </div>
+                                @switch(Route::currentRouteName())
+                                    @case('products.index')
+                                        <x-admin-breadcrumb name="products" :data="['title' => 'Danh sách sản phẩm']"/>
+                                    @break
+                                    @case('products.create')
+                                        <x-admin-breadcrumb name="products-create" :data="['title' => 'Thêm sản phẩm']"/>
+                                        @break
+                                    @case('products.update')
+                                        <x-admin-breadcrumb name="products-update" :data="['title' => 'Sửa sản phẩm']"/>
+                                        @break
+                                    @default
+                                        <x-admin-breadcrumb name="dashboard" :data="['title' => 'Tổng quan']"/>
+                                    @break
+                                @endswitch
                             </div>
                         </div>
                         @yield('content')
