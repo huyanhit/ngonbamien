@@ -433,7 +433,7 @@
                             </div>
 
                             <div class="ms-1 header-item d-none d-sm-flex">
-                                <button type="button" onclick="setDataLayout()" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode">
+                                <button type="button" onclick="setDataLayout(this)" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode">
                                     <i class='bx bx-horizontal-left fs-22'></i>
                                 </button>
                             </div>
@@ -954,10 +954,12 @@
             document.documentElement.setAttribute("data-sidebar-size", dataSidebarSize);
 
 
-            const setDataLayout = function () {
+            const setDataLayout = function (e) {
                 layout = layout === 'horizontal'? 'vertical': 'horizontal';
                 sessionStorage.setItem("data-layout", layout);
                 document.documentElement.setAttribute("data-layout", layout);
+                $(e).children().toggleClass('bx-horizontal-left');
+                $(e).children().toggleClass('bx-vertical-top');
             }
 
             const setTheme = function () {

@@ -53,8 +53,8 @@
                 <div class="card">
                     <div class="card-body form-group text-center">
                         <div class="col-12">
-                            <input type="submit" id="submit" name="submit" value="Save & Back List" class="btn btn-success">
-                            <input type="submit" id="submit" name="submit_edit" value="Save & Edit" class="btn btn-secondary">
+                            <input type="submit" id="submit" name="submit" value="Lưu" class="btn btn-success">
+                            <input type="submit" id="submit" name="submit_edit" value="Lưu & Chỉnh sửa" class="btn btn-secondary">
                             @if(Request::get('back'))
                                 <a class="btn btn-info" href="{{Request::root()}}/{{urldecode(Request::get('back'))}}"> Back </a>
                             @else
