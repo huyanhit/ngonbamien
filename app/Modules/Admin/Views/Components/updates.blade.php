@@ -40,7 +40,7 @@
                 let html = optionAppend.html();
                 optionAppend.find(".card").remove();
                 function addHtmlOption(e){
-                    optionAppend.prepend(html);
+                    optionAppend.append(html);
                 }
                 function removeOption(e){
                     $(e).parent().remove();

@@ -41,7 +41,7 @@
                     let optionAppend = $('.options_append_{{$key}}').find(".append")
                     let html = optionAppend.html();
                     function addHtmlOption(e){
-                        optionAppend.prepend(html);
+                        optionAppend.append(html);
                     }
                     function removeOption(e){
                         $(e).parent().remove();
