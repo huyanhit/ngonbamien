@@ -926,33 +926,34 @@
                 'success'
                 )
             @endif
+
             @if($message = session('message_update'))
-            Swal.fire(
-                'Thông báo',
-                '{{ $message }}',
-                'success'
-            )
+                Swal.fire(
+                    'Thông báo',
+                    '{{ $message }}',
+                    'success'
+                )
             @endif
+
             @if($message = session('message_error'))
-            Swal.fire(
-                'Cảnh báo',
-                '{{ $message }}',
-                'danger'
-            )
+                Swal.fire(
+                    'Cảnh báo',
+                    '{{ $message }}',
+                    'danger'
+                )
             @endif
 
             let layout = 'vertical';
             let theme  = 'light';
             let sidebarSize  = 'lg';
+            let dataLayout   = sessionStorage.getItem("data-layout")?? '';
+            let dataTheme    = sessionStorage.getItem("data-bs-theme")?? '';
+            let dataSidebarSize = sessionStorage.getItem("data-sidebar-size")?? '';
 
-            let dataLayout = sessionStorage.getItem("data-layout")?? '';
             document.documentElement.setAttribute("data-layout", dataLayout);
-            let dataTheme = sessionStorage.getItem("data-bs-theme")?? '';
             document.documentElement.setAttribute("data-bs-theme", dataTheme);
             document.documentElement.setAttribute("data-sidebar", dataTheme);
-            let dataSidebarSize = sessionStorage.getItem("data-sidebar-size")?? '';
             document.documentElement.setAttribute("data-sidebar-size", dataSidebarSize);
-
 
             const setDataLayout = function (e) {
                 layout = layout === 'horizontal'? 'vertical': 'horizontal';
