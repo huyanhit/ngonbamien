@@ -8,14 +8,14 @@
                 @foreach($form as $key => $val)
                     @if((isset($val['column']) && $val['column'] == 1) || !isset($val['column']))
                         @php
-                            $keyGroup = $val['group']?? 'Thông tin Chung';
+                            $keyGroup = $val['group']?? 'Thông tin chung';
                             $groups[$keyGroup][$key] = $val
                         @endphp
                     @endif
                 @endforeach
                 @foreach($groups as $name => $forms)
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header fw-bold">
                             {{$name}}
                         </div>
                         <div class="card-body">
@@ -31,14 +31,14 @@
                 @foreach($form as $key => $val)
                     @if(isset($val['column']) && $val['column'] == 2)
                         @php
-                            $keyGroup = $val['group']?? 'Thông tin Chung';
+                            $keyGroup = $val['group']?? 'Thông tin chung';
                             $groups[$keyGroup][$key] = $val
                         @endphp
                     @endif
                 @endforeach
                 @foreach($groups as $name => $forms)
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header fw-bold">
                             {{$name}}
                         </div>
                         <div class="card-body">

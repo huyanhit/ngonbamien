@@ -431,6 +431,13 @@
                                 </button>
                             </div>
 
+                            <div class="ms-1 header-item d-none d-sm-flex">
+                                <button type="button" onclick="setDataLayout()" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode">
+                                    <i class='bx bx-collapse fs-22'></i>
+                                </button>
+                            </div>
+
+
                             <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
                                 <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
                                     <i class='bx bx-bell fs-22'></i>
@@ -469,7 +476,6 @@
                                                 </li>
                                             </ul>
                                         </div>
-
                                     </div>
 
                                     <div class="tab-content position-relative" id="notificationItemsTabContent">
@@ -929,7 +935,17 @@
                 '{{ $message }}',
                 'danger'
             )
-           @endif
+            @endif
+
+            let layout = 'vertical';
+            let dataLayout = sessionStorage.getItem("data-layout")?? '';
+            document.documentElement.setAttribute("data-layout", dataLayout);
+
+            const setDataLayout = function () {
+                layout = layout === 'horizontal'? 'vertical': 'horizontal';
+                sessionStorage.setItem("data-layout", layout);
+                document.documentElement.setAttribute("data-layout", layout);
+            }
         </script>
     </body>
 </html>

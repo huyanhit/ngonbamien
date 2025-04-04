@@ -13,25 +13,30 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_category_id')->nullable();
-            $table->integer('producer_id')->nullable();
+
             $table->string('sku')->nullable();
             $table->string('title');
-            $table->integer('image_id')->nullable();
             $table->text('description')->nullable();
-            $table->string('keywords')->nullable();
-            $table->longtext('content');
-            $table->integer('new')->nullable();
-            $table->integer('promotion')->nullable();
-            $table->integer('hot')->nullable();
+            $table->longtext('content')->nullable();
+
+            $table->integer('image_id')->nullable();
+            $table->string('images')->nullable();
+
+            $table->string('meta_title')->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->string('meta_description')->nullable();
+
+            $table->integer('status')->default(1);
+            $table->integer('active')->default(1);
+
+            $table->integer('product_category_id')->nullable();
+            $table->integer('producer_id')->nullable();
+
             $table->integer('is_hot')->nullable();
             $table->integer('is_promotion')->nullable();
             $table->integer('is_new')->nullable();
-            $table->integer('price_sale')->nullable();
-            $table->integer('price');
-            $table->integer('active');
-            $table->softDeletes();
 
+            $table->softDeletes();
             $table->timestamps();
         });
     }

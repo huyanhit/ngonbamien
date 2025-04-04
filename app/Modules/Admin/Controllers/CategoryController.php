@@ -22,12 +22,12 @@ class CategoryController extends MyController
             'name'   => array('title'=> 'Tên', 'type' => self::TEXT, 'validate' => 'required|max:50'),
             'title'  => array('title'=> 'Tiều đề', 'type' => self::TEXT, 'validate' => 'required|max:50'),
             'index'  => array('title'=> 'Thứ tự', 'type' => self::TEXT),
-            'active' => array('title'=> 'Trạng thái', 'type' => 'check')
+            'active' => array('title'=> 'Trạng thái', 'type' => self::CHECK)
         );
 
         $this->view['list'] = array(
             'index'  => array(
-                'title'=> 'Thứ tự hiển thị',    
+                'title'=> 'Thứ tự hiển thị',
                 'width' => 3,
                 'update'=> true,
                 'filter' => array(
@@ -44,7 +44,7 @@ class CategoryController extends MyController
                 )
             ),
             'title' => array(
-                'title'=> 'Tiều đề',  
+                'title'=> 'Tiều đề',
                 'width' => 10,
                 'update'=> true,
                 'filter' => array(

@@ -17,30 +17,53 @@ class ProductController extends MyController
         parent::__construct($request, new ProductService());
         $this->view['resource'] = $this->request->segment(2);
         $this->view['form'] = array(
+            'sku'          => array('title'=> 'Mã hàng hóa', 'type' => self::TEXT, 'validate' => 'max:50'),
+            'title'        => array('title'=> 'Tên', 'type' => self::TEXT, 'validate' => 'required|max:255'),
+            'description'  => array('title'=> 'Thông số kỹ thuật', 'type' => self::AREA),
+            'content'      => array('title'=> 'Mo tả sản phẩm', 'type' => self::AREA),
+
+            'image_id'     => array('title'=> 'Hình chính', 'type' => self::IMAGE_ID, 'group' => 'Hình ảnh sản phẩm'),
+            'images'       => array('title'=> 'Hình phụ', 'type' => self::IMAGES, 'group' => 'Hình ảnh sản phẩm'),
+
+            'meta_title'        => array('title'=> 'Meta title', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
+            'meta_keywords'     => array('title'=> 'Meta Keywords', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
+            'meta_description'  => array('title'=> 'Từ khóa Seo sản phẩm', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
+            'status'       => array(
+                'title'=> 'Trang thái',
+                'data'=> array(
+                    1 => 'Draft',
+                    2 => 'Published',
+                    3 => 'Scheduled'
+                ),
+                'type' => self::SELECT,
+                'column' => 2,
+                'group' => 'Hiển thị'
+            ),
+            'active'       => array(
+                'title'=> 'Kích hoạt',
+                'data'=> array(
+                    1 => 'Public',
+                    0 => 'Hidden',
+                ),
+                'type' => self::SELECT,
+                'column' => 2,
+                'group' => 'Hiển thị'
+            ),
             'product_category_id' => array(
-                'title'    => 'Loại',
+                'title'    => 'Loại sản phẩm',
                 'data'     => $this->renderSelectByTable($this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'),
                 'type'     => self::SELECT,
                 'validate' => 'required',
                 'column'   => 2,
-                'group'    => 'Mục',
+                'group'    => 'Danh mục',
             ),
             'producer_id' => array(
                 'title'=> 'Nhà sản xuất',
                 'data' => $this->renderSelectByTable($this->getDataTable('producers', ['active' => 1], null), 'id', 'title'),
                 'type' => self::SELECT,
                 'column'   => 2,
-                'group'    => 'Mục',
+                'group'    => 'Danh mục',
             ),
-            'sku'          => array('title'=> 'Mã hàng hóa', 'type' => self::TEXT, 'validate' => 'max:50'),
-            'title'        => array('title'=> 'Tên', 'type' => self::TEXT, 'validate' => 'required|max:255'),
-            'keywords'     => array('title'=> 'Từ khóa Seo sản phẩm', 'type' => self::TEXT, 'validate' => 'max:1000'),
-
-            'image_id'     => array('title'=> 'Hình chính', 'type' => self::IMAGE_ID),
-            'images'       => array('title'=> 'Hình phụ', 'type' => self::IMAGES),
-
-            'description'  => array('title'=> 'Thông số kỹ thuật', 'type' => self::AREA),
-            'content'      => array('title'=> 'Chi tiết', 'type' => self::AREA),
             'product_option' => array('title'=> '', 'type' => self::HAS_MANY,
                  'form' => [
                      'option_price_id' => array(
@@ -51,14 +74,15 @@ class ProductController extends MyController
                      ),
                      'title'      => array('title'=> 'Mô tả', 'type' => self::TEXT, 'validate' => 'required|max:255', 'placeholder'=>''),
                      'price_root' => array('title'=> 'Giá nhập', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'VND'),
-                     'price'      => array('title'=> 'Giá bán', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'VND')
+                     'price'      => array('title'=> 'Giá bán', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'VND'),
+                     'stock'      => array('title'=> 'Số lượng', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'0'),
+                     'discount'   => array('title'=> 'Giảm giá', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'%'),
+                     'active'     => array('title'=> 'Hiển thị', 'type' => self::CHECK)
                  ], 'column' => 2, 'group' => 'Phân loại hàng hóa'
             ),
             'is_new'       => array('title'=> 'Sản phẩm mới', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2, 'group' => 'Loại'),
             'is_promotion' => array('title'=> 'Khuyến mãi', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2, 'group' => 'Loại'),
             'is_hot'       => array('title'=> 'Bán chạy', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2, 'group' => 'Loại'),
-
-            'active'       => array('title'=> 'Hiển thị', 'type' => 'check', 'column' => 2, 'group' => 'Hiển thị')
         );
 
         $this->view['list'] = array(

@@ -21,7 +21,7 @@
                                 </div>
                             @endforeach
                         @else
-                            <div class="card border">
+                            <div class="card border p-2">
                                 @foreach($val['form'] as $skey => $sval)
                                     @include('Admin::Components.inserts', ['key' => $key.'_insert['.$skey.'][]', 'val'=> $sval])
                                 @endforeach
