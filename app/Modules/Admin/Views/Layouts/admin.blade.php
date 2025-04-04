@@ -426,17 +426,16 @@
                             </div>
 
                             <div class="ms-1 header-item d-none d-sm-flex">
-                                <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode">
+                                <button type="button" onclick="setTheme()" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode">
                                     <i class='bx bx-moon fs-22'></i>
                                 </button>
                             </div>
 
                             <div class="ms-1 header-item d-none d-sm-flex">
                                 <button type="button" onclick="setDataLayout()" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode">
-                                    <i class='bx bx-collapse fs-22'></i>
+                                    <i class='bx bx-horizontal-left fs-22'></i>
                                 </button>
                             </div>
-
 
                             <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
                                 <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
@@ -938,13 +937,25 @@
             @endif
 
             let layout = 'vertical';
+            let theme  = 'light';
+
             let dataLayout = sessionStorage.getItem("data-layout")?? '';
             document.documentElement.setAttribute("data-layout", dataLayout);
+            let dataTheme = sessionStorage.getItem("data-bs-theme")?? '';
+            document.documentElement.setAttribute("data-bs-theme", dataTheme);
+            document.documentElement.setAttribute("data-sidebar", dataTheme);
 
             const setDataLayout = function () {
                 layout = layout === 'horizontal'? 'vertical': 'horizontal';
                 sessionStorage.setItem("data-layout", layout);
                 document.documentElement.setAttribute("data-layout", layout);
+            }
+
+            const setTheme = function () {
+                theme = theme === 'dark'? 'light': 'dark';
+                sessionStorage.setItem("data-bs-theme", theme);
+                document.documentElement.setAttribute("data-bs-theme", theme);
+                document.documentElement.setAttribute("data-sidebar", theme);
             }
         </script>
     </body>
