@@ -5,8 +5,8 @@
         {{Form::input('hidden', $key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null), array())}}
         @break
     @case('has_many')
-        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
-        <div class="col-sm-9 my-1">
+        <label class="control-label lh-lg">{{$val['title']}}</label>
+        <div>
             <div id="product_option"></div>
             <div class="options_append_{{$key}}">
                 <div class="update">

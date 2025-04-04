@@ -41,7 +41,7 @@ class ProductController extends MyController
 
             'description'  => array('title'=> 'Thông số kỹ thuật', 'type' => self::AREA),
             'content'      => array('title'=> 'Chi tiết', 'type' => self::AREA),
-            'product_option' => array('title'=> 'Giá', 'type' => self::HAS_MANY,
+            'product_option' => array('title'=> '', 'type' => self::HAS_MANY,
                  'form' => [
                      'option_price_id' => array(
                          'title'=> 'Phân loại',
@@ -52,7 +52,7 @@ class ProductController extends MyController
                      'title'      => array('title'=> 'Mô tả', 'type' => self::TEXT, 'validate' => 'required|max:255', 'placeholder'=>''),
                      'price_root' => array('title'=> 'Giá nhập', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'VND'),
                      'price'      => array('title'=> 'Giá bán', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'VND')
-                 ], 'column' => 2, 'group' => 'Giá'
+                 ], 'column' => 2, 'group' => 'Phân loại hàng hóa'
             ),
             'is_new'       => array('title'=> 'Sản phẩm mới', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2, 'group' => 'Loại'),
             'is_promotion' => array('title'=> 'Khuyến mãi', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2, 'group' => 'Loại'),
