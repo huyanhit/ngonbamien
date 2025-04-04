@@ -778,35 +778,43 @@
                         </div>
                         <ul class="navbar-nav" id="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link menu-link" href="{{Request::root().'/admin/dashboard'}}">
-                                    <i class="ri-dashboard-2-line"></i> <span >Dashboards</span>
-                                </a>
-                                <a class="nav-link menu-link" href="{{Request::root().'/admin/products'}}">
-                                    <i class="ri-dashboard-2-line"></i>  <span>Sản phẩm</span>
-                                </a>
+                                <a class="nav-link menu-link" href="{{Request::root().'/admin/dashboard'}}"> <i class="ri-dashboard-2-line"></i> <span>Dashboards</span> </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link" href="{{Request::root().'/admin/products'}}"> <i class="ri-dashboard-2-line"></i> <span>Sản phẩm</span> </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link menu-link" href="{{Request::root().'/admin/product-categories'}}">
                                     <i class="ri-dashboard-2-line"></i>
-                                    <span > Loại sản phẩm </span>
+                                    <span> Loại sản phẩm </span>
                                 </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link menu-link" href="{{Request::root().'/admin/producer'}}">
                                     <i class="ri-dashboard-2-line"></i>
-                                    <span >Hãng sản xuất</span>
+                                    <span>Hãng sản xuất</span>
                                 </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link menu-link" href="{{Request::root().'/admin/services'}}">
                                     <i class="ri-dashboard-2-line"></i>
-                                    <span >Dịch vụ</span>
+                                    <span>Dịch vụ</span>
                                 </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link menu-link" href="{{Request::root().'/admin/pages'}}">
                                     <i class="ri-dashboard-2-line"></i>
                                     <span>Trang</span>
                                 </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link menu-link" href="{{Request::root().'/admin/sliders'}}">
-                                    <i class="ri-dashboard-2-line" ></i>
-                                    <span >Slider</span>
+                                    <i class="ri-dashboard-2-line"></i>
+                                    <span>Slider</span>
                                 </a>
-                                <a class="nav-link menu-link" href="#system"
-                                   data-bs-toggle="collapse" role="button"
-                                   aria-expanded="false" aria-controls="system">
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link" href="#system" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="system">
                                     <i class="ri-dashboard-2-line"></i>
                                     <span href="{{Request::root().'/admin/sites/1/edit'}}">Website</span>
                                 </a>
@@ -826,7 +834,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </li> <!-- end Dashboard Menu -->
+                            </li>
                         </ul>
                     </div>
                     <!-- Sidebar -->

@@ -23,12 +23,14 @@ class ProductController extends MyController
                 'type'     => self::SELECT,
                 'validate' => 'required',
                 'column'   => 2,
+                'group'    => 'Mục',
             ),
             'producer_id' => array(
                 'title'=> 'Nhà sản xuất',
                 'data' => $this->renderSelectByTable($this->getDataTable('producers', ['active' => 1], null), 'id', 'title'),
                 'type' => self::SELECT,
                 'column'   => 2,
+                'group'    => 'Mục',
             ),
             'sku'          => array('title'=> 'Mã hàng hóa', 'type' => self::TEXT, 'validate' => 'max:50'),
             'title'        => array('title'=> 'Tên', 'type' => self::TEXT, 'validate' => 'required|max:255'),
@@ -50,13 +52,13 @@ class ProductController extends MyController
                      'title'      => array('title'=> 'Mô tả', 'type' => self::TEXT, 'validate' => 'required|max:255', 'placeholder'=>''),
                      'price_root' => array('title'=> 'Giá nhập', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'VND'),
                      'price'      => array('title'=> 'Giá bán', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'VND')
-                 ], 'column' => 2
+                 ], 'column' => 2, 'group' => 'Giá'
             ),
-            'is_new'       => array('title'=> 'Sản phẩm mới', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2),
-            'is_promotion' => array('title'=> 'Khuyến mãi', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2),
-            'is_hot'       => array('title'=> 'Bán chạy', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2),
+            'is_new'       => array('title'=> 'Sản phẩm mới', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2, 'group' => 'Loại'),
+            'is_promotion' => array('title'=> 'Khuyến mãi', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2, 'group' => 'Loại'),
+            'is_hot'       => array('title'=> 'Bán chạy', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2, 'group' => 'Loại'),
 
-            'active'       => array('title'=> 'Cho hiển thị', 'type' => 'check', 'column' => 2)
+            'active'       => array('title'=> 'Hiển thị', 'type' => 'check', 'column' => 2, 'group' => 'Hiển thị')
         );
 
         $this->view['list'] = array(
