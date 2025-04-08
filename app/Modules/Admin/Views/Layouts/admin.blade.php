@@ -797,7 +797,7 @@
                             <li class="nav-item">
                                 <a class="nav-link menu-link" href="{{Request::root().'/admin/producer'}}">
                                     <i class="ri-dashboard-2-line"></i>
-                                    <span>Hãng sản xuất</span>
+                                    <span>Xuất xứ</span>
                                 </a>
                             </li>
                             <li class="nav-item">

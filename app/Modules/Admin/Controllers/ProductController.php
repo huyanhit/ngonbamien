@@ -28,6 +28,7 @@ class ProductController extends MyController
             'meta_title'        => array('title'=> 'Meta title', 'type' => self::TEXT, 'validate' => 'max:50', 'group' => 'Seo'),
             'meta_keywords'     => array('title'=> 'Meta keywords', 'type' => self::TEXT, 'validate' => 'max:255', 'group' => 'Seo'),
             'meta_description'  => array('title'=> 'Meta description', 'type' => self::TEXT, 'validate' => 'max:255', 'group' => 'Seo'),
+
             'status'       => array(
                 'title'=> 'Công bố',
                 'data'=> array(
@@ -58,7 +59,7 @@ class ProductController extends MyController
                 'group'    => 'Danh mục',
             ),
             'producer_id' => array(
-                'title'=> 'Nhà sản xuất',
+                'title'=> 'Xuất xứ',
                 'data' => $this->renderSelectByTable(
                     $this->getDataTable('producers', ['active' => 1], null), 'id', 'title'),
                 'type' => self::SELECT,

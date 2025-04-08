@@ -137,7 +137,7 @@
                                         </td>
                                     @break
                                     @case('check')
-                                        <td class="text-center form-switch">
+                                        <td class="text-center form-switch check-list">
                                             {{Form::checkbox($key, $l_value['id'], $l_value[$key], array('class'=>'form-check-input', 'fid='.$l_value['id'], (empty($val['update']) )?'disabled':''))}}
                                         </td>
                                     @break

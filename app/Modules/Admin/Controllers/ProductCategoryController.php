@@ -46,6 +46,15 @@ class ProductCategoryController extends MyController
                     'value' => '',
                 ),
             ),
+            'image_id' => array(
+                'title' => 'Hình Ảnh',
+                'width' => 6,
+                'update'=> true,
+                'views' => array(
+                    'type' => self::IMAGE_ID,
+                ),
+                'sort' => 'hidden'
+            ),
             'title'  => array(
                 'title'=> 'Tiều đề',
                 'width' => 10,

@@ -13,12 +13,21 @@ return new class extends Migration
     {
         Schema::create('producers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('title');
-            $table->string('icon')->default('<i class="bi bi-app-indicator"></i>');
+            $table->longtext('content')->nullable();
+
+            $table->string('meta_title')->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->string('meta_description')->nullable();
+
+            $table->string('icon')->nullable();
+            $table->string('banner')->nullable();
             $table->integer('image_id')->nullable();
+            $table->string('images')->nullable();
+
             $table->integer('index')->default(1);
             $table->integer('active')->default(0);
+
             $table->timestamps();
             $table->softDeletes();
         });
