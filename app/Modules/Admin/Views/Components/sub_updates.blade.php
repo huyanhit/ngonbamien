@@ -23,7 +23,7 @@
         <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
         <div class="col-sm-9 my-1">
             {{Form::input('text', $name, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
-                array('class' => 'form-control text', 'placeholder' => isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
+                array('class' => 'form-control text', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
             @error($name)
             <span class="alert alert-danger">{{ $message }}</span>
             @enderror
@@ -33,7 +33,7 @@
         <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
         <div class="col-sm-9 my-1">
             {{Form::input('text', $name, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
-                array('class' => 'form-control number', 'placeholder' => isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
+                array('class' => 'form-control number', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
             @error($name)
             <span class="alert alert-danger">{{ $message }}</span>
             @enderror

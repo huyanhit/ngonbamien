@@ -52,7 +52,7 @@
         <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
         <div class="col-sm-9 my-1">
             {{Form::input('text', $key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
-                array('class' => 'form-control text', 'placeholder' => isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
+                array('class' => 'form-control text', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
             @error($key)
             <span class="alert alert-danger">{{ $message }}</span>
             @enderror
@@ -62,7 +62,7 @@
         <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
         <div class="col-sm-9 my-1">
             {{Form::input('text', $key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
-                array('class' => 'form-control number', 'placeholder' => isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
+                array('class' => 'form-control number', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
             @error($key)
             <span class="alert alert-danger">{{ $message }}</span>
             @enderror
@@ -85,7 +85,7 @@
     @case('password')
         <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
         <div class="col-sm-9 my-1">
-            {{Form::input('password', $key, null , array('class' => 'form-control text', 'placeholder' => isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
+            {{Form::input('password', $key, null , array('class' => 'form-control text', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
             @error($key)
             <span class="alert alert-danger">{{ $message }}</span>
             @enderror
@@ -94,7 +94,7 @@
     @case('confirm')
         <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
         <div class="col-sm-9 my-1">
-            {{Form::input('password', $key, null , array('class' => 'form-control text', 'placeholder' => isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
+            {{Form::input('password', $key, null , array('class' => 'form-control text', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
             @error($key)
             <span class="alert alert-danger">{{ $message }}</span>
             @enderror
@@ -127,7 +127,7 @@
         <div class="col-sm-9 my-1">
             @include('ckfinder::setup')
             {{Form::textarea($key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
-            array('id'=>$key.'area', 'class'=>'form-control', 'placeholder'=>isset($val['placeholder'])?$val['placeholder']:'Input '.$key))}}
+            array('id'=>$key.'area', 'class'=>'form-control', 'placeholder'=>($val['placeholder']??($val['title']??''))))}}
             @error($key)
             <span class="alert alert-danger">{{ $message }}</span>
             @enderror

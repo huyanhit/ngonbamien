@@ -17,49 +17,50 @@ class ProductController extends MyController
         parent::__construct($request, new ProductService());
         $this->view['resource'] = $this->request->segment(2);
         $this->view['form'] = array(
-            'sku'          => array('title'=> 'Mã hàng hóa', 'type' => self::TEXT, 'validate' => 'max:50'),
+            'sku'          => array('title'=> 'Mã sản phẩm', 'type' => self::TEXT, 'validate' => 'max:50'),
             'title'        => array('title'=> 'Tên', 'type' => self::TEXT, 'validate' => 'required|max:255'),
-            'description'  => array('title'=> 'Thông số kỹ thuật', 'type' => self::AREA),
+            'description'  => array('title'=> 'Thông số kỹ thuật', 'type' => self::TEXT, 'validate' => 'max:255'),
             'content'      => array('title'=> 'Mo tả sản phẩm', 'type' => self::AREA),
 
-            'image_id'     => array('title'=> 'Hình chính', 'type' => self::IMAGE_ID, 'group' => 'Hình ảnh sản phẩm'),
-            'images'       => array('title'=> 'Hình phụ', 'type' => self::IMAGES, 'group' => 'Hình ảnh sản phẩm'),
+            'image_id'     => array('title'=> 'Ảnh chính', 'type' => self::IMAGE_ID, 'group' => 'Hình ảnh sản phẩm'),
+            'images'       => array('title'=> 'Ảnh phụ', 'type' => self::IMAGES, 'group' => 'Hình ảnh sản phẩm'),
 
-            'meta_title'        => array('title'=> 'Meta title', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
-            'meta_keywords'     => array('title'=> 'Meta Keywords', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
-            'meta_description'  => array('title'=> 'Từ khóa Seo sản phẩm', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
+            'meta_title'        => array('title'=> 'Meta title', 'type' => self::TEXT, 'validate' => 'max:50', 'group' => 'Seo'),
+            'meta_keywords'     => array('title'=> 'Meta keywords', 'type' => self::TEXT, 'validate' => 'max:255', 'group' => 'Seo'),
+            'meta_description'  => array('title'=> 'Meta description', 'type' => self::TEXT, 'validate' => 'max:255', 'group' => 'Seo'),
             'status'       => array(
-                'title'=> 'Trang thái',
+                'title'=> 'Công bố',
                 'data'=> array(
-                    1 => 'Draft',
-                    2 => 'Published',
-                    3 => 'Scheduled'
+                    1 => 'Bản nháp',
+                    2 => 'Bản chính thức',
+                    3 => 'Theo lịch'
                 ),
                 'type' => self::SELECT,
                 'column' => 2,
-                'group' => 'Hiển thị'
+                'group' => 'Trạng thái'
             ),
             'active'       => array(
-                'title'=> 'Kích hoạt',
+                'title'=> 'Ẩn hiện',
                 'data'=> array(
-                    1 => 'Public',
-                    0 => 'Hidden',
+                    1 => 'Hiển thị',
+                    0 => 'Ẩn',
                 ),
                 'type' => self::SELECT,
                 'column' => 2,
-                'group' => 'Hiển thị'
+                'group' => 'Trạng thái'
             ),
             'product_category_id' => array(
                 'title'    => 'Loại sản phẩm',
-                'data'     => $this->renderSelectByTable($this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'),
+                'data'     => $this->renderSelectByTable(
+                    $this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'),
                 'type'     => self::SELECT,
-                'validate' => 'required',
                 'column'   => 2,
                 'group'    => 'Danh mục',
             ),
             'producer_id' => array(
                 'title'=> 'Nhà sản xuất',
-                'data' => $this->renderSelectByTable($this->getDataTable('producers', ['active' => 1], null), 'id', 'title'),
+                'data' => $this->renderSelectByTable(
+                    $this->getDataTable('producers', ['active' => 1], null), 'id', 'title'),
                 'type' => self::SELECT,
                 'column'   => 2,
                 'group'    => 'Danh mục',
@@ -72,12 +73,11 @@ class ProductController extends MyController
                          'type' => self::SELECT,
                          'validate' => 'required',
                      ),
-                     'title'      => array('title'=> 'Mô tả', 'type' => self::TEXT, 'validate' => 'required|max:255', 'placeholder'=>''),
+                     'title'      => array('title'=> 'Mô tả', 'type' => self::TEXT, 'validate' => 'required|max:255'),
                      'price_root' => array('title'=> 'Giá nhập', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'VND'),
                      'price'      => array('title'=> 'Giá bán', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'VND'),
                      'stock'      => array('title'=> 'Số lượng', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'0'),
-                     'discount'   => array('title'=> 'Giảm giá', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'%'),
-                     'active'     => array('title'=> 'Hiển thị', 'type' => self::CHECK)
+                     'discount'   => array('title'=> 'Giảm giá', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'%')
                  ], 'column' => 2, 'group' => 'Phân loại hàng hóa'
             ),
             'is_new'       => array('title'=> 'Sản phẩm mới', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2, 'group' => 'Loại'),
@@ -97,7 +97,8 @@ class ProductController extends MyController
             'product_category_id'  => array(
                 'title'=> 'Loại',
                 'width' => 10,
-                'data' => $this->renderSelectByTable($this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'),
+                'data' => $this->renderSelectByTable(
+                    $this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'),
                 'update'=> true,
                 'views' => array(
                     'type' => self::SELECT ,

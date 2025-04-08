@@ -21,12 +21,19 @@ class ProductCategoryController extends MyController
         $this->view['resource'] = $this->request->segment(2);
         $this->view['form'] = array(
             'title'   => array('title'=> 'Tiều đề', 'type' => self::TEXT, 'validate' => 'required|max:50'),
-            'content' => array('title'=> 'Nội dung', 'type' => self::AREA ),
-            'icon'    => array('title'=> 'Icon', 'type' => self::TEXT, 'column' => 2),
-            'banner'  => array('title'=> 'Banner', 'type' => self::IMAGE, 'column' => 2),
-            'image_id'=> array('title'=> 'Hinh ảnh', 'type' => self::IMAGE_ID, 'column' => 2),
-            'index'   => array('title'=> 'Thứ tự', 'type' => self::NUMBER, 'column' => 2),
-            'active'  => array('title'=> 'Trạng thái', 'type' => 'check', 'column' => 2)
+            'content' => array('title'=> 'Nội dung', 'type' => self::AREA),
+
+            'meta_title'        => array('title'=> 'Meta title', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
+            'meta_keywords'     => array('title'=> 'Meta keywords', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
+            'meta_description'  => array('title'=> 'Meta description', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
+
+            'index'    => array('title'=> 'Thứ tự', 'type' => self::NUMBER, 'column' => 2 , 'group' => 'Công bố'),
+            'active'   => array('title'=> 'Trạng thái', 'type' => 'check', 'column' => 2, 'group' => 'Công bố'),
+
+            'icon'     => array('title'=> 'Icon', 'type' => self::TEXT, 'column' => 2, 'group' => 'Hình ảnh', 'placeholder' => '<i class="bi bi-droplet"></i>'),
+            'banner'   => array('title'=> 'Banner', 'type' => self::IMAGE, 'column' => 2, 'group' => 'Hình ảnh'),
+            'image_id' => array('title'=> 'Ảnh chính', 'type' => self::IMAGE_ID, 'column' => 2, 'group' => 'Hình ảnh'),
+            'images'   => array('title'=> 'Ảnh phụ', 'type' => self::IMAGES, 'column' => 2,'group' => 'Hình ảnh'),
         );
 
         $this->view['list'] = array(
@@ -39,7 +46,7 @@ class ProductCategoryController extends MyController
                     'value' => '',
                 ),
             ),
-            'title' => array(
+            'title'  => array(
                 'title'=> 'Tiều đề',
                 'width' => 10,
                 'update'=> true,

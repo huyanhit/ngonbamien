@@ -16,10 +16,9 @@ return new class extends Migration
             $table->integer('option_price_id');
             $table->string('title')->nullable();
             $table->integer('price_root');
-            $table->integer('price');
+            $table->integer('price')->nullable();
             $table->integer('discount')->default(0);
             $table->integer('stock')->default(0);
-            $table->integer('active')->default(1);
             $table->timestamps();
         });
     }
