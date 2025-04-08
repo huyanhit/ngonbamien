@@ -26,7 +26,7 @@ Route::middleware(['web'])->group(function () {
         Route::resource('product-categories', 'ProductCategoryController');
         Route::resource('images', 'ImageController');
         Route::resource('sliders', 'SliderController');
-        Route::resource('services', 'ServiceController');
+        Route::resource('posts', 'PostController');
         Route::resource('partners', 'PartnerController');
         Route::resource('news', 'NewsController');
         Route::resource('users', 'UserController');

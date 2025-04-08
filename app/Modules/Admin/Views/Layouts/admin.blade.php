@@ -801,9 +801,9 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link menu-link" href="{{Request::root().'/admin/services'}}">
+                                <a class="nav-link menu-link" href="{{Request::root().'/admin/posts'}}">
                                     <i class="ri-dashboard-2-line"></i>
-                                    <span>Dịch vụ</span>
+                                    <span>Bài viết</span>
                                 </a>
                             </li>
                             <li class="nav-item">

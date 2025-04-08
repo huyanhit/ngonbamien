@@ -56,13 +56,13 @@
                             @if(isset($val['filter']['type']))
                                 @switch($val['filter']['type'])
                                     @case('text')
-                                        {{Form::input('text', $key, $val['filter']['value'], array('class' => 'form-control', 'placeholder' => $key))}}
+                                        {{Form::input('text', $key, $val['filter']['value'], array('class' => 'form-control', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
                                     @break
                                     @case('select')
                                         {{Form::select($key, $val['data'], isset($val['filter']['value'])? $val['filter']['value']: null, array('class' => 'form-control'))}}
                                     @break
                                     @default
-                                        {{Form::input('text',$key, $val['filter']['value'], array('class' => 'form-control', 'placeholder' => $key))}}
+                                        {{Form::input('text',$key, $val['filter']['value'], array('class' => 'form-control', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
                                     @break
                                 @endswitch
                             @endif
