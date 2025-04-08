@@ -18,14 +18,14 @@ class SliderController extends MyController
         parent::__construct($request, new SliderService());
         $this->view['resource'] = $this->request->segment(2);
         $this->view['form'] = array(
-            'title'       => array('title'=> 'Tiêu đề',    'type' => self::TEXT),
-            'image_id'    => array('title'=> 'Hình ảnh',   'type' => self::IMAGE_ID, 'validate' => 'required'),
+            'title'       => array('title'=> 'Tiêu đề', 'type' => self::TEXT),
+            'image_id'    => array('title'=> 'Hình ảnh', 'type' => self::IMAGE_ID, 'validate' => 'required'),
             'index'       => array('title'=> 'Thứ tự hiển thị', 'type' => self::TEXT),
             'active'      => array('title'=> 'Trang thái', 'type' => self::CHECK)
         );
         $this->view['list'] = array(
-            'index'  => array(
-                'title'=> 'Thứ tự hiển thị',    
+            'index' => array(
+                'title'=> 'Thứ tự hiển thị',
                 'width' => 3,
                 'update'=> true,
                 'filter' => array(
@@ -52,7 +52,7 @@ class SliderController extends MyController
                     'type' => self::IMAGE_ID,
                 ),
                 'sort' => 'hidden'
-            ), 
+            ),
             'active' => array(
                 'title' => 'Active',
                 'width' => 7,

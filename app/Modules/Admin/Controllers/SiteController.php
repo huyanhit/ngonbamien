@@ -17,9 +17,9 @@ class SiteController extends MyController
         parent::__construct($request, new SiteService());
         $this->view['resource'] = $this->request->segment(2);
         $this->view['form'] = array(
-            'image_id' => array('title'=> 'Logo', 'type' => self::IMAGE_ID),
-            'meta'     => array('title'=> 'Meta', 'type' => self::TEXT, 'validate' => 'max:1000'),
-            'keyword'  => array('title'=> 'Từ khóa seo', 'type' => self::TEXT, 'validate' => 'max:1000'),
+            'image_id'   => array('title'=> 'Logo', 'type' => self::IMAGE_ID),
+            'meta'       => array('title'=> 'Meta', 'type' => self::TEXT, 'validate' => 'max:1000'),
+            'keyword'    => array('title'=> 'Từ khóa seo', 'type' => self::TEXT, 'validate' => 'max:1000'),
             'description'=> array('title'=> 'Mô tả site', 'type' => self::TEXT, 'validate' => 'max:1000'),
             'banner_top' => array('title'=> 'Banner site', 'type' => self::IMAGE, 'validate' => 'max:255'),
             'url_banner' => array('title'=> 'Link banner', 'type' => self::TEXT, 'validate' => 'max:255'),
