@@ -64,10 +64,19 @@ class PostController extends MyController
                 'group'    => 'Danh mục',
             ),
 
-            'image_id' => array('title'=> 'Ảnh chính', 'type' => self::IMAGE_ID, 'column' => 2, 'group' => 'Hình ảnh')
+            'image_id' => array('title'=> 'Ảnh chính', 'type' => self::IMAGE_ID, 'column' => 2, 'group' => 'Hình ảnh'),
+            'images'   => array('title'=> 'Ảnh phụ', 'type' => self::IMAGES, 'column' => 2, 'group' => 'Hình ảnh')
         );
 
         $this->view['list'] = array(
+            'image_id'  => array(
+                'title' => 'Hình Ảnh',
+                'width' => 6,
+                'views' => array(
+                    'type' => self::IMAGE_ID,
+                ),
+                'sort'     => 'hidden'
+            ),
             'title'     => array(
                 'title' => 'Tiêu đề',
                 'width' => 10,
@@ -77,13 +86,33 @@ class PostController extends MyController
                     'value' => '',
                 )
             ),
-            'image_id'  => array(
-                'title' => 'Hình Ảnh',
-                'width' => 6,
+            'product_category_id'  => array(
+                'title'=> 'Loại',
+                'width' => 10,
+                'data' => $this->renderSelectByTable(
+                    $this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'),
+                'update'=> true,
                 'views' => array(
-                    'type' => self::IMAGE_ID,
+                    'type' => self::SELECT ,
                 ),
-                'sort'     => 'hidden'
+                'filter' => array(
+                    'type' => self::SELECT,
+                    'value' => '',
+                ),
+            ),
+            'producer_id'  => array(
+                'title'=> 'Xuất xứ',
+                'width' => 10,
+                'data' => $this->renderSelectByTable(
+                    $this->getDataTable('producers', ['active' => 1], null), 'id', 'title'),
+                'update'=> true,
+                'views' => array(
+                    'type' => self::SELECT ,
+                ),
+                'filter' => array(
+                    'type' => self::SELECT,
+                    'value' => '',
+                ),
             ),
             'active' => array(
                 'title' => 'Active',

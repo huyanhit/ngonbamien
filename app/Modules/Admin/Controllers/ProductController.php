@@ -87,6 +87,15 @@ class ProductController extends MyController
         );
 
         $this->view['list'] = array(
+            'image_id' => array(
+                'title' => 'Hình Ảnh',
+                'width' => 6,
+                'update'=> true,
+                'views' => array(
+                    'type' => self::IMAGE_ID,
+                ),
+                'sort' => 'hidden'
+            ),
             'sku'  => array(
                 'title' => 'Mã hàng hóa',
                 'width' => 3,
@@ -117,15 +126,6 @@ class ProductController extends MyController
                     'type' => self::TEXT,
                     'value' => '',
                 ),
-            ),
-            'image_id' => array(
-                'title' => 'Hình Ảnh',
-                'width' => 6,
-                'update'=> true,
-                'views' => array(
-                    'type' => self::IMAGE_ID,
-                ),
-                'sort' => 'hidden'
             ),
             'is_new'  => array(
                 'title'=> 'Mới',

@@ -318,7 +318,7 @@ class Service {
         }
     }
 
-    public function upload($file, $type = null, $path = 'vanloiphat/'){
+    public function upload($file, $type = null, $path = 'ngonbamien/'){
         $name       = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $ext        = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
         $store      = self::STORE_FILE;

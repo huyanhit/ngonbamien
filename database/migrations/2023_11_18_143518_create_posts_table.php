@@ -18,6 +18,7 @@ return new class extends Migration
             $table->longtext('content')->nullable();
 
             $table->integer('image_id')->nullable();
+            $table->string('images')->nullable();
 
             $table->string('meta_title')->nullable();
             $table->string('meta_keywords')->nullable();
