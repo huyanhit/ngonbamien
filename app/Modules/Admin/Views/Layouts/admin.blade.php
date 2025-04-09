@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
-    data-layout="vertical" data-topbar="light" data-sidebar="dark"
-    data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
+    data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-image="img-1"
+    data-sidebar-size="lg" data-preloader="disable">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -177,7 +177,6 @@
 
             document.documentElement.setAttribute("data-layout", dataLayout);
             document.documentElement.setAttribute("data-bs-theme", dataTheme);
-            document.documentElement.setAttribute("data-sidebar", dataTheme);
             document.documentElement.setAttribute("data-sidebar-size", dataSidebarSize);
 
             const setDataLayout = function (e) {
@@ -192,7 +191,6 @@
                 theme = theme === 'dark'? 'light': 'dark';
                 sessionStorage.setItem("data-bs-theme", theme);
                 document.documentElement.setAttribute("data-bs-theme", theme);
-                document.documentElement.setAttribute("data-sidebar", theme);
             }
 
             const setSidebarSize = function (e) {

@@ -1,6 +1,6 @@
 {
   "resources/css/admin.css": {
-    "file": "assets/admin-85c113f1.css",
+    "file": "assets/admin-a457a727.css",
     "isEntry": true,
     "src": "resources/css/admin.css"
   },
@@ -91,7 +91,7 @@
   },
   "resources/fonts/la-regular-400.eot": {
     "file": "assets/la-regular-400-7dc456f0.eot",
-    "src": "resources/fonts/la-regular-400d41d.eot"
+    "src": "resources/fonts/la-regular-400.eot"
   },
   "resources/fonts/la-regular-400.svg": {
     "file": "assets/la-regular-400-8606b583.svg",
@@ -111,7 +111,7 @@
   },
   "resources/fonts/la-regular-400d41d.eot": {
     "file": "assets/la-regular-400-7dc456f0.eot",
-    "src": "resources/fonts/la-regular-400d41d.eot"
+    "src": "resources/fonts/la-regular-400.eot"
   },
   "resources/fonts/la-solid-900.eot": {
     "file": "assets/la-solid-900-8a57f8a9.eot",
@@ -176,6 +176,30 @@
   "resources/fonts/remixicone85e.woff2": {
     "file": "assets/remixicone85e-b0d0b7e5.woff2",
     "src": "resources/fonts/remixicone85e.woff2"
+  },
+  "resources/images/auth-one-bg.jpg": {
+    "file": "assets/auth-one-bg-85095c4e.jpg",
+    "src": "resources/images/auth-one-bg.jpg"
+  },
+  "resources/images/flags/us.svg": {
+    "file": "assets/us-e8272934.svg",
+    "src": "resources/images/flags/us.svg"
+  },
+  "resources/images/sidebar/img-1.jpg": {
+    "file": "assets/img-1-83ab24c3.jpg",
+    "src": "resources/images/sidebar/img-1.jpg"
+  },
+  "resources/images/sidebar/img-2.jpg": {
+    "file": "assets/img-2-54d3615d.jpg",
+    "src": "resources/images/sidebar/img-2.jpg"
+  },
+  "resources/images/sidebar/img-3.jpg": {
+    "file": "assets/img-3-9f918a9b.jpg",
+    "src": "resources/images/sidebar/img-3.jpg"
+  },
+  "resources/images/sidebar/img-4.jpg": {
+    "file": "assets/img-4-d7136dca.jpg",
+    "src": "resources/images/sidebar/img-4.jpg"
   },
   "resources/js/app.js": {
     "file": "assets/app-cd023083.js",
