@@ -10,7 +10,7 @@ namespace App\Modules\Admin\Services;
 
 use App\Modules\Admin\Models\PartnerModel;
 
-class PartnerService extends Service{
+class PartnerService extends Service {
     function __construct(){
         parent::__construct(new PartnerModel());
     }

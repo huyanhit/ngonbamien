@@ -27,6 +27,15 @@ class ProductCategoryController extends MyController
             'meta_keywords'     => array('title'=> 'Meta keywords', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
             'meta_description'  => array('title'=> 'Meta description', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
 
+            'parent_id'         => array(
+                'title'    => 'Danh mục cha',
+                'data'     => $this->renderSelectByTable(
+                    $this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'),
+                'type'     => self::SELECT,
+                'column'   => 2,
+                'group'    => 'Danh mục',
+            ),
+
             'index'    => array('title'=> 'Thứ tự', 'type' => self::NUMBER, 'column' => 2 , 'group' => 'Công bố'),
             'active'   => array('title'=> 'Trạng thái', 'type' => 'check', 'column' => 2, 'group' => 'Công bố'),
 

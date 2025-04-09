@@ -862,18 +862,50 @@
                         <div class="row">
                             <div class="col-12">
                                 @switch(Route::currentRouteName())
+                                    @case('product-categories.index')
+                                        @include('Admin::Components.breadcrumb', ['name'=>'product-categories', 'title' => 'Danh sách loại sản phẩm'])
+                                        @break
+                                    @case('product-categories.create')
+                                        @include('Admin::Components.breadcrumb', ['name'=>'product-categories-create', 'title' => 'Thêm loại sản phẩm'])
+                                        @break
+                                    @case('product-categories.edit')
+                                        @include('Admin::Components.breadcrumb', [
+                                            'name'=>'product-categories-edit',
+                                            'title' => 'Sửa loại sản phẩm',
+                                            'data'=> $data
+                                        ])
+                                        @break
+
+                                    @case('producer.index')
+                                        @include('Admin::Components.breadcrumb', ['name'=>'producer', 'title' => 'Danh sách xuất xứ'])
+                                        @break
+                                    @case('producer.create')
+                                        @include('Admin::Components.breadcrumb', ['name'=>'producer-create', 'title' => 'Thêm xuất xứ'])
+                                        @break
+                                    @case('producer.edit')
+                                        @include('Admin::Components.breadcrumb', [
+                                            'name'=>'producer-edit',
+                                            'title' => 'Sửa xuất xứ',
+                                            'data'=> $data
+                                        ])
+                                        @break
+
                                     @case('products.index')
                                         @include('Admin::Components.breadcrumb', ['name'=>'products', 'title' => 'Danh sách sản phẩm'])
-                                    @break
+                                        @break
                                     @case('products.create')
                                         @include('Admin::Components.breadcrumb', ['name'=>'products-create', 'title' => 'Thêm sản phẩm'])
-                                    @break
-                                    @case('products.update')
-                                        @include('Admin::Components.breadcrumb', ['name'=>'products-update', 'title' => 'Sửa sản phẩm'])
-                                    @break
+                                        @break
+                                    @case('products.edit')
+                                        @include('Admin::Components.breadcrumb', [
+                                            'name'=>'products-edit',
+                                            'title' => 'Sửa sản phẩm',
+                                            'data' => $data
+                                        ])
+                                        @break
                                     @default
                                         @include('Admin::Components.breadcrumb', ['name'=>'dashboard', 'title' => 'Tổng quan'])
-                                    @break
+                                        @break
                                 @endswitch
                             </div>
                         </div>
