@@ -114,7 +114,7 @@
                                     @break
                                     @case('image_id')
                                         <td class="text-center">
-                                        @if(empty($val['update']) )
+                                        @if(empty($val['update']) && isset($l_value[$key]))
                                             <span><img class="avatar-sm my-1 border rounded" onerror="this.src='/images/no-image.png'" src="{{route('get-image-thumbnail', $l_value[$key])}}"></span>
                                         @else
                                             <span class="can_update_text" type="{{$val['views']['type']}}" field="{{$key}}" uid="{{$l_value['id']}}">
