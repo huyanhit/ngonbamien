@@ -16,12 +16,12 @@ class ContactController extends MyController
         parent::__construct($request, new ContactService());
         $this->view['resource'] = $this->request->segment(2);
         $this->view['form'] = array(
-            'name' => array('title'=> 'Tên', 'type' =>  self::TEXT, 'validate' => 'max:50'),
+            'name'  => array('title'=> 'Tên', 'type' =>  self::TEXT, 'validate' => 'max:50'),
             'phone' => array('title'=> 'Điện thoại', 'type' =>  self::TEXT, 'validate' => 'max:50'),
             'email' => array('title'=> 'Email', 'type' =>  self::TEXT, 'validate' => 'max:255'),
             'address' => array('title'=> 'Địa chỉ', 'type' =>  self::TEXT, 'validate' => 'max:255'),
             'content' => array('title'=> 'Lời nhắn', 'type' =>  self::AREA, 'validate' => 'max:2000'),
-            'active' => array('title' => 'Trang thái', 'data'=> array(1 => 'Đã xem', 0 => 'Chưa xem'), 'type' =>  self::CHECK)
+            'active'  => array('title' => 'Trang thái', 'data'=> array(1 => 'Đã xem', 0 => 'Chưa xem'), 'type' =>  self::CHECK)
         );
         $this->view['list'] = array(
             'name' => array(
@@ -60,15 +60,15 @@ class ContactController extends MyController
                 ),
             ),
             'active' => array(
-                'title' => 'Trang thái',
-                'width' => 7,
-                'data' => array(1 => 'Đã xem', 0 => 'Chưa xem'),
+                'title'  => 'Trang thái',
+                'width'  => 7,
+                'data'   => array(1 => 'Đã xem', 0 => 'Chưa xem'),
                 'update' => true,
-                'views' => array(
+                'views'  => array(
                     'type' => self::CHECK,
                 ),
                 'filter' => array(
-                    'type' => self::SELECT,
+                    'type'  => self::SELECT,
                     'value' => '',
                 )
             )

@@ -22,15 +22,15 @@ class MenuController extends MyController
             'router'      => array('title'=> 'Đường dẫn', 'type' => self::TEXT, 'validate' => 'required'),
             'icon'        => array('title'=> 'Icon', 'type' => self::TEXT),
             'parent_id'   => array(
-                'title'=> 'Menu Cha', 
-                'data'=> $this->renderSelectByTable($this->getDataTable('menus', ['active' => 1], null), 'id', 'title'), 
+                'title'=> 'Menu Cha',
+                'data' => $this->renderSelectByTable($this->getDataTable('menus', ['active' => 1], null), 'id', 'title'),
                 'type' => self::SELECT),
             'index'       => array('title'=> 'Thứ tự', 'type' => self::TEXT),
             'active'      => array('title'=> 'Trang thái', 'type' => self::CHECK)
         );
         $this->view['list'] = array(
             'title'  => array(
-                'title'=> 'Tiêu đề',    
+                'title'=> 'Tiêu đề',
                 'width' => 3,
                 'update'=> true,
                 'filter' => array(
@@ -57,7 +57,7 @@ class MenuController extends MyController
                     'type' => self::TEXT,
                 ),
                 'sort' => 'hidden'
-            ), 
+            ),
             'parent_id' => array(
                 'title' => 'Menu Cha',
                 'width' => 6,
@@ -66,7 +66,7 @@ class MenuController extends MyController
                     'type' => self::SELECT,
                 ),
                 'sort' => 'hidden'
-            ),  
+            ),
             'index' => array(
                 'title' => 'Thứ tự',
                 'width' => 6,
@@ -74,12 +74,12 @@ class MenuController extends MyController
                     'type' => self::TEXT,
                 ),
                 'sort' => 'hidden'
-            ), 
+            ),
             'active' => array(
                 'title' => 'Active',
                 'width' => 7,
                 'update'=> true,
-                'data' => array(null => self::CHOOSE , 0 => 'Không hiển thị', 1 => 'Hiển thị'),
+                'data'  => array(null => self::CHOOSE , 0 => 'Không hiển thị', 1 => 'Hiển thị'),
                 'views' => array(
                     'type' => self::CHECK,
                 ),

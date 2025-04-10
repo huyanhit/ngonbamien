@@ -53,7 +53,8 @@ class ProductController extends MyController
             'product_category_id' => array(
                 'title'    => 'Loại sản phẩm',
                 'data'     => $this->renderSelectByTable(
-                    $this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'),
+                    $this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'
+                ),
                 'type'     => self::SELECT,
                 'column'   => 2,
                 'group'    => 'Danh mục',
@@ -61,7 +62,8 @@ class ProductController extends MyController
             'producer_id' => array(
                 'title'=> 'Xuất xứ',
                 'data' => $this->renderSelectByTable(
-                    $this->getDataTable('producers', ['active' => 1], null), 'id', 'title'),
+                    $this->getDataTable('producers', ['active' => 1], null), 'id', 'title'
+                ),
                 'type' => self::SELECT,
                 'column'   => 2,
                 'group'    => 'Danh mục',
@@ -108,7 +110,8 @@ class ProductController extends MyController
                 'title'=> 'Loại',
                 'width' => 10,
                 'data' => $this->renderSelectByTable(
-                    $this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'),
+                    $this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'
+                ),
                 'update'=> true,
                 'views' => array(
                     'type' => self::SELECT ,
@@ -167,7 +170,7 @@ class ProductController extends MyController
                 'title' => 'Hiển thị',
                 'width' => 5,
                 'update'=> true,
-                'data' => array(null => self::CHOOSE , 0 => 'Ẩn', 1 => 'Hiển thị'),
+                'data'  => array(null => self::CHOOSE , 0 => 'Ẩn', 1 => 'Hiển thị'),
                 'views' => array(
                     'type' => self::CHECK ,
                 ),

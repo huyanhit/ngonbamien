@@ -19,18 +19,20 @@ class OrderController extends MyController
         $this->view['resource'] = $this->request->segment(2);
         $this->view['form'] = array(
             'sex' => array('title'=> 'Giới tính',
-                'data' => array(1 => 'Anh', 2 => 'Chị')
-            , 'type' =>  self::SELECT),
+                'data' => array(1 => 'Anh', 2 => 'Chị'), 'type' =>  self::SELECT
+            ),
             'name' => array('title'=> 'Tên khách', 'type' => self::TEXT, 'validate' => 'required|max:255'),
             'phone' => array('title'=> 'Điện thoại khách', 'type' => self::TEXT, 'validate' => 'required|max:50'),
             'note' => array('title'=> 'Ghi chú', 'type' => self::AREA, 'validate' => 'required'),
             'address' => array('title'=> 'Địa chỉ giao hàng', 'type' => self::TEXT, 'validate' => 'required|max:1000'),
             'ship_type' => array('title'=> 'Cách giao hàng',
-                'data'=> array(1 => 'Giao tại nhà', 2 => 'Lắp đặt tại nhà', 3 => 'Khách tự lấy hàng'), 'type' =>  self::SELECT),
+                'data'=> array(1 => 'Giao tại nhà', 2 => 'Lắp đặt tại nhà', 3 => 'Khách tự lấy hàng'), 'type' =>  self::SELECT
+            ),
             'order_status_id' => array(
                 'title'=> 'Trang thái đơn hàng',
                 'data' => $this->renderSelectByTable(
-                    $this->getDataTable('order_statuses', ['active' => 1], null), 'id', 'title'),
+                    $this->getDataTable('order_statuses', ['active' => 1], null), 'id', 'title'
+                ),
                 'type' => self::SELECT,
                 'validate' => 'required'
             ),
@@ -67,7 +69,8 @@ class OrderController extends MyController
                     'value' => '',
                 ),
                 'data' => $this->renderSelectByTable(
-                    $this->getDataTable('order_statuses', ['active' => 1], null), 'id', 'title'),
+                    $this->getDataTable('order_statuses', ['active' => 1], null), 'id', 'title'
+                ),
                 'views' => array(
                     'type' => self::SELECT ,
                 ),

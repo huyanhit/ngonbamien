@@ -26,7 +26,7 @@ class PartnerController extends MyController
         );
         $this->view['list'] = array(
             'index'  => array(
-                'title'=> 'Thứ tự hiển thị',    
+                'title'=> 'Thứ tự hiển thị',
                 'width' => 3,
                 'update'=> true,
                 'filter' => array(
@@ -64,12 +64,12 @@ class PartnerController extends MyController
                     'type' => self::IMAGE_ID,
                 ),
                 'sort' => 'hidden'
-            ), 
+            ),
             'active' => array(
                 'title' => 'Active',
                 'width' => 7,
                 'update'=> true,
-                'data' => array(null => self::CHOOSE , 0 => 'Không hiển thị', 1 => 'Hiển thị'),
+                'data'  => array(null => self::CHOOSE , 0 => 'Không hiển thị', 1 => 'Hiển thị'),
                 'views' => array(
                     'type' => self::CHECK,
                 ),

@@ -33,7 +33,6 @@ class DashboardController extends MyController
     function __construct(Request $request){
         parent::__construct($request, new DashboardService());
     }
-
     public function index(){
         $page = PageModel::count();
         return view('Admin::dashboard', [
@@ -53,7 +52,6 @@ class DashboardController extends MyController
                     'background' => '#ddd',
                     'page'       =>  ProductModel::count(),
                     'active'     =>  ProductModel::where('active', '1')->count(),
-
                 ],
                 [
                     'title'      => 'Đơn hàng',

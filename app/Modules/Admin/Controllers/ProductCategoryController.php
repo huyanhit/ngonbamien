@@ -27,17 +27,18 @@ class ProductCategoryController extends MyController
             'meta_keywords'     => array('title'=> 'Meta keywords', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
             'meta_description'  => array('title'=> 'Meta description', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
 
-            'index'    => array('title'=> 'Thứ tự', 'type' => self::NUMBER, 'column' => 2 , 'group' => 'Công bố'),
-            'active'   => array('title'=> 'Trạng thái', 'type' => 'check', 'column' => 2, 'group' => 'Công bố'),
-
             'parent_id'         => array(
                 'title'    => 'Danh mục cha',
                 'data'     => $this->renderSelectByTable(
-                    $this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'),
+                    $this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'
+                ),
                 'type'     => self::SELECT,
                 'column'   => 2,
                 'group'    => 'Danh mục',
             ),
+
+            'index'    => array('title'=> 'Thứ tự', 'type' => self::NUMBER, 'column' => 2 , 'group' => 'Công bố'),
+            'active'   => array('title'=> 'Trạng thái', 'type' => 'check', 'column' => 2, 'group' => 'Công bố'),
 
             'icon'     => array('title'=> 'Icon', 'type' => self::TEXT, 'column' => 2, 'group' => 'Hình ảnh', 'placeholder' => '<i class="bi bi-droplet"></i>'),
             'banner'   => array('title'=> 'Banner', 'type' => self::IMAGE, 'column' => 2, 'group' => 'Hình ảnh'),
@@ -77,7 +78,7 @@ class ProductCategoryController extends MyController
                 'title' => 'Trạng thái',
                 'width' => 7,
                 'update'=> true,
-                'data' => array(null => self::CHOOSE , 0 => 'UnActive', 1 => 'Active'),
+                'data'  => array(null => self::CHOOSE , 0 => 'UnActive', 1 => 'Active'),
                 'views' => array(
                     'type' => self::CHECK,
                 ),

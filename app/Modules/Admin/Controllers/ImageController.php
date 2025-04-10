@@ -47,7 +47,7 @@ class ImageController extends MyController
                 'title' => 'Active',
                 'width' => 7,
                 'update'=> true,
-                'data' => array(null => self::CHOOSE , 0 => 'Không hiển thị', 1 => 'Hiển thị'),
+                'data'  => array(null => self::CHOOSE , 0 => 'Không hiển thị', 1 => 'Hiển thị'),
                 'views' => array(
                     'type' => self::CHECK ,
                 ),

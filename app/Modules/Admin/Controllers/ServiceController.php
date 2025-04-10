@@ -62,7 +62,7 @@ class ServiceController extends MyController
             'image_id' => array(
                 'title' => 'Hình Ảnh',
                 'width' => 6,
-                'views' => array(
+                'views' => array (
                     'type' => self::IMAGE_ID,
                 ),
                 'sort' => 'hidden'
@@ -71,7 +71,7 @@ class ServiceController extends MyController
                 'title' => 'Active',
                 'width' => 7,
                 'update'=> true,
-                'data' => array(null => self::CHOOSE , 0 => 'Không hiển thị', 1 => 'Hiển thị'),
+                'data'  => array(null => self::CHOOSE, 0 => 'Không hiển thị', 1 => 'Hiển thị'),
                 'views' => array(
                     'type' => self::CHECK,
                 ),

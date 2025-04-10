@@ -50,7 +50,8 @@ class PostController extends MyController
             'product_category_id' => array(
                 'title'    => 'Loại sản phẩm',
                 'data'     => $this->renderSelectByTable(
-                    $this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'),
+                    $this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'
+                ),
                 'type'     => self::SELECT,
                 'column'   => 2,
                 'group'    => 'Danh mục',
@@ -58,7 +59,8 @@ class PostController extends MyController
             'producer_id'  => array(
                 'title'    => 'Xuất xứ',
                 'data'     => $this->renderSelectByTable(
-                    $this->getDataTable('producers', ['active' => 1], null), 'id', 'title'),
+                    $this->getDataTable('producers', ['active' => 1], null), 'id', 'title'
+                ),
                 'type'     => self::SELECT,
                 'column'   => 2,
                 'group'    => 'Danh mục',
@@ -91,7 +93,8 @@ class PostController extends MyController
                 'title'=> 'Loại',
                 'width' => 10,
                 'data' => $this->renderSelectByTable(
-                    $this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'),
+                    $this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'
+                ),
                 'update'=> true,
                 'views' => array(
                     'type' => self::SELECT ,
@@ -105,7 +108,8 @@ class PostController extends MyController
                 'title'=> 'Xuất xứ',
                 'width' => 10,
                 'data' => $this->renderSelectByTable(
-                    $this->getDataTable('producers', ['active' => 1], null), 'id', 'title'),
+                    $this->getDataTable('producers', ['active' => 1], null), 'id', 'title'
+                ),
                 'update'=> true,
                 'views' => array(
                     'type' => self::SELECT ,
@@ -118,7 +122,7 @@ class PostController extends MyController
             'active' => array(
                 'title' => 'Active',
                 'width' => 7,
-                'data'  => array(null => self::CHOOSE , 0 => 'UnActive', 1 => 'Active'),
+                'data'  => array(null => self::CHOOSE, 0 => 'UnActive', 1 => 'Active'),
                 'views' => array(
                     'type' => self::CHECK ,
                 ),

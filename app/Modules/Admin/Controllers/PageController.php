@@ -24,8 +24,8 @@ class PageController extends MyController
         );
         $this->view['list'] = array(
             'title' => array(
-                'title' => 'Tên trang',
-                'width' => 10,
+                'title'  => 'Tên trang',
+                'width'  => 10,
                 'filter' => array(
                     'type' => self::TEXT,
                     'value' => '',

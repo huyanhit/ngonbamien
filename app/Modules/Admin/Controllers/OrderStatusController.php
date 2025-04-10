@@ -48,7 +48,7 @@ class OrderStatusController extends MyController
                 'title' => 'Trạng thái',
                 'width' => 7,
                 'update'=> true,
-                'data' => array(null => self::CHOOSE , 0 => 'UnActive', 1 => 'Active'),
+                'data'  => array(null => self::CHOOSE , 0 => 'UnActive', 1 => 'Active'),
                 'views' => array(
                     'type' => self::CHECK,
                 ),
