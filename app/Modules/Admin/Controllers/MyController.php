@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Session;
 
 class MyController extends BaseController
 {
-    const CHOOSE      = 'choose';
+    const CHOOSE      = 'Chọn';
     const CHECK       = 'check';
     const IMAGE_ID    = 'image_id';
     const IMAGE       = 'image';

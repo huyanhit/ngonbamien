@@ -15,7 +15,7 @@
                 @endforeach
                 @foreach($groups as $name => $forms)
                     <div class="card">
-                        <div class="card-header fw-bold">
+                        <div class="card-header fw-bold text-uppercase text-muted">
                             {{$name}}
                         </div>
                         <div class="card-body">
@@ -38,7 +38,7 @@
                 @endforeach
                 @foreach($groups as $name => $forms)
                     <div class="card">
-                        <div class="card-header fw-bold">
+                        <div class="card-header fw-bold text-uppercase text-muted">
                             {{$name}}
                         </div>
                         <div class="card-body">

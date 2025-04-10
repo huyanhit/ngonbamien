@@ -11,7 +11,7 @@
         <meta property="og:locale" content="vi_VN">
         <meta property="og:type" content="article">
         <meta property="og:title" content="Vạn Lợi Phát cung cấp lắp đặt sửa chữa các thiết bị lọc nước">
-        <meta property="og:site_name" content="Công ty TNHH vạn lợi phát - www.vanloiphat.com - www.vafa.vn">
+        <meta property="og:site_name" content="Công ty TNHH vạn lợi phát - www.ogani.local - www.vafa.vn">
         <meta property="og:description" content="Chuyên cung cấp mua bán sửa chữa máy linh kiện các thiết bị lọc xử lý nước sạch">
         <meta itemprop="name" content="Vạn Lợi Phát cung cấp lắp đặt sửa chữa các thiết bị lọc nước">
         <meta itemprop="description" content="Chuyên cung cấp mua bán sửa chữa máy linh kiện các thiết bị lọc xử lý nước sạch">

@@ -21,9 +21,8 @@ class PostController extends MyController
             'title'   => array('title' => 'Tiều đề', 'type' => self::TEXT, 'validate' => 'required|max:50'),
             'content' => array('title' => 'Nội dung', 'type' => self::AREA),
 
-            'meta_title'        => array('title'=> 'Meta title', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
-            'meta_keywords'     => array('title'=> 'Meta keywords', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
-            'meta_description'  => array('title'=> 'Meta description', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
+            'image_id' => array('title'=> 'Ảnh chính', 'type' => self::IMAGE_ID, 'group' => 'Hình ảnh'),
+            'images'   => array('title'=> 'Ảnh phụ', 'type' => self::IMAGES, 'group' => 'Hình ảnh'),
 
             'status'    => array(
                 'title' => 'Công bố',
@@ -36,6 +35,7 @@ class PostController extends MyController
                 'column' => 2,
                 'group'  => 'Trạng thái'
             ),
+
             'active'    => array(
                 'title' => 'Ẩn hiện',
                 'data'  => array(
@@ -64,8 +64,9 @@ class PostController extends MyController
                 'group'    => 'Danh mục',
             ),
 
-            'image_id' => array('title'=> 'Ảnh chính', 'type' => self::IMAGE_ID, 'column' => 2, 'group' => 'Hình ảnh'),
-            'images'   => array('title'=> 'Ảnh phụ', 'type' => self::IMAGES, 'column' => 2, 'group' => 'Hình ảnh')
+            'meta_title'        => array('title'=> 'Meta title', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo', 'column' => 2),
+            'meta_keywords'     => array('title'=> 'Meta keywords', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo', 'column' => 2),
+            'meta_description'  => array('title'=> 'Meta description', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo', 'column' => 2),
         );
 
         $this->view['list'] = array(

@@ -168,35 +168,33 @@
                 )
             @endif
 
-            let layout = 'vertical';
-            let theme  = 'light';
-            let sidebarSize  = 'lg';
-            let dataLayout   = sessionStorage.getItem("data-layout")?? '';
-            let dataTheme    = sessionStorage.getItem("data-bs-theme")?? '';
-            let dataSidebarSize = sessionStorage.getItem("data-sidebar-size")?? '';
+
+            let dataLayout      = sessionStorage.getItem("data-layout")?? 'vertical';
+            let dataTheme       = sessionStorage.getItem("data-bs-theme")?? 'light';
+            let dataSidebarSize = sessionStorage.getItem("data-sidebar-size")?? 'lg';
 
             document.documentElement.setAttribute("data-layout", dataLayout);
             document.documentElement.setAttribute("data-bs-theme", dataTheme);
             document.documentElement.setAttribute("data-sidebar-size", dataSidebarSize);
 
             const setDataLayout = function (e) {
-                layout = layout === 'horizontal'? 'vertical': 'horizontal';
-                sessionStorage.setItem("data-layout", layout);
-                document.documentElement.setAttribute("data-layout", layout);
+                dataLayout = dataLayout === 'horizontal'? 'vertical': 'horizontal';
+                sessionStorage.setItem("data-layout", dataLayout);
+                document.documentElement.setAttribute("data-layout", dataLayout);
                 $(e).children().toggleClass('bx-horizontal-left');
                 $(e).children().toggleClass('bx-vertical-top');
             }
 
             const setTheme = function () {
-                theme = theme === 'dark'? 'light': 'dark';
-                sessionStorage.setItem("data-bs-theme", theme);
-                document.documentElement.setAttribute("data-bs-theme", theme);
+                dataTheme = dataTheme === 'dark'? 'light': 'dark';
+                sessionStorage.setItem("data-bs-theme", dataTheme);
+                document.documentElement.setAttribute("data-bs-theme", dataTheme);
             }
 
             const setSidebarSize = function (e) {
-                sidebarSize = sidebarSize === 'lg'? 'sm': 'lg';
-                sessionStorage.setItem("data-sidebar-size", sidebarSize);
-                document.documentElement.setAttribute("data-sidebar-size", sidebarSize);
+                dataSidebarSize = dataSidebarSize === 'lg'? 'sm': 'lg';
+                sessionStorage.setItem("data-sidebar-size", dataSidebarSize);
+                document.documentElement.setAttribute("data-sidebar-size", dataSidebarSize);
                 $(e).children().toggleClass('open');
             }
         </script>

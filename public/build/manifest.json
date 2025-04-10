@@ -1,11 +1,11 @@
 {
   "resources/css/admin.css": {
-    "file": "assets/admin-a457a727.css",
+    "file": "assets/admin-58bc0d37.css",
     "isEntry": true,
     "src": "resources/css/admin.css"
   },
   "resources/css/app.css": {
-    "file": "assets/app-937c3ba2.css",
+    "file": "assets/app-d093ac67.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -67,7 +67,7 @@
   },
   "resources/fonts/la-brands-400.eot": {
     "file": "assets/la-brands-400-c0e32387.eot",
-    "src": "resources/fonts/la-brands-400.eot"
+    "src": "resources/fonts/la-brands-400d41d.eot"
   },
   "resources/fonts/la-brands-400.svg": {
     "file": "assets/la-brands-400-af7a9c33.svg",
@@ -87,11 +87,11 @@
   },
   "resources/fonts/la-brands-400d41d.eot": {
     "file": "assets/la-brands-400-c0e32387.eot",
-    "src": "resources/fonts/la-brands-400.eot"
+    "src": "resources/fonts/la-brands-400d41d.eot"
   },
   "resources/fonts/la-regular-400.eot": {
     "file": "assets/la-regular-400-7dc456f0.eot",
-    "src": "resources/fonts/la-regular-400.eot"
+    "src": "resources/fonts/la-regular-400d41d.eot"
   },
   "resources/fonts/la-regular-400.svg": {
     "file": "assets/la-regular-400-8606b583.svg",
@@ -111,11 +111,11 @@
   },
   "resources/fonts/la-regular-400d41d.eot": {
     "file": "assets/la-regular-400-7dc456f0.eot",
-    "src": "resources/fonts/la-regular-400.eot"
+    "src": "resources/fonts/la-regular-400d41d.eot"
   },
   "resources/fonts/la-solid-900.eot": {
     "file": "assets/la-solid-900-8a57f8a9.eot",
-    "src": "resources/fonts/la-solid-900d41d.eot"
+    "src": "resources/fonts/la-solid-900.eot"
   },
   "resources/fonts/la-solid-900.svg": {
     "file": "assets/la-solid-900-36bf86c3.svg",
@@ -135,7 +135,7 @@
   },
   "resources/fonts/la-solid-900d41d.eot": {
     "file": "assets/la-solid-900-8a57f8a9.eot",
-    "src": "resources/fonts/la-solid-900d41d.eot"
+    "src": "resources/fonts/la-solid-900.eot"
   },
   "resources/fonts/materialdesignicons-webfont9445.eot": {
     "file": "assets/materialdesignicons-webfont9445-67d24abe.eot",
