@@ -1,6 +1,6 @@
 {
   "resources/css/admin.css": {
-    "file": "assets/admin-58bc0d37.css",
+    "file": "assets/admin-eda91a32.css",
     "isEntry": true,
     "src": "resources/css/admin.css"
   },
@@ -42,7 +42,7 @@
     "src": "resources/fonts/boxicons.woff2"
   },
   "resources/fonts/boxiconsd41d.svg": {
-    "file": "assets/boxiconsd41d-0b7f8ae7.svg",
+    "file": "assets/boxiconsd41d-3fe502d8.svg",
     "src": "resources/fonts/boxiconsd41d.svg"
   },
   "resources/fonts/fontawesome-webfont.eot": {
@@ -70,7 +70,7 @@
     "src": "resources/fonts/la-brands-400d41d.eot"
   },
   "resources/fonts/la-brands-400.svg": {
-    "file": "assets/la-brands-400-af7a9c33.svg",
+    "file": "assets/la-brands-400-4da18191.svg",
     "src": "resources/fonts/la-brands-400.svg"
   },
   "resources/fonts/la-brands-400.ttf": {
@@ -94,7 +94,7 @@
     "src": "resources/fonts/la-regular-400d41d.eot"
   },
   "resources/fonts/la-regular-400.svg": {
-    "file": "assets/la-regular-400-8606b583.svg",
+    "file": "assets/la-regular-400-884ce19c.svg",
     "src": "resources/fonts/la-regular-400.svg"
   },
   "resources/fonts/la-regular-400.ttf": {
@@ -115,10 +115,10 @@
   },
   "resources/fonts/la-solid-900.eot": {
     "file": "assets/la-solid-900-8a57f8a9.eot",
-    "src": "resources/fonts/la-solid-900.eot"
+    "src": "resources/fonts/la-solid-900d41d.eot"
   },
   "resources/fonts/la-solid-900.svg": {
-    "file": "assets/la-solid-900-36bf86c3.svg",
+    "file": "assets/la-solid-900-0ce0cc40.svg",
     "src": "resources/fonts/la-solid-900.svg"
   },
   "resources/fonts/la-solid-900.ttf": {
@@ -135,7 +135,7 @@
   },
   "resources/fonts/la-solid-900d41d.eot": {
     "file": "assets/la-solid-900-8a57f8a9.eot",
-    "src": "resources/fonts/la-solid-900.eot"
+    "src": "resources/fonts/la-solid-900d41d.eot"
   },
   "resources/fonts/materialdesignicons-webfont9445.eot": {
     "file": "assets/materialdesignicons-webfont9445-67d24abe.eot",
@@ -162,7 +162,7 @@
     "src": "resources/fonts/remixicone85e.eot"
   },
   "resources/fonts/remixicone85e.svg": {
-    "file": "assets/remixicone85e-ddb063ff.svg",
+    "file": "assets/remixicone85e-c728a748.svg",
     "src": "resources/fonts/remixicone85e.svg"
   },
   "resources/fonts/remixicone85e.ttf": {
@@ -182,7 +182,7 @@
     "src": "resources/images/auth-one-bg.jpg"
   },
   "resources/images/flags/us.svg": {
-    "file": "assets/us-e8272934.svg",
+    "file": "assets/us-de148770.svg",
     "src": "resources/images/flags/us.svg"
   },
   "resources/images/sidebar/img-1.jpg": {
