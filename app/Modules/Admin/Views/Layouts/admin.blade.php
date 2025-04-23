@@ -6,10 +6,10 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="csrf-token" content="{{ csrf_token() }}"/>
-        <title>{{ config('app.name', 'Administrator') }}</title> @vite(['resources/css/admin.css'])
+        <title> {{ config('app.name', 'Administrator') }} </title> @vite(['resources/css/admin.css'])
         <link   href="{{Request::root()}}/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
-        <script src="{{Request::root()}}/js/jquery-1.10.2.min.js" type="text/javascript"></script>
-        <script src="{{Request::root()}}/js/admin/layout.js"></script>
+        <script src="{{Request::root()}}/js/jquery.min.js" type="text/javascript"></script>
+        <script src="{{Request::root()}}/js/layout.js"></script>
         <script src="{{Request::root()}}/js/admin.js" type="text/javascript"></script>
         <script src="{{Request::root()}}/js/admin-ajax.js" type="text/javascript"></script>
         <script src="{{Request::root()}}/js/ckeditor/ckeditor.js" type="text/javascript"></script>

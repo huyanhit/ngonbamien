@@ -15,12 +15,8 @@ class HomeController extends Controller
 {
     public function index(){
         return view('pages.home', array_merge($this->getDataLayout(),[
-            'slider'    => Slider::where(['active'=> 1])->orderby('index', 'DESC')->get(),
-            'hot'       => Product::where(['active'=> 1,'is_hot' => true])->orderby('created_at', 'ASC')->limit(10)->get(),
-            'promotion' => Product::where(['active'=> 1,'is_promotion' => true])->orderby('created_at', 'ASC')->limit(10)->get(),
-            'new'       => Product::where(['active'=> 1,'is_new' => true])->orderby('created_at', 'ASC')->limit(5)->get(),
-            'service'   => Service::where(['active'=> 1])->orderby('index', 'DESC')->limit(10)->get(),
-            'partner'   => Producer::where(['active'=> 1])->orderby('index', 'DESC')->limit(10)->get(),
+            'slider'    => Slider::where(['active'=> 1, 'category' => 1])->orderby('index', 'ASC')->get(),
+            'producer'  => Producer::where(['active'=> 1])->orderby('index', 'ASC')->limit(10)->get(),
         ]));
     }
 }

@@ -40,10 +40,10 @@ class ProductCategoryController extends MyController
             'index'    => array('title'=> 'Thứ tự', 'type' => self::NUMBER, 'column' => 2 , 'group' => 'Công bố'),
             'active'   => array('title'=> 'Trạng thái', 'type' => 'check', 'column' => 2, 'group' => 'Công bố'),
 
-            'icon'     => array('title'=> 'Icon', 'type' => self::TEXT, 'column' => 2, 'group' => 'Hình ảnh', 'placeholder' => '<i class="bi bi-droplet"></i>'),
-            'banner'   => array('title'=> 'Banner', 'type' => self::IMAGE, 'column' => 2, 'group' => 'Hình ảnh'),
+            'icon'     => array('title'=> 'Icon', 'type' => self::IMAGE_ID, 'column' => 2, 'group' => 'Hình ảnh', 'placeholder' => '16x16'),
             'image_id' => array('title'=> 'Ảnh chính', 'type' => self::IMAGE_ID, 'column' => 2, 'group' => 'Hình ảnh'),
             'images'   => array('title'=> 'Ảnh phụ', 'type' => self::IMAGES, 'column' => 2,'group' => 'Hình ảnh'),
+            'banner'   => array('title'=> 'Banner', 'type' => self::IMAGE, 'column' => 2, 'group' => 'Hình ảnh'),
         );
 
         $this->view['list'] = array(

@@ -56,23 +56,25 @@
     ul {
         border: 1px solid $border;
         padding-left: 20px;
-        padding-top: 8px;
-        padding-bottom: 10px;
+        padding-top: 13px;
+        padding-bottom: 15px;
         li {
             list-style: none;
-
             a {
                 font-size: 16px;
                 color: $normal-color;
                 line-height: 39px;
                 display: block;
+                img{
+                    position: relative;
+                    top: -2px;
+                }
             }
         }
     }
 }
 
 .hero__search {
-    overflow: hidden;
     margin-bottom: 15px;
 }
 
@@ -82,37 +84,12 @@
     border: 1px solid $border;
     position: relative;
     float: left;
-
+    z-index: 8;
     form {
-
-        .hero__search__categories {
-            width: 30%;
-            float: left;
-            font-size: 16px;
-            color: $normal-color;
-            font-weight: 700;
-            padding-left: 18px;
-            padding-top: 11px;
-            position: relative;
-
-            &:after {
-                position: absolute;
-                right: 0;
-                top: 14px;
-                height: 20px;
-                width: 1px;
-                background: $black-color;
-                opacity: .1;
-                content: "";
-            }
-
-            span {
-                position: absolute;
-                right: 14px;
-                top: 14px;
-            }
+        .current{
+            font-weight: bold;
+            font-size: 18px;
         }
-
         input {
             width: 70%;
             border: none;

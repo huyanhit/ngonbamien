@@ -14,27 +14,27 @@ return new class extends Migration
         Schema::create('sites', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('image_id')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('hotline')->nullable();
             $table->string('address')->nullable();
-            $table->string('warehouse')->nullable();
             $table->string('email')->nullable();
-            $table->string('sites')->nullable();
 
             $table->string('company')->nullable();
-            $table->string('hotline')->nullable();
-            $table->string('technique')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('warehouse')->nullable();
+            $table->string('other')->nullable();
 
-            $table->string('banner_top')->nullable();
-            $table->string('url_banner')->nullable();
+            $table->string('link_facebook')->nullable();
+            $table->string('link_youtube')->nullable();
+            $table->string('link_tiktok')->nullable();
 
-            $table->string('meta')->nullable();
-            $table->string('keyword')->nullable();
-            $table->string('description')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_keyword')->nullable();
+            $table->string('meta_description')->nullable();
 
             $table->text('analytic')->nullable();
-            $table->string('facebook')->nullable();
-            $table->string('map')->nullable();
+            $table->text('fan_page')->nullable();
+            $table->text('map')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

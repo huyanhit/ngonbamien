@@ -19,9 +19,21 @@ class SliderController extends MyController
         $this->view['resource'] = $this->request->segment(2);
         $this->view['form'] = array(
             'title'       => array('title'=> 'Tiêu đề', 'type' => self::TEXT),
-            'image_id'    => array('title'=> 'Hình ảnh', 'type' => self::IMAGE_ID, 'validate' => 'required'),
-            'index'       => array('title'=> 'Thứ tự hiển thị', 'type' => self::TEXT),
-            'active'      => array('title'=> 'Trang thái', 'type' => self::CHECK)
+            'description' => array('title'=> 'Mô tả', 'type' => self::TEXT),
+            'image_id'    => array('title'=> 'Hình ảnh', 'type' => self::IMAGE_ID, 'group' => 'Hình ảnh'),
+            'active'      => array('title'=> 'Trang thái', 'type' => self::CHECK, 'column' => 2, 'group' => 'Công bố'),
+            'index'       => array('title'=> 'Thứ tự hiển thị', 'type' => self::TEXT, 'column' => 2, 'group' => 'Công bố'),
+            'category' => array(
+                'title' => 'Danh mục',
+                'data'  => array(
+                    1 => 'Trang Home',
+                    2 => 'Trang Bài Viết',
+                    3 => 'Trang Cửa hàng'
+                ),
+                'type'     => self::SELECT,
+                'column'   => 2,
+                'group'    => 'Danh mục',
+            ),
         );
         $this->view['list'] = array(
             'index' => array(

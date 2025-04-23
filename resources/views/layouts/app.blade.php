@@ -24,6 +24,7 @@
 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
         <!-- Google tag (gtag.js) -->
         {{--<script async src="https://www.googletagmanager.com/gtag/js?id=G-S537FWM4HT"></script>
         <script>
@@ -53,11 +54,38 @@
         <script src="https://sp.zalo.me/plugins/sdk.js"> </script>--}}
 
         <!-- Js Plugins -->
-        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.nivo.slider.js"></script>
         <script src="js/jquery.nice-select.min.js"></script>
         <script src="js/jquery-ui.min.js"></script>
         <script src="js/jquery.slicknav.js"></script>
         <script src="js/mixitup.min.js"></script>
         <script src="js/owl.carousel.min.js"></script>
+
+        <script>
+            window.onscroll = function() {myFunction()};
+            var header = document.getElementById("navigation");
+            if (header !== null) {
+                var sticky = header.offsetTop;
+                function myFunction() {
+                    if (window.pageYOffset > sticky) {
+                        header.classList.add("sticky");
+                    } else {
+                        header.classList.remove("sticky");
+                    }
+                }
+            }
+
+            $('#slider').nivoSlider({
+                effect: 'fade', // Specify sets like: 'fold,fade,sliceDown'
+                animSpeed: 500, // Slide transition speed
+                pauseTime: 4000, // How long each slide will show
+                startSlide: 0, // Set starting Slide (0 index)
+                directionNav: false, // Next & Prev navigation
+                controlNav: false, // 1,2,3... navigation
+                controlNavThumbs: false, // Use thumbnails for Control Nav
+                pauseOnHover: false // Stop animation while hovering
+            });
+        </script>
     </body>
 </html>

@@ -65,8 +65,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__left">
                         <ul>
-                            <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                            <li>Free Shipping for all Order of $99</li>
+                            <li class="fw-bold">Miễn phí giao hàng cho đơn hàng từ <span class="text-danger">200.000</span> (vnd)</li>
                         </ul>
                     </div>
                 </div>
@@ -74,21 +73,19 @@
                     <div class="header__top__right">
                         <div class="header__top__right__social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            <a href="#"><i class="fa fa-youtube"></i></a>
                         </div>
                         <div class="header__top__right__language">
                             <img src="img/language.png" alt="">
-                            <div>English</div>
+                            <div>Tiếng Việt</div>
                             <span class="arrow_carrot-down"></span>
                             <ul>
-                                <li><a href="#">Spanis</a></li>
+                                <li><a href="#">Tiếng Việt</a></li>
                                 <li><a href="#">English</a></li>
                             </ul>
                         </div>
                         <div class="header__top__right__auth">
-                            <a href="#"><i class="fa fa-user"></i> Login</a>
+                            <a href="#"><i class="fa fa-user"></i>Đăng nhập</a>
                         </div>
                     </div>
                 </div>
@@ -106,17 +103,16 @@
                 <nav class="header__menu">
                     <ul>
                         <li class="active"><a href="/">Trang chủ</a></li>
-                        <li><a href="./san-pham">Cửa hàng</a></li>
-                        <li><a href="#">Trang</a>
+                        <li><a href="./san-pham">Cửa hàng</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="./shop-details.html">Shop Details</a></li>
-                                <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                <li><a href="./checkout.html">Check Out</a></li>
-                                <li><a href="./blog-details.html">Blog Details</a></li>
+                                <li><a href="./shop-details.html">Chi tiết đơn hàng</a></li>
+                                <li><a href="./shoping-cart.html">Giỏ hàng</a></li>
+                                <li><a href="./checkout.html">Thanh toán</a></li>
                             </ul>
                         </li>
-                        <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li><a href="./blog.html">Bài viết</a></li>
+                        <li><a href="">Khuyến mãi</a></li>
+                        <li><a href="./contact.html">Liên hệ</a></li>
                     </ul>
                 </nav>
             </div>
@@ -126,7 +122,7 @@
                         <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                         <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                     </ul>
-                    <div class="header__cart__price">item: <span>$150.00</span></div>
+                    <div class="header__cart__price"><span class="text-danger">150.000</span> (vnd)</div>
                 </div>
             </div>
         </div>

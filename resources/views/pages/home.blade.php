@@ -8,51 +8,65 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>Món ngon ba miền</span>
                         </div>
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                            @foreach ($producer as $item)
+                            <li>
+                                <a href="#" class="inline-block avatar">
+                                    <img src="{{route('get-image-thumbnail', $item->image_id)}}" style="width: 20px" alt="{{$item->title}}"
+                                         title="#caption-{{$item->image_id}}">
+                                    <span class="ml-2">{{$item->title}}</span>
+                                </a>
+                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
+                    <div class="hero__search d-flex">
+                        <div class="hero__search__form flex-grow-1 mr-3">
                             <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <select class="form-select border-0 position-relative z-20 mt-1">
+                                    <option class="fs-18 fw-bold">
+                                        Tất cả
+                                    </option>
+                                    <option class="fs-18 fw-bold" value="1">
+                                        <span class="ml-2">Sản Phẩm</span>
+                                    </option>
+                                    <option class="fs-18 fw-bold" value="1">
+                                        <span class="ml-2">Bài viết</span>
+                                    </option>
+                                </select>
+                                <input type="text" placeholder="Nhập từ khóa tìm kiếm">
+                                <button type="submit" class="site-btn">Tìm</button>
                             </form>
                         </div>
-                        <div class="hero__search__phone">
+                        <div class="hero__search__phone flex-shrink-1">
                             <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
                             </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
+                            <div class="hero__search__phone__text text-center">
+                                <h5>0986 88.06.01</h5>
+                                <div class="text-muted">Hổ trợ <b>24/7</b></div>
                             </div>
                         </div>
                     </div>
-                    <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
-                        <div class="hero__text">
-                            <span>FRUIT FRESH</span>
-                            <h2>Vegetable <br />100% Organic</h2>
-                            <p>Free Pickup and Delivery Available</p>
-                            <a href="#" class="primary-btn">SHOP NOW</a>
+                    <div class="position-relative">
+                        <div class="nivo-slider">
+                            <div class="slider-wrapper theme-default">
+                                <div id="slider" class="nivoSlider">
+                                    @foreach ($slider as $item)
+                                        <img src="{{route('get-image', $item->image_id)}}"
+                                             data-thumb="{{route('get-image-thumbnail', $item->image_id)}}"
+                                             alt="{{$item->title}}"
+                                             title="#caption-{{$item->image_id}}"/>
+                                    @endforeach
+                                </div>
+                                @foreach ($slider as $item)
+                                    <div id="caption-{{$item->image_id}}" class="nivo-html-caption"> <strong>{{$item->title}}</strong> </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -526,3 +540,5 @@
 </section>
     <!-- Blog Section End -->
 @endsection
+
+
