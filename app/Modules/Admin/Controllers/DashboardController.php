@@ -10,7 +10,7 @@ use App\Modules\Admin\Models\NewsModel;
 use App\Modules\Admin\Models\OrderModel;
 use App\Modules\Admin\Models\OrderProductModel;
 use App\Modules\Admin\Models\PageModel;
-use App\Modules\Admin\Models\PartnerModel;
+use App\Modules\Admin\Models\BannerModel;
 use App\Modules\Admin\Models\ProductCategoryModel;
 use App\Modules\Admin\Models\ProductModel;
 use App\Modules\Admin\Models\ServiceModel;
@@ -90,8 +90,8 @@ class DashboardController extends MyController
                     'link'       => '/admin/partners',
                     'icon'       => '',
                     'background' => '#ddd',
-                    'page'       =>  PartnerModel::count(),
-                    'active'     =>  PartnerModel::where('active', '1')->count(),
+                    'page'       =>  BannerModel::count(),
+                    'active'     =>  BannerModel::where('active', '1')->count(),
                 ],
                 [
                     'title'      => 'Tài khoản',

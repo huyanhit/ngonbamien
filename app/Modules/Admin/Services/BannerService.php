@@ -8,10 +8,10 @@
 
 namespace App\Modules\Admin\Services;
 
-use App\Modules\Admin\Models\CategoryModel;
+use App\Modules\Admin\Models\BannerModel;
 
-class CategoryService extends Service{
+class BannerService extends Service {
     function __construct(){
-        parent::__construct(new CategoryModel());
+        parent::__construct(new BannerModel());
     }
 }

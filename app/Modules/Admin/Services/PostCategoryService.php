@@ -8,10 +8,10 @@
 
 namespace App\Modules\Admin\Services;
 
-use App\Modules\Admin\Models\PartnerModel;
+use App\Modules\Admin\Models\PostCategoryModel;
 
-class PartnerService extends Service {
+class PostCategoryService extends Service{
     function __construct(){
-        parent::__construct(new PartnerModel());
+        parent::__construct(new PostCategoryModel());
     }
 }

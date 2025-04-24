@@ -3,7 +3,6 @@ namespace App\Modules\Admin\Controllers;
 
 use App\Modules\Admin\Services\PostCategoryService;
 use App\Modules\Admin\Services\PageService;
-use App\Modules\Admin\Services\ProductCategoryService;
 use Illuminate\Http\Request;
 
 /**
@@ -12,12 +11,12 @@ use Illuminate\Http\Request;
  * Controller to house all the functionality directly
  * related to the Admin.
  */
-class ProductCategoryController extends MyController
+class PostCategoryController extends MyController
 {
     public $form;
     public $service;
 	function __construct(Request $request){
-        parent::__construct($request, new ProductCategoryService());
+        parent::__construct($request, new PostCategoryService());
         $this->view['resource'] = $this->request->segment(2);
         $this->view['form'] = array(
             'title'   => array('title'=> 'Tiều đề', 'type' => self::TEXT, 'validate' => 'required|max:50'),

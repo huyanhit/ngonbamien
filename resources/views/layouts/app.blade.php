@@ -25,14 +25,17 @@
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
+
         <!-- Google tag (gtag.js) -->
-        {{--<script async src="https://www.googletagmanager.com/gtag/js?id=G-S537FWM4HT"></script>
+        @if(isset($sites->analytic))
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{$sites->analytic}}"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-S537FWM4HT');
-        </script>--}}
+            gtag('config', {{$sites->analytic}});
+        </script>
+        @endif
         <!-- Css Styles -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -48,11 +51,12 @@
 
         @include('includes.foofer')
 
-        {{--<div class="zalo-chat-widget" data-oaid="2922010709793722622"
-             data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="300" data-height="300">
-        </div>
-        <script src="https://sp.zalo.me/plugins/sdk.js"> </script>--}}
-
+        @if(isset($sites->zalo))
+            <div class="zalo-chat-widget" data-oaid="{{$sites->zalo}}"
+                data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="300" data-height="300">
+            </div>
+            <script src="https://sp.zalo.me/plugins/sdk.js"> </script>
+        @endif
         <!-- Js Plugins -->
         <script src="js/jquery.min.js"></script>
         <script src="js/jquery.nivo.slider.js"></script>

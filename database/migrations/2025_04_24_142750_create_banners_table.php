@@ -11,10 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('options', function (Blueprint $table) {
+        Schema::create('banners', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('description')->nullable();
+            $table->string('image_id');
+            $table->string('url')->default('#');
+            $table->integer('type')->default(1);
+            $table->integer('index')->default(1);
+            $table->integer('active')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -23,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('options');
+        Schema::dropIfExists('banners');
     }
 };

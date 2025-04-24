@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('logo')->nullable();
+            $table->string('slogan')->nullable();
             $table->string('hotline')->nullable();
             $table->string('address')->nullable();
             $table->string('email')->nullable();
@@ -32,7 +33,9 @@ return new class extends Migration
             $table->string('meta_keyword')->nullable();
             $table->string('meta_description')->nullable();
 
-            $table->text('analytic')->nullable();
+            $table->string('analytic')->nullable();
+            $table->string('zalo')->nullable();
+
             $table->text('fan_page')->nullable();
             $table->text('map')->nullable();
 

@@ -5,7 +5,7 @@
     "src": "resources/css/admin.css"
   },
   "resources/css/app.css": {
-    "file": "assets/app-8fdf32c1.css",
+    "file": "assets/app-329090bf.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -91,7 +91,7 @@
   },
   "resources/fonts/la-regular-400.eot": {
     "file": "assets/la-regular-400-7dc456f0.eot",
-    "src": "resources/fonts/la-regular-400d41d.eot"
+    "src": "resources/fonts/la-regular-400.eot"
   },
   "resources/fonts/la-regular-400.svg": {
     "file": "assets/la-regular-400-884ce19c.svg",
@@ -111,11 +111,11 @@
   },
   "resources/fonts/la-regular-400d41d.eot": {
     "file": "assets/la-regular-400-7dc456f0.eot",
-    "src": "resources/fonts/la-regular-400d41d.eot"
+    "src": "resources/fonts/la-regular-400.eot"
   },
   "resources/fonts/la-solid-900.eot": {
     "file": "assets/la-solid-900-8a57f8a9.eot",
-    "src": "resources/fonts/la-solid-900d41d.eot"
+    "src": "resources/fonts/la-solid-900.eot"
   },
   "resources/fonts/la-solid-900.svg": {
     "file": "assets/la-solid-900-0ce0cc40.svg",
@@ -135,7 +135,7 @@
   },
   "resources/fonts/la-solid-900d41d.eot": {
     "file": "assets/la-solid-900-8a57f8a9.eot",
-    "src": "resources/fonts/la-solid-900d41d.eot"
+    "src": "resources/fonts/la-solid-900.eot"
   },
   "resources/fonts/materialdesignicons-webfont9445.eot": {
     "file": "assets/materialdesignicons-webfont9445-67d24abe.eot",
@@ -202,7 +202,7 @@
     "src": "resources/images/sidebar/img-4.jpg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-cd023083.js",
+    "file": "assets/app-77d248f7.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

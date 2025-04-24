@@ -2,16 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
-
-class Slider extends Model
+class Posts extends Model
 {
-    use SoftDeletes;
-    protected $softDelete = true;
-    protected $table = 'sliders';
-
+    use HasFactory;
+    protected $table = 'posts';
     public function image(): BelongsTo
     {
         return $this->belongsTo(Image::class);

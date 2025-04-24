@@ -1,7 +1,7 @@
 <?php
 namespace App\Modules\Admin\Controllers;
 
-use App\Modules\Admin\Services\SliderService;
+use App\Modules\Admin\Services\BannerService;
 use Illuminate\Http\Request;
 
 /**
@@ -10,12 +10,12 @@ use Illuminate\Http\Request;
  * Controller to house all the functionality directly
  * related to the Admin.
  */
-class SliderController extends MyController
+class BannerController extends MyController
 {
     public $form;
     public $service;
 	function __construct(Request $request){
-        parent::__construct($request, new SliderService());
+        parent::__construct($request, new BannerService());
         $this->view['resource'] = $this->request->segment(2);
         $this->view['form'] = array(
             'title'       => array('title'=> 'Tiêu đề', 'type' => self::TEXT),
@@ -23,8 +23,19 @@ class SliderController extends MyController
             'image_id'    => array('title'=> 'Hình ảnh', 'type' => self::IMAGE_ID, 'group' => 'Hình ảnh'),
             'active'      => array('title'=> 'Trang thái', 'type' => self::CHECK, 'column' => 2, 'group' => 'Công bố'),
             'index'       => array('title'=> 'Thứ tự hiển thị', 'type' => self::TEXT, 'column' => 2, 'group' => 'Công bố'),
-            'type' => array(
-                'title' => 'Danh mục',
+            'type'        => array(
+                'title' => 'Banner loại',
+                'data'  => array(
+                    1 => '1 Ảnh',
+                    2 => '2 Ảnh',
+                    3 => '3 Ảnh'
+                ),
+                'type'     => self::SELECT,
+                'column'   => 2,
+                'group'    => 'Danh mục',
+            ),
+            'category' => array(
+                'title' => 'Mục hiển thị',
                 'data'  => array(
                     1 => 'Trang Home',
                     2 => 'Trang Bài Viết',

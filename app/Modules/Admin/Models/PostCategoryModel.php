@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Models;
+namespace  App\Modules\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Partner extends Model 
+
+class PostCategoryModel extends Model
 {
     use SoftDeletes;
     protected $softDelete = true;
-    protected $table = 'partners';
+    protected $table = 'post_categories';
 }

@@ -24,7 +24,6 @@ class Controller extends BaseController
         return [
             'sites'  => Site::find(1),
             'menus'  => Menu::where(['active' => 1])->orderby('index', 'ASC')->get(),
-            'product_categories'  => ProductCategory::where(['active' => 1])->with(['subCategories', 'producers'])->orderby('index', 'ASC')->get()
         ];
     }
     private function counter(): void{

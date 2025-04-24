@@ -47,19 +47,10 @@ class PostController extends MyController
                 'group'  => 'Trạng thái'
             ),
 
-            'product_category_id' => array(
-                'title'    => 'Loại sản phẩm',
+            'post_category_id' => array(
+                'title'    => 'Mục đăng',
                 'data'     => $this->renderSelectByTable(
-                    $this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'
-                ),
-                'type'     => self::SELECT,
-                'column'   => 2,
-                'group'    => 'Danh mục',
-            ),
-            'producer_id'  => array(
-                'title'    => 'Xuất xứ',
-                'data'     => $this->renderSelectByTable(
-                    $this->getDataTable('producers', ['active' => 1], null), 'id', 'title'
+                    $this->getDataTable('post_categories', ['active' => 1], null), 'id', 'title'
                 ),
                 'type'     => self::SELECT,
                 'column'   => 2,
@@ -89,26 +80,11 @@ class PostController extends MyController
                     'value' => '',
                 )
             ),
-            'product_category_id'  => array(
+            'post_category_id'  => array(
                 'title'=> 'Loại',
                 'width' => 10,
                 'data' => $this->renderSelectByTable(
-                    $this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'
-                ),
-                'update'=> true,
-                'views' => array(
-                    'type' => self::SELECT ,
-                ),
-                'filter' => array(
-                    'type' => self::SELECT,
-                    'value' => '',
-                ),
-            ),
-            'producer_id'  => array(
-                'title'=> 'Xuất xứ',
-                'width' => 10,
-                'data' => $this->renderSelectByTable(
-                    $this->getDataTable('producers', ['active' => 1], null), 'id', 'title'
+                    $this->getDataTable('post_categories', ['active' => 1], null), 'id', 'title'
                 ),
                 'update'=> true,
                 'views' => array(
@@ -123,6 +99,7 @@ class PostController extends MyController
                 'title' => 'Active',
                 'width' => 7,
                 'data'  => array(null => self::CHOOSE, 0 => 'UnActive', 1 => 'Active'),
+                'update'=> true,
                 'views' => array(
                     'type' => self::CHECK ,
                 ),

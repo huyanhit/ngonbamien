@@ -2,7 +2,9 @@
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
-        <a href="#"><img src="img/logo.png" alt=""></a>
+        <a href="./">
+            <img src="{{$site->logo??'img/logo.png'}}" alt="">
+        </a>
     </div>
     <div class="humberger__menu__cart">
         <ul>
@@ -65,15 +67,18 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__left">
                         <ul>
-                            <li class="fw-bold">Miễn phí giao hàng cho đơn hàng từ <span class="text-danger">200.000</span> (vnd)</li>
+                            <li class="fw-bold">{!! $sites->other ?? '' !!}</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__right">
                         <div class="header__top__right__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-youtube"></i></a>
+                            <a href="{{ $sites->link_facebook ?? '#'}}"><i class="fa fa-facebook"></i></a>
+                            <a href="{{ $sites->link_youtube ?? '#'}}"><i class="fa fa-youtube"></i></a>
+                            <a href="{{ $sites->link_tiktok ?? '#'}}"><svg style="height: 15px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M16 8.24537V15.5C16 19.0899 13.0899 22 9.5 22C5.91015 22 3 19.0899 3 15.5C3 11.9101 5.91015 9 9.5 9C10.0163 9 10.5185 9.06019 11 9.17393V12.3368C10.5454 12.1208 10.0368 12 9.5 12C7.567 12 6 13.567 6 15.5C6 17.433 7.567 19 9.5 19C11.433 19 13 17.433 13 15.5V2H16C16 4.76142 18.2386 7 21 7V10C19.1081 10 17.3696 9.34328 16 8.24537Z"></path></svg>
+                            </a>
                         </div>
                         <div class="header__top__right__language">
                             <img src="img/language.png" alt="">
@@ -96,27 +101,44 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    <a href="./">
+                        <img src="{{$site->logo??'img/logo.png'}}" alt="">
+                    </a>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-7">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href="/">Trang chủ</a></li>
-                        <li><a href="./san-pham">Cửa hàng</a>
-                            <ul class="header__menu__dropdown">
-                                <li><a href="./shop-details.html">Chi tiết đơn hàng</a></li>
-                                <li><a href="./shoping-cart.html">Giỏ hàng</a></li>
-                                <li><a href="./checkout.html">Thanh toán</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="./blog.html">Bài viết</a></li>
-                        <li><a href="">Khuyến mãi</a></li>
-                        <li><a href="./contact.html">Liên hệ</a></li>
+                        @foreach ($menus as $item)
+                            @if (empty($item->parent_id))
+                                <li class="{{(request()->path() == $item->router)? 'active': ''}}">
+                                    <a href="{{Request::root()}}/{{$item->router}}">
+                                        @if(!empty($item->icon))
+                                            <span class="menu-icon">{!!$item->icon!!}</span>
+                                        @endif
+                                        <span class="menu-title"> {{ $item->title }} </span>
+                                    </a>
+                                    <ul class="header__menu__dropdown">
+                                        @foreach ($menus as $sub)
+                                            @if($sub->parent_id == $item->id)
+                                                <li class="{{(request()->path() == $sub->router)? 'active': ''}}">
+                                                    <a href="{{Request::root()}}/{{ $sub->router }}">
+                                                        @if(!empty($sub->icon))
+                                                            <span class="menu-icon">{!!$sub->icon!!}</span>
+                                                        @endif
+                                                        <span class="menu-title"> {{ $sub->title }} </span>
+                                                    </a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @endif
+                        @endforeach
                     </ul>
                 </nav>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <div class="header__cart">
                     <ul>
                         <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>

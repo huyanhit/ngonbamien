@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-class PartnerModel extends Model
+class BannerModel extends Model
 {
     use SoftDeletes;
     protected $softDelete = true;
-    protected $table = 'partners';
+    protected $table = 'banners';
 }

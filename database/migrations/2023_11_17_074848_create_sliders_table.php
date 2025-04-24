@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('image_id');
             $table->string('url')->default('#');
-            $table->integer('category')->default(1);
+            $table->integer('type')->default(1);
             $table->integer('index')->default(1);
             $table->integer('active')->default(0);
             $table->timestamps();

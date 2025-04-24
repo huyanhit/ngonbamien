@@ -11,25 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('post_categories', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description')->nullable();
             $table->longtext('content')->nullable();
 
-            $table->integer('image_id')->nullable();
-            $table->string('images')->nullable();
-
+            $table->integer('parent_id')->nullable();
             $table->string('meta_title')->nullable();
             $table->string('meta_keywords')->nullable();
             $table->string('meta_description')->nullable();
 
-            $table->integer('post_category_id')->nullable();
+            $table->string('icon')->nullable();
+            $table->string('banner')->nullable();
+            $table->integer('image_id')->nullable();
+            $table->string('images')->nullable();
 
-            $table->string('tags')->nullable();
-
-            $table->integer('status')->default(1);
-            $table->integer('active')->default(1);
+            $table->integer('index')->default(1);
+            $table->integer('active')->default(0);
 
             $table->timestamps();
             $table->softDeletes();
@@ -41,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('post_categories');
     }
 };

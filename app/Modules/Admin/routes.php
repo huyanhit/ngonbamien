@@ -26,16 +26,18 @@ Route::middleware(['web'])->group(function () {
         Route::resource('product-categories', 'ProductCategoryController');
         Route::resource('images', 'ImageController');
         Route::resource('sliders', 'SliderController');
-        Route::resource('posts', 'PostController');
-        Route::resource('partners', 'PartnerController');
-        Route::resource('news', 'NewsController');
+        Route::resource('banners', 'BannerController');
+        Route::resource('menus', 'MenuController');
+        Route::resource('producer', 'ProducerController');
         Route::resource('users', 'UserController');
+
+        Route::resource('posts', 'PostController');
+        Route::resource('post-categories', 'PostCategoryController');
+
+        Route::resource('news', 'NewsController');
         Route::resource('sites', 'SiteController');
         Route::resource('pages', 'PageController');
         Route::resource('contacts', 'ContactController');
-        Route::resource('menus', 'MenuController');
-
-        Route::resource('producer', 'ProducerController');
         Route::resource('order-status', 'OrderStatusController');
         Route::resource('orders', 'OrderController');
         Route::resource('product-option', 'ProductOptionController');
