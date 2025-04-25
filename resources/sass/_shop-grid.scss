@@ -2,21 +2,20 @@
   Shop Grid
 -----------------------*/
 .product {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .product__discount {
-    padding-bottom: 50px;
+    margin: 0 -10px;
 }
 
 .product__discount__title {
     text-align: left;
-    margin-bottom: 65px;
-
+    margin-bottom: 25px;
     h2 {
         display: inline-block;
-
+        font-size: 16px;
         &:after {
             margin: 0;
             width: 100%;
@@ -25,11 +24,8 @@
 }
 
 .product__discount__item {
-
     &:hover {
-
         .product__discount__item__pic {
-
             .product__item__pic__hover {
                 bottom: 20px;
             }
@@ -111,13 +107,12 @@
 
 .product__discount__item__text {
     text-align: center;
-    padding-top: 20px;
-
+    padding-top: 10px;
+    background: $background-2;
     span {
         font-size: 14px;
         color: #b2b2b2;
-        display: block;
-        margin-bottom: 4px;
+        margin-bottom: 9px;
     }
 
     h5 {
@@ -175,18 +170,17 @@
 }
 
 .filter__item {
-    padding-top: 45px;
+    padding-top: 10px;
     border-top: 1px solid $border;
-    padding-bottom: 20px;
 }
 
 .filter__sort {
-    margin-bottom: 15px;
-
+    margin-bottom: 5px;
     span {
         font-size: 16px;
         color: $para-color;
         display: inline-block;
+        font-weight: 600;
     }
 
     .nice-select {
@@ -241,27 +235,24 @@
 
 .filter__found {
     text-align: center;
-    margin-bottom: 15px;
-
+    margin-bottom: 5px;
     h6 {
         font-size: 16px;
-        color: #b2b2b2;
-
+        margin-top: 2px;
         span {
             color: $normal-color;
-            font-weight: 700;
-            margin-right: 5px;
+            font-weight: 600;
+            margin-right: 2px;
         }
     }
 }
 
 .filter__option {
     text-align: right;
-    margin-bottom: 15px;
-
+    margin-bottom: 5px;
     span {
         font-size: 24px;
-        color: #b2b2b2;
+        color: $normal-color;
         margin-right: 10px;
         cursor: pointer;
         @include transition(all, .3s);
@@ -368,24 +359,38 @@
 
 .product__pagination {
     padding-top: 10px;
+}
 
-    a {
-        display: inline-block;
-        width: 30px;
-        height: 30px;
-        border: 1px solid #b2b2b2;
+.page-item{
+    &:last-child .page-link,
+    &:first-child .page-link{
+        border-radius: 0 !important;
+        padding-top: 7px;
+        padding-bottom: 9px;
+        font-size: 18px;
+    }
+    &.active{
+        .page-link {
+            background: $primary-color !important;
+            border-color: $primary-color !important;
+            color: $white-color !important;
+        }
+    }
+    .page-link {
+        border: 1px solid $border;
         font-size: 14px;
-        color: #b2b2b2;
+        color: $black-color;
         font-weight: 700;
-        line-height: 28px;
+        line-height: 12px !important;
         text-align: center;
-        margin-right: 16px;
+        transition: all, .3s;
+        margin: 0 5px;
         @include transition(all, .3s);
 
         &:hover {
-            background: $primary-color;
-            border-color: $primary-color;
-            color: $white-color;
+            background: $primary-color !important;
+            border-color: $primary-color !important;
+            color: $white-color !important;
         }
 
         &:last-child {
@@ -393,3 +398,5 @@
         }
     }
 }
+
+

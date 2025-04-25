@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CartAddRequest;
 use App\Models\Counter;
 use App\Models\Partner;
+use App\Models\Producer;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Jackiedo\Cart\Cart;
@@ -14,12 +16,11 @@ use Jackiedo\Cart\Cart;
 class ProductController extends Controller
 {
     public function index(){
-        $categories = ProductCategory::where(['active' => 1])->get();
-        $product   = Product::where(['active'=> 1])->orderby('created_at', 'ASC')->paginate(20);
         return view('pages.shop-grid', array_merge($this->getDataLayout(), [
-            'product'    => $product,
-            'categories' => $categories,
-            'partner'    => Partner::where(['active'=> 1])->orderby('index', 'DESC')->limit(8)->get(),
+            'products' => Product::where(['active'=> 1])->orderby('created_at', 'DESC')->paginate(9),
+            'slider'   => Slider::where(['active'=> 1, 'type' => 1])->orderby('index', 'DESC')->get(),
+            'producer' => Producer::where(['active'=> 1])->orderby('index', 'ASC')->limit(9)->get(),
+            'product_categories' => ProductCategory::where(['active' => 1])->limit(9)->get(),
         ]));
     }
 

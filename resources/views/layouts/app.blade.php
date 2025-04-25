@@ -67,19 +67,6 @@
         <script src="js/owl.carousel.min.js"></script>
 
         <script>
-            window.onscroll = function() {myFunction()};
-            var header = document.getElementById("navigation");
-            if (header !== null) {
-                var sticky = header.offsetTop;
-                function myFunction() {
-                    if (window.pageYOffset > sticky) {
-                        header.classList.add("sticky");
-                    } else {
-                        header.classList.remove("sticky");
-                    }
-                }
-            }
-
             $('#slider').nivoSlider({
                 effect: 'fade', // Specify sets like: 'fold,fade,sliceDown'
                 animSpeed: 500, // Slide transition speed

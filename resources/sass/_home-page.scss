@@ -4,7 +4,7 @@
 .categories__item {
     height: 270px;
     position: relative;
-    h5 {
+    h3 {
         position: absolute;
         left: 0;
         width: 100%;
@@ -140,8 +140,7 @@
         }
 
         &:hover {
-
-            a {
+            span {
                 background: $primary-color;
                 border-color: $primary-color;
 
@@ -152,7 +151,7 @@
             }
         }
 
-        a {
+        span {
             font-size: 16px;
             color: $normal-color;
             height: 40px;
@@ -211,7 +210,7 @@
         opacity: 0.7;
         box-shadow: 1px 1px 1px 1px $primary-color
     }
-    h4{
+    h3{
         font-weight: bold;
         color: $primary-color;
     }
@@ -229,10 +228,11 @@
 }
 
 .latest-product__text {
-    h4 {
+    h3 {
         font-weight: 700;
         color: $normal-color;
         margin-bottom: 15px;
+        font-size: 24px;
     }
 }
 
@@ -267,7 +267,7 @@
 }
 
 .latest-product__item {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     overflow: hidden;
     display: block;
     background: $background;

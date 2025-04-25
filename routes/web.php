@@ -46,8 +46,8 @@ Route::get('/counter', [HomeController::class, 'counter'])->name('page.counter')
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/phan-loai/{name}', [CategoryProductController::class, 'show'])->name('phan-loai');
 
-Route::get('/san-pham', [ProductController::class, 'index'])->name('cua-hang');
-Route::get('/san-pham/{name}', [ProductController::class, 'show'])->name('san-pham');
+Route::get('/cua-hang', [ProductController::class, 'index'])->name('cua-hang');
+Route::get('/cua-hang/{name}', [ProductController::class, 'show'])->name('san-pham');
 Route::get('/dat-hang', [CheckController::class, 'index'])->name('dat-hang');
 Route::get('/tra-cuu-don-hang', [OrderController::class, 'search'])->name('tra-cuu-don-hang');
 Route::get('/thanh-toan/{order}', [OrderController::class, 'show'])->name('thanh-toan');

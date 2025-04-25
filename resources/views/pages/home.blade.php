@@ -13,8 +13,10 @@
                         <ul>
                             @foreach ($producer as $item)
                             <li>
-                                <a href="#" class="inline-block avatar">
-                                    <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}" style="width: 20px" alt="{{$item->title}}"
+                                <a href="./vung-mien/{{Str::slug($item->title)}}" class="inline-block avatar">
+                                    <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}"
+                                         style="width: 20px"
+                                         alt="{{$item->title}}"
                                          title="#caption-{{$item->image_id}}">
                                     <span class="ml-2">{{$item->title}}</span>
                                 </a>
@@ -84,7 +86,7 @@
                     <div class="col-lg">
                         <a href="./gian-hang/{{Str::slug($item->title)}}">
                             <div class="categories__item set-bg" data-setbg="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}">
-                                <h5><span>{{$item->title}}</span></h5>
+                                <h3><span>{{$item->title}}</span></h3>
                             </div>
                         </a>
                     </div>
@@ -105,10 +107,10 @@
                     </div>
                     <div class="featured__controls">
                         <ul>
-                            <li class="active" data-filter="*">Tất cả</li>
-                            <li data-filter=".new">Món ngon mới</li>
-                            <li data-filter=".hot">Món được mua nhiều</li>
-                            <li data-filter=".promotion">Khuyến mãi</li>
+                            <li class="active" data-filter="*"><h5>Tất cả</h5></li>
+                            <li data-filter=".new"><h5>Món ngon mới</h5></li>
+                            <li data-filter=".hot"><h5>Món được mua nhiều</h5></li>
+                            <li data-filter=".promotion"><h5>Khuyến mãi</h5></li>
                         </ul>
                     </div>
                 </div>
@@ -119,23 +121,7 @@
                         {{$item->is_new? 'new': ''}}
                         {{$item->is_hot? 'hot': ''}}
                         {{$item->is_promotion? 'promotion': ''}} ">
-                        <div class="featured__item">
-                            <div class="featured__item__pic set-bg" data-setbg="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}">
-                                <ul class="featured__item__pic__hover">
-                                    <li><a href="#" title="Yêu thích"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#" title="Chi tiết"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#" title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="featured__item__text">
-                                <h5>{{$item->title?? 'Không tên'}}</h5>
-                                <h6 class="text-danger d-flex justify-content-center">
-                                    @foreach ($item->product_option as $productOptions)
-                                       <x-price :item="$productOptions"></x-price>
-                                    @endforeach
-                                </h6>
-                            </div>
-                        </div>
+                        <x-product-item :item="$item"/>
                     </div>
                 @endforeach
             </div>
@@ -214,7 +200,7 @@
                             <img src="{{ $item->image->uri }}" alt="{{$item->title}}">
                         </div>
                         <div class="banner__info position-absolute top-0">
-                            <h4>{{$item->title}}</h4>
+                            <h3>{{$item->title}}</h3>
                             <h6 class="mt-2">{{$item->description}}</h6>
                             <button class="btn btn-outline-danger mt-3"> Xem Ngay <i class="ri ri-arrow-right-line"></i> </button>
                         </div>
@@ -232,11 +218,11 @@
                 @foreach ($post_categories as $item)
                     <div class="col-lg-4 col-md-6">
                         <div class="latest-product__text">
-                            <h4>{{$item->title}}</h4>
+                            <h3>{{$item->title}}</h3>
                             <div class="latest-product__slider owl-carousel">
                                 @foreach($item->posts as $key => $post)
                                     @if($key%2 == 0) <div class="latest-prdouct__slider__item"> @endif
-                                        <a href="./cua-hang/{{Str::slug($post->title)}}" class="latest-product__item">
+                                        <a href="./bai-viet/{{Str::slug($post->title)}}" class="latest-product__item">
                                             <div class="latest-product__item__pic">
                                                 <img src="{{ $post->image->uri }}" alt="{{ $post->title }}">
                                             </div>
