@@ -13,7 +13,7 @@
                         <ul class="shop-category">
                             @foreach ($product_categories as $item)
                                 <li>
-                                    <a href="#" class="inline-block avatar">
+                                    <a href="{{Request::root()}}/loai-hang/{{$item->slug}}" class="inline-block avatar">
                                         <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}"
                                              style="width: 20px"
                                              alt="{{$item->title}}"
@@ -178,127 +178,44 @@
             <div class="filter__item">
                 <div class="row">
                     <div class="col-lg-3 col-md-5">
-                        <div class="sidebar">
+                        <form class="sidebar">
                             <div class="sidebar__item">
                                 <h4>Giá bán</h4>
-                                <div class="price-range-wrap">
-                                    <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                         data-min="10" data-max="10000">
-                                        <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                    </div>
-                                    <div class="range-slider">
-                                        <div class="price-input">
-                                            <input type="text" id="minamount">
-                                            <input type="text" id="maxamount">
-                                        </div>
-                                    </div>
-                                </div>
+                                <select class="form-select w-100 mb-3">
+                                    <option selected=""> Chọn mức giá </option>
+                                    <option value="1"> Dưới 100.000đ </option>
+                                    <option value="2"> 100.000đ đến 200.000đ </option>
+                                    <option value="3"> 200.000đ đến 500.000đ </option>
+                                    <option value="4"> Trên 500.000đ </option>
+                                    <option value="5"> Liên hệ </option>
+                                </select>
                             </div>
                             <div class="sidebar__item">
                                 <h4>Vùng miền</h4>
-                                <ul class="list-group mt-2">
-                                    @foreach ($producer as $item)
-                                        <li class="list-group-item py-1 px-3">
-                                            <a href="./vung-mien/{{Str::slug($item->title)}}">
-                                                <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}"
-                                                     style="width: 20px"
-                                                     alt="{{$item->title}}"
-                                                     title="#caption-{{$item->image_id}}"/>
-                                                <span class="ml-1">{{$item->title}}</span>
-                                            </a>
-                                        </li>
+                                <select class="form-select w-100 mb-3">
+                                    <option> Chọn vùng </option>
+                                    @foreach ($producers as $item)
+                                        <option value="{{$item->id}}">
+                                            {{$item->title}}
+                                        </option>
                                     @endforeach
-                                </ul>
+                                </select>
                             </div>
-                            <div class="sidebar__item">
+                            <div class="sidebar__item mt-2">
                                 <h4>Nhóm</h4>
                                 <div class="sidebar__item__size">
-                                    <label for="large">
-                                        Món ngon mới
-                                        <input type="radio" id="new">
-                                    </label>
-                                </div>
-                                <div class="sidebar__item__size">
-                                    <label for="medium">
-                                        Món được mua nhiều
-                                        <input type="radio" id="hot">
-                                    </label>
-                                </div>
-                                <div class="sidebar__item__size">
-                                    <label for="small">
+                                    <button class="btn btn-outline-dark my-1">
+                                        Món mới
+                                    </button>
+                                    <button class="btn btn-outline-dark my-1">
+                                        Món mua nhiều
+                                    </button>
+                                    <button class="btn btn-outline-dark my-1">
                                         Khuyến mãi
-                                        <input type="radio" id="promotion">
-                                    </label>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="sidebar__item">
-                                <div class="latest-product__text">
-                                    <h3>Đã xem</h3>
-                                    <div class="latest-product__slider owl-carousel">
-                                        <div class="latest-prdouct__slider__item">
-                                            <a href="#" class="latest-product__item">
-                                                <div class="latest-product__item__pic">
-                                                    <img src="img/latest-product/lp-1.jpg" alt="">
-                                                </div>
-                                                <div class="latest-product__item__text">
-                                                    <h6>Crab Pool Security</h6>
-                                                    <span>$30.00</span>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="latest-product__item">
-                                                <div class="latest-product__item__pic">
-                                                    <img src="img/latest-product/lp-2.jpg" alt="">
-                                                </div>
-                                                <div class="latest-product__item__text">
-                                                    <h6>Crab Pool Security</h6>
-                                                    <span>$30.00</span>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="latest-product__item">
-                                                <div class="latest-product__item__pic">
-                                                    <img src="img/latest-product/lp-3.jpg" alt="">
-                                                </div>
-                                                <div class="latest-product__item__text">
-                                                    <h6>Crab Pool Security</h6>
-                                                    <span>$30.00</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="latest-prdouct__slider__item">
-                                            <a href="#" class="latest-product__item">
-                                                <div class="latest-product__item__pic">
-                                                    <img src="img/latest-product/lp-1.jpg" alt="">
-                                                </div>
-                                                <div class="latest-product__item__text">
-                                                    <h6>Crab Pool Security</h6>
-                                                    <span>$30.00</span>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="latest-product__item">
-                                                <div class="latest-product__item__pic">
-                                                    <img src="img/latest-product/lp-2.jpg" alt="">
-                                                </div>
-                                                <div class="latest-product__item__text">
-                                                    <h6>Crab Pool Security</h6>
-                                                    <span>$30.00</span>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="latest-product__item">
-                                                <div class="latest-product__item__pic">
-                                                    <img src="img/latest-product/lp-3.jpg" alt="">
-                                                </div>
-                                                <div class="latest-product__item__text">
-                                                    <h6>Crab Pool Security</h6>
-                                                    <span>$30.00</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                     <div class="col-lg-9 col-md-7">
                         <div class="row" style="padding: 0 5px">

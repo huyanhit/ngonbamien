@@ -1,65 +1,12 @@
 @extends('layouts.app')
 @section('content')
-    <!-- Hero Section Begin -->
-    <section class="hero hero-normal">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>All departments</span>
-                        </div>
-                        <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
-
     <!-- Blog Details Hero Begin -->
-    <section class="blog-details-hero set-bg" data-setbg="img/blog/details/details-hero.jpg">
+    <section class="blog-details-hero set-bg" data-setbg="{{Request::root()}}/img/blog/details/details-hero.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="blog__details__hero__text">
-                        <h2>The Moment You Need To Remove Garlic From The Menu</h2>
+                        <h2>The Moment You Need </h2>
                         <ul>
                             <li>By Michael Scofield</li>
                             <li>January 14, 2019</li>
@@ -85,21 +32,72 @@
                             </form>
                         </div>
                         <div class="blog__sidebar__item">
-                            <h4>Categories</h4>
-                            <ul>
-                                <li><a href="#">All</a></li>
-                                <li><a href="#">Beauty (20)</a></li>
-                                <li><a href="#">Food (5)</a></li>
-                                <li><a href="#">Life Style (9)</a></li>
-                                <li><a href="#">Travel (10)</a></li>
-                            </ul>
+                            <div class="sidebar__item">
+                                <h4>Danh Mục</h4>
+                                <ul class="list-group mt-2">
+                                    <li class="list-group-item py-1 px-3">
+                                        <a href="{{Request::root()}}/noi-dung/gia-lai">
+                                            <img src="/storage/thumb_ngonbamien/cat-1-2.jpg" style="width: 20px" alt="Gia Lai" title="#caption-18">
+                                            <span class="ml-1">Gia Lai</span>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item py-1 px-3">
+                                        <a href="{{Request::root()}}/noi-dung/binh-dinh">
+                                            <img src="/storage/thumb_ngonbamien/cat-2-2.jpg" style="width: 20px" alt="Bình Định" title="#caption-23">
+                                            <span class="ml-1">Bình Định</span>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item py-1 px-3">
+                                        <a href="{{Request::root()}}/noi-dung/quang-binh">
+                                            <img src="/storage/thumb_ngonbamien/cat-5.jpg" style="width: 20px" alt="Quảng Bình" title="#caption-24">
+                                            <span class="ml-1">Quảng Bình</span>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item py-1 px-3">
+                                        <a href="{{Request::root()}}/noi-dung/da-nang">
+                                            <img src="/storage/thumb_ngonbamien/cat-3-2.jpg" style="width: 20px" alt="Đà nẵng" title="#caption-25">
+                                            <span class="ml-1">Đà nẵng</span>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item py-1 px-3">
+                                        <a href="{{Request::root()}}/noi-dung/nha-trang">
+                                            <img src="/storage/thumb_ngonbamien/cat-3-3.jpg" style="width: 20px" alt="Nha trang" title="#caption-26">
+                                            <span class="ml-1">Nha trang</span>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item py-1 px-3">
+                                        <a href="{{Request::root()}}/noi-dung/phu-yen">
+                                            <img src="/storage/thumb_ngonbamien/cat-3-4.jpg" style="width: 20px" alt="Phú yên" title="#caption-28">
+                                            <span class="ml-1">Phú yên</span>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item py-1 px-3">
+                                        <a href="{{Request::root()}}/noi-dung/quang-ngai">
+                                            <img src="/storage/thumb_ngonbamien/cat-5-1.jpg" style="width: 20px" alt="Quảng ngãi" title="#caption-27">
+                                            <span class="ml-1">Quảng ngãi</span>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item py-1 px-3">
+                                        <a href="{{Request::root()}}/noi-dung/kon-tum">
+                                            <img src="/storage/thumb_ngonbamien/cat-1-4.jpg" style="width: 20px" alt="Kon tum" title="#caption-29">
+                                            <span class="ml-1">Kon tum</span>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item py-1 px-3">
+                                        <a href="{{Request::root()}}/noi-dung/kon-tum">
+                                            <img src="/storage/thumb_ngonbamien/cat-1-5.jpg" style="width: 20px" alt="Kon tum" title="#caption-32">
+                                            <span class="ml-1">Kon tum</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="blog__sidebar__item">
                             <h4>Recent News</h4>
                             <div class="blog__sidebar__recent">
                                 <a href="#" class="blog__sidebar__recent__item">
                                     <div class="blog__sidebar__recent__item__pic">
-                                        <img src="img/blog/sidebar/sr-1.jpg" alt="">
+                                        <img src="{{Request::root()}}/img/blog/sidebar/sr-1.jpg" alt="">
                                     </div>
                                     <div class="blog__sidebar__recent__item__text">
                                         <h6>09 Kinds Of Vegetables<br /> Protect The Liver</h6>
@@ -108,7 +106,7 @@
                                 </a>
                                 <a href="#" class="blog__sidebar__recent__item">
                                     <div class="blog__sidebar__recent__item__pic">
-                                        <img src="img/blog/sidebar/sr-2.jpg" alt="">
+                                        <img src="{{Request::root()}}/img/blog/sidebar/sr-2.jpg" alt="">
                                     </div>
                                     <div class="blog__sidebar__recent__item__text">
                                         <h6>Tips You To Balance<br /> Nutrition Meal Day</h6>
@@ -117,7 +115,7 @@
                                 </a>
                                 <a href="#" class="blog__sidebar__recent__item">
                                     <div class="blog__sidebar__recent__item__pic">
-                                        <img src="img/blog/sidebar/sr-3.jpg" alt="">
+                                        <img src="{{Request::root()}}/img/blog/sidebar/sr-3.jpg" alt="">
                                     </div>
                                     <div class="blog__sidebar__recent__item__text">
                                         <h6>4 Principles Help You Lose <br />Weight With Vegetables</h6>
@@ -141,7 +139,7 @@
                 </div>
                 <div class="col-lg-8 col-md-7 order-md-1 order-1">
                     <div class="blog__details__text">
-                        <img src="img/blog/details/details-pic.jpg" alt="">
+                        <img src="{{Request::root()}}/img/blog/details/details-pic.jpg" alt="">
                         <p>Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
                             dui. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit
                             aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur
@@ -162,7 +160,7 @@
                             <div class="col-lg-6">
                                 <div class="blog__details__author">
                                     <div class="blog__details__author__pic">
-                                        <img src="img/blog/details/details-author.jpg" alt="">
+                                        <img src="{{Request::root()}}/img/blog/details/details-author.jpg" alt="">
                                     </div>
                                     <div class="blog__details__author__text">
                                         <h6>Michael Scofield</h6>
@@ -207,7 +205,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic">
-                            <img src="img/blog/blog-1.jpg" alt="">
+                            <img src="{{Request::root()}}/img/blog/blog-1.jpg" alt="">
                         </div>
                         <div class="blog__item__text">
                             <ul>
@@ -222,7 +220,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic">
-                            <img src="img/blog/blog-2.jpg" alt="">
+                            <img src="{{Request::root()}}/img/blog/blog-2.jpg" alt="">
                         </div>
                         <div class="blog__item__text">
                             <ul>
@@ -237,7 +235,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic">
-                            <img src="img/blog/blog-3.jpg" alt="">
+                            <img src="{{Request::root()}}/img/blog/blog-3.jpg" alt="">
                         </div>
                         <div class="blog__item__text">
                             <ul>

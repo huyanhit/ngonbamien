@@ -1,7 +1,7 @@
 @props(['item' => null])
 
     <div class="featured__item">
-        <a href="./cua-hang/{{Str::slug($item->title)}}" >
+        <a href="{{Request::root()}}/san-pham/{{$item->slug}}" >
             <div class="featured__item__pic set-bg" data-setbg="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}">
                 <ul class="featured__item__pic__hover">
                     <li><span href="#" title="Yêu thích"><i class="fa fa-heart"></i></span></li>

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug');
             $table->text('description')->nullable();
             $table->longtext('content')->nullable();
 
@@ -30,6 +31,9 @@ return new class extends Migration
 
             $table->integer('status')->default(1);
             $table->integer('active')->default(1);
+
+            $table->integer('view')->default(0);
+            $table->integer('like')->default(0);
 
             $table->timestamps();
             $table->softDeletes();

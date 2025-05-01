@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CartAddRequest;
 use App\Models\Counter;
 use App\Models\Partner;
+use App\Models\PostCategory;
+use App\Models\Posts;
 use App\Models\Producer;
 use App\Models\Product;
 use App\Models\ProductCategory;
@@ -13,45 +15,44 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Jackiedo\Cart\Cart;
 
-class ProductController extends Controller
+class PostController extends Controller
 {
     public function index(){
-        return view('pages.shop-grid', array_merge($this->getDataLayout(), [
-            'producers' => Producer::where(['active'=> 1])->orderby('index', 'ASC')->limit(9)->get(),
-            'products' => Product::where(['active'=> 1])->orderby('created_at', 'DESC')->paginate(9),
-            'product_categories' => ProductCategory::where(['active' => 1])->limit(9)->get(),
+        return view('pages.blog', array_merge($this->getDataLayout(), [
+            'slider'   => Slider::where(['active'=> 1, 'type' => 1])->orderby('index', 'DESC')->get(),
+            'producer' => Producer::where(['active'=> 1])->orderby('index', 'ASC')->limit(9)->get(),
+            'post_category' => PostCategory::where(['active' => 1])->limit(9)->get(),
         ]));
     }
 
     public function show($slug){
-        $product    = Product::where(['active' => 1, 'slug' => $slug])->first();
-        $reProducts = Product::where(['active'=> 1, 'product_category_id' => $product->product_category_id])
-            ->whereNotIn('id', [$product->id])->orderby('created_at', 'ASC')->limit(20)->get();
-        $product->view = $product->view + 1;
-        $product->save();
-        return view('pages.shop-detail', array_merge($this->getDataLayout(), [
-            'product'    => $product,
-            'r_products' => $reProducts,
-            'producers'  => Producer::where(['active'=> 1])->orderby('index', 'ASC')->limit(9)->get(),
-            'sliders'    => Slider::where(['active'=> 1, 'type' => 1])->orderby('index', 'DESC')->get(),
-            'meta' => [
-                'title' => $product->meta_title,
-                'description' => $product->meta_description,
-                'keyword' => $product->meta_keywords
-            ]
-        ]));
+        $post = Posts::where(['active' => 1,'slug' => $slug])->first();
+        if(!empty($post)){
+            $post->view = $post->view + 1;
+            $post->save();
+            return view('pages.blog-detail', array_merge($this->getDataLayout(), [
+                'post' => $post,
+                'post_category' => PostCategory::where(['active' => 1])->limit(9)->get(),
+                'meta' => [
+                    'title' => $post->meta_title,
+                    'description' => $post->meta_description,
+                    'keyword' => $post->meta_keywords
+                ]
+            ]));
+        }
+
+        return view('pages.404', $this->getDataLayout());
     }
 
     public function productCategory(Request $request){
         $product = Product::select('id', 'title', 'price', 'image_id', 'product_category_id')->find($request->id);
         $query   = Product::select('id', 'title', 'price', 'image_id')
-            ->where('product_category_id', $product->product_category_id)
-            ->where('title', 'like', '%' . $request->search . '%')
-            ->where('id', '!=', $request->id)->limit(20);
+                        ->where('product_category_id', $product->product_category_id)
+                        ->where('title', 'like', '%' . $request->search . '%')
+                        ->where('id', '!=', $request->id)->limit(20);
 
         return ['product' => $product, 'list' => $query->get()];
     }
-
     public function compare($name, $name2 = null){
         $product  = [];
         $product2 = [];
@@ -73,9 +74,9 @@ class ProductController extends Controller
             'product' => $product,
             'product2'=> $product2,
             'meta' => [
-                'title' => $product->meta_title,
-                'description' => $product->meta_description,
-                'keyword' => $product->meta_keywords
+                'title' => $product->title,
+                'description' => $product->keywords .'| Mã '. $product->producer->title.' | Thương hiệu '.$product->sku,
+                'keyword' => $product->keywords
             ]
         ]));
     }

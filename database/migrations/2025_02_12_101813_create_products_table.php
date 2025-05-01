@@ -16,6 +16,7 @@ return new class extends Migration
 
             $table->string('sku')->nullable();
             $table->string('title');
+            $table->string('slug');
             $table->text('description')->nullable();
             $table->longtext('content')->nullable();
 
@@ -37,6 +38,8 @@ return new class extends Migration
             $table->integer('is_hot')->nullable();
             $table->integer('is_promotion')->nullable();
             $table->integer('is_new')->nullable();
+
+            $table->integer('view')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

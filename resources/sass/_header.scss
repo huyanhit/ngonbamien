@@ -202,29 +202,21 @@
             display: inline-block;
             margin-right: 20px;
             position: relative;
-
             .header__menu__dropdown {
                 position: absolute;
                 left: 0;
                 top: 50px;
-                background: #222222;
+                background: $white-color;
                 width: 180px;
                 z-index: 9;
                 @include transition(all, .3s);
                 opacity: 0;
                 visibility: hidden;
-                li:first-child{
-                    margin-top: 10px;
-                }
-                li:last-child{
-                    margin-bottom: 10px;
-                }
                 li {
                     margin-right: 0;
                     display: block;
-
+                    border: 1px $border solid;
                     &:hover {
-
                         &>a {
                             color: $primary-color;
                         }
@@ -232,9 +224,9 @@
 
                     a {
                         text-transform: capitalize;
-                        color: $white-color;
+                        color: $black-color;
                         font-weight: 400;
-                        padding: 5px 15px;
+                        padding: 10px 15px;
                     }
                 }
             }
@@ -249,7 +241,7 @@
             &:hover {
 
                 .header__menu__dropdown {
-                    top: 30px;
+                    top: 35px;
                     opacity: 1;
                     visibility: visible;
                 }

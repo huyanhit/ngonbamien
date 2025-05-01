@@ -25,7 +25,6 @@
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
-
         <!-- Google tag (gtag.js) -->
         @if(isset($sites->analytic))
         <script async src="https://www.googletagmanager.com/gtag/js?id={{$sites->analytic}}"></script>
@@ -49,7 +48,7 @@
 
         @yield('content')
 
-        @include('includes.foofer')
+        @include('includes.footer')
 
         @if(isset($sites->zalo))
             <div class="zalo-chat-widget" data-oaid="{{$sites->zalo}}"
@@ -58,25 +57,13 @@
             <script src="https://sp.zalo.me/plugins/sdk.js"> </script>
         @endif
         <!-- Js Plugins -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery.nivo.slider.js"></script>
-        <script src="js/jquery.nice-select.min.js"></script>
-        <script src="js/jquery-ui.min.js"></script>
-        <script src="js/jquery.slicknav.js"></script>
-        <script src="js/mixitup.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-
-        <script>
-            $('#slider').nivoSlider({
-                effect: 'fade', // Specify sets like: 'fold,fade,sliceDown'
-                animSpeed: 500, // Slide transition speed
-                pauseTime: 4000, // How long each slide will show
-                startSlide: 0, // Set starting Slide (0 index)
-                directionNav: false, // Next & Prev navigation
-                controlNav: false, // 1,2,3... navigation
-                controlNavThumbs: false, // Use thumbnails for Control Nav
-                pauseOnHover: false // Stop animation while hovering
-            });
-        </script>
+        <script src="{{Request::root()}}/js/jquery.min.js" ></script>
+        <script src="{{Request::root()}}/js/bootstrap.min.js" ></script>
+        <script src="{{Request::root()}}/js/jquery.nivo.slider.js"></script>
+        <script src="{{Request::root()}}/js/jquery.nice-select.min.js"></script>
+        <script src="{{Request::root()}}/js/jquery-ui.min.js"></script>
+        <script src="{{Request::root()}}/js/jquery.slicknav.js"></script>
+        <script src="{{Request::root()}}/js/mixitup.min.js"></script>
+        <script src="{{Request::root()}}/js/owl.carousel.min.js"></script>
     </body>
 </html>

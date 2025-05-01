@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('producers', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug');
             $table->longtext('content')->nullable();
 
             $table->string('meta_title')->nullable();

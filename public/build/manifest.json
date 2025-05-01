@@ -5,7 +5,7 @@
     "src": "resources/css/admin.css"
   },
   "resources/css/app.css": {
-    "file": "assets/app-a179e2e4.css",
+    "file": "assets/app-cecbd22a.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -202,7 +202,7 @@
     "src": "resources/images/sidebar/img-4.jpg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-7015d9ef.js",
+    "file": "assets/app-99c532db.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

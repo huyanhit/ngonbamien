@@ -2,8 +2,8 @@
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
-        <a href="./">
-            <img src="{{$sites->image->uri?? 'img/logo.png'}}" alt="{{$sites->meta_title?? ''}}">
+        <a href="{{Request::root()}}">
+            <img src="{{$sites->image->uri?? Request::root().'/img/logo.png'}}" alt="{{$sites->meta_title?? ''}}">
         </a>
     </div>
     <div class="humberger__menu__cart">
@@ -15,7 +15,7 @@
     </div>
     <div class="humberger__menu__widget">
         <div class="header__top__right__language">
-            <img src="img/language.png" alt="">
+            <img src="{{Request::root()}}/img/language.png" alt="">
             <div>Tiếng việt</div>
             <span class="arrow_carrot-down"></span>
             <ul>
@@ -97,7 +97,7 @@
                             </a>
                         </div>
                         <div class="header__top__right__language">
-                            <img src="img/language.png" alt="">
+                            <img src="{{Request::root()}}/img/language.png" alt="">
                             <div>Tiếng Việt</div>
                             <span class="arrow_carrot-down"></span>
                             <ul>
@@ -118,8 +118,8 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./">
-                            <img src="{{$site->logo??'img/logo.png'}}" alt="">
+                        <a href="{{Request::root()}}">
+                            <img src="{{$site->logo??Request::root().'/img/logo.png'}}" alt="">
                         </a>
                     </div>
                 </div>
@@ -172,7 +172,6 @@
     </div>
 </header>
 <!-- Header Section End -->
-
 <script>
     var header = document.getElementById("header__bot");
     document.onscroll = function() {

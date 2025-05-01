@@ -33,11 +33,6 @@ class Product extends Model
         return $this->belongsTo(Image::class);
     }
 
-    public function getSlugAttribute()
-    {
-        return Str::slug($this->title).'-'.$this->id;
-    }
-
     public function category(): BelongsTo
     {
         return $this->belongsTo(ProductCategory::class, 'product_category_id');
