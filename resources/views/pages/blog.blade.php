@@ -1,8 +1,7 @@
 @extends('layouts.app')
 @section('content')
-
     <!-- Hero Section Begin -->
-    <section class="hero">
+    <section class="hero background margin_15">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -59,14 +58,14 @@
                         <div class="nivo-slider">
                             <div class="slider-wrapper theme-default">
                                 <div id="slider" class="nivoSlider">
-                                    @foreach ($slider as $item)
+                                    @foreach ($sliders as $item)
                                         <img src="{{$item->image->uri}}"
                                              data-thumb="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}"
                                              alt="{{$item->title}}"
                                              title="#caption-{{$item->image_id}}"/>
                                     @endforeach
                                 </div>
-                                @foreach ($slider as $item)
+                                @foreach ($sliders as $item)
                                     <div id="caption-{{$item->image_id}}" class="nivo-html-caption"> <strong>{{$item->title}}</strong> </div>
                                 @endforeach
                             </div>
@@ -77,7 +76,7 @@
         </div>
     </section>
     <!-- Blog Section Begin -->
-    <section class="blog">
+    <section class="blog background margin_15">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -124,108 +123,25 @@
                         </div>
                     </div>
                     <div class="row" style="margin: 0 -10px">
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-2.jpg" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">6 ways to prepare breakfast for 30</a></h5>
-                                    <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                        quaerat </p>
-                                    <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-3.jpg" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">Visit the clean farm in the US</a></h5>
-                                    <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                        quaerat </p>
-                                    <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                        @foreach ($posts as $item)
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="blog__item">
+                                    <a class="blog__item__pic"  href="{{Request::root()}}/noi-dung/{{$item->slug}}">
+                                        <img src="{{$item->image->uri?? ''}}" alt="{{$item->title}}">
+                                    </a>
+                                    <div class="blog__item__text">
+                                        <ul>
+                                            <li><i class="fa fa-comment"></i> {{$item->view?? 0}} </li>
+                                            <li><i class="fa fa-calendar-o"></i>
+                                                {{\Illuminate\Support\Carbon::parse($item->updated_at)->fromNow()}}
+                                            </li>
+                                        </ul>
+                                        <h5><a href="{{Request::root()}}/noi-dung/{{$item->slug}}">{{$item->title}}</a></h5>
+                                        <p>{{$item->description}}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-1.jpg" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">Cooking tips make cooking simple</a></h5>
-                                    <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                        quaerat </p>
-                                    <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-4.jpg" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">Cooking tips make cooking simple</a></h5>
-                                    <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                        quaerat </p>
-                                    <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-4.jpg" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">The Moment You Need To Remove Garlic From The Menu</a></h5>
-                                    <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                        quaerat </p>
-                                    <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-6.jpg" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">Cooking tips make cooking simple</a></h5>
-                                    <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                        quaerat </p>
-                                    <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

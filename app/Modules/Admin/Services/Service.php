@@ -14,6 +14,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
 use Exception;
@@ -110,6 +111,7 @@ class Service {
 
     public function filerFormType(&$data): array
     {
+
         foreach($data['form'] as $key => $value){
             if(isset($value['type'])){
                 if($value['type'] === 'password'){
@@ -119,9 +121,11 @@ class Service {
                         unset($data['form'][$key]);
                     }
                 }
-
                 if($value['type'] === 'confirm'){
                     unset($data['data'][$key]);
+                }
+                if($value['type'] === 'slug' && isset($data['data']['title'])){
+                    $data['data'][$key] = Str::slug($data['data']['title']);
                 }
                 if($value['type'] === 'date'){
                     $data['data'][$key] = strtotime($data['data'][$key]);

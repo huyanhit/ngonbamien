@@ -19,22 +19,25 @@ class ProductController extends Controller
         return view('pages.shop-grid', array_merge($this->getDataLayout(), [
             'producers' => Producer::where(['active'=> 1])->orderby('index', 'ASC')->limit(9)->get(),
             'products' => Product::where(['active'=> 1])->orderby('created_at', 'DESC')->paginate(9),
+            'discount_products' => Product::where('products.active', 1)
+                ->select('products.id', 'product_option.title as option_title', 'products.title', 'price', 'discount', 'slug', 'images.uri')
+                ->join('product_option', 'product_option.product_id', '=', 'products.id')
+                ->join('images', 'images.id', '=', 'products.image_id')
+                ->where('discount', '>', 0)->get(),
             'product_categories' => ProductCategory::where(['active' => 1])->limit(9)->get(),
         ]));
     }
 
     public function show($slug){
-        $product    = Product::where(['active' => 1, 'slug' => $slug])->first();
-        $reProducts = Product::where(['active'=> 1, 'product_category_id' => $product->product_category_id])
-            ->whereNotIn('id', [$product->id])->orderby('created_at', 'ASC')->limit(20)->get();
+        $product = Product::where(['active' => 1, 'slug' => $slug])->first();
         $product->view = $product->view + 1;
         $product->save();
+
         return view('pages.shop-detail', array_merge($this->getDataLayout(), [
             'product'    => $product,
-            'r_products' => $reProducts,
-            'producers'  => Producer::where(['active'=> 1])->orderby('index', 'ASC')->limit(9)->get(),
-            'sliders'    => Slider::where(['active'=> 1, 'type' => 1])->orderby('index', 'DESC')->get(),
-            'meta' => [
+            'r_products' => Product::where(['active' => 1, 'product_category_id' => $product->product_category_id])
+                ->whereNotIn('id', [$product->id])->orderby('created_at', 'ASC')->limit(4)->get(),
+            'meta'       => [
                 'title' => $product->meta_title,
                 'description' => $product->meta_description,
                 'keyword' => $product->meta_keywords

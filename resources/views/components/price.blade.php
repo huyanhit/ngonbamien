@@ -1,14 +1,15 @@
-@props(['item' => null, 'percent' => true, 'title' => true])
-<div class="text-center ml-1">
-    <h6 class="text-danger font-weight-bold">{{ number_format($item->price, 0, ',', '.') }}đ
-        @if($title)
-            <span class="mx-1 badge badge-light " style="font-size: 12px" title="{{$item->title}}"> {{$item->title}} </span>
+@props(['item' => null])
+@foreach ($item as $key => $price)
+    <div class="product__item__price text-center {{$key>0? 'hide': ''}}">
+        @if($price->discount)
+            <div c>
+                <b class="text-danger price">{{ number_format($price->price - ($price->price * $price->discount /100), 0, ',', '.') }}đ</b>
+                <span class="text-muted price_root">{{ number_format($price->price, 0, ',', '.') }}đ</span>
+            </div>
+            <div class="mx-1 badge badge-light price-title"  title="{{$price->title}}"> {{$price->title}} </div>
+        @else
+            <div> <b class="text-danger price">{{ number_format($price->price, 0, ',', '.') }}đ</b> </div>
+            <div class="mx-1 badge badge-light price-title" title="{{$price->title}}"> {{$price->title}} </div>
         @endif
-    </h6>
-    @if($percent && $item->price_discount)
-        <div class="d-flex">
-            <del class="text-gray-600 font-weight-bold">{{ number_format($item->price, 0, ',', '.') }}đ </del>
-            <span class="bg-red-500 px-2 rounded-2 text-white text-sm"> {{ number_format(($item->price/$item->discount)*100, 0, ',', '.') }} </span>
-        </div>
-    @endif
-</div>
+    </div>
+@endforeach

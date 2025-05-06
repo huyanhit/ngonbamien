@@ -19,7 +19,8 @@ class PostController extends Controller
 {
     public function index(){
         return view('pages.blog', array_merge($this->getDataLayout(), [
-            'slider'   => Slider::where(['active'=> 1, 'type' => 1])->orderby('index', 'DESC')->get(),
+            'posts'    => Posts::where(['active'=> 1])->orderby('id', 'DESC')->get(),
+            'sliders'  => Slider::where(['active'=> 1, 'type' => 1])->orderby('index', 'DESC')->get(),
             'producer' => Producer::where(['active'=> 1])->orderby('index', 'ASC')->limit(9)->get(),
             'post_category' => PostCategory::where(['active' => 1])->limit(9)->get(),
         ]));

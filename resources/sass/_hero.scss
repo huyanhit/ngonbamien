@@ -2,7 +2,6 @@
   Hero
 -----------------------*/
 .hero {
-    padding-bottom: 20px;
     &.hero-normal {
         padding-bottom: 30px;
         .hero__categories {
@@ -27,7 +26,7 @@
 .hero__categories__all {
     background: $primary-color;
     position: relative;
-    padding: 10px 20px 10px 20px;
+    padding: 12px 20px;
     cursor: pointer;
     height: 50px;
     i {
@@ -154,7 +153,6 @@
 }
 
 .hero__text {
-
     span {
         font-size: 14px;
         text-transform: uppercase;

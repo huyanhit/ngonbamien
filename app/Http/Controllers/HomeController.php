@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\PostCategory;
+use App\Models\Posts;
 use App\Models\Producer;
 use App\Models\ProductCategory;
 use App\Models\Slider;
@@ -18,6 +19,7 @@ class HomeController extends Controller
             'producers'  => Producer::where(['active'=> 1])->orderby('index', 'ASC')->limit(9)->get(),
             'products'   => Product::where(['active'=> 1, 'status' => 2])->limit(8)->get(),
             'product_categories' => ProductCategory::where(['active' => 1])->with(['subCategories', 'producers'])->orderby('index', 'ASC')->get(),
+            'posts'              => Posts::where(['active'=> 1])->limit(3)->orderby('id', 'DESC')->get(),
             'post_categories'    => PostCategory::where(['active' => 1])->limit(3)->with(['posts'])->orderby('index', 'ASC')->get()
         ]));
     }

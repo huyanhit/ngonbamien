@@ -1,11 +1,6 @@
 /*---------------------
   Shop Grid
 -----------------------*/
-.product {
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
 .product__discount {
     margin: 0 -10px;
 }
@@ -72,7 +67,7 @@
 
         &:hover {
 
-            a {
+            span {
                 background: $primary-color;
                 border-color: $primary-color;
 
@@ -83,7 +78,7 @@
             }
         }
 
-        a {
+        span {
             font-size: 16px;
             color: $normal-color;
             height: 40px;
@@ -127,7 +122,6 @@
         font-size: 18px;
         color: $normal-color;
         font-weight: 700;
-
         span {
             display: inline-block;
             font-weight: 400;
@@ -256,13 +250,63 @@
         margin-right: 10px;
         cursor: pointer;
         @include transition(all, .3s);
-
+        &.icon_ul{
+            position: relative;
+            top: 2px;
+            font-size: 27px;
+        }
         &:last-child {
             margin: 0;
         }
-
-        &:hover {
+        &:hover{
             color: $primary-color;
+        }
+        &.active{
+            color: $primary-color;
+        }
+    }
+}
+
+.filter__list.active{
+    >div{
+        max-width: 100%;
+        flex: unset;
+        .featured__item{
+            margin: 10px 0!important;
+            height: calc(100% - 10px);
+            a{
+                background: $background;
+                display: block;
+            }
+            .featured__item__text{
+                .description{
+                    display: flex;
+                    text-align: left;
+                    padding: 5px 10px;
+                    font-size: 14px;
+                    height: 105px;
+                }
+                h5{
+                    color: $black-color;
+                    background: $background-2;
+                }
+                h6{
+                    padding: 10px 0;
+                    border-top: $border solid 1px;
+                    background: $background-2;
+                    span{
+                        background: $background-2;
+                    }
+                    >div{
+                        width: 100%;
+                    }
+                }
+            }
+            .featured__item__pic {
+                width: 200px;
+                height: 200px;
+                float: left;
+            }
         }
     }
 }
@@ -306,7 +350,7 @@
 
         &:hover {
 
-            a {
+            span {
                 background: $primary-color;
                 border-color: $primary-color;
 
@@ -317,7 +361,7 @@
             }
         }
 
-        a {
+        span {
             font-size: 16px;
             color: $normal-color;
             height: 40px;

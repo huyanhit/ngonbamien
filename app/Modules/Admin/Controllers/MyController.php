@@ -19,6 +19,9 @@ class MyController extends BaseController
     const CODE        = 'code';
     const TEXT        = 'text';
 
+    const HIDDEN      = 'hidden';
+    const SLUG        = 'slug';
+
     const NUMBER      = 'number';
     const HAS_MANY    = 'has_many';
     const HAS_PIVOT   = 'has_pivot';

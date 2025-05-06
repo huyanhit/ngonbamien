@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <!-- Hero Section Begin -->
-    <section class="hero">
+    <section class="hero background margin_15">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -57,12 +57,14 @@
                     <div class="position-relative">
                         <div class="nivo-slider">
                             <div class="slider-wrapper theme-default">
-                                <div id="slider" class="nivoSlider">
+                                <div id="slider" class="nivoSlider" >
                                     @foreach ($sliders as $item)
-                                        <img src="{{$item->image->uri}}"
+                                        <a href="{{$item->url}}">
+                                            <img src="{{$item->image->uri}}"
                                              data-thumb="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}"
                                              alt="{{$item->title}}"
                                              title="#caption-{{$item->image_id}}"/>
+                                        </a>
                                     @endforeach
                                 </div>
                                 @foreach ($sliders as $item)
@@ -78,7 +80,7 @@
     <!-- Hero Section End -->
 
     <!-- Categories Section Begin -->
-    <section class="categories">
+    <section class="categories background margin_15">
         <div class="container">
             <div class="row">
                 <div class="categories__slider owl-carousel">
@@ -98,7 +100,7 @@
     <!-- Categories Section End -->
 
     <!-- Featured Section Begin -->
-    <section class="featured spad">
+    <section class="featured background margin_15">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -121,7 +123,7 @@
                         {{$item->is_new? 'new': ''}}
                         {{$item->is_hot? 'hot': ''}}
                         {{$item->is_promotion? 'promotion': ''}} ">
-                        <x-product-item :item="$item"/>
+                        <x-product-item :item="$item" />
                     </div>
                 @endforeach
             </div>
@@ -130,8 +132,8 @@
     <!-- Featured Section End -->
 
     <!-- Blog Section Begin -->
-    <section class="from-blog spad">
-        <div class="container">
+    <section class="from-blog background margin_15">
+        <div class="container" >
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title from-blog__title">
@@ -140,58 +142,32 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic">
-                            <img src="img/blog/blog-1.jpg" alt="">
-                        </div>
-                        <div class="blog__item__text">
-                            <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
-                            </ul>
-                            <h5><a href="#">Cooking tips make cooking simple</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic">
-                            <img src="img/blog/blog-2.jpg" alt="">
-                        </div>
-                        <div class="blog__item__text">
-                            <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
-                            </ul>
-                            <h5><a href="#">6 ways to prepare breakfast for 30</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                @foreach ($posts as $item)
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="blog__item">
+                            <a class="blog__item__pic" href="{{Request::root()}}/noi-dung/{{$item->slug}}">
+                                <img src="{{$item->image->uri?? ''}}" alt="{{$item->title}}">
+                            </a>
+                            <div class="blog__item__text">
+                                <ul>
+                                    <li><i class="fa fa-comment"></i> {{$item->view?? 0}} </li>
+                                    <li><i class="fa fa-calendar-o"></i> {{\Illuminate\Support\Carbon::parse($item->updated_at)->fromNow()}} </li>
+                                </ul>
+                                <h5><a href="{{Request::root()}}/noi-dung/{{$item->slug}}">
+                                        {{$item->title}}</a>
+                                </h5>
+                                <p>{{$item->description}}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic">
-                            <img src="img/blog/blog-3.jpg" alt="">
-                        </div>
-                        <div class="blog__item__text">
-                            <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
-                            </ul>
-                            <h5><a href="#">Visit the clean farm in the US</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
     <!-- Blog Section End -->
 
     <!-- Banner Begin -->
-    <div class="banner">
+    <div class="banner background margin_15">
         <div class="container">
             <div class="row">
                 @foreach ($banners as $item)
@@ -212,7 +188,7 @@
     <!-- Banner End -->
 
     <!-- Latest Product Section Begin -->
-    <section class="latest-product spad">
+    <section class="latest-product background margin_15">
         <div class="container">
             <div class="row">
                 @foreach ($post_categories as $item)
@@ -224,7 +200,7 @@
                                     @if($key%2 == 0) <div class="latest-prdouct__slider__item"> @endif
                                         <a href="./noi-dung/{{Str::slug($post->title)}}" class="latest-product__item">
                                             <div class="latest-product__item__pic">
-                                                <img src="{{ $post->image->uri }}" alt="{{ $post->title }}">
+                                                <img src="{{ $post->image->uri?? '' }}" alt="{{ $post->title }}">
                                             </div>
                                             <div class="latest-product__item__text">
                                                 <h6 class="text-truncate">{{$post->title}}</h6>

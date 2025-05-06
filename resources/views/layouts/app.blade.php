@@ -24,7 +24,7 @@
 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
+        <link href="{{Request::root()}}/css/lightbox.min.css" rel="stylesheet">
         <!-- Google tag (gtag.js) -->
         @if(isset($sites->analytic))
         <script async src="https://www.googletagmanager.com/gtag/js?id={{$sites->analytic}}"></script>
@@ -56,14 +56,17 @@
             </div>
             <script src="https://sp.zalo.me/plugins/sdk.js"> </script>
         @endif
-        <!-- Js Plugins -->
-        <script src="{{Request::root()}}/js/jquery.min.js" ></script>
-        <script src="{{Request::root()}}/js/bootstrap.min.js" ></script>
-        <script src="{{Request::root()}}/js/jquery.nivo.slider.js"></script>
-        <script src="{{Request::root()}}/js/jquery.nice-select.min.js"></script>
-        <script src="{{Request::root()}}/js/jquery-ui.min.js"></script>
-        <script src="{{Request::root()}}/js/jquery.slicknav.js"></script>
-        <script src="{{Request::root()}}/js/mixitup.min.js"></script>
-        <script src="{{Request::root()}}/js/owl.carousel.min.js"></script>
     </body>
+
+    <!-- Js Plugins -->
+    <script src="{{Request::root()}}/js/jquery.min.js" ></script>
+    <script src="{{Request::root()}}/js/popper.min.js"></script>
+    <script src="{{Request::root()}}/js/bootstrap.min.js" ></script>
+    <script src="{{Request::root()}}/js/jquery.nivo.slider.js"></script>
+    <script src="{{Request::root()}}/js/jquery.nice-select.min.js"></script>
+    <script src="{{Request::root()}}/js/jquery-ui.min.js"></script>
+    <script src="{{Request::root()}}/js/jquery.slicknav.js"></script>
+    <script src="{{Request::root()}}/js/mixitup.min.js"></script>
+    <script src="{{Request::root()}}/js/owl.carousel.min.js"></script>
+    <script src="{{Request::root()}}/js/lightbox.min.js" ></script>
 </html>

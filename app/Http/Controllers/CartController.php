@@ -40,22 +40,35 @@ class CartController extends Controller
     public function store(CartAddRequest $request):JsonResponse {
         $product = Product::where('active', 1)->find($request->id);
         if(!empty($product)){
-            $optionChoose = [];
-            if(isset($request->options)){
-                $optionChoose   = $product->product_option->firstWhere('id', $request->options['id'])->toArray();
-                $product->price = $optionChoose['price'];
+            if(isset($request->option)) {
+                foreach ($product->product_option as $option) {
+                    if ($request->option == $option->id && $request->quantity <= $option->quantity) {
+                        $this->cart->addItem([
+                            'id'       => $product->id,
+                            'title'    => empty($product->title) ? 'No name' : $product->title,
+                            'price'    => $option->price,
+                            'quantity' => $request->quantity,
+                            'options'  => $request->option,
+                            'extra_info' => [
+                                'link' => route('san-pham', $product->slug),
+                                'image_id' => $product->image_id,
+                            ],
+                        ]);
+                    }
+                }
+            }else if($request->quantity <= $product->product_option[0]->quantity){
+                $this->cart->addItem([
+                    'id'       => $product->id,
+                    'title'    => empty($product->title) ? 'No name' : $product->title,
+                    'price'    => $product->product_option[0]->price,
+                    'options'  => $product->product_option[0]->id,
+                    'quantity' => $request->quantity,
+                    'extra_info' => [
+                        'link' => route('san-pham', $product->slug),
+                        'image_id' => $product->image_id,
+                    ],
+                ]);
             }
-            $this->cart->addItem([
-                'id'       => $product->id,
-                'title'    => empty($product->title)? 'No name': $product->title,
-                'price'    => $product->price,
-                'quantity' => $request->quantity,
-                'options'  => $optionChoose,
-                'extra_info' =>  [
-                    'link'  => route('san-pham',Str::slug($product->title).'-'.$product->id),
-                    'image_id'  => $product->image_id,
-                ],
-            ]);
         }
 
         return response()->json($this->cart->getDetails());

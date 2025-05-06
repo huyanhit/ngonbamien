@@ -1,14 +1,3 @@
-/*  ---------------------------------------------------
-    Template Name: Ogani
-    Description:  Ogani eCommerce  HTML Template
-    Author: Colorlib
-    Author URI: https://colorlib.com
-    Version: 1.0
-    Created: Colorlib
----------------------------------------------------------  */
-
-'use strict';
-
 const scroll = document.getElementById("scroll-top");
 const VND = new Intl.NumberFormat('vi-VN', {
     style: 'currency',
@@ -47,7 +36,6 @@ function myBox() {
     if(contain !== null && box  !== null){
         const top = contain.offsetTop - 100;
         const bot = contain.offsetHeight + contain.offsetTop - box.offsetHeight - 100;
-
         if (window.pageYOffset > top && window.pageYOffset < bot) {
             contain.classList.add("top");
             contain.classList.remove("bot");
@@ -266,29 +254,46 @@ function flyToElement(flyer, flyingTo) {
     $('body').append($(flyerClone));
     var gotoX = $(flyingTo).offset().left + ($(flyingTo).width() / 2) - ($(flyer).width()/divider)/2;
     var gotoY = $(flyingTo).offset().top + ($(flyingTo).height() / 2) - ($(flyer).height()/divider)/2;
-
     $(flyerClone).animate({
-            opacity: 0.4,
-            left: gotoX,
-            top: gotoY,
-            width: $(flyer).width()/divider,
-            height: $(flyer).height()/divider
-        }, 700,
-        function () {
-            $(flyingTo).fadeOut('fast', function () {
-                $(flyingTo).fadeIn('fast', function () {
-                    $(flyerClone).fadeOut('fast', function () {
-                        $(flyerClone).remove();
-                    });
+        opacity: 0.4,
+        left: gotoX,
+        top: gotoY,
+        width: $(flyer).width()/divider,
+        height: $(flyer).height()/divider
+    }, 700,
+    function () {
+        $(flyingTo).fadeOut('fast', function () {
+            $(flyingTo).fadeIn('fast', function () {
+                $(flyerClone).fadeOut('fast', function () {
+                    $(flyerClone).remove();
                 });
             });
         });
+    });
 }
 
-(function ($) {
+$(document).ready(function () {
+    $(document).on('click', '#close-cart', function () {
+        $("[data-toggle=\"popover\"]").popover('hide')
+    })
+    $("[data-toggle=popover]").popover({
+        html: true,
+        container: '.cart-container',
+        offset: '0 -100px',
+        content: function () {
+            return getCart("my-cart");
+        }
+    });
+    $("[data-toggle=popover-compare]").popover({
+        html: true,
+        container: '.search-compare',
+        content: function () {
+            return getProductCompare("my-cart");
+        }
+    });
     $('#slider').nivoSlider({
         effect: 'fade', // Specify sets like: 'fold,fade,sliceDown'
-        animSpeed: 500, // Slide transition speed
+        animSpeed: 2000, // Slide transition speed
         pauseTime: 4000, // How long each slide will show
         startSlide: 0, // Set starting Slide (0 index)
         directionNav: false, // Next & Prev navigation
@@ -296,11 +301,80 @@ function flyToElement(flyer, flyingTo) {
         controlNavThumbs: false, // Use thumbnails for Control Nav
         pauseOnHover: false // Stop animation while hovering
     });
-
-    $('.add-cart').on('click', function() {
-        var itemImg = $(this).parents('.product_item').find('img').eq(0);
-        flyToElement($(itemImg), $('.cart_anchor'));
+    $('.service-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        dots: false,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 4
+            }
+        }
+    })
+    $('.product-carousel').owlCarousel({
+        loop: true,
+        margin: 0,
+        dots: false,
+        responsive: {
+            0:{
+                items:1,
+            },
+            900:{
+                items:2,
+            },
+            1000:{
+                items:3,
+            },
+            1200:{
+                items:5,
+            }
+        }
+    })
+    $('.customer-carousel').owlCarousel({
+        loop: true,
+        dots: false,
+        margin: 0,
+        responsive: {
+            0: {
+                items: 2
+            },
+            600: {
+                items: 4
+            },
+            1000: {
+                items: 6
+            }
+        }
+    })
+    $('.select_price_option').click(function () {
+        let id = $(this).attr('data-value');
+        $('.select_price_option').removeClass('active');
+        $('.product_detail_option').removeClass('active');
+        $('.product_detail_'+id).addClass('active');
+        $('.select_price_'+id).addClass('active');
+    })
+    $('.filter__option_ul').on('click', function() {
+        $(this).addClass('active');
+        $('.filter__list').addClass('active');
+        $('.filter__option_grid').removeClass('active');
     });
+    $('.filter__option_grid').on('click', function() {
+        $(this).addClass('active');
+        $('.filter__list').removeClass('active');
+        $('.filter__option_ul').removeClass('active');
+    });
+    $('.add_cart').on('click', function(e) {
+        e.preventDefault();
+        addCart(this, {id:$(this).attr('data-value')});
+    });
+})
+$(document).ready(function () {
     /*------------------
         Preloader
     --------------------*/
@@ -508,5 +582,4 @@ function flyToElement(flyer, flyingTo) {
         }
         $button.parent().find('input').val(newVal);
     });
-
-})(jQuery);
+})

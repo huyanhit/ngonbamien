@@ -159,7 +159,7 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a data-toggle="popover" data-bs-placement="bottom"><i class="fa fa-shopping-bag"></i> <span id="cart-number">3</span></a></li>
                         </ul>
                         <div class="header__cart__price"><span class="text-danger">150.000</span> (vnd)</div>
                     </div>
@@ -170,6 +170,7 @@
             </div>
         </div>
     </div>
+    <div class="cart-container relative w-50"></div>
 </header>
 <!-- Header Section End -->
 <script>

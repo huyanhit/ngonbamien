@@ -2,6 +2,8 @@
 
 namespace App\Filters;
 
+use App\Models\ProductOption;
+
 class ProductFilter extends QueryFilter
 {
     protected $filterable = [
