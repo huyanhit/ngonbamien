@@ -310,7 +310,10 @@
 }
 
 .product__item__price {
+    height: 45px;
     width: 100%;
+    overflow: hidden;
+    transition: .3s;
     .price {
         font-size: 18px;
     }
@@ -328,5 +331,24 @@
     }
     .price-title{
         font-size: 0;
+    }
+    &::before{
+        content: "\f0c9";
+        font-family: 'FontAwesome';
+        top: 10px;
+        position: relative;
+        color: $primary-color;
+    }
+}
+.cart-container{
+    .popover{
+        min-width: 900px;
+        margin-right: 10%;
+    }
+}
+.my-cart{
+    img{
+        width: 60px;
+        border: 1px #ccc solid;
     }
 }

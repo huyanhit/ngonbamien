@@ -59,28 +59,37 @@
                             @foreach ($discount_products as $item)
                                 <div class="col-lg-4">
                                     <div class="product__discount__item" >
-                                        <a href="{{Request::root()}}/san-pham/{{$item->slug}}" >
-                                            <div class="product__discount__item__pic set-bg"
-                                                data-setbg="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->uri??'')}}">
+                                        <div>
+                                            <div class="featured__item__pic">
+                                                <a href="{{Request::root()}}/san-pham/{{$item->slug}}" >
+                                                    <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->uri??'')}}"
+                                                     alt="{{$item->title}}">
+                                                </a>
                                                 <div class="product__discount__percent">-{{$item->discount}}%</div>
                                                 <ul class="product__item__pic__hover">
                                                     <li><span title="Yêu thích"><i class="fa fa-heart"></i></span></li>
                                                     <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                    <li><span title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></span></li>
+                                                    <li>
+                                                        <span title="Thêm vào giỏ" class="add_cart" data-value="{{$item->id}}"><i class="fa fa-shopping-cart"></i></span>
+                                                    </li>
+                                                    
                                                 </ul>
                                             </div>
                                             <div class="product__discount__item__text">
-                                                <h5><b>{{$item->title?? 'Không tên'}}</b>
-                                                    @if(!empty($item->option_title))
-                                                        <span class="ml-1 text-muted text-sm" >({{ $item->option_title }})</span>
-                                                    @endif
+                                                <h5>
+                                                    <a href="{{Request::root()}}/san-pham/{{$item->slug}}" >
+                                                        <b>{{$item->title?? 'Không tên'}}</b>
+                                                        @if(!empty($item->option_title))
+                                                            <span class="ml-1 text-muted text-sm" >({{ $item->option_title }})</span>
+                                                        @endif
+                                                    </a>
                                                 </h5>
                                                 <div class="product__item__price text-danger">
                                                     {{ number_format($item->price - ($item->price * $item->discount /100), 0, ',', '.') }}đ
                                                     <span class="text-muted"> {{ number_format($item->price, 0, ',', '.') }}đ</span>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach

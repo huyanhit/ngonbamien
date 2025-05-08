@@ -20,7 +20,7 @@
 
 .product__discount__item {
     &:hover {
-        .product__discount__item__pic {
+        .featured__item__pic {
             .product__item__pic__hover {
                 bottom: 20px;
             }
@@ -28,7 +28,7 @@
     }
 }
 
-.product__discount__item__pic {
+.featured__item__pic {
     height: 270px;
     position: relative;
     overflow: hidden;

@@ -63,7 +63,6 @@
   form {
     position: relative;
     margin-bottom: 20px;
-
     input {
       width: 100%;
       font-size: 16px;
@@ -71,7 +70,6 @@
       color: $normal-color;
       height: 46px;
       border: 1px solid $border;
-      margin-top: 5px;
 
       &::placeholder {
         color: $normal-color;

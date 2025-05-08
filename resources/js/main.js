@@ -6,6 +6,7 @@ const VND = new Intl.NumberFormat('vi-VN', {
 const cartData = {
     id:0,
     quantity: 1,
+    option_id: null,
     options: {}
 }
 let cartDom = null;
@@ -50,15 +51,17 @@ function myBox() {
 }
 
 function mySticky() {
-    const header = document.getElementById("header-fixed");
-    if(header){
-        const sticky = header.offsetTop;
-        if (window.pageYOffset > sticky) {
-            header.classList.add("sticky");
-        } else {
-            header.classList.remove("sticky");
+    let header = document.getElementById("header__bot");
+    document.onscroll = function() {
+        if (header !== null) {
+            let sticky = header.offsetTop + 100;
+            if (window.pageYOffset > sticky) {
+                header.classList.add("sticky");
+            } else {
+                header.classList.remove("sticky");
+            }
         }
-    }
+    };
 }
 
 function scrollFunction() {
@@ -99,12 +102,14 @@ function axGetCart(){
 function getCart() {
     axGetCart();
     return '<div> ' +
-        '<div class="text-lg font-bold text-center mb-2">Giỏ hàng</div>' +
+        '<h4 class="text-center mb-2 text-uppercase"><b>Giỏ hàng</b>' +
+        '<a id="close-cart" class="btn btn-sm btn-danger pull-right text-white"><i class="fa fa-close"></i></a>' +
+        '</div>' +
         '<div class="my-cart">Loading...</div>' +
-        '<div class="text-right">' +
-        '<a id="close-cart" class="btn px-2 mr-2 rounded-2 bg-cyan-500 text-white hover:bg-cyan-700 text-sm">' +
-        '<i class="bi bi-x-circle"></i> Đóng </a>' +
-        '<a class="btn px-2 rounded-2 bg-red-500 text-white hover:bg-red-600 text-sm" href="/dat-hang">' +
+        '<div class="text-center mb-2">' +
+        '<a href="/gio-hang" class="btn px-3 btn-info text-uppercase text-white mr-2">' +
+        '<i class="bi bi-x-circle"></i> Nhập mã giảm giá </a>' +
+        '<a class="btn px-3 btn-success text-uppercase" href="/dat-hang">' +
         '<i class="bi bi-cart"></i> Đặt hàng </a>' +
         '</div>' +
         '</div>';
@@ -112,51 +117,65 @@ function getCart() {
 
 function updateCartDom(){
     let html =
-        '<table class="table border-1">'+
-        '<tr class="bg-cyan-700 text-white">'+
-        '<th width="20%" class="text-center">Hinh ảnh</th>' +
-        '<th width="30%">Tên sản phẩm</th>' +
-        '<th width="10%" class="text-center">Số lượng</th>' +
+        '<table class="table bg-light">'+
+        '<tr class="background_pr text-white">'+
+        '<th width="10%" class="text-center">Hình ảnh</th>' +
+        '<th width="20%">Tên sản phẩm</th>' +
         '<th width="10%" class="text-center">Giá</th>' +
-        '<th width="20%" class="text-center">Lựa chọn</th>' +
+        '<th width="15%" class="text-center">Phân loại</th>' +
+        '<th width="10%" class="text-center">Số lượng</th>' +
+        '<th width="10%" class="text-center">Tổng cộng</th>' +
         '<th width="10%" class="text-center">Xoá</th>' +
         '</tr>';
     let items = cartDom.items;
-    for (const index in items) {
-        let optionHtml = '';
-        let option = items[index].options;
-        if(option.title){
-            optionHtml = option.group_title +': '+ option.title
+    if(Object.keys(items).length > 0){
+        for (const index in items) {
+            let optionHtml = '';
+            let option     = items[index].options;
+            if(option.title){
+                optionHtml = option.title
+            }
+            html +=
+                '<tr class="align-middle">'+
+                '<td class="text-center"><a href="'+items[index].extra_info.link+'">' +
+                '<img alt="'+items[index].title+'" onerror="this.src=\'/images/no-image.png\'" ' +
+                'src="/admin/get-image-thumbnail/'+items[index].extra_info.image_id+'"/><a></td>' +
+                '<td class="align-middle"><a class="d-block" href="'+items[index].extra_info.link+'">'+ items[index].title +'</a></td>' +
+                '<td class="text-center align-middle text-danger">'+ VND.format(items[index].price) +' </td>' +
+                '<td class="text-center align-middle">'+ optionHtml +'</td>' +
+                '<td class="text-center align-middle"><input class="form-control update_quantity"' +
+                'data-value="'+items[index].hash+'" type="number" value="'+ items[index].quantity +'"></td>' +
+                '<td class="text-center align-middle">'+ VND.format(items[index].price * items[index].quantity) + '</td>' +
+                '<td class="text-center align-middle"><a class="btn btn-outline-danger btn-sm text-danger remove-cart" ' +
+                'data-value="'+items[index].hash+'">' +
+                '<i class="fa fa-minus"></i></a></td>'+
+                '</tr>'
         }
+    }else{
         html +=
-            '<tr class="align-middle">'+
-            '<td class="text-center"><a href="'+items[index].extra_info.link+'"><img class="inline-block w-[100px]" alt="'+items[index].title+'" ' +
-            'onerror="this.src=\'/images/no-image.png\'" ' +
-            'src="/admin/get-image-thumbnail/'+items[index].extra_info.image_id+'"/><a></td>' +
-            '<td><a class="text-cyan-600" href="'+items[index].extra_info.link+'">'+ items[index].title +'<a></td>' +
-            '<td class="text-center"><input onblur="updateCart(this, \''+items[index].hash+'\')" type="number" value="'+ items[index].quantity +'"></td>' +
-            '<td class="text-center">'+ VND.format(items[index].price) +' </td>' +
-            '<td class="text-center">'+ optionHtml +'</td>' +
-            '<td class="text-center"><a class="flex-auto cursor-pointer" ' +
-            'onclick="removeCart(\''+items[index].hash+'\',\''+items[index].title+'\')">' +
-            '<i class="bi bi-x-circle text-red-600"></i> </a></td>'+
-            '</tr>'
+        '<tr class="align-middle">'+
+            '<td class="text-center p-2" colspan="7">Không có sản phẩm.</td>'+
+        '</tr>';
     }
+    
     html +=
-        '<tr class="font-bold bg-cyan-700 text-white">'+
-        '<td class="text-center"> Tổng cộng </td>' +
+        '<tr class="font-bold background_pr text-white">'+
+        '<td class="text-left" colspan="2"><h4>Tổng cộng </h4></td>' +
         '<td></td>' +
-        '<td class="text-center">'+ cartDom.quantities_sum +'</td>' +
-        '<td class="text-center"><span class="text-red-600">'+ VND.format(cartDom.subtotal) +'</span></td>' +
         '<td></td>' +
+        '<td class="text-center"><h4 class="text-bold">'+ cartDom.quantities_sum +'</h4></td>' +
+        '<td class="text-center"><h4 class="text-bold">'+ VND.format(cartDom.subtotal) +'</h4></td>' +
         '<td></td>' +
         '</tr>';
 
     html += '</table>';
 
+    let coupon = $('#coupon-down').attr('data-value');
+
     $('.my-cart').html(html);
     $('#cart-number').html(cartDom.quantities_sum);
-    $('#total-pill').html(VND.format(cartDom.subtotal - parseInt($('#coupon-down').text())));
+    $('#coupon-down').html('-' + VND.format(coupon));
+    $('#total-pill').html(VND.format(cartDom.total - parseInt(coupon)));
 }
 
 function showNavigation() {
@@ -204,8 +223,8 @@ function updateCart(e, id) {
     });
 }
 
-function removeCart(id, title){
-    if(confirm('Xóa sản phẩm '+ title +' khỏi giỏ hàng?')){
+function removeCart(id){
+    if(confirm('Xóa sản phẩm khỏi giỏ hàng?')){
         $.ajax({
             type: 'DELETE',
             url: '/cart/'+id,
@@ -227,7 +246,8 @@ function updateCartOptions(elem, options) {
 }
 
 function addCart(e, item, link = ''){
-    cartData.id =  item.id
+    cartData.id        = item.id
+    cartData.option_id = item.option
     let html = $(e).html();
     $(e).html('<div class="spinner-border h-[15px] w-[15px]"></div>');
     $.ajax({
@@ -242,18 +262,20 @@ function addCart(e, item, link = ''){
         if(link !== ''){
             window.location.href = '/'+link;
         }
-    }).error(function(){
+    }).fail(function(){
         $(e).html(html);
     });
 }
 
+// take in other js page
 function flyToElement(flyer, flyingTo) {
-    var divider = 6;
-    var flyerClone = $(flyer).clone();
+    let divider = 6;
+    let flyerClone = $(flyer).clone();
     $(flyerClone).css({position: 'absolute', top: $(flyer).offset().top + "px", left: $(flyer).offset().left + "px", opacity: 1, 'z-index': 1000});
     $('body').append($(flyerClone));
-    var gotoX = $(flyingTo).offset().left + ($(flyingTo).width() / 2) - ($(flyer).width()/divider)/2;
-    var gotoY = $(flyingTo).offset().top + ($(flyingTo).height() / 2) - ($(flyer).height()/divider)/2;
+    let gotoX = $(flyingTo).offset().left + ($(flyingTo).width() / 2) - ($(flyer).width()/divider)/2;
+    let gotoY = $(flyingTo).offset().top + ($(flyingTo).height() / 2) - ($(flyer).height()/divider)/2;
+
     $(flyerClone).animate({
         opacity: 0.4,
         left: gotoX,
@@ -276,10 +298,11 @@ $(document).ready(function () {
     $(document).on('click', '#close-cart', function () {
         $("[data-toggle=\"popover\"]").popover('hide')
     })
+
     $("[data-toggle=popover]").popover({
         html: true,
         container: '.cart-container',
-        offset: '0 -100px',
+        offset: '0 0',
         content: function () {
             return getCart("my-cart");
         }
@@ -371,8 +394,38 @@ $(document).ready(function () {
     });
     $('.add_cart').on('click', function(e) {
         e.preventDefault();
-        addCart(this, {id:$(this).attr('data-value')});
+        let itemImg = $(this).parents('.featured__item__pic').find('img').eq(0);
+        flyToElement($(itemImg), $('.cart_anchor'));
+        addCart(this, {id:$(this).attr('data-value'), option:$(this).attr('option-value')});
     });
+    $('.cart-container').on('click', '.remove-cart', function(e) {
+        e.preventDefault();
+        removeCart($(this).attr('data-value'));
+    });
+    $('.cart-container').on('blur', '.update_quantity', function(e) {
+        e.preventDefault();
+        updateCart(this, $(this).attr('data-value'));
+    });
+    $('.product__item__price').on('click', function(e) {
+        $(this).parent().find('.product__item__price').addClass('hide');
+        $(this).parents('.featured__item').find('.add_cart').attr('option-value', $(this).attr('data-value'));
+        $(this).removeClass('hide')
+    });
+    $('#pay_cod').click(function () {
+        $('#pay_store_form').hide();
+        $('#pay_bank_form').hide();
+        $('#pay_cod_form').show();
+    })
+    $('#pay_store').click(function () {
+        $('#pay_cod_form').hide();
+        $('#pay_bank_form').hide();
+        $('#pay_store_form').show();
+    })
+    $('#pay_bank').click(function () {
+        $('#pay_cod_form').hide();
+        $('#pay_store_form').hide();
+        $('#pay_bank_form').show();
+    })
 })
 $(document).ready(function () {
     /*------------------
@@ -399,7 +452,7 @@ $(document).ready(function () {
         Background Set
     --------------------*/
     $('.set-bg').each(function () {
-        var bg = $(this).data('setbg');
+        let bg = $(this).data('setbg');
         $(this).css('background-image', 'url(' + bg + ')');
     });
 

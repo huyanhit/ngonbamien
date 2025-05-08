@@ -159,7 +159,12 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a data-toggle="popover" data-bs-placement="bottom"><i class="fa fa-shopping-bag"></i> <span id="cart-number">3</span></a></li>
+                            <li>
+                                <a data-toggle="popover" data-placement="bottom">
+                                    <i class="fa fa-shopping-bag cart_anchor"></i>
+                                    <span id="cart-number">3</span>
+                                </a>
+                            </li>
                         </ul>
                         <div class="header__cart__price"><span class="text-danger">150.000</span> (vnd)</div>
                     </div>
@@ -170,19 +175,5 @@
             </div>
         </div>
     </div>
-    <div class="cart-container relative w-50"></div>
+    <div class="cart-container"></div>
 </header>
-<!-- Header Section End -->
-<script>
-    var header = document.getElementById("header__bot");
-    document.onscroll = function() {
-        if (header !== null) {
-            let sticky = header.offsetTop;
-            if (window.pageYOffset > sticky) {
-                header.classList.add("sticky");
-            } else {
-                header.classList.remove("sticky");
-            }
-        }
-    };
-</script>

@@ -26,7 +26,7 @@ class Order extends Model
 
     public function products() :BelongsToMany
     {
-        return $this->belongsToMany(Product::class, 'order_product', 'order_id', 'product_id')
+        return $this->belongsToMany(Product::class, 'order_products', 'order_id', 'product_id')
             ->withPivot(['quantity', 'options', 'price']);
     }
 
@@ -34,7 +34,7 @@ class Order extends Model
     {
         return Carbon::parse($this->created_at)->addDays(3);
     }
-    
+
     protected function serializeDate(\DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

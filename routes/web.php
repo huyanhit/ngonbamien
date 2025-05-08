@@ -51,12 +51,14 @@ Route::get('/san-pham/{slug}', [ProductController::class, 'show'])->name('san-ph
 Route::get('/bai-viet/{slug?}', [PostController::class, 'index'])->name('bai-viet');
 Route::get('/noi-dung/{slug}', [PostController::class, 'show'])->name('noi-dung');
 Route::get('/vung-mien/{slug}', [ProducerController::class, 'show'])->name('vung-mien');
-
+Route::get('/gio-hang', [CartController::class, 'page'])->name('gio-hang');
+Route::post('/gio-hang', [CartController::class, 'coupon'])->name('coupon');
 Route::get('/dat-hang', [CheckController::class, 'index'])->name('dat-hang');
-Route::get('/tra-cuu-don-hang', [OrderController::class, 'search'])->name('tra-cuu-don-hang');
+Route::post('/mua-hang', [OrderController::class, 'store'])->name('mua-hang');
 Route::get('/thanh-toan/{order}', [OrderController::class, 'show'])->name('thanh-toan');
 Route::put('/thanh-toan/{order}', [OrderController::class, 'update'])->name('tat-toan');
-Route::post('/mua-hang', [OrderController::class, 'store'])->name('mua-hang');
+
+Route::get('/tra-cuu-don-hang', [OrderController::class, 'search'])->name('tra-cuu-don-hang');
 Route::get('/tim-kiem',   [ProductController::class, 'search'])->name('tim-kiem');
 Route::get('/dich-vu/{service}', [ServiceController::class, 'show'])->name('dich-vu');
 Route::get('/hang-san-xuat/{service}', [ProducerController::class, 'show'])->name('hang-san-xuat');

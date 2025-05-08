@@ -7,9 +7,9 @@ use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\OrderProduct;
-use App\Models\OrderStatus;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Jackiedo\Cart\Cart;
 
 class OrderController extends Controller
@@ -41,23 +41,23 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         DB::beginTransaction();
-
         try {
+            $cart = $this->cart->getDetails();
+            if($cart->isEmpty()){
+                return view('pages.checkout', array_merge($this->getDataLayout(), []))
+                    ->withErrors('Lỗi! Chưa có sản phẩm trong giỏ hàng.');
+            }
             $order = Order::create([
                 'sex'       => $request->sex,
                 'name'      => $request->name,
                 'phone'     => $request->phone,
                 'address'   => $request->address,
                 'note'      => $request->note,
-                'coupon'    => $request->coupon,
+                'total'     => $cart->total,
+                'ship_price'  => $request->ship_price?? 0,
                 'order_status_id' => 1
             ]);
-
-            $items = $this->cart->getDetails()->items;
-            if($items->isEmpty()){
-                return view('check', array_merge($this->getDataLayout(), []))->withErrors('Lỗi! Chưa có sản phẩm trong giỏ hàng.');
-            }
-            foreach ($items as $item){
+            foreach ($cart->items as $item){
                 OrderProduct::create([
                     'order_id'   => $order->id,
                     'product_id' => $item->id,
@@ -66,12 +66,12 @@ class OrderController extends Controller
                     'options'    => json_encode($item->options),
                 ]);
             }
-
             DB::commit();
             $this->cart->clearItems();
+            Session::forget('coupon');
         }catch (\Exception $ex){
             DB::rollBack();
-            return view('check', array_merge($this->getDataLayout(), []))->withErrors('Lỗi! cập nhật thông tin.');
+            return view('pages.checkout', array_merge($this->getDataLayout(), []))->withErrors('Lỗi! cập nhật thông tin.');
         }
 
         return redirect('/thanh-toan/'.$order->id);
@@ -84,7 +84,7 @@ class OrderController extends Controller
     {
         if(!$order->payment){
             $order->price = $order->products->sum('price');
-            return view('pay', array_merge($this->getDataLayout(), [
+            return view('pages.pay', array_merge($this->getDataLayout(), [
                 'order' => $order,
             ]));
         }else{

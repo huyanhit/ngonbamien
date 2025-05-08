@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('price')->default(0);
             $table->string('quantity')->default(0);
             $table->string('options')->nullable();
-            $table->string('extra_options')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

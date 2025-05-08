@@ -31,19 +31,7 @@
                 <form action="{{route('mua-hang')}}" method="POST" class="py-2 px-3 border-1 my-2 bg-gray-100">
                     {{ csrf_field() }}
                     <input type="hidden" name="coupon" value=""/>
-                    <div class="form-group mt-2">
-                        <span class="mr-2">
-                            <input class="relative -top-[1px]" {{request()->sex == 1?'checked':''}} type="radio" checked value="1" name="sex" id="male"/>
-                            <label class="ml-1" for="male">Anh</label>
-                        </span>
-                        <span>
-                            <input class="relative -top-[1px]" {{request()->sex == 2?'checked':''}} type="radio" value="2" name="sex" id="gender" />
-                            <label class="ml-1" for="gender">Chị</label>
-                        </span>
-                        @if ($errors->has('sex'))
-                            <span class="text-danger">{{ $errors->first('sex') }}</span>
-                        @endif
-                    </div>
+
                     <div class="form-group mt-2">
                         <label>Họ & Tên <span class="ml-1 text-red-600">*</span></label>
                         <input type="text" class="form-control" name="name" placeholder="Họ & Tên" value="{{request()->name}}" />

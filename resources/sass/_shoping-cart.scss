@@ -2,29 +2,25 @@
   Shop Cart
 -----------------------*/
 .shoping-cart {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .shoping__cart__table {
-    margin-bottom: 30px;
-
+    margin-bottom: 20px;
     table {
         width: 100%;
         text-align: center;
-
         thead {
-
             tr {
                 border-bottom: 1px solid $border;
             }
-
             th {
-                font-size: 20px;
+                font-size: 18px;
                 font-weight: 700;
-                color: $normal-color;
-                padding-bottom: 20px;
-
+                color: #fff;
+                padding: 10px 0;
+                text-transform: uppercase;
                 &.shoping__product {
                     text-align: left;
                 }
@@ -36,17 +32,17 @@
             tr {
 
                 td {
-                    padding-top: 30px;
-                    padding-bottom: 30px;
+                    padding-top: 15px;
+                    padding-bottom: 15px;
                     border-bottom: 1px solid $border;
-
                     &.shoping__cart__item {
-                        width: 630px;
+                        width: 430px;
                         text-align: left;
-
                         img {
                             display: inline-block;
                             margin-right: 25px;
+                            width: 70px;
+                            border: 1px $border solid;
                         }
 
                         h5 {
@@ -66,12 +62,11 @@
                         font-size: 18px;
                         color: $normal-color;
                         font-weight: 700;
-                        width: 110px;
+                        width: 150px;
                     }
 
                     &.shoping__cart__item__close {
                         text-align: right;
-
                         span {
                             font-size: 24px;
                             color: #b2b2b2;
@@ -81,7 +76,6 @@
 
                     &.shoping__cart__quantity {
                         width: 225px;
-
                         .pro-qty {
                             width: 120px;
                             height: 40px;
@@ -126,9 +120,10 @@
 
     h5 {
         font-size: 20px;
-        color: $normal-color;
+        color: #1c1c1c;
         font-weight: 700;
-        margin-bottom: 25px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
     }
 
     form {
@@ -139,7 +134,7 @@
             border: 1px solid #cccccc;
             font-size: 16px;
             color: #b2b2b2;
-            text-align: center;
+            padding-left: 30px;
             display: inline-block;
             margin-right: 15px;
 
@@ -149,30 +144,29 @@
         }
 
         button {
-            padding: 15px 30px 11px;
-            font-size: 12px;
-            letter-spacing: 4px;
-            background: $para-color;
+            padding: 10px 30px;
+            font-size: 18px;
+            letter-spacing: 2px;
+            background: #6f6f6f;
+            height: 47px;
+            font-family: monospace;
+            font-weight: 900;
         }
     }
 }
 
 .shoping__checkout {
     background: $background;
-    padding: 30px;
-    padding-top: 20px;
-    margin-top: 50px;
-
+    padding: 20px;
+    margin-top: 20px;
     h5 {
         color: $normal-color;
         font-weight: 700;
         font-size: 20px;
-        margin-bottom: 28px;
+        margin-bottom: 15px;
     }
-
     ul {
-        margin-bottom: 28px;
-
+        margin-bottom: 15px;
         li {
             font-size: 16px;
             color: $normal-color;
@@ -180,8 +174,8 @@
             list-style: none;
             overflow: hidden;
             border-bottom: 1px solid $border;
-            padding-bottom: 13px;
-            margin-bottom: 18px;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
 
             &:last-child {
                 padding-bottom: 0;
@@ -200,5 +194,6 @@
     .primary-btn {
         display: block;
         text-align: center;
+        font-size: 20px;
     }
 }

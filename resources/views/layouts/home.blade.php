@@ -42,7 +42,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-4 col-xl-2 text-right xl:text-left">
                             <a href="{{ route('home') }}" rel="trang chu" class="md:block hidden">
-                                <img class="py-2 max-h-[65px] inline-block" onerror="this.src='/images/logo.png'" src="{{route('get-image-thumbnail', $sites->image_id)}}">
+                                <img class="py-2 max-h-[65px] inline-block" onerror="this.src='/images/logo.png'" src="{{$sites->image}}">
                             </a>
                         </div>
                         <div class="col-sm-12 col-md-8 col-xl-5 flex">

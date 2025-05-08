@@ -17,10 +17,11 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
-            $table->text('note')->nullable();
             $table->integer('sex')->nullable();
             $table->integer('ship_type')->nullable();
+            $table->integer('total')->nullable();
             $table->string('coupon')->nullable();
+            $table->text('note')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
