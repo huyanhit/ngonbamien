@@ -106,7 +106,27 @@
                             </ul>
                         </div>
                         <div class="header__top__right__auth">
-                            <a href="#"><i class="fa fa-user"></i>Đăng nhập</a>
+                            <a class="btn btn-sm rounded-1 border text-center" data-placement="bottom" id="popover_notify">
+                                <span class="notify_count">1</span>
+                                <i class="fa fa-bell"></i></a>
+                            <div class="notify-container"></div>
+                        </div>
+                        <div class="dropdown header__top__right__auth">
+                            <a class="btn btn-sm rounded-1 border text-center dropdown-auth">
+                                <i class="fa fa-user"></i>
+                            </a>
+                            <div class="dropdown-menu auth-container text-center fw-bold">
+                                @if(auth()->id())
+                                    <h6 class="dropdown-header font-weight-bold py-3">Chào: {{auth()->user()->name}}</h6>
+                                    <a class="dropdown-item border-top p-2" href="pages-profile.html"><i class="fa fa-user text-muted fs-16 align-middle"></i> <span class="align-middle">Thông tin</span></a>
+                                    <a class="dropdown-item border-top p-2" href="apps-chat.html"><i class="fa fa-comments-o text-muted fs-16 align-middle"></i> <span class="align-middle">Tin nhắn</span></a>
+                                    <a class="dropdown-item border-top p-2" href="pages-faqs.html"><i class="fa fa-info-circle text-muted fs-16 align-middle"></i> <span class="align-middle">Trợ giúp</span></a>
+                                    <a class="dropdown-item border-top p-2" href="auth-lockscreen-basic.html"><i class="fa fa-cog text-muted fs-16 align-middle"></i> <span class="align-middle">Cài đặt</span></a>
+                                    <a class="dropdown-item border-top p-2" href="{{Request::root()}}/dang-xuat"><i class="fa fa-sign-out text-muted fs-16 align-middle"></i> <span class="align-middle">Đăng xuất</span></a>
+                                @else
+                                    <a class="dropdown-item border-top p-2" href="{{Request::root()}}/dang-nhap"><i class="fa fa-sign-in text-muted fs-16 align-middle"></i> <span class="align-middle">Đăng nhập</span></a>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -160,9 +180,9 @@
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                             <li>
-                                <a data-toggle="popover" data-placement="bottom">
+                                <a id="popover_cart" data-placement="bottom" href="javascript:void(0);">
                                     <i class="fa fa-shopping-bag cart_anchor"></i>
-                                    <span id="cart-number">3</span>
+                                    <span id="cart-number">0</span>
                                 </a>
                             </li>
                         </ul>

@@ -76,7 +76,7 @@
                                 <i class="bi bi-telephone mr-1 align-middle text-3xl xl:text-4xl"></i>
                                 <span class="inline-block text-xs align-middle w-[100px]">
                                     <span class="font-bold">Hotline bán hàng</span>
-                                    <a class="font-bold text-red-600 xl:text-lg lg:text-sm">{{ $sites->hotline }}</a>
+                                    <a class="font-bold text-red-600 xl:text-lg lg:text-sm" href="tel:{{$sites->hotline}}">{{ $sites->hotline }}</a>
                                 </span>
                             </span>
                             <span class="mr-2 flex-auto table-cell">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\CheckController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProducerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +31,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('artisan/{command}', function ($command){
     Artisan::call($command);
     return Artisan::output();
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dang-xuat', [AuthenticatedSessionController::class, 'destroy'])->name('auth.destroy');
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')
@@ -57,9 +67,10 @@ Route::get('/dat-hang', [CheckController::class, 'index'])->name('dat-hang');
 Route::post('/mua-hang', [OrderController::class, 'store'])->name('mua-hang');
 Route::get('/thanh-toan/{order}', [OrderController::class, 'show'])->name('thanh-toan');
 Route::put('/thanh-toan/{order}', [OrderController::class, 'update'])->name('tat-toan');
+Route::get('/favor', [ProductController::class, 'favor'])->name('yeu-thich');
 
 Route::get('/tra-cuu-don-hang', [OrderController::class, 'search'])->name('tra-cuu-don-hang');
-Route::get('/tim-kiem',   [ProductController::class, 'search'])->name('tim-kiem');
+Route::get('/tim-kiem',   [SearchController::class, 'search'])->name('tim-kiem');
 Route::get('/dich-vu/{service}', [ServiceController::class, 'show'])->name('dich-vu');
 Route::get('/hang-san-xuat/{service}', [ProducerController::class, 'show'])->name('hang-san-xuat');
 Route::get('/so-sanh/{product}/{product2?}', [ProductController::class, 'compare'])->name('so-sanh');
@@ -72,9 +83,4 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 

@@ -67,10 +67,12 @@
                             <span class="option_type text-muted"> Phân loại: </span>
                             <div class="form-check form-check-inline">
                                 @foreach ($product->product_option as $key => $item)
-                                    <a class="m-2 select_price_option btn btn-outline-dark rounded-pill select_price_{{$item->id}} {{$key === 0 ?'active':''}}"
-                                       data-value="{{$item->id}}">
-                                          {{$item->title}}
-                                    </a>
+                                    @if (!empty($item->title))
+                                        <a class="m-2 select_price_option btn btn-outline-dark rounded-pill select_price_{{$item->id}} {{$key === 0 ?'active':''}}"
+                                            data-value="{{$item->id}}">
+                                            {{$item->title}}
+                                        </a>
+                                    @endif
                                 @endforeach
                             </div>
                         </div>
@@ -152,14 +154,15 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title related__product__title">
-                        <h2>Sản phẩm đã xem</h2>
+                        <h2>Sản phẩm tương tự</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="{{Request::root()}}/img/product/product-1.jpg">
+                        <div class="product__item__pic">
+                            <img src="{{Request::root()}}/img/product/product-1.jpg" alt="">
                             <ul class="product__item__pic__hover">
                                 <li><span href="#"><i class="fa fa-heart"></i></span></li>
                                 <li><span href="#"><i class="fa fa-retweet"></i></span></li>

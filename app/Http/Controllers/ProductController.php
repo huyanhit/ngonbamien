@@ -2,16 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CartAddRequest;
-use App\Models\Counter;
-use App\Models\Partner;
 use App\Models\Producer;
 use App\Models\Product;
 use App\Models\ProductCategory;
-use App\Models\Slider;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
-use Jackiedo\Cart\Cart;
 
 class ProductController extends Controller
 {
@@ -27,7 +21,6 @@ class ProductController extends Controller
             'product_categories' => ProductCategory::where(['active' => 1])->limit(9)->get(),
         ]));
     }
-
     public function show($slug){
         $product = Product::where(['active' => 1, 'slug' => $slug])->first();
         $product->view = $product->view + 1;
@@ -44,7 +37,6 @@ class ProductController extends Controller
             ]
         ]));
     }
-
     public function productCategory(Request $request){
         $product = Product::select('id', 'title', 'price', 'image_id', 'product_category_id')->find($request->id);
         $query   = Product::select('id', 'title', 'price', 'image_id')
@@ -82,15 +74,12 @@ class ProductController extends Controller
             ]
         ]));
     }
-    public function search(Request $request){
-        $products = Product::where(['active'=> 1])
-        -> where('sku', 'like', $request->get('tu_khoa') . '%')
-        -> orwhere('keywords', 'like', '%' .  $request->get('tu_khoa') . '%')
-        -> orWhere('title', 'like', '%' .  $request->get('tu_khoa') . '%')
-        -> orderby('created_at', 'ASC')->paginate(10);
 
-        return view('search', array_merge($this->getDataLayout(), [
-            'products' => $products,
-        ]));
+    public function favor($id){
+        $product = Product::find($id);
+        $product->like = $product->like + 1;
+        $product->save();
+
+        return $product;
     }
 }

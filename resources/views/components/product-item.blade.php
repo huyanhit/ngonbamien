@@ -5,8 +5,8 @@
             <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}" alt="{{$item->title}}">
         </a>
         <ul class="featured__item__pic__hover">
-            <li><span title="Yêu thích"><i class="fa fa-heart"></i></span></li>
-            <li><span title="Nhắn tin" ><i class="fa fa-comment"></i></span></li>
+            <li><span title="Yêu thích" class="add_favor" data-value="{{$item->id}}"><i class="fa fa-heart"></i></span></li>
+            <li><span title="Nhắn tin" class="as_message" data-value="{{$item->id}}"><i class="fa fa-comment"></i></span></li>
             <li><span title="Thêm vào giỏ" class="add_cart" data-value="{{$item->id}}"><i class="fa fa-shopping-cart"></i></span></li>
         </ul>
     </div>

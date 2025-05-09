@@ -157,10 +157,10 @@ function updateCartDom(){
             '<td class="text-center p-2" colspan="7">Không có sản phẩm.</td>'+
         '</tr>';
     }
-    
+
     html +=
         '<tr class="font-bold background_pr text-white">'+
-        '<td class="text-left" colspan="2"><h4>Tổng cộng </h4></td>' +
+        '<td class="text-left" colspan="2"><h5 class="text-uppercase pt-1">Tổng cộng</h4></td>' +
         '<td></td>' +
         '<td></td>' +
         '<td class="text-center"><h4 class="text-bold">'+ cartDom.quantities_sum +'</h4></td>' +
@@ -294,12 +294,27 @@ function flyToElement(flyer, flyingTo) {
     });
 }
 
+function addFavor(e, item) {
+    $(e).html('<div class="spinner-border h-[15px] w-[15px]"></div>');
+    $.ajax({
+        type: 'POST',
+        url: '/favor',
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        data: item
+    }).done(function(response){
+
+    })
+}
+
+function chat(e, item) {
+    return false
+}
+
 $(document).ready(function () {
     $(document).on('click', '#close-cart', function () {
-        $("[data-toggle=\"popover\"]").popover('hide')
+        $("#popover_cart").popover('hide')
     })
-
-    $("[data-toggle=popover]").popover({
+    $("#popover_cart").popover({
         html: true,
         container: '.cart-container',
         offset: '0 0',
@@ -307,13 +322,19 @@ $(document).ready(function () {
             return getCart("my-cart");
         }
     });
-    $("[data-toggle=popover-compare]").popover({
+    $("#popover_notify").popover({
         html: true,
-        container: '.search-compare',
+        container: '.notify-container',
+        offset: '0 0',
         content: function () {
-            return getProductCompare("my-cart");
+            return 'noi dung';
         }
     });
+
+    $(".dropdown-auth").click(function (){
+        $(".auth-container").toggleClass('active');
+    });
+
     $('#slider').nivoSlider({
         effect: 'fade', // Specify sets like: 'fold,fade,sliceDown'
         animSpeed: 2000, // Slide transition speed
@@ -398,6 +419,14 @@ $(document).ready(function () {
         flyToElement($(itemImg), $('.cart_anchor'));
         addCart(this, {id:$(this).attr('data-value'), option:$(this).attr('option-value')});
     });
+    $('.add_favor').on('click', function(e) {
+        e.preventDefault();
+        addFavor(this, {id:$(this).attr('data-value')});
+    });
+    $('.as_message').on('click', function(e) {
+        e.preventDefault();
+        chat(this, {id:$(this).attr('data-value')});
+    });
     $('.cart-container').on('click', '.remove-cart', function(e) {
         e.preventDefault();
         removeCart($(this).attr('data-value'));
@@ -426,8 +455,7 @@ $(document).ready(function () {
         $('#pay_store_form').hide();
         $('#pay_bank_form').show();
     })
-})
-$(document).ready(function () {
+
     /*------------------
         Preloader
     --------------------*/

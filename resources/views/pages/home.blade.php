@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <!-- Hero Section Begin -->
-    <section class="hero background margin_15">
+    <section class="hero background">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -26,34 +26,7 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <div class="hero__search d-flex">
-                        <div class="hero__search__form flex-grow-1 mr-3">
-                            <form action="#">
-                                <select class="form-select border-0 position-relative z-20 mt-1">
-                                    <option class="fs-18 fw-bold">
-                                        Tất cả
-                                    </option>
-                                    <option class="fs-18 fw-bold" value="1">
-                                        <span class="ml-2">Sản Phẩm</span>
-                                    </option>
-                                    <option class="fs-18 fw-bold" value="1">
-                                        <span class="ml-2">Bài viết</span>
-                                    </option>
-                                </select>
-                                <input type="text" placeholder="Nhập từ khóa tìm kiếm">
-                                <button type="submit" class="site-btn">Tìm</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone flex-shrink-1">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text text-center">
-                                <h5>0986 88.06.01</h5>
-                                <div class="text-muted">Hổ trợ <b>24/7</b></div>
-                            </div>
-                        </div>
-                    </div>
+                    <x-hero-search :sites="$sites"/>
                     <div class="position-relative">
                         <div class="nivo-slider">
                             <div class="slider-wrapper theme-default">
@@ -87,7 +60,8 @@
                     @foreach ($product_categories as $item)
                     <div class="col-lg">
                         <a href="./cua-hang/{{Str::slug($item->title)}}">
-                            <div class="categories__item set-bg" data-setbg="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}">
+                            <div class="categories__item" >
+                                <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}" alt="{{$item->title}}">
                                 <h3><span>{{$item->title}}</span></h3>
                             </div>
                         </a>

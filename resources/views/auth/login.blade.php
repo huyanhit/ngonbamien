@@ -23,7 +23,7 @@
                                     <img src="assets/images/logo-light.png" alt="" height="20">
                                 </a>
                             </div>
-                            <p class="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p>
+                            <p class="mt-3 fs-15 fw-medium">Ngon Ba Miền (Chuyên cung cấp các loại Đặc sản, Món ăn ngon, Sạch sẻ, Giá tốt)</p>
                         </div>
                     </div>
                 </div>
@@ -34,26 +34,26 @@
                         <div class="card mt-4">
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
-                                    <h5 class="text-primary">Welcome Back !</h5>
-                                    <p class="text-muted">Sign in to continue to Velzon.</p>
+                                    <h5 class="text-primary">Đăng nhập</h5>
+                                    <p class="text-muted">Đăng nhập để thực hiện tiếp thao tác</p>
                                 </div>
                                 <div class="p-2 mt-4">
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="mb-3">
-                                            <x-input-label for="email" :value="__('Email')" />
-                                            <x-text-input id="email" class="form-control" id="username" placeholder="Enter username" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                                            <x-input-label for="email" value="Tài khoản" />
+                                            <x-text-input id="email" class="form-control" id="username" placeholder="Nhập Tài khoản" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
                                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                         </div>
                                         <div class="mb-3">
                                             <div class="float-end">
                                                 @if (Route::has('password.request'))
-                                                    <a href="{{ route('password.request') }}" class="text-muted">Forgot password?</a>
+                                                    <a href="{{ route('password.request') }}" class="text-muted">Quên mật khẩu?</a>
                                                 @endif
                                             </div>
                                             <x-input-label class="form-label" for="password" value="Mật khẩu" />
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <x-text-input class="form-control pe-5 password-input" placeholder="Enter password" id="password-input"
+                                                <x-text-input class="form-control pe-5 password-input" placeholder="Nhập Mật khẩu" id="password-input"
                                                               type="password"
                                                               name="password"
                                                               required autocomplete="current-password" />
@@ -64,7 +64,7 @@
 
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="" id="auth-remember-check" name="remember">
-                                            <label class="form-check-label" for="auth-remember-check">Remember me</label>
+                                            <label class="form-check-label" for="auth-remember-check">Ghi nhớ</label>
                                         </div>
 
                                         <div class="mt-4">
@@ -75,13 +75,15 @@
 
                                         <div class="mt-4 text-center">
                                             <div class="signin-other-title">
-                                                <h5 class="fs-13 mb-4 title">Sign In with</h5>
+                                                <h5 class="fs-13 mb-4 title">Đăng nhập bằng tài khoản</h5>
                                             </div>
                                             <div>
-                                                <button type="button" class="btn btn-primary btn-icon waves-effect waves-light"><i class="ri-facebook-fill fs-16"></i></button>
-                                                <button type="button" class="btn btn-danger btn-icon waves-effect waves-light"><i class="ri-google-fill fs-16"></i></button>
-                                                <button type="button" class="btn btn-dark btn-icon waves-effect waves-light"><i class="ri-github-fill fs-16"></i></button>
-                                                <button type="button" class="btn btn-info btn-icon waves-effect waves-light"><i class="ri-twitter-fill fs-16"></i></button>
+                                                <button type="button" class="btn btn-primary btn-icon waves-effect waves-light">
+                                                    <i class="ri-facebook-fill fs-16"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-danger btn-icon waves-effect waves-light">
+                                                    <i class="ri-google-fill fs-16"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </form>
@@ -92,7 +94,9 @@
                         <!-- end card -->
 
                         <div class="mt-4 text-center">
-                            <p class="mb-0">Don't have an account ? <a href="auth-signup-basic.html" class="fw-semibold text-primary text-decoration-underline"> Signup </a> </p>
+                            <p class="mb-0">Bạn chưa có tài khoản hãy đăng ký?
+                                <a href="{{Request::root()}}/dang-ky" class="fw-semibold text-primary text-decoration-underline">
+                                    Đăng ký </a> </p>
                         </div>
 
                     </div>
@@ -110,7 +114,7 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <p class="mb-0 text-muted">&copy;
-                                <script>document.write(new Date().getFullYear())</script> Velzon. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand
+                                <script>document.write(new Date().getFullYear())</script> website <i class="mdi mdi-heart text-danger"></i> Ngon Ba Miền
                             </p>
                         </div>
                     </div>

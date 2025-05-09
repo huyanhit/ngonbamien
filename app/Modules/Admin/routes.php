@@ -11,7 +11,7 @@ use App\Modules\Admin\Controllers\ImageController;
 use Illuminate\Support\Facades\Route;
 
 // Router positions
-Route::middleware(['web'])->group(function () {
+Route::middleware(['web','admin'])->group(function () {
     Route::group(['prefix' => 'admin', 'namespace'=>'App\Modules\Admin\Controllers'], function () {
         Route::resource('login', AdminLogin::class);
         Route::get('get-image/{id}', [ImageController::class, 'getImage'])->name('get-image');
@@ -33,7 +33,6 @@ Route::middleware(['web'])->group(function () {
 
         Route::resource('posts', 'PostController');
         Route::resource('post-categories', 'PostCategoryController');
-
         Route::resource('news', 'NewsController');
         Route::resource('sites', 'SiteController');
         Route::resource('pages', 'PageController');
