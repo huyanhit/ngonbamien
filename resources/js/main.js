@@ -249,7 +249,7 @@ function addCart(e, item, link = ''){
     cartData.id        = item.id
     cartData.option_id = item.option
     let html = $(e).html();
-    $(e).html('<div class="spinner-border h-[15px] w-[15px]"></div>');
+    $(e).html('<div class="spinner-border"></div>');
     $.ajax({
         type: 'POST',
         url: '/cart',
@@ -295,14 +295,19 @@ function flyToElement(flyer, flyingTo) {
 }
 
 function addFavor(e, item) {
-    $(e).html('<div class="spinner-border h-[15px] w-[15px]"></div>');
+    $(e).html('<div class="spinner-border"></div>');
     $.ajax({
         type: 'POST',
         url: '/favor',
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         data: item
     }).done(function(response){
-
+        $(e).html('<i class="fa fa-heart text-danger"></i>');
+        if(response.total){
+            let itemImg = $(e).parents('.featured__item__pic').find('img').eq(0);
+            flyToElement($(itemImg), $('.favor_anchor'));
+            $("#favor_count").html(response.total)
+        }
     })
 }
 
@@ -327,7 +332,7 @@ $(document).ready(function () {
         container: '.notify-container',
         offset: '0 0',
         content: function () {
-            return 'noi dung';
+            return 'Phiên bản 1.0 release 01/06/2025';
         }
     });
 
@@ -421,7 +426,7 @@ $(document).ready(function () {
     });
     $('.add_favor').on('click', function(e) {
         e.preventDefault();
-        addFavor(this, {id:$(this).attr('data-value')});
+        addFavor(this, {id: $(this).attr('data-value') });
     });
     $('.as_message').on('click', function(e) {
         e.preventDefault();

@@ -115,6 +115,10 @@
     overflow: hidden;
     background-position: center center;
     background: $background-2;
+    .spinner-border{
+        height: 18px;
+        width: 18px;
+    }
 }
 
 .featured__item__pic__hover {

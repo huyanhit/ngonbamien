@@ -2,19 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\ProductFilter;
+use App\Models\FavorProduct;
+use App\Models\PostCategory;
 use App\Models\Producer;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    public function index(){
+    public function index(Request $request, $slug = ''){
+        $product = Product::where(['products.active'=> 1])->join('product_option', 'product_option.product_id', '=', 'products.id');
+        $selects = ['products.*','product_option.title as option_title', 'price', 'discount'];
+        if($slug){
+            $request = $request->merge(['product_category' => $slug]);
+            $selects = array_merge($selects, ['product_categories.title as categories_title']);
+        }
+
+        if($request->get('xuat-xu')){
+            $selects = array_merge($selects, ['producers.title as producer_title']);
+        }
+
+        if($request->get('loai') && $request->get('loai') == 'mon-da-mua'){
+            $selects = array_merge($selects, ['order_products.title as order_product_title']);
+        }
+
         return view('pages.shop-grid', array_merge($this->getDataLayout(), [
             'producers' => Producer::where(['active'=> 1])->orderby('index', 'ASC')->limit(9)->get(),
-            'products' => Product::where(['active'=> 1])->orderby('created_at', 'DESC')->paginate(9),
+            'products'  => $product->select($selects)->filter(new ProductFilter($request))->paginate(9),
             'discount_products' => Product::where('products.active', 1)
-                ->select('products.id', 'product_option.title as option_title', 'products.title', 'price', 'discount', 'slug', 'images.uri')
+                ->select('products.id', 'product_option.title as option_title',
+                    'products.title', 'price', 'discount', 'slug', 'images.uri')
                 ->join('product_option', 'product_option.product_id', '=', 'products.id')
                 ->join('images', 'images.id', '=', 'products.image_id')
                 ->where('discount', '>', 0)->get(),
@@ -31,9 +51,9 @@ class ProductController extends Controller
             'r_products' => Product::where(['active' => 1, 'product_category_id' => $product->product_category_id])
                 ->whereNotIn('id', [$product->id])->orderby('created_at', 'ASC')->limit(4)->get(),
             'meta'       => [
-                'title' => $product->meta_title,
+                'title'  => $product->meta_title,
                 'description' => $product->meta_description,
-                'keyword' => $product->meta_keywords
+                'keyword'     => $product->meta_keywords
             ]
         ]));
     }
@@ -65,21 +85,35 @@ class ProductController extends Controller
             }
         }
         return view('product-compare', array_merge($this->getDataLayout(), [
-            'product' => $product,
-            'product2'=> $product2,
-            'meta' => [
-                'title' => $product->meta_title,
+            'product'  => $product,
+            'product2' => $product2,
+            'meta'     => [
+                'title'       => $product->meta_title,
                 'description' => $product->meta_description,
-                'keyword' => $product->meta_keywords
+                'keyword'     => $product->meta_keywords
             ]
         ]));
     }
 
-    public function favor($id){
-        $product = Product::find($id);
+    public function favor(Request $request){
+        if (Auth::check()) {
+            FavorProduct::create(['user_id' => Auth::id(), 'product_id' => $request->id]);
+        }
+        $product = Product::find($request->id);
         $product->like = $product->like + 1;
         $product->save();
 
-        return $product;
+        return [
+            'product' => $product,
+            'total'   => FavorProduct::where(['user_id' => Auth::id()])->count(),
+        ];
+    }
+
+    public function favors(){
+        return view('pages.favor', array_merge($this->getDataLayout(), [
+            'favors' => Product::join('favor_products',function ($join) {
+                 $join->on('favor_products.product_id', '=', 'products.id')->where('favor_products.user_id', '=', Auth::id());
+            })->where('products.active', 1)->paginate(8),
+        ]));
     }
 }

@@ -34,7 +34,7 @@
                         <div class="card mt-4">
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
-                                    <h5 class="text-primary">Đăng nhập</h5>
+                                    <h1 class="text-primary">Đăng nhập</h1>
                                     <p class="text-muted">Đăng nhập để thực hiện tiếp thao tác</p>
                                 </div>
                                 <div class="p-2 mt-4">
@@ -95,8 +95,11 @@
 
                         <div class="mt-4 text-center">
                             <p class="mb-0">Bạn chưa có tài khoản hãy đăng ký?
-                                <a href="{{Request::root()}}/dang-ky" class="fw-semibold text-primary text-decoration-underline">
-                                    Đăng ký </a> </p>
+                                <a href="{{Request::root()}}/dang-ky" class="fw-semibold text-primary text-decoration-underline">Đăng Ký</a>
+                            </p>
+                            <p class="mt-1">
+                                <a href="{{Request::root()}}" class="fw-semibold text-primary text-decoration-underline">Trang Chủ</a>
+                            </p>
                         </div>
 
                     </div>

@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Str;
-use Illuminate\Tests\Integration\Database\EloquentHasManyThroughTest\Category;
+use Illuminate\Support\Facades\Auth;
 
 class Product extends Model
 {
@@ -25,8 +24,6 @@ class Product extends Model
         'is_promotion'=> 'boolean',
         'is_new'=> 'boolean'
     ];
-
-    protected $appends = ['slug'];
 
     public function image(): BelongsTo
     {
@@ -50,7 +47,7 @@ class Product extends Model
 
     public function product_option(): HasMany
     {
-        return $this->hasMany(ProductOption::class, 'product_id')
+        return $this->hasMany(ProductOption::class, 'product_id', 'id')
             ->select('product_option.id', 'product_option.option_price_id', 'product_option.title',
                 'product_option.stock', 'product_option.discount', 'product_option.price_root', 'product_option.price');
     }

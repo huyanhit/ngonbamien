@@ -48,6 +48,10 @@
     }
 }
 
+.price_root{
+    text-decoration: line-through;
+}
+
 .product__item__pic__hover {
     position: absolute;
     left: 0;
@@ -283,8 +287,10 @@
                     display: flex;
                     text-align: left;
                     padding: 5px 10px;
-                    font-size: 14px;
-                    height: 105px;
+                    font-size: 16px;
+                    height: 100px;
+                    background: $background;
+                    margin: 2px;
                 }
                 h5{
                     color: $black-color;
@@ -296,9 +302,6 @@
                     background: $background-2;
                     span{
                         background: $background-2;
-                    }
-                    >div{
-                        width: 100%;
                     }
                 }
             }

@@ -58,8 +58,16 @@
                                                     </a>
                                                 </h5>
                                                 <div class="product__item__price text-danger">
-                                                    {{ number_format($item->price - ($item->price * $item->discount /100), 0, ',', '.') }}đ
-                                                    <span class="text-muted"> {{ number_format($item->price, 0, ',', '.') }}đ</span>
+                                                @if(empty($item->price) || ($item->price < $item->price_root))
+                                                    <h5 class="text-danger font-bold">Liên hệ</h5>
+                                                @else
+                                                    @if($item->discount)
+                                                        {{ number_format($item->price - ($item->price * $item->discount /100), 0, ',', '.') }}đ
+                                                        <span class="text-muted"> {{ number_format($item->price, 0, ',', '.') }}đ</span>
+                                                    @else
+                                                        {{ number_format($item->price, 0, ',', '.') }}đ
+                                                    @endif
+                                                @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -80,24 +88,24 @@
             <div class="filter__item">
                 <div class="row">
                     <div class="col-lg-3 col-md-5">
-                        <form class="sidebar">
+                        <form class="sidebar" method="get" action="{{Request::url()}}">
                             <div class="sidebar__item">
                                 <h4>Giá bán</h4>
-                                <select class="form-select w-100 mb-3">
-                                    <option selected=""> Chọn mức giá </option>
-                                    <option value="1"> Dưới 100.000đ </option>
-                                    <option value="2"> 100.000đ đến 200.000đ </option>
-                                    <option value="3"> 200.000đ đến 500.000đ </option>
-                                    <option value="4"> Trên 500.000đ </option>
-                                    <option value="5"> Liên hệ </option>
+                                <select class="form-select w-100 mb-3" name="gia" onchange="this.form.submit()">
+                                    <option value=""> Chọn mức giá </option>
+                                    <option value="duoi-100k" {{request('gia') === 'duoi-100k' ? 'selected': ''}}> Dưới 100.000đ </option>
+                                    <option value="100k-200k" {{request('gia') === '100k-200k' ? 'selected': ''}}> 100.000đ đến 200.000đ </option>
+                                    <option value="200k-500k" {{request('gia') === '200k-500k' ? 'selected': ''}}> 200.000đ đến 500.000đ </option>
+                                    <option value="tren-500k" {{request('gia') === 'tren-500k' ? 'selected': ''}}> Trên 500.000đ </option>
+                                    <option value="lien-he" {{request('gia') === '5' ? 'selected': ''}}> Liên hệ </option>
                                 </select>
                             </div>
                             <div class="sidebar__item">
                                 <h4>Vùng miền</h4>
-                                <select class="form-select w-100 mb-3">
-                                    <option> Chọn vùng </option>
+                                <select class="form-select w-100 mb-3" name="xuat-xu" onchange="this.form.submit()">
+                                    <option value=""> Chọn vùng </option>
                                     @foreach ($producers as $item)
-                                        <option value="{{$item->id}}">
+                                        <option value="{{$item->slug}}" {{request('xuat-xu') == $item->slug ? 'selected': ''}}>
                                             {{$item->title}}
                                         </option>
                                     @endforeach
@@ -106,18 +114,41 @@
                             <div class="sidebar__item mt-2">
                                 <h4>Nhóm</h4>
                                 <div class="sidebar__item__size">
-                                    <button class="btn btn-outline-dark my-1">
-                                        Món mới
+                                    <button class="btn btn-outline-dark my-1 {{request('loai') === 'mon-moi'? 'active': ''}}"
+                                            name="loai"
+                                            value="mon-moi"
+                                            type="submit">
+                                            Món mới
                                     </button>
-                                    <button class="btn btn-outline-dark my-1">
-                                        Món mua nhiều
+                                    <button class="btn btn-outline-dark my-1 {{request('loai') === 'mon-mua-nhieu'? 'active': ''}}"
+                                            name="loai"
+                                            value="mon-mua-nhieu"
+                                            type="submit">
+                                            Món mua nhiều
                                     </button>
-                                    <button class="btn btn-outline-dark my-1">
-                                        Khuyến mãi
+                                    <button
+                                            class="btn btn-outline-dark my-1 {{request('loai') === 'dang-khuyen-mai'? 'active': ''}}"
+                                            name="loai"
+                                            value="dang-khuyen-mai"
+                                            type="submit">
+                                            Đang khuyến mãi
+                                    </button>
+                                    <button class="btn btn-outline-dark my-1  {{request('loai') === 'mon-da-thich'? 'active': ''}}"
+                                            name="loai"
+                                            value="mon-da-thich"
+                                            type="submit">
+                                            Món đã thích
+                                    </button>
+                                    <button class="btn btn-outline-dark my-1 {{request('loai') === 'mon-da-mua'? 'active': ''}}"
+                                            name="loai"
+                                            value="mon-da-mua"
+                                            type="submit">
+                                            Món đã mua
                                     </button>
                                 </div>
                             </div>
                         </form>
+
                     </div>
                     <div class="col-lg-9 col-md-7">
                         <div class="row" style="padding: 0 5px">
@@ -145,7 +176,7 @@
                         <div class="row filter__list" style="padding: 0 5px">
                             @foreach ($products as $item)
                                 <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <x-product-item :item="$item"/>
+                                    <x-product-item-single :item="$item"/>
                                 </div>
                             @endforeach
                         </div>

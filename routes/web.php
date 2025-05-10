@@ -35,7 +35,6 @@ Route::get('artisan/{command}', function ($command){
 
 Route::middleware('auth')->group(function () {
     Route::get('/dang-xuat', [AuthenticatedSessionController::class, 'destroy'])->name('auth.destroy');
-
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -50,9 +49,10 @@ Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderCon
 Route::get('/ax-find-product', [ProductController::class, 'productCategory'])->name('ajax-find-product');
 Route::get('/ax-load-comment', [CommentController::class, 'loadComment'])->name('ajax-load-comment');
 Route::post('/ax-comment', [CommentController::class, 'comment'])->name('ajax-comment');
+Route::post('/favor', [ProductController::class, 'favor'])->name('favor');
+Route::resource('/cart', CartController::class);
 
 require __DIR__.'/auth.php';
-Route::resource('/cart', CartController::class);
 Route::get('/counter', [HomeController::class, 'counter'])->name('page.counter');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/phan-loai/{slug}', [CategoryProductController::class, 'show'])->name('phan-loai');
@@ -67,7 +67,6 @@ Route::get('/dat-hang', [CheckController::class, 'index'])->name('dat-hang');
 Route::post('/mua-hang', [OrderController::class, 'store'])->name('mua-hang');
 Route::get('/thanh-toan/{order}', [OrderController::class, 'show'])->name('thanh-toan');
 Route::put('/thanh-toan/{order}', [OrderController::class, 'update'])->name('tat-toan');
-Route::get('/favor', [ProductController::class, 'favor'])->name('yeu-thich');
 
 Route::get('/tra-cuu-don-hang', [OrderController::class, 'search'])->name('tra-cuu-don-hang');
 Route::get('/tim-kiem',   [SearchController::class, 'search'])->name('tim-kiem');
@@ -75,6 +74,7 @@ Route::get('/dich-vu/{service}', [ServiceController::class, 'show'])->name('dich
 Route::get('/hang-san-xuat/{service}', [ProducerController::class, 'show'])->name('hang-san-xuat');
 Route::get('/so-sanh/{product}/{product2?}', [ProductController::class, 'compare'])->name('so-sanh');
 Route::post('/lien-he', [PageController::class, 'saveContact'])->name('lien-he');
+Route::get('/yeu-thich', [ProductController::class, 'favors'])->name('yeu-thich');
 
 Route::get('/thong-tin', [NewsController::class, 'index'])->name('news.index');
 Route::get('/thong-tin/{name}', [NewsController::class, 'index'])->name('news.show');

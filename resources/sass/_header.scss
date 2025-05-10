@@ -103,7 +103,8 @@
     }
 
     img {
-        margin-right: 6px;
+        margin-right: 3px;
+        width: 30px;
     }
 
     div {
@@ -148,15 +149,18 @@
 
 .header__top__right__auth {
     display: inline-block;
-    a {
+    > a {
         background: $background;
         display: block;
-        font-size: 14px;
+        font-size: 22px;
         font-weight: 600;
         line-height: 16px;
     }
     i{
         font-size: 18px;
+    }
+    img{
+        width: 25px;
     }
 }
 
@@ -304,8 +308,8 @@
                     display: inline-block;
                     border-radius: 50%;
                     position: absolute;
-                    top: 0;
-                    right: -12px;
+                    top: -5px;
+                    right: -10px;
                 }
             }
         }
@@ -352,6 +356,8 @@
 .auth-container{
     min-width: 200px;
     padding: 0;
+    left: unset;
+    right: 0;
     &.active{
         display: block;
     }

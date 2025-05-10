@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Counter;
+use App\Models\FavorProduct;
 use App\Models\Menu;
 use App\Models\Site;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class Controller extends BaseController
 {
@@ -22,30 +24,31 @@ class Controller extends BaseController
         return [
             'sites'  => Site::find(1),
             'menus'  => Menu::where(['active' => 1])->orderby('index', 'ASC')->get(),
+            'favor'  => FavorProduct::where('user_id', Auth::id())->count(),
         ];
     }
-   
+
     public function processCoupon($coupon, $cart){
         $discount = 0;
-        
+
         if(!empty($coupon)){
             if($coupon->use > $coupon->apply){
                 return false;
             }
-        
+
             if($coupon->status === 1 && Carbon::parse($coupon->start_date) > Carbon::now() || Carbon::now() > Carbon::parse($coupon->end_date)){
                 return false;
             }
-    
+
             switch($coupon->type){
-                case 1: 
+                case 1:
                     $discount = $coupon->value;
                     break;
-                case 2: 
+                case 2:
                     $discount = $cart->total * $coupon->value / 100;
                     break;
             }
-    
+
             return [
                 'coupon'   => $coupon,
                 'discount' => $discount,
@@ -66,5 +69,4 @@ class Controller extends BaseController
             $counter->save();
         }
     }
-
 }

@@ -50,16 +50,20 @@
                         </div>
                         @foreach ($product->product_option as $key => $item)
                             <div class="product_detail_option {{$key === 0 ?'active':''}} product_detail_{{$item->id}}">
-                                @if($item->discount > 0)
-                                    <span class="product__details__price">
-                                        {{ number_format($item->price - ($item->price * $item->discount /100), 0, ',', '.') }}đ
-                                    </span>
-                                    <span class="product_detail_price_root text-muted"> {{ number_format($item->price, 0, ',', '.') }}đ</span>
-                                    <span class="product_detail_discount">-{{$item->discount}}%</span>
+                                @if(empty($item->price) || ($item->price < $item->price_root))
+                                    <h4><b class="text-danger">Liên hệ</b></h4>
                                 @else
-                                    <span class="product__details__price">
-                                        {{ number_format($item->price - ($item->price * $item->discount /100), 0, ',', '.') }}đ
-                                    </span>
+                                    @if($item->discount > 0)
+                                        <span class="product__details__price">
+                                            {{ number_format($item->price - ($item->price * $item->discount /100), 0, ',', '.') }}đ
+                                        </span>
+                                        <span class="product_detail_price_root text-muted"> {{ number_format($item->price, 0, ',', '.') }}đ</span>
+                                        <span class="product_detail_discount">-{{$item->discount}}%</span>
+                                    @else
+                                        <span class="product__details__price">
+                                            {{ number_format($item->price - ($item->price * $item->discount /100), 0, ',', '.') }}đ
+                                        </span>
+                                    @endif
                                 @endif
                             </div>
                         @endforeach

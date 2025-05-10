@@ -39,7 +39,8 @@ return new class extends Migration
             $table->integer('is_promotion')->nullable();
             $table->integer('is_new')->nullable();
 
-            $table->integer('view')->nullable();
+            $table->integer('view')->default(0);
+            $table->integer('like')->default(0);
 
             $table->softDeletes();
             $table->timestamps();

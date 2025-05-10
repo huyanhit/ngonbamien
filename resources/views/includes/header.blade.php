@@ -15,7 +15,7 @@
     </div>
     <div class="humberger__menu__widget">
         <div class="header__top__right__language">
-            <img src="{{Request::root()}}/img/language.png" alt="">
+            <img src="{{Request::root()}}/img/vietnam.png" alt="">
             <div>Tiếng việt</div>
             <span class="arrow_carrot-down"></span>
             <ul>
@@ -97,34 +97,38 @@
                             </a>
                         </div>
                         <div class="header__top__right__language">
-                            <img src="{{Request::root()}}/img/language.png" alt="">
+                            <img src="{{Request::root()}}/img/vietnam.png" alt="">
                             <div>Tiếng Việt</div>
                             <span class="arrow_carrot-down"></span>
                             <ul>
                                 <li><a href="#">Tiếng Việt</a></li>
-                                <li><a href="#">English</a></li>
                             </ul>
                         </div>
                         <div class="header__top__right__auth">
                             <a class="btn btn-sm rounded-1 border text-center" data-placement="bottom" id="popover_notify">
-                                <span class="notify_count">1</span>
-                                <i class="fa fa-bell"></i></a>
+                                <i class="fa fa-info"></i></a>
                             <div class="notify-container"></div>
                         </div>
                         <div class="dropdown header__top__right__auth">
-                            <a class="btn btn-sm rounded-1 border text-center dropdown-auth">
-                                <i class="fa fa-user"></i>
-                            </a>
+                            @if(isset(auth()->user()->image))
+                                <a class="dropdown-auth border">
+                                    <img src="{{auth()->user()->image->uri}}">
+                                </a>
+                            @else
+                                <a class="btn btn-sm rounded-1 border text-center dropdown-auth">
+                                    <i class="fa fa-sign-in"></i>
+                                </a>
+                            @endif
                             <div class="dropdown-menu auth-container text-center fw-bold">
                                 @if(auth()->id())
-                                    <h6 class="dropdown-header font-weight-bold py-3">Chào: {{auth()->user()->name}}</h6>
-                                    <a class="dropdown-item border-top p-2" href="pages-profile.html"><i class="fa fa-user text-muted fs-16 align-middle"></i> <span class="align-middle">Thông tin</span></a>
-                                    <a class="dropdown-item border-top p-2" href="apps-chat.html"><i class="fa fa-comments-o text-muted fs-16 align-middle"></i> <span class="align-middle">Tin nhắn</span></a>
-                                    <a class="dropdown-item border-top p-2" href="pages-faqs.html"><i class="fa fa-info-circle text-muted fs-16 align-middle"></i> <span class="align-middle">Trợ giúp</span></a>
-                                    <a class="dropdown-item border-top p-2" href="auth-lockscreen-basic.html"><i class="fa fa-cog text-muted fs-16 align-middle"></i> <span class="align-middle">Cài đặt</span></a>
-                                    <a class="dropdown-item border-top p-2" href="{{Request::root()}}/dang-xuat"><i class="fa fa-sign-out text-muted fs-16 align-middle"></i> <span class="align-middle">Đăng xuất</span></a>
+                                    <h6 class="dropdown-header font-weight-bold py-3 bg-light">{{auth()->user()->name}}</h6>
+                                    <a class="dropdown-item border-top p-3" href="{{Request::root()}}/tai-khoan"><i class="fa fa-user text-muted fs-16 align-middle"></i> <span class="align-middle">Thông tin</span></a>
+                                    <a class="dropdown-item border-top p-3" href="{{Request::root()}}/chat"><i class="fa fa-comments-o text-muted fs-16 align-middle"></i> <span class="align-middle">Tin nhắn</span></a>
+                                    <a class="dropdown-item border-top p-3" href="{{Request::root()}}/tro-giup"><i class="fa fa-info-circle text-muted fs-16 align-middle"></i> <span class="align-middle">Trợ giúp</span></a>
+                                    <a class="dropdown-item border-top p-3" href="{{Request::root()}}/cai-dat"><i class="fa fa-cog text-muted fs-16 align-middle"></i> <span class="align-middle">Cài đặt</span></a>
+                                    <a class="dropdown-item border-top p-3" href="{{Request::root()}}/dang-xuat"><i class="fa fa-sign-out text-muted fs-16 align-middle"></i> <span class="align-middle">Đăng xuất</span></a>
                                 @else
-                                    <a class="dropdown-item border-top p-2" href="{{Request::root()}}/dang-nhap"><i class="fa fa-sign-in text-muted fs-16 align-middle"></i> <span class="align-middle">Đăng nhập</span></a>
+                                    <a class="dropdown-item border-top p-3" href="{{Request::root()}}/dang-nhap"><i class="fa fa-sign-in text-muted fs-16 align-middle"></i> <span class="align-middle">Đăng nhập</span></a>
                                 @endif
                             </div>
                         </div>
@@ -178,7 +182,11 @@
                 <div class="col-lg-2">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            <li><a href="{{Request::root()}}/yeu-thich">
+                                    <i class="fa fa-heart favor_anchor"></i>
+                                    <span id="favor_count">{{$favor?? 0}}</span>
+                                </a>
+                            </li>
                             <li>
                                 <a id="popover_cart" data-placement="bottom" href="javascript:void(0);">
                                     <i class="fa fa-shopping-bag cart_anchor"></i>
