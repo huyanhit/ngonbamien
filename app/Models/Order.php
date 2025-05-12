@@ -18,7 +18,7 @@ class Order extends Model
         'address',
         'note',
         'coupon',
-        'price',
+        'total',
         'discount',
         'ship_type',
         'ship_price',
@@ -30,7 +30,7 @@ class Order extends Model
     public function products() :BelongsToMany
     {
         return $this->belongsToMany(Product::class, 'order_products', 'order_id', 'product_id')
-            ->withPivot(['quantity', 'options', 'price']);
+            ->withPivot(['quantity', 'options']);
     }
 
     public function getDateShipAttribute()

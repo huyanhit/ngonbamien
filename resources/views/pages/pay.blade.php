@@ -57,7 +57,7 @@
                                 <div class="form-group px-3 border-1 bg-gray-100">
                                     <div class="text-sm font-bold">Khách hàng chuyển khoản qua ngân hàng</div>
                                     <div class="text-sm"><span class="font-bold">Số tiền chuyển: </span>
-                                        <strong class="text-red-600 text-xl">{{ number_format($order->price, 0, ',', '.') }}đ</strong>
+                                        <strong class="text-red-600 text-xl">{{ number_format($order->total, 0, ',', '.') }}đ</strong>
                                     </div>
                                     <div class="text-sm p-3 bg-white my-2">
                                         <span class="font-bold">Thông tin chuyển khoản</span>
@@ -90,7 +90,7 @@
                             <li>Điện thoại <span>{{$order->phone}}</span></li>
                             <li>Địa chỉ <span>{{$order->address}}</span></li>
                             <li>Ghi chú <span>{{$order->note??'Không có'}}</span></li>
-                            <li>Số tiền <span class="total">{{$order->total}}</span></li>
+                            <li>Số tiền <span class="total">{{ number_format($order->total, 0, ',', '.') }}đ</span></li>
                         </ul>
                         <button type="submit" class="site-btn">Hoàn thành</button>
                     </div>

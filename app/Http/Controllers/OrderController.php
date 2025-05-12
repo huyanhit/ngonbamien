@@ -64,7 +64,7 @@ class OrderController extends Controller
                 'phone'     => $request->phone,
                 'address'   => $request->address,
                 'note'      => $request->note,
-                'price'     => $total + $shipping,
+                'total'     => $total + $shipping,
                 'coupon'    => Session::get('coupon'),
                 'discount'  => $discount,
                 'ship_price'=> $shipping,
@@ -96,8 +96,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        if(!$order->payment){
-            $order->price = $order->products->sum('price');
+        if($order->order_status_id == 1){
             return view('pages.pay', array_merge($this->getDataLayout(), [
                 'order' => $order,
             ]));
