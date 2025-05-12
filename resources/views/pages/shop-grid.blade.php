@@ -187,17 +187,17 @@
             </div>
         </div>
     </section>
+
+    <script>
+        setTimeout(function () {
+            console.log(window.location.href.indexOf('?'))
+            if(window.location.href.indexOf('?') !== -1){
+                window.scroll({
+                    top: 420,
+                    behavior: "smooth",
+                });
+            }
+        }, 100)
+    </script>
     <!-- Product Section End -->
 @endsection
-
-<script>
-    setTimeout(function () {
-        console.log(window.location.href.indexOf('?'))
-        if(window.location.href.indexOf('?') !== -1){
-            window.scroll({
-                top: 420,
-                behavior: "smooth",
-            });
-        }
-    }, 100)
-</script>
