@@ -59,22 +59,17 @@
     width: 100%;
     text-align: center;
     @include transition(all, .5s);
-
     li {
         list-style: none;
         display: inline-block;
         margin-right: 6px;
-
         &:last-child {
             margin-right: 0;
         }
-
         &:hover {
-
             span {
                 background: $primary-color;
                 border-color: $primary-color;
-
                 i {
                     color: $white-color;
                     transform: rotate(360deg);
@@ -94,7 +89,6 @@
             display: block;
             border-radius: 50%;
             @include transition(all, .5s);
-
             i {
                 position: relative;
                 transform: rotate(0);

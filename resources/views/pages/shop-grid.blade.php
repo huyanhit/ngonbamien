@@ -4,7 +4,7 @@
     <section class="hero background">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-md-5">
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
@@ -25,7 +25,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-9">
+                <div class="col-lg-9 col-md-7">
                     <x-hero-search :sites="$sites"/>
                     <div class="product__discount">
                         <div class="product__discount__slider owl-carousel">
@@ -88,7 +88,7 @@
             <div class="filter__item">
                 <div class="row">
                     <div class="col-lg-3 col-md-5">
-                        <form class="sidebar" method="get" action="{{Request::url()}}">
+                        <form class="sidebar" id="form-shop" method="get" action="{{Request::url()}}">
                             <div class="sidebar__item">
                                 <h4>Giá bán</h4>
                                 <select class="form-select w-100 mb-3" name="gia" onchange="this.form.submit()">
@@ -97,7 +97,7 @@
                                     <option value="100k-200k" {{request('gia') === '100k-200k' ? 'selected': ''}}> 100.000đ đến 200.000đ </option>
                                     <option value="200k-500k" {{request('gia') === '200k-500k' ? 'selected': ''}}> 200.000đ đến 500.000đ </option>
                                     <option value="tren-500k" {{request('gia') === 'tren-500k' ? 'selected': ''}}> Trên 500.000đ </option>
-                                    <option value="lien-he" {{request('gia') === '5' ? 'selected': ''}}> Liên hệ </option>
+                                    <option value="lien-he"   {{request('gia') === '5' ? 'selected': ''}}> Liên hệ </option>
                                 </select>
                             </div>
                             <div class="sidebar__item">
@@ -189,3 +189,15 @@
     </section>
     <!-- Product Section End -->
 @endsection
+
+<script>
+    setTimeout(function () {
+        console.log(window.location.href.indexOf('?'))
+        if(window.location.href.indexOf('?') !== -1){
+            window.scroll({
+                top: 420,
+                behavior: "smooth",
+            });
+        }
+    }, 100)
+</script>
