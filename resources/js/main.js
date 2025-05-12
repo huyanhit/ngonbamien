@@ -175,7 +175,7 @@ function updateCartDom(){
     $('.my-cart').html(html);
     $('#cart-number').html(cartDom.quantities_sum);
     $('#coupon-down').html('-' + VND.format(coupon));
-    $('#total-pill').html(VND.format(cartDom.total - parseInt(coupon)));
+    $('.total-pill').html(VND.format(cartDom.total - (coupon ? parseInt(coupon) : 0)));
 }
 
 function showNavigation() {
@@ -460,7 +460,11 @@ $(document).ready(function () {
         $('#pay_store_form').hide();
         $('#pay_bank_form').show();
     })
-
+    $(".show-more").click(function(e) {
+        e.preventDefault();
+        $(e).toggleClass('active')
+        $('.producer_blog').toggleClass('active');
+    });
     /*------------------
         Preloader
     --------------------*/

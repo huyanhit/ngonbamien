@@ -148,7 +148,6 @@
                                 </div>
                             </div>
                         </form>
-
                     </div>
                     <div class="col-lg-9 col-md-7">
                         <div class="row" style="padding: 0 5px">

@@ -8,6 +8,8 @@ use App\Models\PostCategory;
 use App\Models\Producer;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\ProductRecent;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,9 +45,14 @@ class ProductController extends Controller
     }
     public function show($slug){
         $product = Product::where(['active' => 1, 'slug' => $slug])->first();
+        if(Auth::check()){
+            ProductRecent::updateOrCreate([
+                'product_id' => $product->id,
+                'user_id' => Auth::id(),
+            ],[ 'time' => Carbon::now()]);
+        }
         $product->view = $product->view + 1;
         $product->save();
-
         return view('pages.shop-detail', array_merge($this->getDataLayout(), [
             'product'    => $product,
             'r_products' => Product::where(['active' => 1, 'product_category_id' => $product->product_category_id])
@@ -96,10 +103,13 @@ class ProductController extends Controller
     }
 
     public function favor(Request $request){
-        if (Auth::check()) {
-            FavorProduct::create(['user_id' => Auth::id(), 'product_id' => $request->id]);
-        }
         $product = Product::find($request->id);
+        if(Auth::check() && !empty($product)){
+            FavorProduct::updateOrCreate([
+                'product_id' => $product->id,
+                'user_id' => Auth::id(),
+            ],[ 'time' => Carbon::now()]);
+        }
         $product->like = $product->like + 1;
         $product->save();
 

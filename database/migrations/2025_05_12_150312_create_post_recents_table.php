@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('favor_products', function (Blueprint $table) {
+        Schema::create('post_recents', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->nullable();
-            $table->integer('product_id')->nullable();
+            $table->integer('post_id')->nullable();
             $table->dateTime('time')->nullable();
             $table->timestamps();
             $table->softDeletes();
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('favor_products');
+        Schema::dropIfExists('post_recents');
     }
 };

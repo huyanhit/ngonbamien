@@ -330,7 +330,7 @@
 
             $('.my-cart').html(html);
             $('#cart-number').html(response.items_count);
-            $('#total-pill').html(VND.format(response.subtotal - parseInt($('#coupon-down').text())));
+            $('.total-pill').html(VND.format(response.subtotal - parseInt($('#coupon-down').text())));
         }
 
         function counter(){

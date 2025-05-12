@@ -34,6 +34,7 @@ return new class extends Migration
 
             $table->integer('view')->default(0);
             $table->integer('like')->default(0);
+            $table->integer('author_id')->default(0);
 
             $table->timestamps();
             $table->softDeletes();

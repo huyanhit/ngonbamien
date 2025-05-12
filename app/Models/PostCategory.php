@@ -20,6 +20,6 @@ class PostCategory extends Model
 
     public function posts(): HasMany
     {
-        return $this->hasMany(Posts::class, 'post_category_id', 'id');
+        return $this->hasMany(Post::class, 'post_category_id', 'id');
     }
 }

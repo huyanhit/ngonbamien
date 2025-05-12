@@ -2,38 +2,58 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\PostFilter;
 use App\Http\Requests\CartAddRequest;
 use App\Models\Counter;
 use App\Models\Partner;
 use App\Models\PostCategory;
-use App\Models\Posts;
+use App\Models\Post;
+use App\Models\PostRecent;
 use App\Models\Producer;
 use App\Models\Product;
-use App\Models\ProductCategory;
 use App\Models\Slider;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
-use Jackiedo\Cart\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    public function index(){
+    public function index(Request $request, $slug = null){
+        $posts = Post::where(['posts.active'=> 1]);
+        $selects = ['posts.*'];
+        if($slug){
+            $request = $request->merge(['post_category' => $slug]);
+            $selects = array_merge($selects, ['post_categories.title as categories_title']);
+        }
+
         return view('pages.blog', array_merge($this->getDataLayout(), [
-            'posts'    => Posts::where(['active'=> 1])->orderby('id', 'DESC')->get(),
-            'sliders'  => Slider::where(['active'=> 1, 'type' => 1])->orderby('index', 'DESC')->get(),
-            'producer' => Producer::where(['active'=> 1])->orderby('index', 'ASC')->limit(9)->get(),
+            'posts'         => $posts->filter(new PostFilter($request))->select($selects)->paginate(6),
+            'sliders'       => Slider::where(['active'=> 1, 'type' => 1])->orderby('index', 'DESC')->get(),
+            'producers'     => Producer::where(['active'=> 1])->orderby('index', 'ASC')->limit(9)->get(),
             'post_category' => PostCategory::where(['active' => 1])->limit(9)->get(),
+            'post_recent'   => Post::whereIn('id', PostRecent::where('user_id', Auth::id())->pluck('id'))
+                ->where(['active' => 1])->limit(4)->get(),
         ]));
     }
 
     public function show($slug){
-        $post = Posts::where(['active' => 1,'slug' => $slug])->first();
+        $post = Post::where(['active' => 1,'slug' => $slug])->first();
         if(!empty($post)){
+            if(Auth::check()){
+                PostRecent::updateOrCreate([
+                    'post_id' => $post->id,
+                    'user_id' => Auth::id(),
+                ],[ 'time' => Carbon::now()]);
+            }
             $post->view = $post->view + 1;
             $post->save();
             return view('pages.blog-detail', array_merge($this->getDataLayout(), [
-                'post' => $post,
+                'post'          => $post,
                 'post_category' => PostCategory::where(['active' => 1])->limit(9)->get(),
+                'post_recent'   => Post::whereIn('id', PostRecent::where('user_id', Auth::id())->pluck('id'))
+                    ->where(['active' => 1])->limit(4)->get(),
+                'post_same'     => Post::where(['active' => 1, 'post_category_id' => $post->post_category_id])
+                    ->limit(3)->get(),
                 'meta' => [
                     'title' => $post->meta_title,
                     'description' => $post->meta_description,

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Posts;
+use App\Models\Post;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -20,7 +20,7 @@ class SearchController extends Controller
                 ->orderby('created_at', 'ASC')->paginate(8);
         }
         if($request->loai == 3 || $request->loai == 1){
-            $posts = Posts::where(['active'=> 1])
+            $posts = Post::where(['active'=> 1])
                 -> orWhere('title', 'like', $request->get('tu-khoa') . '%')
                 -> orwhere('meta_keywords', 'like', '%' .  $request->get('tu-khoa') . '%')
                 -> orderby('created_at', 'ASC')->paginate(6);

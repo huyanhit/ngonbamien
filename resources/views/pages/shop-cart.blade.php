@@ -50,7 +50,7 @@
                                 <span id="coupon-down" data-value="{{ $coupon['discount'] ?? 0}}">0đ</span>
                             </li>
                             <li class="ml-2 text-sm"> Còn lại:
-                                <span id="total-pill">0đ</span>
+                                <span class="total-pill">0đ</span>
                             </li>
                         </ul>
                         <a href="{{Request::root()}}/dat-hang" class="primary-btn text-uppercase">Đặt Hàng</a>

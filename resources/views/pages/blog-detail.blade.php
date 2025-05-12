@@ -1,16 +1,15 @@
 @extends('layouts.app')
 @section('content')
-    <!-- Blog Details Hero Begin -->
     <section class="blog-details-hero set-bg" data-setbg="{{Request::root()}}/img/blog/details/details-hero.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="blog__details__hero__text">
-                        <h2>The Moment You Need </h2>
+                        <h2>{{$post->title}}</h2>
                         <ul>
-                            <li>By Michael Scofield</li>
-                            <li>January 14, 2019</li>
-                            <li>8 Comments</li>
+                            <li>{{$post->author->name?? ''}}</li>
+                            <li><i class="fa fa-calendar mr-2"></i>{{\Illuminate\Support\Carbon::parse($post->created_at)}}</li>
+                            <li>{{$post->comments->count()}} Comment</li>
                         </ul>
                     </div>
                 </div>
@@ -20,171 +19,155 @@
     <!-- Blog Details Hero End -->
 
     <!-- Blog Details Section Begin -->
-    <section class="blog-details spad">
+    <section class="blog-details margin_15 pt-3">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-5 order-md-1 order-2">
+                <div class="col-lg-3 col-md-4 order-md-1 order-2">
                     <div class="blog__sidebar">
-                        <div class="blog__sidebar__search">
-                            <form action="#">
-                                <input type="text" placeholder="Search...">
-                                <button type="submit"><span class="icon_search"></span></button>
-                            </form>
-                        </div>
                         <div class="blog__sidebar__item">
                             <div class="sidebar__item">
-                                <h4>Danh Mục</h4>
-                                <ul class="list-group mt-2">
-                                    <li class="list-group-item py-1 px-3">
-                                        <a href="{{Request::root()}}/noi-dung/gia-lai">
-                                            <img src="/storage/thumb_ngonbamien/cat-1-2.jpg" style="width: 20px" alt="Gia Lai" title="#caption-18">
-                                            <span class="ml-1">Gia Lai</span>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item py-1 px-3">
-                                        <a href="{{Request::root()}}/noi-dung/binh-dinh">
-                                            <img src="/storage/thumb_ngonbamien/cat-2-2.jpg" style="width: 20px" alt="Bình Định" title="#caption-23">
-                                            <span class="ml-1">Bình Định</span>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item py-1 px-3">
-                                        <a href="{{Request::root()}}/noi-dung/quang-binh">
-                                            <img src="/storage/thumb_ngonbamien/cat-5.jpg" style="width: 20px" alt="Quảng Bình" title="#caption-24">
-                                            <span class="ml-1">Quảng Bình</span>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item py-1 px-3">
-                                        <a href="{{Request::root()}}/noi-dung/da-nang">
-                                            <img src="/storage/thumb_ngonbamien/cat-3-2.jpg" style="width: 20px" alt="Đà nẵng" title="#caption-25">
-                                            <span class="ml-1">Đà nẵng</span>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item py-1 px-3">
-                                        <a href="{{Request::root()}}/noi-dung/nha-trang">
-                                            <img src="/storage/thumb_ngonbamien/cat-3-3.jpg" style="width: 20px" alt="Nha trang" title="#caption-26">
-                                            <span class="ml-1">Nha trang</span>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item py-1 px-3">
-                                        <a href="{{Request::root()}}/noi-dung/phu-yen">
-                                            <img src="/storage/thumb_ngonbamien/cat-3-4.jpg" style="width: 20px" alt="Phú yên" title="#caption-28">
-                                            <span class="ml-1">Phú yên</span>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item py-1 px-3">
-                                        <a href="{{Request::root()}}/noi-dung/quang-ngai">
-                                            <img src="/storage/thumb_ngonbamien/cat-5-1.jpg" style="width: 20px" alt="Quảng ngãi" title="#caption-27">
-                                            <span class="ml-1">Quảng ngãi</span>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item py-1 px-3">
-                                        <a href="{{Request::root()}}/noi-dung/kon-tum">
-                                            <img src="/storage/thumb_ngonbamien/cat-1-4.jpg" style="width: 20px" alt="Kon tum" title="#caption-29">
-                                            <span class="ml-1">Kon tum</span>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item py-1 px-3">
-                                        <a href="{{Request::root()}}/noi-dung/kon-tum">
-                                            <img src="/storage/thumb_ngonbamien/cat-1-5.jpg" style="width: 20px" alt="Kon tum" title="#caption-32">
-                                            <span class="ml-1">Kon tum</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                                <div class="hero__categories">
+                                    <div class="hero__categories__all">
+                                        <i class="fa fa-bars"></i>
+                                        <span>Danh mục Bài viết</span>
+                                    </div>
+                                    <ul>
+                                        @foreach ($post_category as $item)
+                                            <li>
+                                                <a href="{{Request::root()}}/bai-viet/{{Str::slug($item->title)}}" class="inline-block avatar">
+                                                    <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}"
+                                                         style="width: 20px"
+                                                         alt="{{$item->title}}"
+                                                         title="#caption-{{$item->image_id}}">
+                                                    <span class="ml-2">{{$item->title}}</span>
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                        <div class="blog__sidebar__item">
-                            <h4>Recent News</h4>
-                            <div class="blog__sidebar__recent">
-                                <a href="#" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                        <img src="{{Request::root()}}/img/blog/sidebar/sr-1.jpg" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>09 Kinds Of Vegetables<br /> Protect The Liver</h6>
-                                        <span>MAR 05, 2019</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                        <img src="{{Request::root()}}/img/blog/sidebar/sr-2.jpg" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>Tips You To Balance<br /> Nutrition Meal Day</h6>
-                                        <span>MAR 05, 2019</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                        <img src="{{Request::root()}}/img/blog/sidebar/sr-3.jpg" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>4 Principles Help You Lose <br />Weight With Vegetables</h6>
-                                        <span>MAR 05, 2019</span>
-                                    </div>
-                                </a>
+                        <form class="sidebar" method="get" action="{{Request::url()}}">
+                            <div class="sidebar__item mt-3">
+                                <h4>Nhóm</h4>
+                                <div class="sidebar__item__size">
+                                    <button class="btn btn-outline-dark my-1 {{request('loai') === 'bai-moi'? 'active': ''}}"
+                                            name="loai"
+                                            value="bai-moi"
+                                            type="submit">
+                                        Bài mới
+                                    </button>
+                                    <button class="btn btn-outline-dark my-1 {{request('loai') === 'che-bien'? 'active': ''}}"
+                                            name="loai"
+                                            value="che-bien"
+                                            type="submit">
+                                        Chế biến
+                                    </button>
+                                    <button
+                                        class="btn btn-outline-dark my-1 {{request('loai') === 'du-lich'? 'active': ''}}"
+                                        name="loai"
+                                        value="du-lich"
+                                        type="submit">
+                                        Du lịch
+                                    </button>
+                                    <button class="btn btn-outline-dark my-1  {{request('loai') === 'review'? 'active': ''}}"
+                                            name="loai"
+                                            value="review"
+                                            type="submit">
+                                        Review
+                                    </button>
+                                    <button class="btn btn-outline-dark my-1 {{request('loai') === 'video'? 'active': ''}}"
+                                            name="loai"
+                                            value="video"
+                                            type="submit">
+                                        Video
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="blog__sidebar__item">
-                            <h4>Search By</h4>
-                            <div class="blog__sidebar__item__tags">
-                                <a href="#">Apple</a>
-                                <a href="#">Beauty</a>
-                                <a href="#">Vegetables</a>
-                                <a href="#">Fruit</a>
-                                <a href="#">Healthy Food</a>
-                                <a href="#">Lifestyle</a>
+                            <div class="blog__sidebar__item">
+                                <h4>Bài đã xem</h4>
+                                <div class="blog__sidebar__recent">
+                                    @foreach($post_recent as $recent)
+                                        <a href="#" class="blog__sidebar__recent__item">
+                                            <div class="blog__sidebar__recent__item__pic">
+                                                <img src="{{$recent->image->uri}}" class="avatar-sm" alt="{{$recent->title}}"/>
+                                            </div>
+                                            <div class="blog__sidebar__recent__item__text">
+                                                <h6>{{$recent->title}}</h6>
+                                                <span><i class="fa fa-calendar mr-2"></i>{{\Carbon\Carbon::parse($recent->updated_at)->format('d/m/Y')}}</span>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
-                <div class="col-lg-8 col-md-7 order-md-1 order-1">
-                    <div class="blog__details__text">
-                        <img src="{{Request::root()}}/img/blog/details/details-pic.jpg" alt="">
-                        <p>Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
-                            dui. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit
-                            aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur
-                            sed, convallis at tellus. Sed porttitor lectus nibh. Donec sollicitudin molestie malesuada.
-                            Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Proin eget tortor risus.
-                            Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis
-                            quis ac lectus. Donec sollicitudin molestie malesuada. Nulla quis lorem ut libero malesuada
-                            feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.</p>
-                        <h3>The corner window forms a place within a place that is a resting point within the large
-                            space.</h3>
-                        <p>The study area is located at the back with a view of the vast nature. Together with the other
-                            buildings, a congruent story has been managed in which the whole has a reinforcing effect on
-                            the components. The use of materials seeks connection to the main house, the adjacent
-                            stables</p>
-                    </div>
-                    <div class="blog__details__content">
+                <div class="col-lg-9 col-md-8 order-md-1 order-1">
+                    <!-- Hero Section Begin -->
+                    <section class="hero background">
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="blog__details__author">
-                                    <div class="blog__details__author__pic">
-                                        <img src="{{Request::root()}}/img/blog/details/details-author.jpg" alt="">
-                                    </div>
-                                    <div class="blog__details__author__text">
-                                        <h6>Michael Scofield</h6>
-                                        <span>Admin</span>
+                           <div class="col-12">
+                               <x-hero-search :sites="$sites"/>
+                           </div>
+                        </div>
+                    </section>
+                    <!-- Blog Details Hero Begin -->
+                    <section class="hero background">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="product__details__pic">
+                                    <a class="product__details__pic__item" data-lightbox="roadtrip"
+                                       data-title="{{$post->title}}"
+                                       href="{{$post->image->uri}}">
+                                        <img class="product__details__pic__item--large"
+                                             src="{{Request::root()}}/{{$post->image->uri?? ''}}" alt="{{$post->title}}">
+                                    </a>
+                                    <div class="product__details__pic__slider owl-carousel">
+                                        @if($post->images)
+                                            @foreach(explode(',',$post->images) as $id)
+                                                <img data-imgbigurl="{{route('get-image', $id)}}" src="{{route('get-image', $id)}}" alt="{{$post->title}}"
+                                                     onerror="this.src='/images/no-image.png'">
+                                            @endforeach
+                                        @endif
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="blog__details__widget">
-                                    <ul>
-                                        <li><span>Categories:</span> Food</li>
-                                        <li><span>Tags:</span> All, Trending, Cooking, Healthy Food, Life Style</li>
-                                    </ul>
-                                    <div class="blog__details__social">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                                        <a href="#"><i class="fa fa-envelope"></i></a>
+                            <div class="col-6">
+                                <h3>{{$post->title}}</h3>
+                                <div class="border rounded p-2 mt-3">
+                                    <i>{!! $post->description !!}</i>
+                                </div>
+                                <div class="pull-right text-muted my-2"><i class="fa fa-calendar mr-2"></i>{{\Illuminate\Support\Carbon::parse($post->updated_at)->format('d/m/Y')}}</div>
+                                <div class="blog__details__content mt-2">
+                                    <div class="blog__details__author d-flex">
+                                        <div class="avatar-auth p-2 border rounded">
+                                            @if($post->author->image_id)
+                                                <img src="{{route('get-image-thumbnail', $post->author->image_id)}}" alt="">
+                                            @endif
+                                        </div>
+                                        <div class="blog__details__author__text ml-3">
+                                            <h6>{{$post->author->name?? ''}}</h6>
+                                            <div class="blog__details__widget mt-2">
+                                                <div class="blog__details__social">
+                                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="my-3 pt-3">
+                                    {!! $post->content !!}
+                                </div>
+                                <div class="my-3">
+                                    <x-comment-block :data="['post_id' => $post->id]"></x-comment-block>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </section>
                 </div>
             </div>
         </div>
@@ -192,61 +175,33 @@
     <!-- Blog Details Section End -->
 
     <!-- Related Blog Section Begin -->
-    <section class="related-blog spad">
+    <section class="related-blog">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title related-blog-title">
-                        <h2>Post You May Like</h2>
+                        <h2>Bài viết tương tự</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6">
+                @foreach($post_same as $save)
+                    <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic">
-                            <img src="{{Request::root()}}/img/blog/blog-1.jpg" alt="">
+                            <img src="{{$save->image->uri}}" alt="">
                         </div>
                         <div class="blog__item__text">
                             <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
+                                <li><i class="fa fa-calendar-o"></i> {{\Illuminate\Support\Carbon::parse($save->updated_at)->format('d/m/Y')}}</li>
+                                <li><i class="fa fa-comment-o"></i> {{$save->comment}} </li>
                             </ul>
-                            <h5><a href="#">Cooking tips make cooking simple</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                            <h5><a href="#">{{$save->title}}</a></h5>
+                            <p>{{$save->description}}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic">
-                            <img src="{{Request::root()}}/img/blog/blog-2.jpg" alt="">
-                        </div>
-                        <div class="blog__item__text">
-                            <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
-                            </ul>
-                            <h5><a href="#">6 ways to prepare breakfast for 30</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic">
-                            <img src="{{Request::root()}}/img/blog/blog-3.jpg" alt="">
-                        </div>
-                        <div class="blog__item__text">
-                            <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
-                            </ul>
-                            <h5><a href="#">Visit the clean farm in the US</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

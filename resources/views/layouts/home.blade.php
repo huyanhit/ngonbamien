@@ -421,7 +421,7 @@
 
             $('.my-cart').html(html);
             $('#cart-number').html(cartDom.quantities_sum);
-            $('#total-pill').html(VND.format(cartDom.subtotal - parseInt($('#coupon-down').text())));
+            $('.total-pill').html(VND.format(cartDom.subtotal - parseInt($('#coupon-down').text())));
         }
 
         function showNavigation() {

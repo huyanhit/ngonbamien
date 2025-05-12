@@ -19,8 +19,10 @@ class ProductController extends MyController
         $this->view['form'] = array(
             'sku'          => array('title'=> 'Mã sản phẩm', 'type' => self::TEXT, 'validate' => 'max:50'),
             'title'        => array('title'=> 'Tên', 'type' => self::TEXT, 'validate' => 'required|max:255'),
+            'slug'         => array('title' => 'Slug', 'type' => self::SLUG),
             'description'  => array('title'=> 'Mô tả ngắn', 'type' => self::TEXT),
-            'content'      => array('title'=> 'Thông tin sản phẩm', 'type' => self::AREA),
+            'content'      => array('title'=> 'Nội dung chi tiết', 'type' => self::AREA),
+            'make'         => array('title'=> 'Nội dung cách chế biến', 'type' => self::AREA),
 
             'image_id'     => array('title'=> 'Ảnh chính', 'type' => self::IMAGE_ID, 'group' => 'Hình ảnh sản phẩm'),
             'images'       => array('title'=> 'Ảnh phụ', 'type' => self::IMAGES, 'group' => 'Hình ảnh sản phẩm'),

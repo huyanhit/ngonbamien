@@ -106,7 +106,7 @@
 
 .product__discount__item__text {
     text-align: center;
-    padding-top: 10px;
+    padding-top: 20px;
     background: $background-2;
     span {
         font-size: 14px;
@@ -275,9 +275,17 @@
     >div{
         max-width: 100%;
         flex: unset;
+        margin-bottom: 15px;
+        .blog__item{
+            height: calc(100% - 7px);
+            border: 1px $border solid;
+            padding: 2px;
+        }
         .featured__item{
-            margin: 10px 0!important;
             height: calc(100% - 10px);
+        }
+        .featured__item, .blog__item{
+            margin: 10px 0!important;
             a{
                 background: $background;
                 display: block;
@@ -305,9 +313,42 @@
                     }
                 }
             }
-            .featured__item__pic {
+
+            .featured__item__pic{
                 width: 200px;
                 height: 200px;
+                float: left;
+                border: 1px $border solid;
+            }
+
+            .blog__item__text{
+                width: 75%;
+                float: right;
+                height: 100%;
+                .description{
+                    display: flex;
+                    text-align: left;
+                    padding: 5px 10px;
+                    font-size: 16px;
+                    height: 100px;
+                    background: $background;
+                    margin: 2px;
+                }
+                h5{
+                    color: $black-color;
+                    background: $background-2;
+                }
+                h6{
+                    padding: 10px 0;
+                    border-top: $border solid 1px;
+                    background: $background-2;
+                    span{
+                        background: $background-2;
+                    }
+                }
+            }
+            .blog__item__pic{
+                width: 200px;
                 float: left;
             }
         }

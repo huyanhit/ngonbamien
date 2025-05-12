@@ -49,19 +49,22 @@
   Blog Details
 -----------------------*/
 .related-blog {
-    padding-top: 70px;
+    padding-top: 30px;
     padding-bottom: 10px;
 }
 
 .related-blog-title {
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 }
 
 .blog-details {
-    padding-bottom: 75px;
+    padding-bottom: 35px;
     border-bottom: 1px solid #e1e1e1;
 }
-
+.avatar-auth{
+    width: 60px;
+    height: 60px;
+}
 .blog__details__text {
     margin-bottom: 45px;
 
@@ -95,8 +98,6 @@
 
 .blog__details__author__text {
     overflow: hidden;
-    padding-top: 30px;
-
     h6 {
         color: $normal-color;
         font-weight: 700;
@@ -145,3 +146,57 @@
         }
     }
 }
+
+.producer_blog{
+    overflow: hidden;
+    .producer-image{
+        width: 40%;
+        float: left;
+        padding-right: 20px;
+        position: relative;
+        z-index: 1;
+    }
+    .producer_content{
+        float: right;
+        width: 60%;
+    }
+    .producer_desc{
+        margin-bottom: 15px;
+        font-size: 18px;
+        font-family: serif;
+    }
+    .content_blog{
+        font-size: 18px;
+        text-align: justify;
+    }
+    &.active{
+        .producer_show .content_blog{
+            height: auto;
+        }
+        .btn_producer{
+            padding: 0;
+            top: -5px;
+            button::after{
+                content: 'Ẩn nội dung';
+            }
+        }
+    }
+    .producer_show {
+        padding: 16px 0;
+        .content_blog{
+            height: 240px;
+            transition: .5s;
+        }
+    }
+    .btn_producer{
+        backdrop-filter: blur(5px);
+        padding: 22px 0;
+        position: relative;
+        top: 20px;
+        z-index: 0;
+        button::after{
+            content: 'Xem thêm';
+        }
+    }
+}
+

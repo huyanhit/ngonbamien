@@ -19,9 +19,10 @@ class ProducerController extends MyController
         parent::__construct($request, new ProducerService());
         $this->view['resource'] = $this->request->segment(2);
         $this->view['form'] = array(
-            'title'   => array('title'=> 'Tiều đề', 'type' => self::TEXT, 'validate' => 'required|max:50'),
-            'slug'    => array('title'=> 'Đường dẫn', 'type' => self::TEXT, 'validate' => 'required|max:255'),
-            'content' => array('title'=> 'Nội dung', 'type' => self::AREA),
+            'title'       => array('title'=> 'Tiều đề', 'type' => self::TEXT, 'validate' => 'required|max:50'),
+            'slug'        => array('title'=> 'Đường dẫn', 'type' => self::TEXT, 'validate' => 'required|max:255'),
+            'description' => array('title'=> 'Mô tả ngắn', 'type' => self::AREA),
+            'content'     => array('title'=> 'Nội dung', 'type' => self::AREA),
 
             'meta_title'        => array('title'=> 'Meta title', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
             'meta_keywords'     => array('title'=> 'Meta keywords', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),
@@ -32,8 +33,7 @@ class ProducerController extends MyController
 
             'icon'     => array('title'=> 'Icon', 'type' => self::IMAGE_ID, 'column' => 2, 'group' => 'Hình ảnh'),
             'image_id' => array('title'=> 'Ảnh chính', 'type' => self::IMAGE_ID, 'column' => 2, 'group' => 'Hình ảnh'),
-            'images'   => array('title'=> 'Ảnh phụ', 'type' => self::IMAGES, 'column' => 2,'group' => 'Hình ảnh'),
-            'banner'   => array('title'=> 'Banner', 'type' => self::IMAGE, 'column' => 2, 'group' => 'Hình ảnh'),
+            'images'   => array('title'=> 'Slider', 'type' => self::IMAGES, 'column' => 2,'group' => 'Hình ảnh'),
         );
 
         $this->view['list'] = array(

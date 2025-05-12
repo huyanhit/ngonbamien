@@ -51,4 +51,9 @@ class Product extends Model
             ->select('product_option.id', 'product_option.option_price_id', 'product_option.title',
                 'product_option.stock', 'product_option.discount', 'product_option.price_root', 'product_option.price');
     }
+
+    public function recent(): HasMany{
+        return $this->hasMany(ProductRecent::class, 'product_id', 'id')
+            ->where('user_id', Auth::id());
+    }
 }

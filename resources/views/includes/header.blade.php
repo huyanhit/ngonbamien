@@ -194,7 +194,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <div class="header__cart__price"><span class="text-danger">150.000</span> (vnd)</div>
+                        <div class="header__cart__price"><span class="text-danger total-pill">0đ</span></div>
                     </div>
                 </div>
             </div>

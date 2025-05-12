@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('post_categories', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug');
             $table->longtext('content')->nullable();
 
             $table->integer('parent_id')->nullable();

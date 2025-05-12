@@ -1,8 +1,21 @@
 @props(['data' => null])
 <div class="form-horizontal bg-white border p-3" id="comment">
-    <h4 class="font-bold text-xl text-uppercase text-center mt-3">Thảo luận</h4>
+    <h4 class="font-bold text-xl text-uppercase text-center mt-3">Đánh giá</h4>
     <div id="comment_list"></div>
     <div class="bg-white p-3">
+        <div class="form-group row">
+            <div class="col-4 text-right text-muted"> Đánh giá </div>
+            <div class="col-8">
+                <div class="rating d-flex justify-content-end flex-row-reverse w-[110px]">
+                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" class="mr-1" title="5 star"></label>
+                    <input type="radio" id="star4" name="rating" checked value="4" /><label for="star4" class="mr-1" title="4 star"></label>
+                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" class="mr-1" title="3 star"></label>
+                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" class="mr-1" title="2 star"></label>
+                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" class="mr-1" title="1 star"></label>
+                </div>
+                <span id="comment_rating_error" class="text-danger text-xs hidden"></span>
+            </div>
+        </div>
         <div class="form-group row">
             <label class="col-4 col-form-label text-right">Tên hoặc biệt danh</label>
             <div class="col-8">
@@ -11,14 +24,22 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-4 col-form-label text-right">Nội dung</label>
+            <label class="col-4 col-form-label text-right">Nhập SĐT đã mua hàng</label>
             <div class="col-8">
-                <textarea class="form-control" id="comment_content" rows="3" placeholder="Nhập nội dung"></textarea>
+                <input class="form-control" id="comment_phone" type="number" placeholder="0123456789">
+                <span id="comment_phone_error" class="text-danger text-xs hidden"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-4 col-form-label text-right">Đánh giá</label>
+            <div class="col-8">
+               <textarea class="form-control"
+                         id="comment_content" rows="3" placeholder="Nhập đánh giá của bạn"></textarea>
                 <span id="comment_content_error" class="text-danger text-xs hidden"></span>
             </div>
         </div>
         <div class="text-center">
-            <button class="btn primary-btn rounded-0" onclick="comment()"> Gửi </button>
+            <button class="btn primary-btn rounded-0" onclick="comment()"> Đánh giá </button>
         </div>
     </div>
 
@@ -53,19 +74,27 @@
 
         function comment(){
             let name = $('#comment_name');
+            let phone = $('#comment_phone');
+            let rating = $('[name="rating"]:checked');
             let content = $('#comment_content');
             let nameError = $('#comment_name_error');
+            let phoneError = $('#comment_phone_error');
+            let ratingError = $('#comment_rating_error');
             let contentError = $('#comment_content_error');
 
             let data = {
                 {{isset($data['product_id'])?'product_id:'.$data['product_id'].',':''}}
                 {{isset($data['post_id'])?'post_id:'.$data['post_id'].',':''}}
                 name: name.val().trim(),
+                phone: phone.val().trim(),
+                rating: rating.val(),
                 content: content.val().trim()
             }
 
             if( !checkEmptyValue(name, nameError, data.name, 'Bạn chưa nhập tên') &&
-                !checkEmptyValue(content, contentError, data.content, 'Bạn chưa nhập nội dung')){
+                !checkPhone(phone, phoneError, data.phone, 'Số điện thoại không hợp lệ') &&
+                !checkEmptyValue(rating, ratingError, data.rating, 'Bạn chưa bình chọn') &&
+                !checkEmptyValue(content, contentError, data.content, 'Bạn chưa nhập đánh giá')){
                 ajaxComment(data);
             }
         }

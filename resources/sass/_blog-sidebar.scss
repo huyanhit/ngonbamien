@@ -79,6 +79,10 @@
 .blog__sidebar__recent__item__pic {
     float: left;
     margin-right: 20px;
+    img{
+        width: 100px;
+        height: 100px;
+    }
 }
 
 .blog__sidebar__recent__item__text {

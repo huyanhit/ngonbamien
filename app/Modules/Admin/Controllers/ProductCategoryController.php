@@ -21,6 +21,7 @@ class ProductCategoryController extends MyController
         $this->view['resource'] = $this->request->segment(2);
         $this->view['form'] = array(
             'title'   => array('title'=> 'Tiều đề', 'type' => self::TEXT, 'validate' => 'required|max:50'),
+            'slug'         => array('title' => 'Slug', 'type' => self::SLUG),
             'content' => array('title'=> 'Nội dung', 'type' => self::AREA),
 
             'meta_title'        => array('title'=> 'Meta title', 'type' => self::TEXT, 'validate' => 'max:1000', 'group' => 'Seo'),

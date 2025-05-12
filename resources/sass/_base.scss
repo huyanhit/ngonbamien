@@ -261,3 +261,39 @@ ol {
     border-left-color: transparent;
   }
 }
+.doc-content{
+    ul, ol{
+        padding: 5px 30px;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+    h1 {
+        font-size: 36px
+    }
+
+    h2 {
+        font-size: 24px
+    }
+
+    h3 {
+        font-size: 22px;
+    }
+
+    h4 {
+        font-size: 20px
+    }
+
+    h5 {
+        font-size: 18px
+    }
+
+    h6 {
+        font-size: 16px
+    }
+    p{
+        margin-bottom: 5px;
+    }
+}
+
