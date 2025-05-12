@@ -249,7 +249,7 @@ function addCart(e, item, link = ''){
     cartData.id        = item.id
     cartData.option_id = item.option
     let html = $(e).html();
-    $(e).html('<div class="spinner-border"></div>');
+    $(e).html('<div class="spinner-border" style="height: 18px; width: 18px;"></div>');
     $.ajax({
         type: 'POST',
         url: '/cart',
@@ -260,7 +260,7 @@ function addCart(e, item, link = ''){
         cartDom = response;
         updateCartDom();
         if(link !== ''){
-            window.location.href = '/'+link;
+            window.location.href = link;
         }
     }).fail(function(){
         $(e).html(html);
@@ -269,33 +269,35 @@ function addCart(e, item, link = ''){
 
 // take in other js page
 function flyToElement(flyer, flyingTo) {
-    let divider = 6;
-    let flyerClone = $(flyer).clone();
-    $(flyerClone).css({position: 'absolute', top: $(flyer).offset().top + "px", left: $(flyer).offset().left + "px", opacity: 1, 'z-index': 1000});
-    $('body').append($(flyerClone));
-    let gotoX = $(flyingTo).offset().left + ($(flyingTo).width() / 2) - ($(flyer).width()/divider)/2;
-    let gotoY = $(flyingTo).offset().top + ($(flyingTo).height() / 2) - ($(flyer).height()/divider)/2;
+    if(flyer.offset() && flyingTo.offset()){
+        let divider = 6;
+        let flyerClone = $(flyer).clone();
+        $(flyerClone).css({position: 'absolute', top: $(flyer).offset().top + "px", left: $(flyer).offset().left + "px", opacity: 1, 'z-index': 1000});
+        $('body').append($(flyerClone));
+        let gotoX = $(flyingTo).offset().left + ($(flyingTo).width() / 2) - ($(flyer).width()/divider)/2;
+        let gotoY = $(flyingTo).offset().top + ($(flyingTo).height() / 2) - ($(flyer).height()/divider)/2;
 
-    $(flyerClone).animate({
-        opacity: 0.4,
-        left: gotoX,
-        top: gotoY,
-        width: $(flyer).width()/divider,
-        height: $(flyer).height()/divider
-    }, 700,
-    function () {
-        $(flyingTo).fadeOut('fast', function () {
-            $(flyingTo).fadeIn('fast', function () {
-                $(flyerClone).fadeOut('fast', function () {
-                    $(flyerClone).remove();
+        $(flyerClone).animate({
+                opacity: 0.4,
+                left: gotoX,
+                top: gotoY,
+                width: $(flyer).width()/divider,
+                height: $(flyer).height()/divider
+            }, 700,
+            function () {
+                $(flyingTo).fadeOut('fast', function () {
+                    $(flyingTo).fadeIn('fast', function () {
+                        $(flyerClone).fadeOut('fast', function () {
+                            $(flyerClone).remove();
+                        });
+                    });
                 });
             });
-        });
-    });
+    }
 }
 
 function addFavor(e, item) {
-    $(e).html('<div class="spinner-border"></div>');
+    $(e).html('<div class="spinner-border" style="height: 18px; width: 18px;"></div>');
     $.ajax({
         type: 'POST',
         url: '/favor',
@@ -335,11 +337,9 @@ $(document).ready(function () {
             return 'Phiên bản 1.0 release 01/06/2025';
         }
     });
-
     $(".dropdown-auth").click(function (){
         $(".auth-container").toggleClass('active');
     });
-
     $('#slider').nivoSlider({
         effect: 'fade', // Specify sets like: 'fold,fade,sliceDown'
         animSpeed: 2000, // Slide transition speed
@@ -422,7 +422,7 @@ $(document).ready(function () {
         e.preventDefault();
         let itemImg = $(this).parents('.featured__item__pic').find('img').eq(0);
         flyToElement($(itemImg), $('.cart_anchor'));
-        addCart(this, {id:$(this).attr('data-value'), option:$(this).attr('option-value')});
+        addCart(this, {id:$(this).attr('data-value'), option:$(this).attr('option-value'),}, $(this).attr('data-link')??'');
     });
     $('.add_favor').on('click', function(e) {
         e.preventDefault();

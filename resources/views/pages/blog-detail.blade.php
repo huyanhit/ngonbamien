@@ -49,7 +49,7 @@
                         </div>
                         <form class="sidebar" method="get" action="{{Request::url()}}">
                             <div class="sidebar__item mt-3">
-                                <h4>Nhóm</h4>
+                                <h4>Danh mục</h4>
                                 <div class="sidebar__item__size">
                                     <button class="btn btn-outline-dark my-1 {{request('loai') === 'bai-moi'? 'active': ''}}"
                                             name="loai"

@@ -55,7 +55,7 @@
                                 @else
                                     @if($item->discount > 0)
                                         <span class="product__details__price">
-                                            {{ number_format($item->price - ($item->price * $item->discount /100), 0, ',', '.') }}đ
+                                        <span class="text-muted" style="font-weight: 600; font-size: 18px;"> Giá:</span>    {{ number_format($item->price - ($item->price * $item->discount /100), 0, ',', '.') }}đ
                                         </span>
                                         <span class="product_detail_price_root text-muted"> {{ number_format($item->price, 0, ',', '.') }}đ</span>
                                         <span class="product_detail_discount">-{{$item->discount}}%</span>
@@ -81,6 +81,11 @@
                             </div>
                         </div>
                         <div class="my-3">
+                            <a href="#" class="heart-icon border primary-btn add_favor" data-value="{{$product->id}}"><span class="icon_heart_alt"></span> Yêu Thích </a>
+                            <a href="#" class="heart-icon border primary-btn"><span class="icon_cloud_alt"></span> Chia Sẻ </a>
+                            <a href="#" class="heart-icon border primary-btn"><span class="icon_chat_alt"></span> Tư Vấn </a>
+                        </div>
+                        <div class="my-3 pt-2">
                             <div class="product__details__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
@@ -88,9 +93,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <a onclick="addCart(this, {id: {{$item->id}}})" href="javascript:void(0)" class="primary-btn">Thêm vào giỏ</a>
-                            <a onclick="addCart(this, {id: 18}, 'dat-hang')" href="javascript:void(0)" class="primary-btn bg-danger">Mua ngay</a>
-                            <a href="#" class="heart-icon border"><span class="icon_heart_alt"></span></a>
+                            <a data-value="{{$product->id}}" href="javascript:void(0)" class="primary-btn add_cart">Thêm vào giỏ</a>
+                            <a data-value="{{$product->id}}" data-link="{{Request::root()}}/dat-hang" class="primary-btn bg-danger text-white add_cart">Mua ngay</a>
                         </div>
                         <p>{!! $product->description !!}</p>
                     </div>

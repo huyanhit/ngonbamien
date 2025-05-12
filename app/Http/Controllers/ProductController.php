@@ -106,7 +106,7 @@ class ProductController extends Controller
         $product = Product::find($request->id);
         if(Auth::check() && !empty($product)){
             FavorProduct::updateOrCreate([
-                'product_id' => $product->id,
+                'product_id' => $request->id,
                 'user_id' => Auth::id(),
             ],[ 'time' => Carbon::now()]);
         }

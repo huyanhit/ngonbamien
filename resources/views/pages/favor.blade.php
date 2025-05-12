@@ -54,12 +54,12 @@
                 </div>
                 <div class="col-lg-4 col-md-3">
                     <div class="filter__option">
-                        <span class="icon_ul filter__option_ul active"></span>
-                        <span class="icon_grid-2x2 filter__option_grid"></span>
+                        <span class="icon_ul filter__option_ul"></span>
+                        <span class="icon_grid-2x2 filter__option_grid active"></span>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row filter__list">
                 @if(!$favors->isEmpty())
                     @foreach ($favors as $item)
                         <div class="col-3">

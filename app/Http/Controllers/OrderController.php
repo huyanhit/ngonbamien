@@ -42,21 +42,35 @@ class OrderController extends Controller
     {
         DB::beginTransaction();
         try {
+            $discount = 0;
             $cart = $this->cart->getDetails();
+            $coupon = Session::get('coupon')??'';
             if($cart->isEmpty()){
                 return view('pages.checkout', array_merge($this->getDataLayout(), []))
                     ->withErrors('Lỗi! Chưa có sản phẩm trong giỏ hàng.');
             }
+            if($coupon){
+                $couponData = $this->processCoupon($coupon, $this->cart->getDetails());
+                if($couponData['discount']){
+                    $discount = $couponData['discount'];
+                }
+            }
+            $total = $cart->total - $discount;
+            $shipping = ($total <= 185000)? 15000: (($total > 200000)? 0: (200000 - $total));
+
             $order = Order::create([
                 'sex'       => $request->sex,
                 'name'      => $request->name,
                 'phone'     => $request->phone,
                 'address'   => $request->address,
                 'note'      => $request->note,
-                'total'     => $cart->total,
-                'ship_price'  => $request->ship_price?? 0,
+                'price'     => $total + $shipping,
+                'coupon'    => Session::get('coupon'),
+                'discount'  => $discount,
+                'ship_price'=> $shipping,
                 'order_status_id' => 1
             ]);
+
             foreach ($cart->items as $item){
                 OrderProduct::create([
                     'order_id'   => $order->id,

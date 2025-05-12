@@ -5,7 +5,7 @@
     "src": "resources/css/admin.css"
   },
   "resources/css/app.css": {
-    "file": "assets/app-37241656.css",
+    "file": "assets/app-fde906bc.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -115,7 +115,7 @@
   },
   "resources/fonts/la-solid-900.eot": {
     "file": "assets/la-solid-900-8a57f8a9.eot",
-    "src": "resources/fonts/la-solid-900d41d.eot"
+    "src": "resources/fonts/la-solid-900.eot"
   },
   "resources/fonts/la-solid-900.svg": {
     "file": "assets/la-solid-900-0ce0cc40.svg",
@@ -135,7 +135,7 @@
   },
   "resources/fonts/la-solid-900d41d.eot": {
     "file": "assets/la-solid-900-8a57f8a9.eot",
-    "src": "resources/fonts/la-solid-900d41d.eot"
+    "src": "resources/fonts/la-solid-900.eot"
   },
   "resources/fonts/materialdesignicons-webfont9445.eot": {
     "file": "assets/materialdesignicons-webfont9445-67d24abe.eot",
@@ -202,7 +202,7 @@
     "src": "resources/images/sidebar/img-4.jpg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-adc50f1e.js",
+    "file": "assets/app-bbb46722.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

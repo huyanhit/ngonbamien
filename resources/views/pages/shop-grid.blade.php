@@ -8,7 +8,7 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>Món ngon, đặc sản</span>
+                            <span>Món ngon, Đặc sản</span>
                         </div>
                         <ul class="shop-category">
                             @foreach ($product_categories as $item)
@@ -112,7 +112,7 @@
                                 </select>
                             </div>
                             <div class="sidebar__item mt-2">
-                                <h4>Nhóm</h4>
+                                <h4>Danh mục</h4>
                                 <div class="sidebar__item__size">
                                     <button class="btn btn-outline-dark my-1 {{request('loai') === 'mon-moi'? 'active': ''}}"
                                             name="loai"

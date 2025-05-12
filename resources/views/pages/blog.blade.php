@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <!-- Hero Section Begin -->
-    <section class="hero background margin_15">
+    <section class="hero background">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -66,7 +66,7 @@
                             </select>
                         </div>
                         <div class="sidebar__item mt-3">
-                            <h4>Nhóm</h4>
+                            <h4>Danh mục</h4>
                             <div class="sidebar__item__size">
                                 <button class="btn btn-outline-dark my-1 {{request('loai') === 'bai-moi'? 'active': ''}}"
                                         name="loai"

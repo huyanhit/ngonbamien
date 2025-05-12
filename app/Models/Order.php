@@ -17,8 +17,11 @@ class Order extends Model
         'phone',
         'address',
         'note',
-        'payment',
         'coupon',
+        'price',
+        'discount',
+        'ship_type',
+        'ship_price',
         'order_status_id'
     ];
 
