@@ -81,7 +81,8 @@
                             </div>
                         </div>
                         <div class="my-3">
-                            <a href="#" class="heart-icon border primary-btn add_favor" data-value="{{$product->id}}"><span class="icon_heart_alt"></span> Yêu Thích </a>
+                            <a href="#" class="heart-icon border primary-btn add_favor" data-value="{{$product->id}}">
+                                <span class="icon_heart_alt"></span></a>
                             <a href="#" class="heart-icon border primary-btn"><span class="icon_cloud_alt"></span> Chia Sẻ </a>
                             <a href="#" class="heart-icon border primary-btn"><span class="icon_chat_alt"></span> Tư Vấn </a>
                         </div>

@@ -36,7 +36,7 @@ class CartController extends Controller
                 ]));
             }
         }
-            
+
         return view('pages.shop-cart', array_merge($this->getDataLayout(), [
              'coupon'=> $this->processCoupon(Session::get('coupon'), $this->cart->getDetails()),
         ]));
@@ -56,7 +56,7 @@ class CartController extends Controller
                 'quantity' => $request->quantity,
             ]);
         }
-      
+
         return response()->json($this->cart->getDetails());
     }
 

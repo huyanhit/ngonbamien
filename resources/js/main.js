@@ -122,10 +122,10 @@ function updateCartDom(){
         '<th width="10%" class="text-center">Hình ảnh</th>' +
         '<th width="20%">Tên sản phẩm</th>' +
         '<th width="10%" class="text-center">Giá</th>' +
-        '<th width="15%" class="text-center">Phân loại</th>' +
+        '<th width="20%" class="text-center">Phân loại</th>' +
         '<th width="10%" class="text-center">Số lượng</th>' +
         '<th width="10%" class="text-center">Tổng cộng</th>' +
-        '<th width="10%" class="text-center">Xoá</th>' +
+        '<th width="5%" class="text-center">Xoá</th>' +
         '</tr>';
     let items = cartDom.items;
     if(Object.keys(items).length > 0){

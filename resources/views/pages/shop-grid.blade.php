@@ -40,12 +40,17 @@
                                                 </a>
                                                 <div class="product__discount__percent">-{{$item->discount}}%</div>
                                                 <ul class="product__item__pic__hover">
-                                                    <li><span title="Yêu thích"><i class="fa fa-heart"></i></span></li>
+                                                    <li><span title="Yêu thích" class="add_favor"
+                                                        data-value="{{$item->id}}"
+                                                        option-value="{{$item->option_id}}">
+                                                        <i class="fa fa-heart"></i></span></li>
                                                     <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
                                                     <li>
-                                                        <span title="Thêm vào giỏ" class="add_cart" data-value="{{$item->id}}"><i class="fa fa-shopping-cart"></i></span>
+                                                        <span title="Thêm vào giỏ" class="add_cart"
+                                                            data-value="{{$item->id}}"
+                                                            option-value="{{$item->option_id}}">
+                                                            <i class="fa fa-shopping-cart"></i></span>
                                                     </li>
-
                                                 </ul>
                                             </div>
                                             <div class="product__discount__item__text">

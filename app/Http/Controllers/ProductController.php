@@ -17,7 +17,7 @@ class ProductController extends Controller
 {
     public function index(Request $request, $slug = ''){
         $product = Product::where(['products.active'=> 1])->join('product_option', 'product_option.product_id', '=', 'products.id');
-        $selects = ['products.*','product_option.title as option_title', 'price', 'discount'];
+        $selects = ['products.*','product_option.title as option_title', 'product_option.id as option_id', 'price', 'discount'];
         if($slug){
             $request = $request->merge(['product_category' => $slug]);
             $selects = array_merge($selects, ['product_categories.title as categories_title']);
@@ -35,7 +35,7 @@ class ProductController extends Controller
             'producers' => Producer::where(['active'=> 1])->orderby('index', 'ASC')->limit(9)->get(),
             'products'  => $product->select($selects)->filter(new ProductFilter($request))->paginate(9),
             'discount_products' => Product::where('products.active', 1)
-                ->select('products.id', 'product_option.title as option_title',
+                ->select('products.id', 'product_option.title as option_title', 'product_option.id as option_id',
                     'products.title', 'price', 'discount', 'slug', 'images.uri')
                 ->join('product_option', 'product_option.product_id', '=', 'products.id')
                 ->join('images', 'images.id', '=', 'products.image_id')
