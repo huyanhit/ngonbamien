@@ -1,17 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="{{Request::root()}}/img/breadcrumb.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 breadcrumb__option">
-                    <a href="./index.html">Home</a>
-                    <a href="./index.html">Vegetables</a>
-                    <span>Vegetable’s Package</span>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-breadcrumb name="san-pham" title="Chi Tiết Sản Phẩm" :data="$product"></x-breadcrumb>
     <!-- Breadcrumb Section End -->
 
     <!-- Product Details Section Begin -->

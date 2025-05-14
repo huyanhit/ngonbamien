@@ -9,35 +9,33 @@
 
 .breadcrumb__text {
     h2 {
-        font-size: 46px;
+        font-size: 40px;
         color: $white-color;
-        font-weight: 700;
+        font-weight: 600;
     }
 }
 
 .breadcrumb__option {
     a {
-        display: inline-block;
-        font-size: 16px;
         color: $white-color;
-        font-weight: 700;
-        margin-right: 20px;
-        position: relative;
-
-        &:after {
-            position: absolute;
-            right: -12px;
-            top: 13px;
-            height: 1px;
-            width: 10px;
-            background: $white-color;
-            content: '';
-        }
     }
 
     span {
         display: inline-block;
         font-size: 16px;
         color: $white-color;
+    }
+
+    .breadcrumb{
+        display: inline-block;
+        background: unset;
+        margin: 0;
+        padding: 5px;
+        .breadcrumb-item{
+            display: inline-block;
+            &.active{
+                color: $primary-color;
+            }
+        }
     }
 }

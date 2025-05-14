@@ -1,21 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <!-- Hero Section End -->
-    <section class="breadcrumb-section set-bg mb-3" data-setbg="{{Request::root()}}/img/breadcrumb.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h3 class="text-white">Đơn hàng</h3>
-                        <div class="breadcrumb__option">
-                            <a href="./index.html">Trang chủ</a>
-                            <span>Đơn hàng</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-breadcrumb name="don-hang" title="Đơn Hàng"></x-breadcrumb>
     <!-- Hero Section Begin -->
     <section class="hero background">
         <div class="container">

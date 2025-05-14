@@ -1,21 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h3 class="text-white">Xác nhận đơn hàng</h3>
-                        <div class="breadcrumb__option">
-                            <a href="./index.html">Trang chủ</a>
-                            <span>Xác nhận đơn hàng</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-breadcrumb name="dat-hang" title="Xác nhận đơn hàng"></x-breadcrumb>
     <!-- Breadcrumb Section End -->
 
     <!-- Checkout Section Begin -->

@@ -1,20 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <section class="breadcrumb-section set-bg mb-3" data-setbg="{{Request::root()}}/img/breadcrumb.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h3 class="text-white">Thanh toán đơn hàng</h3>
-                        <div class="breadcrumb__option">
-                            <a href="./index.html">Trang chủ</a>
-                            <span>Thanh toán đơn hàng</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Breadcrumb Section Begin -->
+    <x-breadcrumb name="dat-hang" title="Thanh toán đơn hàng" :data="$order"></x-breadcrumb>
+    <!-- Breadcrumb Section End -->
     <section class="my-3">
         <div class="container">
             <form action="{{route('tat-toan', $order->code)}}" method="POST">
