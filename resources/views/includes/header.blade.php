@@ -67,7 +67,6 @@
     </div>
     <div class="humberger__menu__contact">
         <ul>
-
             <li><i class="fa fa-envelope"></i> {{$sites->email ?? ''}}</li>
             <li>{!! $sites->other ?? '' !!}</li>
         </ul>
@@ -119,16 +118,16 @@
                                     <i class="fa fa-sign-in"></i>
                                 </a>
                             @endif
-                            <div class="dropdown-menu auth-container text-center fw-bold">
+                            <div class="dropdown-menu auth-container fw-bold">
                                 @if(auth()->id())
-                                    <h6 class="dropdown-header font-weight-bold py-3 bg-light">{{auth()->user()->name}}</h6>
-                                    <a class="dropdown-item border-top p-3" href="{{Request::root()}}/tai-khoan"><i class="fa fa-user text-muted fs-16 align-middle"></i> <span class="align-middle">Thông tin</span></a>
-                                    <a class="dropdown-item border-top p-3" href="{{Request::root()}}/chat"><i class="fa fa-comments-o text-muted fs-16 align-middle"></i> <span class="align-middle">Tin nhắn</span></a>
-                                    <a class="dropdown-item border-top p-3" href="{{Request::root()}}/tro-giup"><i class="fa fa-info-circle text-muted fs-16 align-middle"></i> <span class="align-middle">Trợ giúp</span></a>
-                                    <a class="dropdown-item border-top p-3" href="{{Request::root()}}/cai-dat"><i class="fa fa-cog text-muted fs-16 align-middle"></i> <span class="align-middle">Cài đặt</span></a>
-                                    <a class="dropdown-item border-top p-3" href="{{Request::root()}}/dang-xuat"><i class="fa fa-sign-out text-muted fs-16 align-middle"></i> <span class="align-middle">Đăng xuất</span></a>
+                                    <h6 class="dropdown-header font-weight-bold py-3 bg-light text-center">{{auth()->user()->name}}</h6>
+                                    <a class="dropdown-item border-top py-2 px-3" href="{{Request::root()}}/tai-khoan"><i class="fa fa-user-o text-muted fs-16 align-middle"></i> <span class="align-middle">Thông Tin</span></a>
+                                    <a class="dropdown-item border-top py-2 px-3" href="{{Request::root()}}/don-hang"><i class="fa fa-file-text-o text-muted fs-16 align-middle"></i> <span class="align-middle">Đơn Hàng</span></a>
+                                    <a class="dropdown-item border-top py-2 px-3" href="{{Request::root()}}/tro-giup"><i class="fa fa-info-circle text-muted fs-16 align-middle"></i> <span class="align-middle">Trợ Giúp</span></a>
+                                    <a class="dropdown-item border-top py-2 px-3" href="{{Request::root()}}/cai-dat"><i class="fa fa-cog text-muted fs-16 align-middle"></i> <span class="align-middle">Cài Đặt</span></a>
+                                    <a class="dropdown-item border-top py-2 px-3" href="{{Request::root()}}/dang-xuat"><i class="fa fa-sign-out text-muted fs-16 align-middle"></i> <span class="align-middle">Đăng Xuất</span></a>
                                 @else
-                                    <a class="dropdown-item border-top p-3" href="{{Request::root()}}/dang-nhap"><i class="fa fa-sign-in text-muted fs-16 align-middle"></i> <span class="align-middle">Đăng nhập</span></a>
+                                    <a class="dropdown-item border-top py-2 px-3" href="{{Request::root()}}/dang-nhap"><i class="fa fa-sign-in text-muted fs-16 align-middle"></i> <span class="align-middle">Đăng Nhập</span></a>
                                 @endif
                             </div>
                         </div>
@@ -194,7 +193,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <div class="header__cart__price"><span class="text-danger total-pill">0đ</span></div>
+                        <div class="header__cart__price"><a href="{{Request::root()}}/gio-hang" class="text-danger total-pill">0đ</a></div>
                     </div>
                 </div>
             </div>

@@ -60,7 +60,7 @@ class Controller extends BaseController
 
     private function counter(): void{
         $ip = $_SERVER['REMOTE_ADDR'];
-        $counter = Counter::where('ip', $ip)->first();
+        $counter  = Counter::where('ip', $ip)->first();
         $dateTime = Carbon::now()->subMinutes(5)->format('Y-m-d H:i:s');
         if(empty($counter)){
             Counter::insert(['ip'=> $ip, 'created_at' => Carbon::now(), 'counter' => 1]);

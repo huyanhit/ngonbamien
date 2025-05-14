@@ -12,7 +12,7 @@ class Order extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'sex',
+        'code',
         'name',
         'phone',
         'address',
@@ -22,6 +22,7 @@ class Order extends Model
         'discount',
         'ship_type',
         'ship_price',
+        'user_id',
         'order_status_id'
     ];
 
@@ -30,7 +31,7 @@ class Order extends Model
     public function products() :BelongsToMany
     {
         return $this->belongsToMany(Product::class, 'order_products', 'order_id', 'product_id')
-            ->withPivot(['quantity', 'options']);
+            ->withPivot(['quantity', 'options', 'price']);
     }
 
     public function getDateShipAttribute()
@@ -42,4 +43,5 @@ class Order extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
 }

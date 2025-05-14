@@ -5,7 +5,7 @@
     "src": "resources/css/admin.css"
   },
   "resources/css/app.css": {
-    "file": "assets/app-fde906bc.css",
+    "file": "assets/app-0fe1fc53.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -67,7 +67,7 @@
   },
   "resources/fonts/la-brands-400.eot": {
     "file": "assets/la-brands-400-c0e32387.eot",
-    "src": "resources/fonts/la-brands-400d41d.eot"
+    "src": "resources/fonts/la-brands-400.eot"
   },
   "resources/fonts/la-brands-400.svg": {
     "file": "assets/la-brands-400-4da18191.svg",
@@ -87,11 +87,11 @@
   },
   "resources/fonts/la-brands-400d41d.eot": {
     "file": "assets/la-brands-400-c0e32387.eot",
-    "src": "resources/fonts/la-brands-400d41d.eot"
+    "src": "resources/fonts/la-brands-400.eot"
   },
   "resources/fonts/la-regular-400.eot": {
     "file": "assets/la-regular-400-7dc456f0.eot",
-    "src": "resources/fonts/la-regular-400d41d.eot"
+    "src": "resources/fonts/la-regular-400.eot"
   },
   "resources/fonts/la-regular-400.svg": {
     "file": "assets/la-regular-400-884ce19c.svg",
@@ -111,7 +111,7 @@
   },
   "resources/fonts/la-regular-400d41d.eot": {
     "file": "assets/la-regular-400-7dc456f0.eot",
-    "src": "resources/fonts/la-regular-400d41d.eot"
+    "src": "resources/fonts/la-regular-400.eot"
   },
   "resources/fonts/la-solid-900.eot": {
     "file": "assets/la-solid-900-8a57f8a9.eot",
@@ -202,7 +202,7 @@
     "src": "resources/images/sidebar/img-4.jpg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-bbb46722.js",
+    "file": "assets/app-1e2d95ed.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

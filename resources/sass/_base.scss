@@ -296,3 +296,29 @@ ol {
         margin-bottom: 5px;
     }
 }
+.icon-md{
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    font-size: 66px;
+    border-radius: 50%;
+    border: 1px black solid;
+    text-align: center;
+    margin: 15px;
+    position: relative;
+    ::after{
+        content: "";
+        font-family: FontAwesome;
+        font-size: 40px;
+        position: absolute;
+        right: -70px;
+        color: #000;
+        top: 28px;
+    }
+}
+
+.icon-complete{
+    ::after{
+        display: none !important;
+    }
+}

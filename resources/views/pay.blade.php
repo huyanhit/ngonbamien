@@ -78,27 +78,27 @@
                 <h3 class="font-bold text-center text-uppercase">Thông tin đơn hàng</h3>
                 <table class="table border-1 mt-2 m-3">
                     <tr class="bg-cyan-700 text-white">
-                        <th  class="text-center text-sm">Mã</th>
-                        <td class="text-left">{{$order->id}}</td>
+                        <th  class="text-center text-sm">Mã Đơn Hàng</th>
+                        <td class="text-left">{{$order->code}}</td>
                     </tr>
                     <tr class="bg-cyan-700 text-white">
                         <th class="text-center text-sm">Tên KH</th>
                         <td class="text-left">{{$order->name}}</td>
                     </tr>
                     <tr class="bg-cyan-700 text-white">
-                        <th class="text-center text-sm">Điện thoại</th>
+                        <th class="text-center text-sm">Điện Thoại</th>
                         <td class="text-left">{{$order->phone}}</td>
                     </tr>
                     <tr class="bg-cyan-700 text-white">
-                        <th class="text-center text-sm">Địa chỉ</th>
+                        <th class="text-center text-sm">Địa Chỉ</th>
                         <td class="text-left">{{$order->address}}</td>
                     </tr>
                     <tr class="bg-cyan-700 text-white">
-                        <th class="text-center text-sm">Ghi chú</th>
+                        <th class="text-center text-sm">Ghi Chú</th>
                         <td class="text-left">{{$order->note}}</td>
                     </tr>
                     <tr class="align-middle">
-                        <th class="text-center">Giá tiền</th>
+                        <th class="text-center">Giá Tiền</th>
                         <td class="text-left"><strong class="text-red-600">{{ number_format($order->price, 0, ',', '.') }}đ</strong></td>
                     </tr>
                 </table>

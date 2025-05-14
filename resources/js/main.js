@@ -140,7 +140,7 @@ function updateCartDom(){
                 '<td class="text-center"><a href="'+items[index].extra_info.link+'">' +
                 '<img alt="'+items[index].title+'" onerror="this.src=\'/images/no-image.png\'" ' +
                 'src="/admin/get-image-thumbnail/'+items[index].extra_info.image_id+'"/><a></td>' +
-                '<td class="align-middle"><a class="d-block" href="'+items[index].extra_info.link+'">'+ items[index].title +'</a></td>' +
+                '<td class="align-middle"><a class="d-block text-dark" href="'+items[index].extra_info.link+'">'+ items[index].title +'</a></td>' +
                 '<td class="text-center align-middle text-danger">'+ VND.format(items[index].price) +' </td>' +
                 '<td class="text-center align-middle">'+ optionHtml +'</td>' +
                 '<td class="text-center align-middle"><input class="form-control update_quantity"' +
@@ -173,9 +173,10 @@ function updateCartDom(){
     let coupon = $('#coupon-down').attr('data-value');
 
     $('.my-cart').html(html);
+    $('.total-pill').html(VND.format(cartDom.total));
     $('#cart-number').html(cartDom.quantities_sum);
     $('#coupon-down').html('-' + VND.format(coupon));
-    $('.total-pill').html(VND.format(cartDom.total - (coupon ? parseInt(coupon) : 0)));
+    $('#total-check').html(VND.format(cartDom.total - (coupon ? parseInt(coupon) : 0)));
 }
 
 function showNavigation() {

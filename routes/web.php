@@ -50,10 +50,10 @@ Route::get('/ax-find-product', [ProductController::class, 'productCategory'])->n
 Route::get('/ax-load-comment', [CommentController::class, 'loadComment'])->name('ajax-load-comment');
 Route::post('/ax-comment', [CommentController::class, 'comment'])->name('ajax-comment');
 Route::post('/favor', [ProductController::class, 'favor'])->name('favor');
-Route::resource('/cart', CartController::class);
-
-require __DIR__.'/auth.php';
 Route::get('/counter', [HomeController::class, 'counter'])->name('page.counter');
+Route::resource('/cart', CartController::class);
+require __DIR__.'/auth.php';
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/phan-loai/{slug}', [CategoryProductController::class, 'show'])->name('phan-loai');
 Route::get('/cua-hang/{slug?}', [ProductController::class, 'index'])->name('cua-hang');
@@ -61,14 +61,14 @@ Route::get('/san-pham/{slug}', [ProductController::class, 'show'])->name('san-ph
 Route::get('/bai-viet/{slug?}', [PostController::class, 'index'])->name('bai-viet');
 Route::get('/noi-dung/{slug}', [PostController::class, 'show'])->name('noi-dung');
 Route::get('/vung-mien/{slug}', [ProducerController::class, 'show'])->name('vung-mien');
+Route::get('/don-hang', [OrderController::class, 'search'])->name('don-hang');
 Route::get('/gio-hang', [CartController::class, 'page'])->name('gio-hang');
 Route::post('/gio-hang', [CartController::class, 'coupon'])->name('coupon');
 Route::get('/dat-hang', [CheckController::class, 'index'])->name('dat-hang');
 Route::post('/mua-hang', [OrderController::class, 'store'])->name('mua-hang');
-Route::get('/thanh-toan/{order}', [OrderController::class, 'show'])->name('thanh-toan');
-Route::put('/thanh-toan/{order}', [OrderController::class, 'update'])->name('tat-toan');
+Route::get('/thanh-toan/{code}', [OrderController::class, 'show'])->name('thanh-toan');
+Route::put('/thanh-toan/{code}', [OrderController::class, 'update'])->name('tat-toan');
 
-Route::get('/tra-cuu-don-hang', [OrderController::class, 'search'])->name('tra-cuu-don-hang');
 Route::get('/tim-kiem',   [SearchController::class, 'search'])->name('tim-kiem');
 Route::get('/dich-vu/{service}', [ServiceController::class, 'show'])->name('dich-vu');
 Route::get('/hang-san-xuat/{service}', [ProducerController::class, 'show'])->name('hang-san-xuat');

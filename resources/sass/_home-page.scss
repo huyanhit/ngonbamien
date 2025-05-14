@@ -143,27 +143,28 @@
             span {
                 background: $primary-color;
                 border-color: $primary-color;
-
+                color: $white-color;
                 i {
                     color: $white-color;
                     transform: rotate(360deg);
                 }
             }
         }
-
         span {
-            font-size: 16px;
-            color: $normal-color;
-            height: 40px;
-            width: 40px;
-            line-height: 40px;
+            color: $black-color;
+            height: 35px;
+            min-width: 30px;
+            line-height: 35px;
             text-align: center;
             border: 1px solid $border;
             background: $white-color;
             display: block;
-            border-radius: 50%;
+            border-radius: 18px;
+            padding: 0 10px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all, .5s;
             @include transition(all, .5s);
-
             i {
                 position: relative;
                 transform: rotate(0);

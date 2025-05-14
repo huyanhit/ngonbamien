@@ -27,45 +27,67 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-6 border p-3">
                             <h4 class="text-center">Thông tin khách hàng</h4>
-                            <div class="form-group mt-2">
-                                <span class="mr-2">
-                                    <input {{request()->sex == 1?'checked':''}} type="radio" value="1" name="sex" id="male"/>
-                                    <label class="ml-1" for="male">Anh</label>
-                                </span>
-                                <span>
-                                    <input {{request()->sex == 2?'checked':''}} type="radio" checked value="2" name="sex" id="gender" />
-                                    <label class="ml-1" for="gender">Chị</label>
-                                </span>
-                                @if ($errors->has('sex'))
-                                    <span class="text-danger">{{ $errors->first('sex') }}</span>
-                                @endif
-                            </div>
-                            <div class="checkout__input">
-                                <p>Họ & Tên<span>*</span></p>
-                                <input type="text" name="name" placeholder="Nhập vào Họ & Tên" value="{{request()->name}}" />
-                                @if ($errors->has('name'))
-                                    <span class="text-danger">{{ $errors->first('name') }}</span>
-                                @endif
-                            </div>
-                            <div class="checkout__input">
-                                <p>Số điện thoại<span>*</span></p>
-                                <input type="tel" name="phone" placeholder="Nhập vào Số điện thoại" value="{{request()->phone}}"/>
-                                @if ($errors->has('phone'))
-                                    <span class="text-danger">{{ $errors->first('phone') }}</span>
-                                @endif
-                            </div>
-                            <div class="checkout__input">
-                                <p>Địa chỉ giao hàng<span>*</span></p>
-                                <input type="text" name="address" placeholder="Nhập vào Địa chỉ giao hàng" value="{{request()->address}}"/>
-                                @if ($errors->has('address'))
-                                    <span class="text-danger">{{ $errors->first('address') }}</span>
-                                @endif
-                            </div>
-                            <div class="checkout__input">
-                                <p>Ghi chú</p>
-                                <textarea class="form-control" name="note"
-                                          cols="30" rows="3" placeholder="Ghi chú thêm (Không bắt buộc)">{{request()->note}}</textarea>
-                            </div>
+                            @if(auth()->check())
+                                <div class="checkout__input">
+                                    <p>Họ & Tên<span>*</span></p>
+                                    <input type="text" name="name" placeholder="Nhập vào Họ & Tên"
+                                           value="{{request()->name??auth()->user()->name}}" />
+                                    @if ($errors->has('name'))
+                                        <span class="text-danger">{{$errors->first('name')}}</span>
+                                    @endif
+                                </div>
+                                <div class="checkout__input">
+                                    <p>Số điện thoại<span>*</span></p>
+                                    <input type="tel" name="phone" placeholder="Nhập vào Số điện thoại"
+                                           value="{{request()->phone??auth()->user()->phone}}"/>
+                                    @if ($errors->has('phone'))
+                                        <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                    @endif
+                                </div>
+                                <div class="checkout__input">
+                                    <p>Địa chỉ giao hàng<span>*</span></p>
+                                    <input type="text" name="address" placeholder="Nhập vào Địa chỉ giao hàng"
+                                           value="{{request()->address??auth()->user()->address}}"/>
+                                    @if ($errors->has('address'))
+                                        <span class="text-danger">{{ $errors->first('address') }}</span>
+                                    @endif
+                                </div>
+                                <div class="checkout__input">
+                                    <p>Ghi chú</p>
+                                    <textarea class="form-control" name="note"
+                                              cols="30" rows="3" placeholder="Ghi chú thêm (Không bắt buộc)">{{request()->note}}</textarea>
+                                </div>
+                            @else
+                                <div class="checkout__input">
+                                    <p>Họ & Tên<span>*</span></p>
+                                    <input type="text" name="name" placeholder="Nhập vào Họ & Tên"
+                                           value="{{request()->name}}" />
+                                    @if ($errors->has('name'))
+                                        <span class="text-danger">{{$errors->first('name')}}</span>
+                                    @endif
+                                </div>
+                                <div class="checkout__input">
+                                    <p>Số điện thoại<span>*</span></p>
+                                    <input type="tel" name="phone" placeholder="Nhập vào Số điện thoại"
+                                           value="{{request()->phone}}"/>
+                                    @if ($errors->has('phone'))
+                                        <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                    @endif
+                                </div>
+                                <div class="checkout__input">
+                                    <p>Địa chỉ giao hàng<span>*</span></p>
+                                    <input type="text" name="address" placeholder="Nhập vào Địa chỉ giao hàng"
+                                           value="{{request()->address}}"/>
+                                    @if ($errors->has('address'))
+                                        <span class="text-danger">{{ $errors->first('address') }}</span>
+                                    @endif
+                                </div>
+                                <div class="checkout__input">
+                                    <p>Ghi chú</p>
+                                    <textarea class="form-control" name="note"
+                                              cols="30" rows="3" placeholder="Ghi chú thêm (Không bắt buộc)">{{request()->note}}</textarea>
+                                </div>
+                            @endif
                         </div>
                         <div class="col-lg-4 col-md-6">
                             @if(!empty($cart))

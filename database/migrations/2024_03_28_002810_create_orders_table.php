@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('order_status_id')->default(0);
+            $table->string('code')->nullable();
             $table->string('name')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->integer('total')->nullable();
             $table->string('coupon')->nullable();
             $table->text('note')->nullable();
+            $table->integer('user_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

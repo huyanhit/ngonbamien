@@ -22,8 +22,7 @@ class StoreOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'sex' => 'required',
-            'name' => 'required',
+            'name'  => 'required',
             'phone' => 'required',
         ];
     }
@@ -32,8 +31,7 @@ class StoreOrderRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'sex' => ['required' => 'Bạn chưa chọn giới tính'],
-            'name' => ['required' => 'Bạn chưa nhâp tên'],
+            'name'  => ['required' => 'Bạn chưa nhâp tên'],
             'phone' => ['required' => 'Bạn chưa nhập số điện thoại'],
         ];
     }

@@ -50,7 +50,7 @@
         border: 1px solid $border;
         padding-left: 20px;
         font-size: 16px;
-        color: #b2b2b2;
+        color: $black-color;
         border-radius: 4px;
         &.checkout__input__add {
             margin-bottom: 20px;
@@ -141,7 +141,7 @@
             }
         }
     }
-    
+
     .checkout__order__shipping {
         font-size: 18px;
         color: $normal-color;
