@@ -441,7 +441,6 @@ $(document).ready(function () {
         e.preventDefault();
         updateCart(this, $(this).attr('data-value'));
     });
-
     $('.product__item__price').on('click', function(e) {
         $(this).parent().find('.product__item__price').addClass('hide');
         $(this).parents('.featured__item').find('.add_cart').attr('option-value', $(this).attr('data-value'));
@@ -473,7 +472,6 @@ $(document).ready(function () {
     $(window).on('load', function () {
         $(".loader").fadeOut();
         $("#preloder").delay(200).fadeOut("slow");
-
         /*------------------
             Gallery filter
         --------------------*/
