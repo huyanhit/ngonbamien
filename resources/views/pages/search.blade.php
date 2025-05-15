@@ -3,7 +3,7 @@
     <!-- Hero Section End -->
     <x-breadcrumb name="tim-kiem" title="Tìm Kiếm"></x-breadcrumb>
     <!-- Hero Section Begin -->
-    <section class="hero background">
+    <section class="hero background mt-3">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

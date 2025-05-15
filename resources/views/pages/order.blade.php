@@ -2,7 +2,7 @@
 @section('content')
     <x-breadcrumb name="don-hang" title="Đơn Hàng"></x-breadcrumb>
     <!-- Hero Section Begin -->
-    <section class="hero background">
+    <section class="hero background mt-3">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

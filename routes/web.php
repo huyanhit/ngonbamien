@@ -68,19 +68,12 @@ Route::get('/dat-hang', [CheckController::class, 'index'])->name('dat-hang');
 Route::post('/mua-hang', [OrderController::class, 'store'])->name('mua-hang');
 Route::get('/thanh-toan/{code}', [OrderController::class, 'show'])->name('thanh-toan');
 Route::put('/thanh-toan/{code}', [OrderController::class, 'update'])->name('tat-toan');
-
 Route::get('/tim-kiem',   [SearchController::class, 'search'])->name('tim-kiem');
-Route::get('/dich-vu/{service}', [ServiceController::class, 'show'])->name('dich-vu');
-Route::get('/hang-san-xuat/{service}', [ProducerController::class, 'show'])->name('hang-san-xuat');
-Route::get('/so-sanh/{product}/{product2?}', [ProductController::class, 'compare'])->name('so-sanh');
-Route::post('/lien-he', [PageController::class, 'saveContact'])->name('lien-he');
 Route::get('/yeu-thich', [ProductController::class, 'favors'])->name('yeu-thich');
+Route::get('/khuyen-mai', [ProductController::class, 'promotion'])->name('khuyen-mai');
 
-Route::get('/thong-tin', [NewsController::class, 'index'])->name('news.index');
-Route::get('/thong-tin/{name}', [NewsController::class, 'index'])->name('news.show');
+Route::get('/lien-he', [PageController::class, 'contact'])->name('lien-he');
 Route::get('/{page}', [PageController::class, 'show'])->name('xem-trang');
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 

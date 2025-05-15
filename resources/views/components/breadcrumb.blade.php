@@ -1,5 +1,5 @@
 @props(['name' => '', 'title' => '','data' => null])
-<section class="breadcrumb-section set-bg mb-3" data-setbg="{{Request::root()}}/img/breadcrumb.jpg">
+<section class="breadcrumb-section set-bg" data-setbg="{{Request::root()}}/img/breadcrumb.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">

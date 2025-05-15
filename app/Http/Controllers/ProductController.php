@@ -126,4 +126,16 @@ class ProductController extends Controller
             })->where('products.active', 1)->paginate(8),
         ]));
     }
+
+    public function promotion()
+    {
+        return view('pages.promotion', array_merge($this->getDataLayout(), [
+            'promotions' => Product::where('products.active', 1)
+            ->select('products.id', 'product_option.title as option_title', 'product_option.id as option_id',
+                'products.title', 'price', 'discount', 'slug', 'images.uri')
+            ->join('product_option', 'product_option.product_id', '=', 'products.id')
+            ->join('images', 'images.id', '=', 'products.image_id')
+            ->where('discount', '>', 0)->paginate(12),
+        ]));
+    }
 }

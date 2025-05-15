@@ -3,7 +3,7 @@
     <!-- Hero Section End -->
     <x-breadcrumb name="yeu-thich" title="Sản Phẩm Yêu Thích"></x-breadcrumb>
     <!-- Hero Section Begin -->
-    <section class="hero background">
+    <section class="hero background mt-3">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -12,7 +12,6 @@
             </div>
         </div>
     </section>
-
     @if(isset($favors) && !empty($favors))
         <section class="product_section margin_15">
         <div class="container">

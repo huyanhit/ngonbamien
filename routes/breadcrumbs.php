@@ -37,6 +37,12 @@ Breadcrumbs::for('yeu-thich', function ($trail) {
     $trail->push('Yêu thích', route('yeu-thich'));
 });
 
+Breadcrumbs::for('khuyen-mai', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Khuyến mãi', route('khuyen-mai'));
+});
+
+
 Breadcrumbs::for('lien-he', function ($trail) {
     $trail->parent('home');
     $trail->push('Liên hệ', route('lien-he'));

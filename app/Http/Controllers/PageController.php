@@ -41,4 +41,8 @@ class PageController extends Controller
 
         abort('404');
     }
+
+    public function contact(){
+        return view('pages.contact', array_merge($this->getDataLayout(), []));
+    }
 }
