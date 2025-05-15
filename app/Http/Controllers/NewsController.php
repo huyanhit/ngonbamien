@@ -27,6 +27,6 @@ class NewsController extends Controller
             }
         }
 
-        redirect('404');
+        abort('404');
     }
 }

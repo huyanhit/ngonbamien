@@ -19,6 +19,6 @@ class ServiceController extends Controller
             }
         }
 
-        redirect('404');
+        abort('404');
     }
 }

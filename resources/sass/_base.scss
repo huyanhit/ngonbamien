@@ -261,7 +261,25 @@ ol {
     border-left-color: transparent;
   }
 }
-.doc-content{
+.page-content{
+    font-size: 18px;
+    background: $background;
+    margin: 20px auto;
+    border: 15px #dee2e6 solid;
+    p{
+        font-size: 18px;
+    }
+    article{
+        padding: 40px 50px;
+        border: 30px $border solid;
+    }
+    .description{
+        font-style: italic;
+        font-weight: bold;
+        font-family: system-ui;
+    }
+}
+.doc-content,.page-content{
     ul, ol{
         padding: 5px 30px;
     }

@@ -39,14 +39,6 @@ class PageController extends MyController
                     'value' => '',
                 ),
             ),
-            'description' => array(
-                'title' => 'Mô tả',
-                'width' => 10,
-                'filter' => array(
-                    'type' => self::AREA,
-                    'value' => '',
-                ),
-            ),
             'active' => array(
                 'title'  => 'Active',
                 'width'  => 7,
