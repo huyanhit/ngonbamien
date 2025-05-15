@@ -45,7 +45,8 @@
                                 @else
                                     @if($item->discount > 0)
                                         <span class="product__details__price">
-                                        <span class="text-muted" style="font-weight: 600; font-size: 18px;"> Giá:</span>    {{ number_format($item->price - ($item->price * $item->discount /100), 0, ',', '.') }}đ
+                                        <span class="text-muted" style="font-weight: 600; font-size: 18px;"> Giá:</span>
+                                            {{ number_format($item->price - ($item->price * $item->discount /100), 0, ',', '.') }}đ
                                         </span>
                                         <span class="product_detail_price_root text-muted"> {{ number_format($item->price, 0, ',', '.') }}đ</span>
                                         <span class="product_detail_discount">-{{$item->discount}}%</span>
@@ -72,7 +73,7 @@
                         </div>
                         <div class="my-3">
                             <a href="#" class="heart-icon border primary-btn add_favor" data-value="{{$product->id}}">
-                                <span class="icon_heart_alt"></span></a>
+                                <span class="icon_heart_alt"></span> Yêu thích </a>
                             <a href="#" class="heart-icon border primary-btn"><span class="icon_cloud_alt"></span> Chia Sẻ </a>
                             <a href="#" class="heart-icon border primary-btn"><span class="icon_chat_alt"></span> Tư Vấn </a>
                         </div>

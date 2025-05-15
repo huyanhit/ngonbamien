@@ -138,7 +138,8 @@
                                 <div class="border rounded p-2 mt-3">
                                     <i>{!! $post->description !!}</i>
                                 </div>
-                                <div class="pull-right text-muted my-2"><i class="fa fa-calendar mr-2"></i>{{\Illuminate\Support\Carbon::parse($post->updated_at)->format('d/m/Y')}}</div>
+                                <div class="pull-right text-muted my-2">
+                                    <i class="fa fa-calendar mr-2"></i>{{\Illuminate\Support\Carbon::parse($post->updated_at)->format('d/m/Y')}}</div>
                                 <div class="blog__details__content mt-2">
                                     <div class="blog__details__author d-flex">
                                         <div class="avatar-auth p-2 border rounded">

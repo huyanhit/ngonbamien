@@ -5,7 +5,7 @@
     "src": "resources/css/admin.css"
   },
   "resources/css/app.css": {
-    "file": "assets/app-f5ca2b6b.css",
+    "file": "assets/app-5e0a3653.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -91,7 +91,7 @@
   },
   "resources/fonts/la-regular-400.eot": {
     "file": "assets/la-regular-400-7dc456f0.eot",
-    "src": "resources/fonts/la-regular-400d41d.eot"
+    "src": "resources/fonts/la-regular-400.eot"
   },
   "resources/fonts/la-regular-400.svg": {
     "file": "assets/la-regular-400-884ce19c.svg",
@@ -111,7 +111,7 @@
   },
   "resources/fonts/la-regular-400d41d.eot": {
     "file": "assets/la-regular-400-7dc456f0.eot",
-    "src": "resources/fonts/la-regular-400d41d.eot"
+    "src": "resources/fonts/la-regular-400.eot"
   },
   "resources/fonts/la-solid-900.eot": {
     "file": "assets/la-solid-900-8a57f8a9.eot",
