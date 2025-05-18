@@ -13,7 +13,7 @@
                     <span class="ml-2">Bài viết</span>
                 </option>
             </select>
-            <input type="text" placeholder="Nhập từ khóa tìm kiếm" name="tu-khoa" value="{{request('tu-khoa')}}">
+            <input type="text" placeholder="Nhập từ khóa" name="tu-khoa" value="{{request('tu-khoa')}}">
             <button type="submit" class="site-btn">Tìm</button>
         </form>
     </div>

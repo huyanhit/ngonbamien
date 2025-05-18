@@ -14,7 +14,7 @@
                                                colors="primary:#405189,secondary:#0ab39c"></lord-icon>
                                     <h1 class="text-primary mb-4"> Oops !</h1>
                                     <h4 class="text-uppercase">Không tìm thấy trang yêu cầu 😭</h4>
-                                    <p class="text-muted mb-4">Trang đang truy cập không tồn tại !</p>
+                                    <p class="text-muted mb-4">Trang đang truy cập không tồn tại hoặc đang bảo trì !</p>
                                     <a href="{{Request::root()}}" class="btn btn-success"><i class="mdi mdi-home me-1"></i>Quay về trang chủ</a>
                                 </div>
                             </div>

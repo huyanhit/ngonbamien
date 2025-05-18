@@ -4,7 +4,7 @@
     <section class="hero background">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-5">
+                <div class="col-lg-3">
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
@@ -25,7 +25,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-7">
+                <div class="col-lg-9">
                     <x-hero-search :sites="$sites"/>
                     <div class="product__discount">
                         <div class="product__discount__slider owl-carousel">
@@ -90,7 +90,7 @@
         <div class="container">
             <div class="filter__item">
                 <div class="row">
-                    <div class="col-lg-3 col-md-5">
+                    <div class="col-lg-3">
                         <form class="sidebar" id="form-shop" method="get" action="{{Request::url()}}">
                             <div class="sidebar__item">
                                 <h4>Giá bán</h4>
@@ -152,9 +152,9 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-lg-9 col-md-7">
+                    <div class="col-lg-9">
                         <div class="row" style="padding: 0 5px">
-                            <div class="col-lg-4 col-md-5">
+                            <div class="col-lg-4 col-sm-5">
                                 <div class="filter__sort">
                                     <span>Sắp xếp</span>
                                     <select>
@@ -163,12 +163,12 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4">
+                            <div class="col-lg-4 col-sm-4">
                                 <div class="filter__found">
                                     <h6><span>{{$products->total()}}</span> Sản phẩm </h6>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-3">
+                            <div class="col-lg-4 col-sm-3">
                                 <div class="filter__option">
                                     <span class="icon_ul filter__option_ul"></span>
                                     <span class="icon_grid-2x2 filter__option_grid active"></span>

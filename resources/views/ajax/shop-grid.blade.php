@@ -66,7 +66,7 @@
                 </div>
                 <div class="col-lg-9 col-md-7">
                     <div class="row" style="padding: 0 5px">
-                        <div class="col-lg-4 col-md-5">
+                        <div class="col-lg-4 col-sm-5">
                             <div class="filter__sort">
                                 <span>Sắp xếp</span>
                                 <select>
@@ -75,12 +75,12 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4">
+                        <div class="col-lg-4 col-sm-4">
                             <div class="filter__found">
                                 <h6><span>{{$products->total()}}</span> Sản phẩm </h6>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-3">
+                        <div class="col-lg-4 col-sm-3">
                             <div class="filter__option">
                                 <span class="icon_ul filter__option_ul"></span>
                                 <span class="icon_grid-2x2 filter__option_grid active"></span>

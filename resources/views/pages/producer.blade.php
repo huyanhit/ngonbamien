@@ -64,7 +64,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="producer_show">
+                    <div class="producer_show doc-content">
                         <div class="content_blog">
                             {!! $producer->content !!}
                         </div>

@@ -5,7 +5,7 @@
     "src": "resources/css/admin.css"
   },
   "resources/css/app.css": {
-    "file": "assets/app-73027808.css",
+    "file": "assets/app-54e08bee.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -67,7 +67,7 @@
   },
   "resources/fonts/la-brands-400.eot": {
     "file": "assets/la-brands-400-c0e32387.eot",
-    "src": "resources/fonts/la-brands-400.eot"
+    "src": "resources/fonts/la-brands-400d41d.eot"
   },
   "resources/fonts/la-brands-400.svg": {
     "file": "assets/la-brands-400-4da18191.svg",
@@ -87,7 +87,7 @@
   },
   "resources/fonts/la-brands-400d41d.eot": {
     "file": "assets/la-brands-400-c0e32387.eot",
-    "src": "resources/fonts/la-brands-400.eot"
+    "src": "resources/fonts/la-brands-400d41d.eot"
   },
   "resources/fonts/la-regular-400.eot": {
     "file": "assets/la-regular-400-7dc456f0.eot",
@@ -139,7 +139,7 @@
   },
   "resources/fonts/materialdesignicons-webfont9445.eot": {
     "file": "assets/materialdesignicons-webfont9445-67d24abe.eot",
-    "src": "resources/fonts/materialdesignicons-webfontd41d.eot"
+    "src": "resources/fonts/materialdesignicons-webfont9445.eot"
   },
   "resources/fonts/materialdesignicons-webfont9445.ttf": {
     "file": "assets/materialdesignicons-webfont9445-a58ecb54.ttf",
@@ -155,7 +155,7 @@
   },
   "resources/fonts/materialdesignicons-webfontd41d.eot": {
     "file": "assets/materialdesignicons-webfont9445-67d24abe.eot",
-    "src": "resources/fonts/materialdesignicons-webfontd41d.eot"
+    "src": "resources/fonts/materialdesignicons-webfont9445.eot"
   },
   "resources/fonts/remixicone85e.eot": {
     "file": "assets/remixicone85e-25af6e92.eot",
@@ -202,7 +202,7 @@
     "src": "resources/images/sidebar/img-4.jpg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-6d8b2d4c.js",
+    "file": "assets/app-3649c909.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

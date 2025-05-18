@@ -179,7 +179,7 @@
                                             <div class="latest-product__item__text">
                                                 <h6 class="text-truncate">{{$post->title}}</h6>
                                                 <span>
-                                                    {{$post->content}}
+                                                    {!! $post->description !!}
                                                 </span>
                                             </div>
                                         </a>

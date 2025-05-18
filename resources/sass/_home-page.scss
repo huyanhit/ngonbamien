@@ -115,6 +115,7 @@
     overflow: hidden;
     background-position: center center;
     background: $background-2;
+    text-align: center;
     .spinner-border{
         height: 18px;
         width: 18px;
@@ -154,7 +155,7 @@
             color: $black-color;
             height: 35px;
             min-width: 30px;
-            line-height: 35px;
+            line-height: 33px;
             text-align: center;
             border: 1px solid $border;
             background: $white-color;

@@ -17,7 +17,7 @@
         <section class="product_section margin_15">
         <div class="container">
             <div class="row" style="padding: 0 5px">
-                <div class="col-lg-4 col-md-5">
+                <div class="col-lg-4 col-sm-5">
                     <div class="filter__sort">
                         <span>Sắp xếp</span>
                         <select style="display: none;">
@@ -33,12 +33,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4">
+                <div class="col-lg-4 col-sm-4">
                     <div class="filter__found">
                         <h4 class="text-uppercase"><span>{{$products->total()}}</span> Sản phẩm</h4>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-3">
+                <div class="col-lg-4 col-sm-3">
                     <div class="filter__option">
                         <span class="icon_ul filter__option_ul active"></span>
                         <span class="icon_grid-2x2 filter__option_grid"></span>
@@ -71,7 +71,7 @@
         <section class="post_section margin_15">
         <div class="container">
             <div class="row mt-3" style="padding: 0 5px">
-                <div class="col-lg-4 col-md-5">
+                <div class="col-lg-4 col-sm-5">
                     <div class="filter__sort">
                         <span>Sắp xếp</span>
                         <select style="display: none;">
@@ -82,12 +82,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4">
+                <div class="col-lg-4 col-sm-4">
                     <div class="filter__found">
                         <h4 class="text-uppercase"><span>{{$posts->total()}}</span> Bài viết </h4>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-3">
+                <div class="col-lg-4 col-sm-3">
                     <div class="filter__option">
                         <span class="icon_ul filter__option_ul active"></span>
                         <span class="icon_grid-2x2 filter__option_grid"></span>

@@ -11,10 +11,12 @@ use Illuminate\Support\Facades\View;
 class PageController extends Controller
 {
     public function show($router){
-        $view = 'pages.page';
+        $view  = 'pages.page';
         $pages = Page::where(['active' => 1,'router'=>$router])->first();
-        if(!empty($pages) && View::exists($router)){
-            $view = $router;
+        if(!empty($pages)){
+            if(View::exists($router)){
+                $view = $router;
+            }
             return view($view, array_merge($this->getDataLayout(),[
                 'pages' => $pages,
                 'product_categories' => ProductCategory::where(['active' => 1])->limit(9)->get(),
@@ -32,7 +34,7 @@ class PageController extends Controller
     public function saveContact(ContactRequest $request){
         $isEmail = strpos('@', $request->contact);
         $data = [
-            'name'    => $request->name,
+            'name'  => $request->name,
             'email' => $isEmail? $request->contact: '',
             'phone' => $isEmail? '': $request->contact,
             'content' => $request->get('content')

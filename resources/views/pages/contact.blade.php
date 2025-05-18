@@ -30,10 +30,9 @@
                         <h3 class="heading">Liên hệ với chúng tôi.</h3>
                         <form class="mb-5" method="post" id="contactForm" name="contactForm" novalidate="novalidate">
                             <div class="row">
-
                                 <div class="col-md-6 form-group">
                                     <label for="name" class="col-form-label">Họ và Tên <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="name" id="name" placeholder="Nhập họ & tên">
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Nhập Họ, Tên của bạn">
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for="name" class="col-form-label">Cơ quan</label>
@@ -42,14 +41,14 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12 form-group">
-                                    <label for="email" class="col-form-label">Email <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="email" id="email" placeholder="Nhập vào Email">
+                                    <label for="email" class="col-form-label">Số điện thoại hoặc Email <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="email" id="email" placeholder="Nhập Số điện thoại hoặc Email">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 form-group">
                                     <label for="message" class="col-form-label">Nội dung cần hổ trợ <span class="text-danger">*</span></label>
-                                    <textarea class="form-control" name="message" id="message" cols="30" rows="7"></textarea>
+                                    <textarea class="form-control" name="message" id="message" cols="30" rows="7" placeholder="Nhập nội dung cần hổ trợ"></textarea>
                                 </div>
                             </div>
                             <div class="row">
