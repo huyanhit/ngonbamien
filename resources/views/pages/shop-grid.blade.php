@@ -30,7 +30,7 @@
                     <div class="product__discount">
                         <div class="product__discount__slider owl-carousel">
                             @foreach ($discount_products as $item)
-                                <div class="col-lg-4">
+                                <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="product__discount__item" >
                                         <div class="featured__item__pic">
                                             <a href="{{Request::root()}}/san-pham/{{$item->slug}}" >

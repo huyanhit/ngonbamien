@@ -425,6 +425,11 @@ $(document).ready(function () {
         flyToElement($(itemImg), $('.cart_anchor'));
         addCart(this, {id:$(this).attr('data-value'), option:$(this).attr('option-value'),}, $(this).attr('data-link')??'');
     });
+    $('.add_cart_detail').on('click', function(e) {
+        e.preventDefault();
+        flyToElement($('.product__details__pic__item--large'), $('.cart_anchor'));
+        addCart(this, {id:$(this).attr('data-value'), option:$(this).attr('option-value'),}, $(this).attr('data-link')??'');
+    });
     $('.add_favor').on('click', function(e) {
         e.preventDefault();
         addFavor(this, {id: $(this).attr('data-value') });

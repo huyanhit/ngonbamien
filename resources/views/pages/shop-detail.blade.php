@@ -85,8 +85,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <a data-value="{{$product->id}}" href="javascript:void(0)" class="primary-btn add_cart">Thêm vào giỏ</a>
-                            <a data-value="{{$product->id}}" data-link="{{Request::root()}}/dat-hang" class="primary-btn bg-danger text-white add_cart">Mua ngay</a>
+                            <a data-value="{{$product->id}}" href="javascript:void(0)" class="primary-btn add_cart_detail">Thêm vào giỏ</a>
+                            <a data-value="{{$product->id}}" data-link="{{Request::root()}}/dat-hang" class="primary-btn bg-danger text-white add_cart_detail">Mua ngay</a>
                         </div>
                         <p>{!! $product->description !!}</p>
                     </div>
