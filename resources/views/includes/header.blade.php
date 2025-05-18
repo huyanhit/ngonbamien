@@ -5,7 +5,7 @@
         <a href="{{Request::root()}}">
             <img src="{{$sites->image->uri?? Request::root().'/img/logo.png'}}" alt="{{$sites->meta_title?? ''}}">
         </a>
-        <div class="dropdown header__top__right__auth pull-right mt-3">
+        <div class="dropdown header__top__right__auth pull-right">
             @if(isset(auth()->user()->image))
                 <a class="dropdown-auth border">
                     <img src="{{auth()->user()->image->uri}}">

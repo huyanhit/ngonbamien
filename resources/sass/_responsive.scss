@@ -319,6 +319,74 @@
 
 /* Wide Mobile = 480px */
 @media only screen and (max-width: 767px) {
+    .producer_blog{
+        .producer-image,.producer_content{
+            width: 100%;
+            padding: 0;
+        }
+        .btn_producer{
+            backdrop-filter: unset;
+            padding-bottom: 10px;
+            button{
+                width: 100%;
+            }
+        }
+    }
+    .filter__list.active{
+         .featured__item__pic {
+            float: unset !important;
+            text-align: center;
+            display: inline-block;
+        }
+        .featured__item__text{
+            display: inline-block;
+        }
+    }
+    .hero__search__form{
+        button, input {
+            width: 30%;
+        }
+    }
+    .page-content{
+        border: 0 !important;
+        background: unset;
+        article{
+            padding: 0 !important;
+            border: 0 !important;
+        }
+    }
+    .cycle-bill{
+        flex-direction: column;
+    }
+    .icon-md :after{
+        display: none;
+    }
+    .flip-span{
+        >span{
+            display: block;
+        }
+    }
+    .dis_none{
+        display: none;
+    }
+    .my-cart{
+        h4{
+            font-size: 16px;
+        }
+        h5{
+            font-size: 14px;
+        }
+        table th{
+            font-size: 12px;
+        }
+    }
+    .cart-container .popover {
+        min-width: 400px;
+        margin-right: 0;
+    }
+    .header__top__right__auth{
+        margin-top: 13px;
+    }
     .nivo-caption{
         font-size: 14px;
         padding: 0 10px;

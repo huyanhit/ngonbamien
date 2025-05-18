@@ -19,7 +19,7 @@
             <div class="row filter__list">
                 @if(!$favors->isEmpty())
                     @foreach ($favors as $item)
-                        <div class="col-3">
+                        <div class="col-xl-3 col-lg-4 col-md-6">
                             <x-product-item-single :item="$item"/>
                         </div>
                     @endforeach

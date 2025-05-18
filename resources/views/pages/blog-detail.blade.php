@@ -115,7 +115,7 @@
                     <!-- Blog Details Hero Begin -->
                     <section class="hero background">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-lg-6">
                                 <div class="product__details__pic">
                                     <a class="product__details__pic__item" data-lightbox="roadtrip"
                                        data-title="{{$post->title}}"
@@ -133,7 +133,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-lg-6">
                                 <h3>{{$post->title}}</h3>
                                 <div class="border rounded p-2 mt-3">
                                     <i>{!! $post->description !!}</i>

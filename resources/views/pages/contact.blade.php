@@ -6,7 +6,7 @@
     <section class="contact spad y-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 mr-auto">
+                <div class="col-lg-6 mr-auto">
                     <div class="pr-3">
                         <p class="text-muted"><i>Trong nhịp sống hiện đại, nhu cầu tìm kiếm những món ăn ngon, đặc sản độc đáo và thực phẩm sạch ngày càng được quan tâm. Đó cũng là lý do mà chúng tôi ra đời với sứ mệnh mang đến cho khách hàng những sản phẩm chất lượng cao, đảm bảo vệ sinh an toàn thực phẩm và hương vị tuyệt hảo.</i></p>
                         <h5 class="mb-1 text-black"><span>1. Sứ Mệnh Và Tầm Nhìn</span></h5>
@@ -25,7 +25,7 @@
                         <p class="text-muted">Chúng tôi không chỉ tập trung vào lợi ích kinh doanh mà còn đặt trọng tâm vào sự phát triển bền vững, bảo vệ môi trường và sức khỏe cộng đồng.</p>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <div class="box">
                         <h3 class="heading">Liên hệ với chúng tôi.</h3>
                         <form class="mb-5" method="post" id="contactForm" name="contactForm" novalidate="novalidate">

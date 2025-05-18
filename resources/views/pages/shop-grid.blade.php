@@ -153,8 +153,8 @@
                         </form>
                     </div>
                     <div class="col-lg-9">
-                        <div class="row" style="padding: 0 5px">
-                            <div class="col-lg-4 col-sm-5">
+                        <div class="d-flex align-items-center" style="padding: 0 5px">
+                            <div class="flex-fill">
                                 <div class="filter__sort">
                                     <span>Sắp xếp</span>
                                     <select>
@@ -163,19 +163,19 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-sm-4">
+                            <div class="flex-fill">
                                 <div class="filter__found">
                                     <h6><span>{{$products->total()}}</span> Sản phẩm </h6>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-sm-3">
+                            <div class="flex-fill">
                                 <div class="filter__option">
                                     <span class="icon_ul filter__option_ul"></span>
                                     <span class="icon_grid-2x2 filter__option_grid active"></span>
                                 </div>
                             </div>
                         </div>
-                        <div class="row filter__list" style="padding: 0 5px">
+                        <div class="row filter__list">
                             @foreach ($products as $item)
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <x-product-item-single :item="$item"/>

@@ -119,10 +119,10 @@ function updateCartDom(){
     let html =
         '<table class="table bg-light">'+
         '<tr class="background_pr text-white">'+
-        '<th width="10%" class="text-center">Hình ảnh</th>' +
-        '<th width="20%">Tên sản phẩm</th>' +
-        '<th width="10%" class="text-center">Giá</th>' +
-        '<th width="20%" class="text-center">Phân loại</th>' +
+        '<th width="10%" class="text-center dis_none">Hình ảnh</th>' +
+        '<th width="20%" class="">Tên sản phẩm</th>' +
+        '<th width="10%" class="text-center dis_none">Giá</th>' +
+        '<th width="20%" class="text-center dis_none">Phân loại</th>' +
         '<th width="10%" class="text-center">Số lượng</th>' +
         '<th width="10%" class="text-center">Tổng cộng</th>' +
         '<th width="5%" class="text-center">Xoá</th>' +
@@ -137,12 +137,12 @@ function updateCartDom(){
             }
             html +=
                 '<tr class="align-middle">'+
-                '<td class="text-center"><a href="'+items[index].extra_info.link+'">' +
+                '<td class="text-center dis_none"><a href="'+items[index].extra_info.link+'">' +
                 '<img alt="'+items[index].title+'" onerror="this.src=\'/images/no-image.png\'" ' +
                 'src="/admin/get-image-thumbnail/'+items[index].extra_info.image_id+'"/><a></td>' +
                 '<td class="align-middle"><a class="d-block text-dark" href="'+items[index].extra_info.link+'">'+ items[index].title +'</a></td>' +
-                '<td class="text-center align-middle text-danger">'+ VND.format(items[index].price) +' </td>' +
-                '<td class="text-center align-middle">'+ optionHtml +'</td>' +
+                '<td class="text-center align-middle text-danger dis_none">'+ VND.format(items[index].price) +' </td>' +
+                '<td class="text-center align-middle dis_none">'+ optionHtml +'</td>' +
                 '<td class="text-center align-middle"><input class="form-control update_quantity"' +
                 'data-value="'+items[index].hash+'" type="number" value="'+ items[index].quantity +'"></td>' +
                 '<td class="text-center align-middle">'+ VND.format(items[index].price * items[index].quantity) + '</td>' +
@@ -160,12 +160,11 @@ function updateCartDom(){
 
     html +=
         '<tr class="font-bold background_pr text-white">'+
-        '<td class="text-left" colspan="2"><h5 class="text-uppercase pt-1">Tổng cộng</h4></td>' +
-        '<td></td>' +
-        '<td></td>' +
+        '<td class="text-left"><h5 class="text-uppercase pt-1">Tổng</h4></td>' +
+        '<td class="dis_none"></td>' +
+        '<td class="dis_none"></td>' +
         '<td class="text-center"><h4 class="text-bold">'+ cartDom.quantities_sum +'</h4></td>' +
-        '<td class="text-center"><h4 class="text-bold">'+ VND.format(cartDom.subtotal) +'</h4></td>' +
-        '<td></td>' +
+        '<td class="text-center" colspan="3"><h4 class="text-bold">'+ VND.format(cartDom.subtotal) +'</h4></td>' +
         '</tr>';
 
     html += '</table>';
@@ -452,19 +451,19 @@ $(document).ready(function () {
         $(this).removeClass('hide')
     });
     $('#pay_cod').click(function () {
-        $('#pay_store_form').hide();
-        $('#pay_bank_form').hide();
-        $('#pay_cod_form').show();
+        $('#pay_store_form').hide(300);
+        $('#pay_bank_form').hide(300);
+        $('#pay_cod_form').show(300);
     })
     $('#pay_store').click(function () {
-        $('#pay_cod_form').hide();
-        $('#pay_bank_form').hide();
-        $('#pay_store_form').show();
+        $('#pay_cod_form').hide(300);
+        $('#pay_bank_form').hide(300);
+        $('#pay_store_form').show(300);
     })
     $('#pay_bank').click(function () {
-        $('#pay_cod_form').hide();
-        $('#pay_store_form').hide();
-        $('#pay_bank_form').show();
+        $('#pay_cod_form').hide(300);
+        $('#pay_store_form').hide(300);
+        $('#pay_bank_form').show(300);
     })
     $(".show-more").click(function(e) {
         e.preventDefault();

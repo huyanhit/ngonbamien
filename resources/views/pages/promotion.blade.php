@@ -18,7 +18,7 @@
             <div class="row filter__list">
                 @if(!$promotions->isEmpty())
                     @foreach ($promotions as $item)
-                        <div class="col-lg-3">
+                        <div class="col-xl-3 col-lg-4 col-md-6">
                             <div class="product__discount__item my-2">
                                 <div class="featured__item__pic">
                                     <a href="{{Request::root()}}/san-pham/{{$item->slug}}" >

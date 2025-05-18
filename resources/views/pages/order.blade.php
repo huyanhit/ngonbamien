@@ -49,11 +49,11 @@
                         <div class="p-3 border bg-white mt-3">
                             <div class="background_pr text-white p-3 mb-1 d-flex text-center">
                                 <span class="mr-3 flex-fill"><span>Mã đơn hàng:</span><b class="text-light"> {{$order->code}}</b></span>
-                                <span class="mr-3 flex-fill"><span>Khách hàng:</span><b> {{$order->name}}</b></span>
+                                <span class="mr-3 flex-fill dis_none"><span>Khách hàng:</span><b> {{$order->name}}</b></span>
                                 <span class="mr-3 flex-fill"><span>Ngày mua:</span> <b> {{$order->created_at->format('d/m/Y')}}</b></span>
-                                <span class="mr-3 flex-fill"><span>Ngày giao (dự kiến):</span> <b> {{$order->date_ship->format('d/m/Y')}}</b></span>
+                                <span class="mr-3 flex-fill dis_none"><span>Ngày giao (dự kiến):</span> <b> {{$order->date_ship->format('d/m/Y')}}</b></span>
                             </div>
-                            <div class="d-flex relative">
+                            <div class="d-flex relative cycle-bill">
                                 <span class="absolute bg-white flex-fill"></span>
                                 <span class="flex-fill inline-block text-center">
                                     <a href="{{Request::root()}}/thanh-toan/{{$order->code}}" title="Click để thanh toán hoặc đổi hình thưc thanh toán" class="icon-md
@@ -128,15 +128,15 @@
                                 </div>
                                 <table class="table table-bordered align-middle" style="display: none">
                                     <tr class="bg-light ">
-                                        <th width="15%" class="text-center">Hinh ảnh</th>
+                                        <th width="15%" class="text-center dis_none">Hinh ảnh</th>
                                         <th width="30%">Tên sản phẩm</th>
                                         <th width="10%" class="text-center">Số lượng</th>
                                         <th width="10%" class="text-center">Giá</th>
-                                        <th width="20%" class="text-center">Tùy chọn</th>
+                                        <th width="20%" class="text-center dis_none">Tùy chọn</th>
                                     </tr>
                                     @foreach($order->products as $item)
                                         <tr >
-                                            <td class="text-center align-middle">
+                                            <td class="text-center align-middle dis_none">
                                                 <a href="{{route('san-pham', $item->slug)}}">
                                                     <img class="avatar-auth" alt="{{$item->title}}" onerror="this.src='/images/no-image.png'"
                                                          src="{{route('get-image-thumbnail', $item->image_id)}}"/>
@@ -145,7 +145,7 @@
                                             <td class="text-center align-middle"><a class="text-success" href="{{route('san-pham', $item->slug)}}">{{$item->title}} </a></td>
                                             <td class="text-center align-middle">{{$item->pivot->quantity}}</td>
                                             <td class="text-center align-middle"> <span class="font-bold text-red-600">{{number_format($item->pivot->price, 0, ',', '.') }}đ </span></td>
-                                            <td class="text-center align-middle">
+                                            <td class="text-center align-middle dis_none">
                                                 @if(!empty(json_decode($item->pivot->options)))
                                                     {{ json_decode($item->pivot->options)->title }}
                                                 @endif
@@ -154,7 +154,7 @@
                                     @endforeach
                                     <tr class="font-bold bg-light">
                                         <td class="text-center align-middle">Tổng tiền</td>
-                                        <td class="text-center align-middle" colspan="5">
+                                        <td class="text-center align-middle flip-span" colspan="5">
                                             <span class="ml-2">Tổng: <span class="text-danger">{{number_format(($order->total + $order->discount - $order->ship_price), 0, ',', '.')}}đ</span></span>
                                             <span class="ml-2">Giảm: <span class="text-danger"> - {{number_format($order->discount, 0, ',', '.')}}đ</span></span>
                                             <span class="ml-2">Phí giao hàng: <span class="text-danger"> + {{number_format($order->ship_price, 0, ',', '.')}}đ</span></span>
