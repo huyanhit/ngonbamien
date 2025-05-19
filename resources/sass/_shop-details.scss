@@ -52,6 +52,21 @@
     }
 }
 
+.product__details__rating {
+    font-size: 14px;
+    margin-bottom: 12px;
+
+    i {
+        margin-right: -2px;
+        color: #EDBB0E;
+    }
+
+    span {
+        color: #dd2222;
+        margin-left: 4px;
+    }
+}
+
 .product__details__text {
     h2 {
         color: $heading-color-2;
@@ -63,20 +78,6 @@
         font-weight: 600;
         font-size: 18px;
         display: inline-block;
-    }
-    .product__details__rating {
-        font-size: 14px;
-        margin-bottom: 12px;
-
-        i {
-            margin-right: -2px;
-            color: #EDBB0E;
-        }
-
-        span {
-            color: #dd2222;
-            margin-left: 4px;
-        }
     }
 
     .product__details__price {
@@ -158,7 +159,6 @@
     position: relative;
     text-align: center;
     background: $background;
-    margin-bottom: 5px;
 
     input {
         height: 100%;
@@ -250,7 +250,7 @@
 }
 
 .related__product__title {
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 }
 
 .rating>input {

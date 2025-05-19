@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('post_comments', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_id')->nullable();
+            $table->integer('post_id')->nullable();
             $table->integer('comment_id')->nullable();
-            $table->integer('rating');
             $table->string('name');
-            $table->string('phone');
             $table->text('content');
             $table->integer('active')->default(0);
             $table->timestamps();
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('post_comments');
     }
 };

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Filters\ProductFilter;
+use App\Models\Comment;
 use App\Models\FavorProduct;
 use App\Models\PostCategory;
 use App\Models\Producer;
@@ -44,7 +45,8 @@ class ProductController extends Controller
         ]));
     }
     public function show($slug){
-        $product = Product::where(['active' => 1, 'slug' => $slug])->first();
+        $product  = Product::where(['active' => 1, 'slug' => $slug])->first();
+        $comments = Comment::where('product_id', $product->id)->where('active', 1)->paginate(10);
         if(Auth::check()){
             ProductRecent::updateOrCreate([
                 'product_id' => $product->id,
@@ -55,6 +57,7 @@ class ProductController extends Controller
         $product->save();
         return view('pages.shop-detail', array_merge($this->getDataLayout(), [
             'product'    => $product,
+            'comments'   => $comments,
             'r_products' => Product::where(['active' => 1, 'product_category_id' => $product->product_category_id])
                 ->whereNotIn('id', [$product->id])->orderby('created_at', 'ASC')->limit(4)->get(),
             'meta'       => [

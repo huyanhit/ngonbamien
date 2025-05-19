@@ -3,7 +3,6 @@
     <!-- Breadcrumb Section Begin -->
     <x-breadcrumb name="san-pham" title="Chi Tiết Sản Phẩm" :data="$product"></x-breadcrumb>
     <!-- Breadcrumb Section End -->
-
     <!-- Product Details Section Begin -->
     <section class="product-details spad">
         <div class="container">
@@ -31,12 +30,14 @@
                     <div class="product__details__text">
                         <h2 class="fw-bold">{{$product->title}}</h2>
                         <div class="product__details__rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <span>(18 reviews)</span>
+                            @for($i = 1; $i < 6; $i ++)
+                                {!! $comments->avg('rating') >= $i ? '<i class="fa fa-star"></i>':
+                                ($i > ($comments->avg('rating') + 0.5)? '<i class="fa fa-star-o"></i>' :'<i class="fa fa-star-half-o"></i>')!!}
+                            @endfor
+                            <a data-toggle="tab" href="#tabs-3" class="text-danger"
+                                onclick='window.scrollTo({top: 850, left:0, behavior: "smooth"});'>
+                                ({{$comments->total()}} đánh giá)
+                            </a>
                         </div>
                         @foreach ($product->product_option as $key => $item)
                             <div class="product_detail_option {{$key === 0 ?'active':''}} product_detail_{{$item->id}}">
@@ -63,7 +64,8 @@
                             <div class="form-check form-check-inline">
                                 @foreach ($product->product_option as $key => $item)
                                     @if (!empty($item->title))
-                                        <a class="m-2 select_price_option btn btn-outline-dark rounded-pill select_price_{{$item->id}} {{$key === 0 ?'active':''}}"
+                                        <a class="m-2 select_price_option btn btn-outline-dark rounded-pill
+                                            select_price_{{$item->id}} {{$key === 0 ?'active':''}}"
                                             data-value="{{$item->id}}">
                                             {{$item->title}}
                                         </a>
@@ -78,7 +80,7 @@
                             <a href="#" class="heart-icon border primary-btn"><span class="icon_chat_alt"></span> Tư Vấn </a>
                         </div>
                         <div class="my-3 pt-2">
-                            <div class="product__details__quantity">
+                            <div class="product__details__quantity border">
                                 <div class="quantity">
                                     <div class="pro-qty">
                                         <input type="text" value="1">
@@ -86,13 +88,14 @@
                                 </div>
                             </div>
                             <a data-value="{{$product->id}}" href="javascript:void(0)" class="primary-btn add_cart_detail">Thêm vào giỏ</a>
-                            <a data-value="{{$product->id}}" data-link="{{Request::root()}}/dat-hang" class="primary-btn bg-danger text-white add_cart_detail">Mua ngay</a>
+                            <a data-value="{{$product->id}}" data-link="{{Request::root()}}/dat-hang"
+                               class="primary-btn bg-danger text-white add_cart_detail">Mua ngay</a>
                         </div>
                         <p>{!! $product->description !!}</p>
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <div class="product__details__tab">
+                    <div class="product__details__tab" id="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active text-uppercase" data-toggle="tab" href="#tabs-1" role="tab"
@@ -104,7 +107,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-uppercase" data-toggle="tab" href="#tabs-3" role="tab"
-                                   aria-selected="false">Đánh giá <span>(1)</span></a>
+                                   aria-selected="false">Đánh giá <span>({{$comments->total()}})</span></a>
                             </li>
                         </ul>
                         <div class="tab-content doc-content">
@@ -119,8 +122,8 @@
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <x-review-block :data="['product_id' => $product->id]"></x-review-block>
+                                <div class="product__details__tab__desc tab__ccomment">
+                                    <x-review-block :data="['product_id' => $product->id]" :comments="$comments"></x-review-block>
                                 </div>
                             </div>
                         </div>
@@ -143,69 +146,14 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic">
-                            <img src="{{Request::root()}}/img/product/product-1.jpg" alt="">
-                            <ul class="product__item__pic__hover">
-                                <li><span href="#"><i class="fa fa-heart"></i></span></li>
-                                <li><span href="#"><i class="fa fa-retweet"></i></span></li>
-                                <li><span href="#"><i class="fa fa-shopping-cart"></i></span></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
+                @foreach($r_products as $item)
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <x-product-item :item="$item"/>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="{{Request::root()}}/img/product/product-2.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><span href="#"><i class="fa fa-heart"></i></span></li>
-                                <li><span href="#"><i class="fa fa-retweet"></i></span></li>
-                                <li><span href="#"><i class="fa fa-shopping-cart"></i></span></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="{{Request::root()}}/img/product/product-3.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><span href="#"><i class="fa fa-heart"></i></span></li>
-                                <li><span href="#"><i class="fa fa-retweet"></i></span></li>
-                                <li><span href="#"><i class="fa fa-shopping-cart"></i></span></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="{{Request::root()}}/img/product/product-7.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><span href="#"><i class="fa fa-heart"></i></span></li>
-                                <li><span href="#"><i class="fa fa-retweet"></i></span></li>
-                                <li><span href="#"><i class="fa fa-shopping-cart"></i></span></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
+
     <!-- Related Product Section End -->
 @endsection

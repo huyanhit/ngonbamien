@@ -34,7 +34,8 @@
                                     <ul>
                                         @foreach ($post_category as $item)
                                             <li>
-                                                <a href="{{Request::root()}}/bai-viet/{{Str::slug($item->title)}}" class="inline-block avatar">
+                                                <a href="{{Request::root()}}/bai-viet/{{Str::slug($item->title)}}"
+                                                    class="inline-block avatar">
                                                     <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}"
                                                          style="width: 20px"
                                                          alt="{{$item->title}}"
@@ -94,7 +95,9 @@
                                             </div>
                                             <div class="blog__sidebar__recent__item__text">
                                                 <h6>{{$recent->title}}</h6>
-                                                <span><i class="fa fa-calendar mr-2"></i>{{\Carbon\Carbon::parse($recent->updated_at)->format('d/m/Y')}}</span>
+                                                <span><i class="fa fa-calendar mr-2"></i>
+                                                    {{\Carbon\Carbon::parse($recent->updated_at)->format('d/m/Y')}}
+                                                </span>
                                             </div>
                                         </a>
                                     @endforeach
@@ -126,7 +129,8 @@
                                     <div class="product__details__pic__slider owl-carousel">
                                         @if($post->images)
                                             @foreach(explode(',',$post->images) as $id)
-                                                <img data-imgbigurl="{{route('get-image', $id)}}" src="{{route('get-image', $id)}}" alt="{{$post->title}}"
+                                                <img data-imgbigurl="{{route('get-image', $id)}}"
+                                                     src="{{route('get-image', $id)}}" alt="{{$post->title}}"
                                                      onerror="this.src='/images/no-image.png'">
                                             @endforeach
                                         @endif
@@ -138,8 +142,6 @@
                                 <div class="border rounded p-2 mt-3">
                                     <i>{!! $post->description !!}</i>
                                 </div>
-                                <div class="pull-right text-muted my-2">
-                                    <i class="fa fa-calendar mr-2"></i>{{\Illuminate\Support\Carbon::parse($post->updated_at)->format('d/m/Y')}}</div>
                                 <div class="blog__details__content mt-2">
                                     <div class="blog__details__author d-flex">
                                         <div class="avatar-auth p-2 border rounded">
@@ -147,13 +149,11 @@
                                                 <img src="{{route('get-image-thumbnail', $post->author->image_id)}}" alt="">
                                             @endif
                                         </div>
-                                        <div class="blog__details__author__text ml-3">
+                                        <div class="blog__details__author__text p-2 ml-2">
                                             <h6>{{$post->author->name?? ''}}</h6>
-                                            <div class="blog__details__widget mt-2">
-                                                <div class="blog__details__social">
-                                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                                </div>
+                                            <div class="pull-right text-muted my-2">
+                                                <i class="fa fa-calendar mr-2"></i>
+                                                {{\Illuminate\Support\Carbon::parse($post->updated_at)->format('d/m/Y')}}
                                             </div>
                                         </div>
                                     </div>
@@ -164,7 +164,7 @@
                                     {!! $post->content !!}
                                 </div>
                                 <div class="my-3">
-                                    <x-comment-block :data="['post_id' => $post->id]"></x-comment-block>
+                                    <x-comment-block :data="['post_id' => $post->id]" :comments="$comments"></x-comment-block>
                                 </div>
                             </div>
                         </div>

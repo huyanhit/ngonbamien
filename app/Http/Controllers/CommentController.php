@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
+use App\Models\PostComment;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -11,13 +12,28 @@ class CommentController extends Controller
     public function comment(CommentRequest $request){
         $data = [
             'product_id'    => $request?->product_id,
-            'service_id'    => $request?->service_id,
             'name'          => $request->name,
+            'phone'         => $request->phone,
             'rating'        => $request->rating,
             'content'       => $request->get('content'),
             'active'        => 1
         ];
         $comment = Comment::create($data);
+        if($comment && $request->ajax()){
+            return $comment;
+        }
+
+        abort('404');
+    }
+
+    public function postComment(Request $request){
+        $data = [
+            'post_id'       => $request?->post_id,
+            'name'          => $request->name,
+            'content'       => $request->get('content'),
+            'active'        => 1
+        ];
+        $comment = PostComment::create($data);
         if($comment && $request->ajax()){
             return $comment;
         }

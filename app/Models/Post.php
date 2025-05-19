@@ -28,7 +28,7 @@ class Post extends Model
 
     public function comments(): HasMany
     {
-        return $this->hasMany(Comment::class, 'post_id', 'id');
+        return $this->hasMany(PostComment::class, 'post_id', 'id');
     }
 
     public function recent(): HasMany{

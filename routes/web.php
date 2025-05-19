@@ -49,6 +49,7 @@ Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderCon
 Route::get('/ax-find-product', [ProductController::class, 'productCategory'])->name('ajax-find-product');
 Route::get('/ax-load-comment', [CommentController::class, 'loadComment'])->name('ajax-load-comment');
 Route::post('/ax-comment', [CommentController::class, 'comment'])->name('ajax-comment');
+Route::post('/ax-post-comment', [CommentController::class, 'postComment'])->name('ajax-post-comment');
 Route::post('/favor', [ProductController::class, 'favor'])->name('favor');
 Route::get('/counter', [HomeController::class, 'counter'])->name('page.counter');
 Route::resource('/cart', CartController::class);

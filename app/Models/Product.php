@@ -40,7 +40,7 @@ class Product extends Model
         return $this->belongsTo(Producer::class, 'producer_id');
     }
 
-    public function comment(): HasMany
+    public function comments(): HasMany
     {
         return $this->hasMany(Comment::class, 'product_id');
     }

@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Filters\PostFilter;
 use App\Http\Requests\CartAddRequest;
+use App\Models\Comment;
 use App\Models\Counter;
 use App\Models\Partner;
 use App\Models\PostCategory;
 use App\Models\Post;
+use App\Models\PostComment;
 use App\Models\PostRecent;
 use App\Models\Producer;
 use App\Models\Product;
@@ -38,6 +40,7 @@ class PostController extends Controller
 
     public function show($slug){
         $post = Post::where(['active' => 1,'slug' => $slug])->first();
+        $comments = PostComment::where('post_id', $post->id)->where('active', 1)->paginate(10);
         if(!empty($post)){
             if(Auth::check()){
                 PostRecent::updateOrCreate([
@@ -49,6 +52,7 @@ class PostController extends Controller
             $post->save();
             return view('pages.blog-detail', array_merge($this->getDataLayout(), [
                 'post'          => $post,
+                'comments'      => $comments,
                 'post_category' => PostCategory::where(['active' => 1])->limit(9)->get(),
                 'post_recent'   => Post::whereIn('id', PostRecent::where('user_id', Auth::id())->pluck('id'))
                     ->where(['active' => 1])->limit(4)->get(),
@@ -68,9 +72,9 @@ class PostController extends Controller
     public function productCategory(Request $request){
         $product = Product::select('id', 'title', 'price', 'image_id', 'product_category_id')->find($request->id);
         $query   = Product::select('id', 'title', 'price', 'image_id')
-                        ->where('product_category_id', $product->product_category_id)
-                        ->where('title', 'like', '%' . $request->search . '%')
-                        ->where('id', '!=', $request->id)->limit(20);
+            ->where('product_category_id', $product->product_category_id)
+            ->where('title', 'like', '%' . $request->search . '%')
+            ->where('id', '!=', $request->id)->limit(20);
 
         return ['product' => $product, 'list' => $query->get()];
     }

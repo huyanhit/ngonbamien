@@ -20,6 +20,7 @@ class SliderController extends MyController
         $this->view['form'] = array(
             'title'       => array('title'=> 'Tiêu đề', 'type' => self::TEXT),
             'description' => array('title'=> 'Mô tả', 'type' => self::TEXT),
+            'url'         => array('title'=> 'Đường dân', 'type' => self::TEXT),
             'image_id'    => array('title'=> 'Hình ảnh', 'type' => self::IMAGE_ID, 'group' => 'Hình ảnh'),
             'active'      => array('title'=> 'Trang thái', 'type' => self::CHECK, 'column' => 2, 'group' => 'Công bố'),
             'index'       => array('title'=> 'Thứ tự hiển thị', 'type' => self::TEXT, 'column' => 2, 'group' => 'Công bố'),
@@ -46,6 +47,18 @@ class SliderController extends MyController
             ),
             'title' => array(
                 'title' => 'Tiêu đề',
+                'width' => 10,
+                'update'=> true,
+                'views'  => array(
+                    'type' => self::TEXT,
+                ),
+                'filter' => array(
+                    'type' => self::TEXT,
+                    'value' => '',
+                )
+            ),
+            'url' => array(
+                'title' => 'Đường dân',
                 'width' => 10,
                 'update'=> true,
                 'views'  => array(

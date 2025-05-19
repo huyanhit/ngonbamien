@@ -319,6 +319,12 @@
 
 /* Wide Mobile = 480px */
 @media only screen and (max-width: 767px) {
+    .tab__ccomment{
+        padding: 0 !important;
+        #comment_list, #comment_form{
+            font-size: 14px;
+        }
+    }
     .producer_blog{
         .producer-image,.producer_content{
             width: 100%;

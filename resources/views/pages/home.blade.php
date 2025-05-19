@@ -33,7 +33,7 @@
                                 <div id="slider" class="nivoSlider" >
                                     @foreach ($sliders as $item)
                                         <a href="{{$item->url}}">
-                                            <img src="{{$item->image->uri}}"
+                                             <img src="{{$item->image->uri}}"
                                              data-thumb="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}"
                                              alt="{{$item->title}}"
                                              title="#caption-{{$item->image_id}}"/>

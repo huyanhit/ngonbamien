@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class PostComment extends Model
 {
-    protected $table = 'comments';
+    use HasFactory;
+    protected $table = 'post_comments';
     protected $fillable = [
-        'product_id',
+        'post_id',
         'name',
-        'rating',
         'content',
         'active'
     ];

@@ -33,10 +33,12 @@
                             <div class="slider-wrapper theme-default">
                                 <div id="slider" class="nivoSlider">
                                     @foreach ($producer->slider as $item)
-                                        <img src="{{$item->uri}}"
+                                        <a href="{{$item->uri }}" data-lightbox="roadtrip">
+                                             <img src="{{$item->uri}}"
                                              data-thumb="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->uri)}}"
                                              alt="{{$item->description}}"
                                              title="#caption-{{$item->id}}"/>
+                                        </a>
                                     @endforeach
                                 </div>
                                 @foreach ($producer->slider as $item)

@@ -18,7 +18,7 @@
                                     <div class="checkout__input">
                                         <p>Họ & Tên<span>*</span></p>
                                         <input type="text" name="name" placeholder="Nhập vào Họ & Tên"
-                                               value="{{request()->name??auth()->user()->name}}" />
+                                               value="{{request()->name?? auth()->user()->name}}" />
                                         @if ($errors->has('name'))
                                             <span class="text-danger">{{$errors->first('name')}}</span>
                                         @endif
