@@ -59,10 +59,9 @@
 }
 
 .blog__sidebar__recent {
-
     .blog__sidebar__recent__item {
         display: block;
-
+        background: $background;
         &:last-child {
             margin-bottom: 0;
         }
@@ -80,23 +79,23 @@
     float: left;
     margin-right: 20px;
     img{
-        width: 100px;
-        height: 100px;
+        width: 70px;
+        height: 70px;
     }
 }
 
 .blog__sidebar__recent__item__text {
     overflow: hidden;
-
+    padding-top: 5px;
+    padding-right: 10px;
     h6 {
         font-weight: 700;
         color: #333333;
         line-height: 20px;
-        margin-bottom: 5px;
     }
 
     span {
-        font-size: 12px;
+        font-size: 14px;
         color: #999999;
         text-transform: uppercase;
     }

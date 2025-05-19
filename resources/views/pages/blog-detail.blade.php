@@ -1,21 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <section class="blog-details-hero set-bg" data-setbg="{{Request::root()}}/img/blog/details/details-hero.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="blog__details__hero__text">
-                        <h2>{{$post->title}}</h2>
-                        <ul>
-                            <li>{{$post->author->name?? ''}}</li>
-                            <li><i class="fa fa-calendar mr-2"></i>{{\Illuminate\Support\Carbon::parse($post->created_at)}}</li>
-                            <li>{{$post->comments->count()}} Comment</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-breadcrumb name="noi-dung" title="Nội Dung Bài Viết" :data="$post"></x-breadcrumb>
     <!-- Blog Details Hero End -->
 
     <!-- Blog Details Section Begin -->
@@ -149,7 +134,7 @@
                                                 <img src="{{route('get-image-thumbnail', $post->author->image_id)}}" alt="">
                                             @endif
                                         </div>
-                                        <div class="blog__details__author__text p-2 ml-2">
+                                        <div class="blog__details__author__text p-1 ml-2">
                                             <h6>{{$post->author->name?? ''}}</h6>
                                             <div class="pull-right text-muted my-2">
                                                 <i class="fa fa-calendar mr-2"></i>
@@ -159,7 +144,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12 doc-content">
                                 <div class="my-3 pt-3">
                                     {!! $post->content !!}
                                 </div>

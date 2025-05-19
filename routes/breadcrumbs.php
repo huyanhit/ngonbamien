@@ -58,6 +58,16 @@ Breadcrumbs::for('san-pham', function ($trail, $data) {
     $trail->push($data['title'], route('san-pham', $data['title']));
 });
 
+Breadcrumbs::for('bai-viet', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Bài viết', route('bai-viet'));
+});
+
+Breadcrumbs::for('noi-dung', function ($trail, $data) {
+    $trail->parent('bai-viet');
+    $trail->push($data['title'], route('noi-dung', $data['title']));
+});
+
 Breadcrumbs::for('xem-trang', function ($trail, $data) {
     $trail->parent('home');
     $trail->push($data['page_title'], route('xem-trang', $data['page_router']));

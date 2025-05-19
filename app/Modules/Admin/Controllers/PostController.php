@@ -19,7 +19,7 @@ class PostController extends MyController
         $this->view['resource'] = $this->request->segment(2);
         $this->view['form'] = array(
             'title'       => array('title' => 'Tiều đề', 'type'    => self::TEXT, 'validate' => 'required|max:50'),
-            'description' => array('title' => 'Mô tả ngắn', 'type' => self::TEXT),
+            'description' => array('title' => 'Mô tả ngắn', 'type' => self::AREA),
             'content'     => array('title' => 'Nội dung', 'type'   => self::AREA),
             'slug'        => array('title' => 'Slug', 'type'       => self::SLUG),
 

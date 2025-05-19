@@ -36,7 +36,7 @@
             </div>
         @endif
         <div class="form-group row">
-            <label class="col-4 col-form-label text-right">Thảo luận <span class="text-danger">*</span></label>
+            <label class="col-4 col-form-label text-right">Nội dung <span class="text-danger">*</span></label>
             <div class="col-8">
                <textarea class="form-control"
                          id="comment_content" rows="3" placeholder="Nhập đánh giá của bạn"></textarea>
