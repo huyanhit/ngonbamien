@@ -14,10 +14,12 @@
                             @foreach ($producers as $item)
                             <li>
                                 <a href="{{Request::root()}}/vung-mien/{{$item->slug}}" class="inline-block avatar">
-                                    <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}"
+                                    @if(isset($item->image->uri))
+                                        <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}"
                                          style="width: 20px"
                                          alt="{{$item->title}}"
                                          title="#caption-{{$item->image_id}}">
+                                    @endif
                                     <span class="ml-2">{{$item->title}}</span>
                                 </a>
                             </li>
@@ -33,10 +35,12 @@
                                 <div id="slider" class="nivoSlider" >
                                     @foreach ($sliders as $item)
                                         <a href="{{$item->url}}">
-                                             <img src="{{$item->image->uri}}"
-                                             data-thumb="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}"
-                                             alt="{{$item->title}}"
-                                             title="#caption-{{$item->image_id}}"/>
+                                            @if(isset($item->image->uri))
+                                            <img src="{{$item->image->uri}}"
+                                            data-thumb="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}"
+                                            alt="{{$item->title}}"
+                                            title="#caption-{{$item->image_id}}"/>
+                                            @endif
                                         </a>
                                     @endforeach
                                 </div>
@@ -61,7 +65,9 @@
                     <div class="col-lg">
                         <a href="./cua-hang/{{Str::slug($item->title)}}">
                             <div class="categories__item" >
+                                @if(isset($item->image->uri))
                                 <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}" alt="{{$item->title}}">
+                                @endif
                                 <h3><span>{{$item->title}}</span></h3>
                             </div>
                         </a>
@@ -147,7 +153,7 @@
                 @foreach ($banners as $item)
                     <a href="{{$item->url}}" class="{{$item->type == 2 ? 'col-lg-6 col-md-12 col-sm-12': 'col-lg-4 col-md-6 col-sm-12'}}">
                         <div class="banner__pic">
-                            <img src="{{ $item->image->uri }}" alt="{{$item->title}}">
+                            <img src="{{ $item->image?->uri }}" alt="{{$item->title}}">
                         </div>
                         <div class="banner__info position-absolute top-0">
                             <h3>{{$item->title}}</h3>

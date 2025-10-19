@@ -5,8 +5,8 @@
             <div class="col-xl-9">
                 <div class="row">
                 @foreach($data as $value)
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card card-animate" >
+                    <div class="col-xl-4 col-md-6">
+                        <a href="{{$value['link']}}" class="card card-animate" style="background-color: {{$value['background']}}">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
                                     <div class="flex-grow-1 overflow-hidden">
@@ -18,17 +18,45 @@
                                 </div>
                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                     <div>
-                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="559.25">{{$value['page']}}</span>k</h4>
-                                        <a href="{{$value['link']}}" class="text-decoration-underline">View net earnings</a>
+                                        <h4>
+                                            <span class="fs-16 flex-grow-1 me-2"> Tổng:
+                                                <span class="counter-value fw-semibold fs-22" data-target="559.25">{{$value['total']}}</span>
+                                            </span>
+                                            @if(isset($value['active']))
+                                                <span class="fs-16 flex-grow-1 me-2"> Hoạt động:
+                                                    <span class="counter-value fw-semibold fs-22 text-success" data-target="559.25">{{$value['active']}}</span>
+                                                </span>
+                                            @endif
+                                            @if(isset($value['new']) && $value['new'] > 0)
+                                                <span class="fs-16 flex-grow-1 me-2"> Đơn Mới:
+                                                    <span class="counter-value fw-semibold fs-22 text-info" data-target="559.25">{{$value['new']}}</span>
+                                                </span>
+                                            @endif
+                                            @if(isset($value['check']) && $value['check'] > 0)
+                                                <span class="fs-16 flex-grow-1 me-2"> Đóng gói:
+                                                    <span class="counter-value fw-semibold fs-22 text-muted" data-target="559.25">{{$value['check']}}</span>
+                                                </span>
+                                            @endif
+                                            @if(isset($value['ship']) && $value['ship'] > 0)
+                                                <span class="fs-16 flex-grow-1 me-2"> Giao Hàng:
+                                                    <span class="counter-value fw-semibold fs-22 text-danger" data-target="559.25">{{$value['ship']}}</span>
+                                                </span>
+                                            @endif
+                                            @if(isset($value['success']) && $value['success'] > 0)
+                                                <span class="fs-16 flex-grow-1 me-2 text-success"> Hoàn thành:
+                                                    <span class="counter-value fw-semibold fs-22" data-target="559.25">{{$value['success']}}</span>
+                                                </span>
+                                            @endif
+                                        </h4>
                                     </div>
                                     <div class="avatar-sm flex-shrink-0">
                                         <span class="avatar-title bg-success-subtle rounded fs-3">
-                                            <i class="bx bx-dollar-circle text-success"></i>
+                                            <i class="{{$value['icon']}} text-success"></i>
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     @endforeach
                 </div>

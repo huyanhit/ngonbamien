@@ -155,7 +155,7 @@
                                             <span class="can_update_text" type="{{$val['views']['type']}}" data="{{json_encode($val['data'])}}" field="{{$key}}" uid="{{$l_value['id']}}">
                                                 @foreach($val['data'] as $k => $value)
                                                     @if($l_value[$key] == $k)
-                                                        <span class="inline" uid="{{$k}}">{{$value}}</span>
+                                                        <span class="inline badge bg-info" uid="{{$k}}">{{$value}}</span>
                                                     @endif
                                                 @endforeach
                                             </span>
@@ -184,6 +184,17 @@
                                             @endif
                                         </td>
                                     @break
+                                    @case('price')
+                                        <td class="text-left">
+                                            @if(empty($val['update']) )
+                                                <span class="p-2 font-weight-bold">{!! number_format($l_value[$key], 0, ',', '.') !!} đ</span>
+                                            @else
+                                                <span class="can_update_text" type="{{$val['views']['type']}}" field="{{$key}}" uid="{{$l_value['id']}}">
+                                                    <span class="p-2 font-weight-bold">{!! number_format($l_value[$key], 0, ',', '.') !!} đ</span>
+                                                </span>
+                                            @endif
+                                        </td>
+                                        @break
                                     @default
                                         <td class="text-left">
                                             <span class="p-2">{!! $l_value[$key] !!}</span>

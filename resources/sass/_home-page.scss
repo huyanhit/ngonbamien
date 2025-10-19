@@ -184,9 +184,7 @@
         margin-bottom: 5px;
         background: $background;
         min-height: 45px;
-        > div:nth-child(2){
-            border-left: 1px $border solid;
-        }
+        
         > div {
             padding-top: 3px;
         }
@@ -330,9 +328,10 @@
 }
 
 .product__item__price.hide {
-    background: $border;
     width: 30px;
     cursor: pointer;
+    border-left: 1px solid #ebebeb;
+    border-right: 1px solid #ebebeb;
     .price,.price_root{
         font-size: 0;
     }
@@ -340,7 +339,7 @@
         font-size: 0;
     }
     &::before{
-        content: "\f0c9";
+        content: "\f096";
         font-family: 'FontAwesome';
         top: 10px;
         position: relative;

@@ -1,6 +1,6 @@
 @props(['data' => null, 'comments'=> null])
 <div class="form-horizontal bg-white border" id="comment">
-    <h4 class="font-bold text-xl text-uppercase text-center mt-3">Thảo luận</h4>
+    <h4 class="font-bold text-xl text-uppercase text-center mt-3 font-weight-bold">Thảo luận</h4>
     <ul id="comment_list" class="list-group px-3">
         @foreach($comments as $item)
             <li class="comment-item border my-2 list-group-item">

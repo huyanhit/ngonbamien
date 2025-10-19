@@ -2,7 +2,9 @@
 <div class="featured__item">
     <div class="featured__item__pic">
         <a href="{{Request::root()}}/san-pham/{{$item->slug}}">
+            @if(isset($item->image->uri))
             <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}" alt="{{$item->title}}">
+            @endif
         </a>
         <ul class="featured__item__pic__hover">
             <li><span title="Yêu thích" class="add_favor" data-value="{{$item->id}}"><i class="fa fa-heart"></i></span></li>

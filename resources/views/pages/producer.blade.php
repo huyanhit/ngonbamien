@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
     <!-- Hero Section Begin -->
     <section class="hero">
         <div class="container">
@@ -15,10 +14,12 @@
                             @foreach ($producers as $item)
                                 <li>
                                     <a href="{{Request::root()}}/vung-mien/{{$item->slug}}" class="inline-block avatar">
+                                        @if(isset($item->image->uri))
                                         <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}"
                                              style="width: 20px"
                                              alt="{{$item->title}}"
                                              title="#caption-{{$item->image_id}}">
+                                        @endif
                                         <span class="ml-2">{{$item->title}}</span>
                                     </a>
                                 </li>
@@ -33,9 +34,9 @@
                             <div class="slider-wrapper theme-default">
                                 <div id="slider" class="nivoSlider">
                                     @foreach ($producer->slider as $item)
-                                        <a href="{{$item->uri }}" data-lightbox="roadtrip">
-                                             <img src="{{$item->uri}}"
-                                             data-thumb="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->uri)}}"
+                                        <a href="{{ $item?->uri }}" data-lightbox="roadtrip">
+                                             <img src="{{$item?->uri}}"
+                                             data-thumb="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item?->uri)}}"
                                              alt="{{$item->description}}"
                                              title="#caption-{{$item->id}}"/>
                                         </a>
@@ -60,7 +61,7 @@
                     </div>
                     <div class="producer_content">
                         <div class="producer_desc text-left">
-                            <h3 class="text-center background_pr text-white rounded">Giới thiệu {{$producer->title}}</h3>
+                            <h3 class="text-center font-weight-bold rounded">Giới thiệu {{$producer->title}}</h3>
                             <div class="description px-3 py-2 my-2 rounded bg-light">
                                 <i> {!! $producer->description !!} </i>
                             </div>

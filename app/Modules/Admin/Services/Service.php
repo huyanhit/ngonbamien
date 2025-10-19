@@ -36,13 +36,11 @@ class Service {
     function __construct($model){
         $this->model = $model;
     }
-
     public function generateList($data){
         $this->filter($data);
         $this->sort($data);
         return $this->paginate($data);
     }
-
     protected function filter($data){
         $filter = [];
         foreach($data["list"] as $key => $value){
@@ -64,13 +62,11 @@ class Service {
             $this->model = $this->model->where($filter);
         }
     }
-
     protected function sort($data){
         if(!empty($data['sort'])){
             $this->model = $this->model->orderby($data['sort']['order'], $data['sort']['by']);
         }
     }
-
     protected function paginate($data){
         if(!empty($data['paginate'])){
             return $this->model->paginate($data['paginate']['page']);

@@ -30,7 +30,7 @@ class PostController extends Controller
 
         return view('pages.blog', array_merge($this->getDataLayout(), [
             'posts'         => $posts->filter(new PostFilter($request))->select($selects)->paginate(6),
-            'sliders'       => Slider::where(['active'=> 1, 'type' => 1])->orderby('index', 'DESC')->get(),
+            'sliders'       => Slider::where(['active'=> 1, 'type' => 2])->orderby('index', 'DESC')->get(),
             'producers'     => Producer::where(['active'=> 1])->orderby('index', 'ASC')->limit(9)->get(),
             'post_category' => PostCategory::where(['active' => 1])->limit(9)->get(),
             'post_recent'   => Post::whereIn('id', PostRecent::where('user_id', Auth::id())->pluck('id'))

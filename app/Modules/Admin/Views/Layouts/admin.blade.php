@@ -53,7 +53,6 @@
                                             'data'=> $data
                                         ])
                                         @break
-
                                     @case('producer.index')
                                         @include('Admin::Components.breadcrumb', ['name'=>'producer', 'title' => 'Danh sách xuất xứ'])
                                         @break
@@ -74,7 +73,6 @@
                                             'data'=> $data
                                         ])
                                         @break
-
                                     @case('products.index')
                                         @include('Admin::Components.breadcrumb', ['name'=>'products', 'title' => 'Danh sách sản phẩm'])
                                         @break

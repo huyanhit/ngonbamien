@@ -29,59 +29,92 @@
             </div>
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{Request::root().'/admin/dashboard'}}"> <i class="ri-dashboard-2-line"></i> <span>Dashboards</span> </a>
+                    <a class="nav-link menu-link {{Route::currentRouteName() == 'dashboard.index'? 'active': ''}}"
+                        href="{{Request::root().'/admin/dashboard'}}">
+                        <i class="ri-dashboard-2-line"></i><span>Dashboards</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{Request::root().'/admin/products'}}"> <i class="ri-dashboard-2-line"></i> <span>Sản phẩm</span> </a>
+                    <a class="nav-link menu-link {{Route::currentRouteName() == 'products.index'? 'active': ''}}"
+                        href="{{Request::root().'/admin/products'}}">
+                        <i class="ri-product-hunt-line"></i> <span>Sản phẩm</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{Request::root().'/admin/product-categories'}}">
-                        <i class="ri-dashboard-2-line"></i>
+                    <a class="nav-link menu-link {{Route::currentRouteName() == 'product-categories.index'? 'active': ''}}"
+                       href="{{Request::root().'/admin/product-categories'}}">
+                        <i class="ri-list-indefinite"></i>
                         <span> Loại sản phẩm </span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{Request::root().'/admin/producer'}}">
-                        <i class="ri-dashboard-2-line"></i>
+                    <a class="nav-link menu-link {{Route::currentRouteName() == 'orders.index'? 'active': ''}}"
+                       href="{{Request::root().'/admin/orders'}}">
+                        <i class="ri-bill-line"></i> <span>Đơn hàng</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{Route::currentRouteName() == 'producer.index'? 'active': ''}}"
+                       href="{{Request::root().'/admin/producer'}}">
+                        <i class="ri-user-location-line"></i>
                         <span>Xuất xứ</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{Request::root().'/admin/posts'}}">
-                        <i class="ri-dashboard-2-line"></i>
+                    <a class="nav-link menu-link {{Route::currentRouteName() == 'posts.index'? 'active': ''}}"
+                       href="{{Request::root().'/admin/posts'}}">
+                        <i class="ri-article-line"></i>
                         <span>Bài viết</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{Request::root().'/admin/pages'}}">
-                        <i class="ri-dashboard-2-line"></i>
+                    <a class="nav-link menu-link {{Route::currentRouteName() == 'pages.index'? 'active': ''}}"
+                       href="{{Request::root().'/admin/pages'}}">
+                        <i class="ri-pages-line"></i>
                         <span>Trang</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{Request::root().'/admin/sliders'}}">
-                        <i class="ri-dashboard-2-line"></i>
+                    <a class="nav-link menu-link {{Route::currentRouteName() == 'sliders.index'? 'active': ''}}"
+                       href="{{Request::root().'/admin/sliders'}}">
+                        <i class="ri-gallery-line"></i>
                         <span>Slider</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#system" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="system">
-                        <i class="ri-dashboard-2-line"></i>
-                        <span href="{{Request::root().'/admin/sites/1/edit'}}">Website</span>
+                    <a class="nav-link menu-link {{Route::currentRouteName() == 'banners.index'? 'active': ''}}"
+                       href="{{Request::root().'/admin/banners'}}">
+                        <i class="ri-slideshow-2-line"></i>
+                        <span>Banner</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{Route::currentRouteName() == 'contacts.index'? 'active': ''}}"
+                       href="{{Request::root().'/admin/contacts'}}">
+                        <i class="ri-contacts-book-2-line"></i>
+                        <span>Liên hệ</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link"
+                        href="#system" data-bs-toggle="collapse"
+                        role="button" aria-expanded="false" aria-controls="system">
+                        <i class="ri-settings-2-line"></i>
+                        <span >Hệ thống</span>
                     </a>
                     <div class="collapse menu-dropdown" id="system">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{Request::root().'/admin/menus'}}">Menu</a>
+                                <a class="nav-link {{Route::currentRouteName() == 'sites.edit'? 'active': ''}}"
+                                   href="{{Request::root().'/admin/sites/1/edit'}}"> <i class="ri-home-2-line"></i> Website </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{Request::root().'/admin/users'}}">Tài khoản</a>
+                                <a class="nav-link {{Route::currentRouteName() == 'menus.index'? 'active': ''}}"
+                                   href="{{Request::root().'/admin/menus'}}"><i class="ri-menu-2-line"></i> Menu</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{Request::root().'/admin/news'}}">Tin Tức</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{Request::root().'/admin/contacts'}}">Liên hệ</a>
+                                <a class="nav-link {{Route::currentRouteName() == 'users.index'? 'active': ''}}"
+                                   href="{{Request::root().'/admin/users'}}"><i class="ri-user-2-line"></i> Tài khoản</a>
                             </li>
                         </ul>
                     </div>

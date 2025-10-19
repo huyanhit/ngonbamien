@@ -22,8 +22,10 @@
                             <div class="product__discount__item my-2">
                                 <div class="featured__item__pic">
                                     <a href="{{Request::root()}}/san-pham/{{$item->slug}}" >
+                                        @if(isset($item->uri))
                                         <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->uri??'')}}"
                                              alt="{{$item->title}}">
+                                        @endif
                                     </a>
                                     <div class="product__discount__percent">-{{$item->discount}}%</div>
                                     <ul class="product__item__pic__hover">

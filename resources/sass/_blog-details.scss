@@ -182,17 +182,16 @@
         }
     }
     .producer_show {
-        padding: 16px 0;
         .content_blog{
             height: 240px;
             transition: .5s;
         }
     }
     .btn_producer{
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(6px);
         padding: 22px 0;
         position: relative;
-        top: 10px;
+        top: 40px;
         z-index: 0;
         button::after{
             content: 'Xem thêm';

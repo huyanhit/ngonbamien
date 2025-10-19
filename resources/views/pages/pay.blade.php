@@ -48,7 +48,7 @@
                                             Khách hàng quét mã sau và tiến hành thanh toán. <br/>
                                             Cửa hàng sẻ gửi Hàng đến địa chỉ của quý khách. <br/>
                                             <div class="border my-3 p-2 d-inline-block">
-                                                <img src="{{Request::root().'/img/cart/cart-1.jpg'}}"/>
+                                                <img src="https://api.vietqr.io/image/970436-0291000261672-TjJxHA8.jpg?accountName=LEANHHUY&amount={{$order->total}}&addInfo=Thanh%20Toan%20Don%20Hang%20{{$order->code}}"/>
                                             </div>
                                         </div>
                                     </div>
@@ -59,24 +59,24 @@
                                     <div id="pay_bank_form" class="mt-2" style="display: none;">
                                         <div class="form-group px-3 ">
                                             <div class="text-sm font-bold">Khách hàng chuyển khoản qua ngân hàng</div>
-                                            <div class="text-sm"><span class="font-bold">Số tiền chuyển: </span>
-                                                <strong class="text-red-600 text-xl">{{ number_format($order->total, 0, ',', '.') }}đ</strong>
-                                            </div>
                                             <div class="text-sm p-3 bg-white my-2">
-                                                <span class="font-bold">Thông tin chuyển khoản</span>
-                                                <p>
-                                                    <span class="text-sm font-bold">Số tài khoản</span>
-                                                    <span class="text-red-600 text-xl"> xxxx </span>
-                                                </p>
-                                                <p><span class="text-sm font-bold">Ngân hàng:</span>
-                                                    <span class="text-sm"> xxxx </span>
-                                                </p>
-                                                <p><span class="text-sm font-bold">Chủ tài khoản:</span>
-                                                    <span class="text-sm">xxx</span>
-                                                </p>
-                                                <p><span class="text-sm font-bold">Nội dung chuyển khoản:</span>
-                                                    <span class="text-sm">Thanh toán HĐ {{$order->id}}</span>
-                                                </p>
+                                                <div>
+                                                    <span class="text-sm font-bold">Số tài khoản:</span>
+                                                    <b class="text-red-600 text-xl"> 0291000261672 </b>
+                                                </div>
+                                                <div><span class="text-sm font-bold">Ngân hàng:</span>
+                                                    <b class="text-sm"> Vietcombank </b>
+                                                </div>
+                                                <div><span class="text-sm font-bold">Chủ tài khoản:</span>
+                                                    <b class="text-sm">LEANHHUY</b>
+                                                </div>
+                                                <div>
+                                                    <span class="text-sm font-bold">Số tiền:</span>
+                                                    <b class="text-red-600 text-xl"> {{ number_format($order->total, 0, ',', '.') }}đ </b>
+                                                </div>
+                                                <div><span class="text-sm font-bold">Nội dung chuyển khoản:</span>
+                                                    <b class="text-sm">TTĐH {{$order->code}}</b>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

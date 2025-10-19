@@ -1,6 +1,6 @@
-@props(['sites'])
+@props(['sites', 'showPhone' => true])
 <div class="hero__search d-flex">
-    <div class="hero__search__form flex-grow-1 mr-3">
+    <div class="hero__search__form flex-grow-1">
         <form action="{{Request::root()}}/tim-kiem" method="get">
             <select class="form-select border-0 position-relative z-20 mt-1" name="loai">
                 <option class="fs-18 fw-bold" value="1">
@@ -17,7 +17,8 @@
             <button type="submit" class="site-btn">Tìm</button>
         </form>
     </div>
-    <a class="hero__search__phone flex-shrink-1" href="tel:{{$sites->hotline}}">
+    @if ($showPhone)
+        <a class="hero__search__phone flex-shrink-1 ml-3" href="tel:{{$sites?->hotline}}">
         <div class="hero__search__phone__icon">
             <i class="fa fa-phone"></i>
         </div>
@@ -26,4 +27,5 @@
             <div class="text-muted">Hổ trợ <b>24/7</b></div>
         </div>
     </a>
+    @endif
 </div>

@@ -6,7 +6,7 @@
                 <div class="footer__about">
                     <div class="footer__about__logo">
                         <a href="{{Request::root()}}">
-                            <img src="{{$sites->image->uri?? 'img/logo.png'}}" alt="{{$sites->meta_title?? ''}}"/>
+                            <img src="{{$site->logo??Request::root().'/img/logo.png'}}" alt="ngon ba mien" style="max-width: 80%">
                         </a>
                     </div>
                     <ul>
@@ -40,7 +40,7 @@
             <div class="col-lg-4 col-md-12">
                 <div class="footer__widget">
                     <h6>Đăng ký nhận thông báo</h6>
-                    <p>Để chúng tôi gửi các thông tin hữu ích đến bạn.</p>
+                    <p><i>Đăng ký để chúng tôi gửi các thông tin hữu ích đến bạn.</i></p>
                     <form action="{{Request::root()}}/">
                         <input type="text" placeholder="Nhập Email của bạn">
                         <button type="submit" class="site-btn">Đăng Ký</button>

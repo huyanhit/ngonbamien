@@ -11,6 +11,6 @@
             </li>
         </ul>
         <h5><a href="{{Request::root()}}/noi-dung/{{$item->slug}}">{{$item->title}}</a></h5>
-        <p>{{$item->description}}</p>
+        <p>{!! $item->description !!}</p>
     </div>
 </div>

@@ -18,6 +18,7 @@ class MyController extends BaseController
     const AREA        = 'area';
     const CODE        = 'code';
     const TEXT        = 'text';
+    const PRICE       = 'price';
 
     const HIDDEN      = 'hidden';
     const SLUG        = 'slug';

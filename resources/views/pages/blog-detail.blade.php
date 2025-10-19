@@ -7,6 +7,66 @@
     <section class="blog-details margin_15 pt-3">
         <div class="container">
             <div class="row">
+                <div class="col-lg-9 col-md-8 order-md-1 order-1">
+                    <!-- Blog Details Hero Begin -->
+                    <section class="hero background">
+                        <div class="row">
+                            <div class="col-12">
+                                <h3 class="text-center mb-3 font-weight-bold">{{$post->title}}</h3>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="product__details__pic">
+                                    <a class="product__details__pic__item" data-lightbox="roadtrip"
+                                       data-title="{{$post->title}}"
+                                       href="{{$post->image->uri}}">
+                                        <img class="product__details__pic__item--large"
+                                             src="{{Request::root()}}/{{$post->image->uri?? ''}}" alt="{{$post->title}}">
+                                    </a>
+                                    <div class="product__details__pic__slider owl-carousel">
+                                        @if($post->images)
+                                            @foreach(explode(',',$post->images) as $id)
+                                                <img data-imgbigurl="{{route('get-image', $id)}}"
+                                                     src="{{route('get-image', $id)}}" alt="{{$post->title}}"
+                                                     onerror="this.src='/images/no-image.png'">
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="border rounded p-2">
+                                    <i>{!! $post->description !!}</i>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 doc-content">
+                                <div class="my-3 pt-3 background-content">
+                                    {!! $post->content !!}
+                                </div> 
+                                <div class="blog__details__content mt-2">
+                                    <div class="blog__details__author d-flex">
+                                        <div class="avatar-auth p-2 border rounded">
+                                            @if($post->author->image_id)
+                                                <img src="{{route('get-image-thumbnail', $post->author->image_id)}}" alt="">
+                                            @endif
+                                        </div>
+                                        <div class="blog__details__author__text p-1 ml-2 flex-grow-1">
+                                            <div class="pull-right text-muted">
+                                                <i class="fa fa-calendar mr-2"></i>
+                                                {{\Illuminate\Support\Carbon::parse($post->updated_at)->format('d/m/Y')}}
+                                            </div>
+                                            <h6 class="mt-3">{{$post->author->name?? ''}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="my-3">
+                                    <x-comment-block :data="['post_id' => $post->id]" :comments="$comments"></x-comment-block>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </section>
+                </div>
                 <div class="col-lg-3 col-md-4 order-md-1 order-2">
                     <div class="blog__sidebar">
                         <div class="blog__sidebar__item">
@@ -21,10 +81,12 @@
                                             <li>
                                                 <a href="{{Request::root()}}/bai-viet/{{Str::slug($item->title)}}"
                                                     class="inline-block avatar">
+                                                    @if(isset($item->image->uri))
                                                     <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}"
                                                          style="width: 20px"
                                                          alt="{{$item->title}}"
                                                          title="#caption-{{$item->image_id}}">
+                                                    @endif
                                                     <span class="ml-2">{{$item->title}}</span>
                                                 </a>
                                             </li>
@@ -90,70 +152,6 @@
                             </div>
                         </form>
                     </div>
-                </div>
-                <div class="col-lg-9 col-md-8 order-md-1 order-1">
-                    <!-- Hero Section Begin -->
-                    <section class="hero background">
-                        <div class="row">
-                           <div class="col-12">
-                               <x-hero-search :sites="$sites"/>
-                           </div>
-                        </div>
-                    </section>
-                    <!-- Blog Details Hero Begin -->
-                    <section class="hero background">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="product__details__pic">
-                                    <a class="product__details__pic__item" data-lightbox="roadtrip"
-                                       data-title="{{$post->title}}"
-                                       href="{{$post->image->uri}}">
-                                        <img class="product__details__pic__item--large"
-                                             src="{{Request::root()}}/{{$post->image->uri?? ''}}" alt="{{$post->title}}">
-                                    </a>
-                                    <div class="product__details__pic__slider owl-carousel">
-                                        @if($post->images)
-                                            @foreach(explode(',',$post->images) as $id)
-                                                <img data-imgbigurl="{{route('get-image', $id)}}"
-                                                     src="{{route('get-image', $id)}}" alt="{{$post->title}}"
-                                                     onerror="this.src='/images/no-image.png'">
-                                            @endforeach
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <h3>{{$post->title}}</h3>
-                                <div class="border rounded p-2 mt-3">
-                                    <i>{!! $post->description !!}</i>
-                                </div>
-                                <div class="blog__details__content mt-2">
-                                    <div class="blog__details__author d-flex">
-                                        <div class="avatar-auth p-2 border rounded">
-                                            @if($post->author->image_id)
-                                                <img src="{{route('get-image-thumbnail', $post->author->image_id)}}" alt="">
-                                            @endif
-                                        </div>
-                                        <div class="blog__details__author__text p-1 ml-2">
-                                            <h6>{{$post->author->name?? ''}}</h6>
-                                            <div class="pull-right text-muted my-2">
-                                                <i class="fa fa-calendar mr-2"></i>
-                                                {{\Illuminate\Support\Carbon::parse($post->updated_at)->format('d/m/Y')}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 doc-content">
-                                <div class="my-3 pt-3">
-                                    {!! $post->content !!}
-                                </div>
-                                <div class="my-3">
-                                    <x-comment-block :data="['post_id' => $post->id]" :comments="$comments"></x-comment-block>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
                 </div>
             </div>
         </div>

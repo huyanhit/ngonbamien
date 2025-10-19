@@ -3,7 +3,7 @@
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo my-1">
         <a href="{{Request::root()}}">
-            <img src="{{$sites->image->uri?? Request::root().'/img/logo.png'}}" alt="{{$sites->meta_title?? ''}}">
+            <img src="{{$sites->image->uri?? Request::root().'/img/logo.png'}}" alt="{{$sites->meta_title?? ''}}" style="max-width: 80%">
         </a>
         <div class="dropdown header__top__right__auth pull-right">
             @if(isset(auth()->user()->image))
@@ -145,7 +145,7 @@
                 <div class="col-lg-3">
                     <div class="header__logo">
                         <a href="{{Request::root()}}">
-                            <img src="{{$site->logo??Request::root().'/img/logo.png'}}" alt="">
+                            <img src="{{$site->logo??Request::root().'/img/logo.png'}}" alt="ngon ba mien" style="max-width: 80%">
                         </a>
                     </div>
                 </div>

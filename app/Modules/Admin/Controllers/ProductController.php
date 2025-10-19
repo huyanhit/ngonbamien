@@ -32,10 +32,10 @@ class ProductController extends MyController
             'meta_description'  => array('title'=> 'Meta description', 'type' => self::TEXT, 'validate' => 'max:255', 'group' => 'Seo'),
 
             'status'       => array(
-                'title'=> 'Công bố',
+                'title'=> 'Trạng thái bán',
                 'data'=> array(
-                    1 => 'Bản nháp',
-                    2 => 'Bản chính thức',
+                    1 => 'Liên hệ',
+                    2 => 'Chính thức',
                     3 => 'Theo lịch'
                 ),
                 'type' => self::SELECT,

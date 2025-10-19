@@ -350,6 +350,7 @@ $(document).ready(function () {
         controlNavThumbs: false, // Use thumbnails for Control Nav
         pauseOnHover: false // Stop animation while hovering
     });
+    
     $('.service-carousel').owlCarousel({
         loop: true,
         margin: 10,

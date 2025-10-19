@@ -14,10 +14,12 @@
                             @foreach ($product_categories as $item)
                                 <li>
                                     <a href="{{Request::root()}}/cua-hang/{{$item->slug}}" class="inline-block avatar">
+                                        @if(isset($item->image->uri))
                                         <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}"
                                              style="width: 20px"
                                              alt="{{$item->title}}"
                                              title="#caption-{{$item->image_id}}">
+                                        @endif
                                         <span class="ml-2">{{$item->title}}</span>
                                     </a>
                                 </li>
@@ -34,8 +36,10 @@
                                     <div class="product__discount__item" >
                                         <div class="featured__item__pic">
                                             <a href="{{Request::root()}}/san-pham/{{$item->slug}}" >
+                                                @if(isset($item->uri))
                                                 <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->uri??'')}}"
                                                  alt="{{$item->title}}">
+                                                @endif
                                             </a>
                                             <div class="product__discount__percent">-{{$item->discount}}%</div>
                                             <ul class="product__item__pic__hover">

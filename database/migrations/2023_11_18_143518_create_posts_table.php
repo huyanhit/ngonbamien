@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('meta_keywords')->nullable();
             $table->string('meta_description')->nullable();
 
+            $table->integer('producer_id')->nullable();
             $table->integer('post_category_id')->nullable();
 
             $table->string('tags')->nullable();
