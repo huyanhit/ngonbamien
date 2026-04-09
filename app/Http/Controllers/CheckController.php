@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Coupon;
+use App\Services\CartService;
 use Illuminate\Support\Facades\Session;
 use Jackiedo\Cart\Cart;
 
@@ -25,12 +25,15 @@ class CheckController extends Controller
                 $discount = $couponData['discount'];
             }
         }
-        $total = $cart->total - $discount;
-        $shipping = ($total <= 185000)? 15000: (($total > 200000)? 0: (200000 - $total));
+        $cartService = new CartService();
+        $fee = $cartService->getFeeCart($cart);
         return view('pages.checkout', array_merge($this->getDataLayout(), [
-            'cart' => $cart,
-            'coupon' => $couponData,
-            'shipping' => $shipping
+            'cart'     => $cart,
+            'coupon'   => $couponData,
+            'shipping' => $fee['shipping'],
+            'down'     => $fee['down'],
+            'total'    => $cart->total + $fee['shipping'] - $fee['down'] - $discount
         ]));
     }
+    
 }

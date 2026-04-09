@@ -11,4 +11,5 @@ class MenuModel extends Model
     use SoftDeletes;
     protected $softDelete = true;
     protected $table = 'menus';
+    protected $guarded = [];
 }

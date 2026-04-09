@@ -1,0 +1,16 @@
+{
+    "message_send_title": "{room_name} có tin nhắn",
+    "message_send_content": "Bạn có tin nhắn từ {auth_name}.",
+    "message_approve_content": "Đã chấp nhận yêu cầu kết bạn từ",
+    "comment_send_title": "{room_name} có bình luận",
+    "comment_send_content": "{auth_name} viết bình luận tại {room_name}",
+    "comment_reply_title": "{room_name} có trả lời bình luận",
+    "comment_reply_content": "{auth_name} đã trả lời bình luận của bạn",
+    "chat_contact_add": "Yêu cầu kết bạn",
+    "chat_contact_add_content": "Bạn nhận được yêu cầu kết bạn từ {auth_name}",
+    "chat_contact_approve": "Đồng ý kết bạn",
+    "chat_contact_approve_content": "Yêu cầu kết bạn đã được chấp nhận bởi {auth_name}",
+    "chat_contact_remove": "Hủy kết bạn",
+    "agree": "Đồng ý",
+    "cancel": "Không đồng ý"
+}

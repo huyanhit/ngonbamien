@@ -83,7 +83,7 @@
 
             let data = {
                 {{isset($data['product_id'])?'product_id:'.$data['product_id'].',':''}}
-                    {{isset($data['post_id'])?'post_id:'.$data['post_id'].',':''}}
+                {{isset($data['post_id'])?'post_id:'.$data['post_id'].',':''}}
                 name: name.val()?? '',
                 content: content.val().trim()
             }
@@ -104,7 +104,7 @@
             });
         }
         function renderComment(data) {
-            $('#comment_list').append(
+            $('#comment_list').prepend(
                 '<li class="comment-item border my-2 list-group-item">' +
                 '<div class="d-flex">' +
                 '<span class="mr-2 flex-grow-0 font-weight-bold"> ' + data.name + ' </span>' +
@@ -112,7 +112,7 @@
                 '</div>' +
                 '<div class="flex-shrink-1 text-muted"> ' + data.created_at + ' </div>' +
                 ' </div>' +
-                '<div class="comment_content text-muted">' + data.content + '</div>' +
+                '<div class="comment_content text-muted">' + data.content + '<span class="pull-right"> Chờ duyệt </span></div>' +
                 '</li>'
             )
         }

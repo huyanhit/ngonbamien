@@ -10,5 +10,6 @@ class ProductCategoryModel extends Model
 {
     use SoftDeletes;
     protected $softDelete = true;
+    protected $guarded = [];
     protected $table = 'product_categories';
 }

@@ -61,6 +61,9 @@
                                     @case('select')
                                         {{Form::select($key, $val['data'], isset($val['filter']['value'])? $val['filter']['value']: null, array('class' => 'form-control'))}}
                                     @break
+                                    @case('selects')
+                                        {{Form::select($key, $val['data'], isset($val['filter']['value'])? $val['filter']['value']: null, array('class' => 'form-control'))}}
+                                    @break
                                     @default
                                         {{Form::input('text',$key, $val['filter']['value'], array('class' => 'form-control', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
                                     @break
@@ -72,10 +75,7 @@
                     <td colspan="2" class="text-center">
                         <div class="group-button">
                             <input type="submit" class="btn btn-secondary" name="submit" value="Lọc">
-                            @if(isset($control['add_reference']))
-                                <a class="btn btn-insert" href="{{Request::root()}}/{{$control['add_reference']['link']}}"> {{$control['add_reference']['title']}} </a>
-                            @endif
-                            @if(!isset($control['add']))
+                            @if(!in_array('create', $list_option['hide_action']))
                                 <a class="btn btn-info btn-insert" href="{{route($resource.'.create')}}"> Thêm </a>
                             @endif
                         </div>
@@ -143,23 +143,49 @@
                                     @break
                                     @case('select')
                                         <td class="text-left">
-                                        @if(empty($val['update']) )
-                                            <span class="no-update">
+                                            @php 
+                                                $badge = [
+                                                    "bg-light text-body border","bg-primary","bg-secondary","bg-info","bg-warning","bg-danger","bg-dark","bg-success"
+                                                ]
+                                            @endphp
+                                            @if(empty($val['update']) )
+                                                <span class="no-update">
+                                                    @foreach($val['data'] as $k => $value)
+                                                        @if($l_value[$key] == $k)
+                                                            <span class="inline badge {{$badge[$k]?? 'bg-danger'}}"> {{$value}} </span>
+                                                        @endif
+                                                    @endforeach
+                                                </span>
+                                            @else
+                                                <span class="can_update_text" type="{{$val['views']['type']}}" 
+                                                    data="{{json_encode($val['data'])}}" field="{{$key}}" uid="{{$l_value['id']}}">
+                                                    @foreach($val['data'] as $k => $value)
+                                                        @if($l_value[$key] == $k)
+                                                            <span class="inline badge {{$badge[$k]?? 'bg-danger'}}" uid="{{$k}}">{{$value}}</span>
+                                                        @endif
+                                                    @endforeach
+                                                </span>
+                                            @endif
+                                        </td>
+                                    @break
+                                    @case('selects')
+                                        <td class="text-left">
+                                            <span type="{{$val['views']['type']}}" 
+                                                data="{{json_encode($val['data'])}}" field="{{$key}}" uid="{{$l_value['id']}}">
+                                                @php
+                                                    $badge = ["bg-light text-body border",
+                                                    "bg-primary","bg-secondary","bg-info",
+                                                    "bg-warning","bg-danger","bg-dark","bg-success"];
+                                                    $arrays = json_decode($l_value[$key]);
+                                                @endphp
                                                 @foreach($val['data'] as $k => $value)
-                                                    @if($l_value[$key] == $k)
-                                                        {{$value}}
+                                                    @if(is_array($arrays) && in_array($k, $arrays))
+                                                        <span class="inline badge {{$badge[$k]?? 'bg-danger'}}" uid="{{$k}}">{{$value}}</span>
+                                                    @elseif($l_value[$key] == $k)
+                                                        <span class="inline badge {{$badge[$k]?? 'bg-danger'}}" uid="{{$k}}">{{$value}}</span>
                                                     @endif
                                                 @endforeach
                                             </span>
-                                        @else
-                                            <span class="can_update_text" type="{{$val['views']['type']}}" data="{{json_encode($val['data'])}}" field="{{$key}}" uid="{{$l_value['id']}}">
-                                                @foreach($val['data'] as $k => $value)
-                                                    @if($l_value[$key] == $k)
-                                                        <span class="inline badge bg-info" uid="{{$k}}">{{$value}}</span>
-                                                    @endif
-                                                @endforeach
-                                            </span>
-                                        @endif
                                         </td>
                                     @break
                                     @case('area')
@@ -176,10 +202,33 @@
                                     @case('text')
                                         <td class="text-left">
                                             @if(empty($val['update']) )
-                                                <span class="p-2">{!! $l_value[$key] !!}</span>
+                                                <span class="inline">{!! $l_value[$key] !!}</span>
                                             @else
                                                 <span class="can_update_text" type="{{$val['views']['type']}}" field="{{$key}}" uid="{{$l_value['id']}}">
-                                                    <span class="p-2">{!! $l_value[$key] !!}</span>
+                                                    <span class="inline">{!! $l_value[$key] !!}</span>
+                                                </span>
+                                            @endif
+                                        </td>
+                                    @break
+                                    @case('phone')
+                                        <td class="text-left">
+                                            @if(empty($val['update']) )
+                                                <span class="inline">{{ format_phone($l_value[$key]) }}</span>
+                                            @else
+                                                <span class="can_update_text" 
+                                                    type="{{$val['views']['type']}}" field="{{$key}}" uid="{{$l_value['id']}}">
+                                                    <span class="inline">{{ format_phone($l_value[$key]) }}</span>
+                                                </span>
+                                            @endif
+                                        </td>
+                                    @break
+                                    @case('date')
+                                        <td class="text-left">
+                                            @if(empty($val['update']) )
+                                                <span class="inline">{!! \Carbon\Carbon::parse($l_value[$key])->format('d/m/Y') !!}</span>
+                                            @else
+                                                <span class="can_update_text" type="{{$val['views']['type']}}" field="{{$key}}" uid="{{$l_value['id']}}">
+                                                    <span class="inline">{!! \Carbon\Carbon::parse($l_value[$key])->format('d/m/Y') !!}</span>
                                                 </span>
                                             @endif
                                         </td>
@@ -187,17 +236,17 @@
                                     @case('price')
                                         <td class="text-left">
                                             @if(empty($val['update']) )
-                                                <span class="p-2 font-weight-bold">{!! number_format($l_value[$key], 0, ',', '.') !!} đ</span>
+                                                <span class="inline font-weight-bold">{!! number_format($l_value[$key], 0, ',', '.') !!} đ</span>
                                             @else
                                                 <span class="can_update_text" type="{{$val['views']['type']}}" field="{{$key}}" uid="{{$l_value['id']}}">
-                                                    <span class="p-2 font-weight-bold">{!! number_format($l_value[$key], 0, ',', '.') !!} đ</span>
+                                                    <span class="inline font-weight-bold">{!! number_format($l_value[$key], 0, ',', '.') !!} đ</span>
                                                 </span>
                                             @endif
                                         </td>
                                         @break
                                     @default
                                         <td class="text-left">
-                                            <span class="p-2">{!! $l_value[$key] !!}</span>
+                                            <span class="inline">{!! $l_value[$key] !!}</span>
                                         </td>
                                     @break
                                 @endswitch
@@ -215,18 +264,30 @@
                         @endif
                     @endforeach
                     <td class="action_row text-center">
-                        <a title="Sao Chép" href="{{route($resource.'.show', $l_value['id'])}}" class="btn btn-secondary btn-sm"><i class="ri ri-file-copy-line" aria-hidden="true"></i></a>
-                        <a title="Chỉnh Sửa" href="{{route($resource.'.edit', $l_value['id'])}}" class="btn btn-info btn-sm"><i class="ri ri-pencil-line" aria-hidden="true"></i></a>
-                        <a title="Xóa" class="btn btn-danger ajax_delete btn-sm" href="javascript:void(0)" url="{{ route($resource.'.destroy', $l_value['id'])}}"><i class="ri ri-close-line" aria-hidden="true"></i></a>
+                        @if(View::exists('Admin::Fragments.list-view-'.request()->segment(2))) 
+                            @include('Admin::Fragments.list-view-'.request()->segment(2), ['val'=> $l_value, 'list' => $list]) 
+                        @endif
+                        @if(!in_array('clone', $list_option['hide_action']))
+                            <a title="Sao Chép" href="{{route($resource.'.show', $l_value['id'])}}" class="btn btn-secondary btn-sm"><i class="ri ri-file-copy-line" aria-hidden="true"></i></a>
+                        @endif
+                        @if(!in_array('edit', $list_option['hide_action']))
+                            <a title="Chỉnh Sửa" href="{{route($resource.'.edit', $l_value['id'])}}" class="btn btn-info btn-sm"><i class="ri ri-pencil-line" aria-hidden="true"></i></a>
+                        @endif
+                        @if(!in_array('delete', $list_option['hide_action']))
+                            <a title="Xóa" class="btn btn-danger ajax_delete btn-sm" href="javascript:void(0)" url="{{ route($resource.'.destroy', $l_value['id'])}}"><i class="ri ri-close-line" aria-hidden="true"></i></a>
+                        @endif
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
         <div class="row">
-            <div class="col-md-6 action mb-2">
+            <div class="col-md-6 action mt-2">
+                <button type="button" id="delete_all" disabled class="btn btn-danger waves-effect waves-light">Xóa</button>
+                <button type="button" id="hide_all"   disabled class="btn btn-warning waves-effect waves-light">Ẩn</button>
+                <button type="button" id="active_all" disabled class="btn btn-primary waves-effect waves-light">Hiển thị</button>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mt-2">
                 @if(!empty($paginate))
                     {!! $data->appends(['order' => Request::get('order'), 'by'=>Request::get('by')])->links('vendor.pagination.bootstrap-4') !!}
                 @endif

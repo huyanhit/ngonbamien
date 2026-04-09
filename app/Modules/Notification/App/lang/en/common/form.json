@@ -1,0 +1,12 @@
+{
+    "success": "Success",
+    "fail": "Fail",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "update": "Update",
+    "empty": "Empty",
+    "search": "Search",
+    "resetFilter": "Reset Filter",
+    "notice": "Notice"
+}

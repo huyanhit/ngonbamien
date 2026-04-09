@@ -26,6 +26,7 @@ class SiteController extends MyController
             'company'   => array('title'=> 'Tên công ty', 'type' => self::TEXT, 'validate' => 'max:255', 'group'=>'Thông tin công ty'),
             'warehouse' => array('title'=> 'Kho vận', 'type' => self::TEXT, 'validate' => 'max:255', 'group'=>'Thông tin công ty'),
             'phone'     => array('title'=> 'Điện thoại', 'type' => self::TEXT, 'validate' => 'max:255', 'group'=>'Thông tin công ty'),
+            'tax_code'  => array('title'=> 'Mã số thuế', 'type' => self::TEXT, 'validate' => 'max:50', 'group'=>'Thông tin công ty'),
             'other'     => array('title'=> 'Thông tin khác', 'type' => self::TEXT, 'validate' => 'max:255', 'group'=>'Thông tin công ty'),
 
             'meta_title'       => array('title'=> 'Site title', 'type' => self::TEXT, 'group'=>'Seo'),

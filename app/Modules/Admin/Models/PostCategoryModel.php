@@ -10,5 +10,6 @@ class PostCategoryModel extends Model
 {
     use SoftDeletes;
     protected $softDelete = true;
+    protected $guarded = [];
     protected $table = 'post_categories';
 }

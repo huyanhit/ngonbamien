@@ -12,6 +12,7 @@ class OrderProduct extends Pivot
     protected $fillable = [
         'order_id' ,
         'product_id',
+        'supplier_order_id',
         'price',
         'quantity',
         'options',

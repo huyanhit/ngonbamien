@@ -58,6 +58,10 @@
         padding-left: 20px;
         padding-top: 10px;
         padding-bottom: 15px;
+        overflow-y: auto;
+        max-height: 367px;
+        scrollbar-width: thin;
+        scrollbar-color: #ccc #fff;
         li {
             list-style: none;
             a {

@@ -1,0 +1,1 @@
+import '../../app/Modules/Notification/App/main.js'

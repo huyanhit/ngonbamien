@@ -24,15 +24,23 @@ class AuthenticatedSessionController extends Controller
      * Handle an incoming authentication request.
      */
     public function store(LoginRequest $request): RedirectResponse
-    {
+    { 
         $request->authenticate();
         $request->session()->regenerate();
-        if(Auth::user()->role == 1){
-            return redirect()->intended(RouteServiceProvider::ADMIN);
+        if(Auth::user()->role == 1 || Auth::user()->role == 2){
+            $auth  = Auth::user();
+            $token = $auth->createToken('api-token');
+            if(Auth::user()->role == 1){
+                return redirect()->intended(RouteServiceProvider::ADMIN)
+                    ->withCookie('api-token', $token->plainTextToken);
+            }
+            if(Auth::user()->role == 2){
+                return redirect()->intended(RouteServiceProvider::SADMIN)
+                    ->withCookie('api-token', $token->plainTextToken);
+            }
         }
 
         return redirect()->intended(RouteServiceProvider::HOME);
-
     }
 
     /**
@@ -43,6 +51,6 @@ class AuthenticatedSessionController extends Controller
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect('/dang-nhap');
     }
 }

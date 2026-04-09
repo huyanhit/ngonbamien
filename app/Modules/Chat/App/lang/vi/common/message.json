@@ -1,0 +1,14 @@
+{
+    "success": "Thành công",
+    "fail": "Không thành công",
+    "error": "Có lỗi xảy ra",
+    "error_403": "Tài khoản không có quyền thao tác",
+    "error_500": "Có lỗi xảy ra trong quá trình xử lý",
+    "error_404": "Đối tượng đã bị xóa hoặc không tồn tại",
+    "saved_successfully": "Lưu dữ liệu thành công!",
+    "saved_unsuccessfully": "Lưu dữ liệu không thành công!",
+    "updated_successfully": "Cập nhật dữ liệu thành công!",
+    "updated_unsuccessfully": "Cập nhật dữ liệu không thành công!",
+    "deleted_successfully": "Xóa dữ liệu thành công!",
+    "deleted_unsuccessfully": "Xóa dữ liệu không thành công!"
+}

@@ -1,0 +1,1 @@
+Mỗi module sẽ tạo 1 folder lang, bên trong folder sẽ tạo nhiều file riêng cho từng submodule, hạn chế tạo nhiều folder con bên trong

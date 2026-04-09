@@ -1,0 +1,225 @@
+@mixin actionBarStyles {
+  .inner-container {
+    display: inline-flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: auto;
+    max-height: 280px;
+    min-width: 250px;
+    background-color: #fdfdfd;
+    /* border-radius: 8px; */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  }
+
+  .list {
+    flex-grow: 1;
+    overflow: auto;
+  }
+
+  .list-menu .list-item-link {
+    margin-right: 10px;
+    cursor: pointer;
+    padding: 6px 10px 0px 12px;
+    margin-bottom: 2px;
+    color: #1a2f36;
+    transition: 0.2s;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    line-height: 14px;
+  }
+
+  .form-group {
+    border-top: 1px solid #ededed;
+    padding-top: 15px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .checkbox-actionbar {
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      visibility: visible !important;
+      border-radius: 5px;
+      position: relative;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      display: inline-block;
+      background: #fff;
+      border: 1.5px solid #b1b8bd;
+      outline: 0;
+      margin: 0; /* Thay đổi margin từ 11px 15px 11px 0 thành 0 để không làm mất chỗ */
+      user-select: none;
+      flex-shrink: 0;
+      cursor: pointer; /* Để con trỏ chuột trở thành pointer khi di chuyển vào checkbox */
+    }
+
+    input[type="checkbox"]:checked {
+      background-color: #f4671d; /* Màu nền khi checkbox được chọn */
+      border-color: #f4671d; /* Màu viền khi checkbox được chọn */
+    }
+
+    input[type="checkbox"]:checked::before {
+      content: "\2713"; /* Mã Unicode của dấu check (✓) */
+      display: block;
+      width: 18px;
+      height: 18px;
+      text-align: center;
+      line-height: 18px;
+      font-size: 14px; /* Kích thước của dấu check */
+      color: #fff; /* Màu của dấu check */
+      background-color: #f4671d; /* Màu nền của dấu check */
+      border-radius: 5px; /* Để làm cho góc của dấu check tròn */
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    input[type="checkbox"]:hover:checked::before {
+      background-color: #d95600; /* Màu nền của dấu check khi hover và đã được chọn */
+      border-color: #d95600; /* Màu viền của dấu check khi hover và đã được chọn */
+    }
+  }
+
+  .form-check {
+    padding: 4px;
+    display: flex;
+    align-items: center;
+
+    & label {
+      margin-left: 5px;
+    }
+  }
+}
+
+#actionBar {
+  @include actionBarStyles;
+
+  @media (max-width: 768px) {
+    .inner-container {
+      max-height: 200px; /* Giảm chiều cao tối đa của inner-container */
+      min-width: 200px; /* Giảm chiều rộng tối thiểu của inner-container */
+    }
+
+    .btn {
+      margin: 5px; /* Thay đổi margin của nút trong actionBar */
+    }
+  }
+}
+
+$color-text-secondary: #768286;
+$color-border: #edefef;
+
+.btn-form-icon {
+  color: $color-text-secondary;
+  display: grid;
+  padding: 0px 5px 0 5px;
+  text-align: center;
+  justify-items: center;
+
+  & i {
+    font-size: 14px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: #fcf1ecff;
+    color: #f57131;
+    border-radius: 5px;
+  }
+}
+
+.btn-check-form {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.btn-check-form-click {
+  --color-background: var(--color-icon);
+  --color-border: var(--border-color-lighten);
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  margin-bottom: 0;
+  font-weight: 400;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  border: 1px solid var(--color-border);
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: var(--padding) var(--padding-lg);
+  line-height: 20px;
+  box-shadow: var(--box-shadow-sm);
+  background: var(--color-background);
+  color: #fff;
+  text-transform: uppercase;
+  overflow: hidden;
+  position: relative;
+  line-height: 10px;
+
+  &:hover {
+    background: var(--color-icon);
+    color: #fff;
+  }
+
+  &:active {
+    background: var(--color-icon);
+  }
+}
+
+/* Switch Button */
+.switch-btn span {
+  display: flex;
+  align-items: center;
+  width: 35px;
+  height: 14px;
+  border-radius: 30px;
+  background-color: #ddd;
+  transition: 0.3s;
+  padding: 0 3px;
+  position: relative;
+}
+
+.switch-btn span::before {
+  content: "";
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: var(--color-icon);
+  position: absolute;
+  left: 0px;
+  transition: 0.6s;
+}
+
+.switch-btn input {
+  display: none;
+}
+
+.switch-btn input:checked ~ span {
+  background-color: var(--border-color-lighten);
+}
+
+.switch-btn input:checked ~ span::before {
+  left: 20px;
+}
+
+.hint {
+  display: inline-flex;
+  font-size: 1em;
+  margin-left: 2px;
+  align-items: center;
+  color: var(--color-warning);
+}
+
+.icon-questions:before {
+  content: "\E92F";
+}

@@ -1,7 +1,9 @@
 @props(['item' => null])
 <div class="blog__item">
-    <a class="blog__item__pic"  href="{{Request::root()}}/noi-dung/{{$item->slug}}">
-        <img src="{{$item->image->uri?? ''}}" alt="{{$item->title}}">
+    <a class="blog__item__pic" href="{{Request::root()}}/noi-dung/{{$item->slug}}">
+        @if(isset($item->image->uri))
+            <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}" alt="{{$item->title}}">
+        @endif
     </a>
     <div class="blog__item__text">
         <ul>

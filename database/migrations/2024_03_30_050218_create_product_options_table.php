@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('price')->nullable();
             $table->integer('discount')->default(0);
             $table->integer('stock')->default(0);
+            $table->timestamp('date_in')->nullable();
+            $table->timestamp('stock_ex')->nullable();
             $table->timestamps();
         });
     }

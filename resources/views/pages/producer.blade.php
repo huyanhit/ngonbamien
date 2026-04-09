@@ -57,7 +57,7 @@
             <div class="row">
                 <div class="col-12 producer_blog">
                     <div class="producer-image">
-                        <img class="border rounded bg-light" src="http://ngonbamien.local/img/blog/details/details-pic.jpg" alt="The corner window forms a place within">
+                        <img class="border rounded bg-light" src="{{route('get-image', $producer->image_id)}}" alt="The corner window forms a place within">
                     </div>
                     <div class="producer_content">
                         <div class="producer_desc text-left">

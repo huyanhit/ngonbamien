@@ -1,0 +1,12 @@
+{
+    "success": "Success",
+    "fail": "Failed",
+    "error": "An error occurred",
+    "error_403": "Access denied",
+    "saved_successfully": "Data saved successfully!",
+    "saved_unsuccessfully": "Failed to save data!",
+    "updated_successfully": "Data updated successfully!",
+    "updated_unsuccessfully": "Failed to update data!",
+    "deleted_successfully": "Data deleted successfully!",
+    "deleted_unsuccessfully": "Failed to delete data!"
+}

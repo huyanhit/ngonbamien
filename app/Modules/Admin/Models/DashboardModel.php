@@ -11,4 +11,5 @@ class DashboardModel extends Model
     use SoftDeletes;
     protected $softDelete = true;
     protected $table = 'dashboard';
+    protected $guarded = [];
 }

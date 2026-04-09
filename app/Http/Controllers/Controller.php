@@ -22,7 +22,7 @@ class Controller extends BaseController
 
     public function getDataLayout(){
         return [
-            'sites'  => Site::find(1),
+            'sites'  => Site::first(),
             'menus'  => Menu::where(['active' => 1])->orderby('index', 'ASC')->get(),
             'favor'  => FavorProduct::where('user_id', Auth::id())->count(),
         ];
@@ -68,5 +68,44 @@ class Controller extends BaseController
             $counter->counter = $counter->counter + 1;
             $counter->save();
         }
+    }
+
+    public function sendResponse($result, $message = "Success")
+    {
+        $response = [
+            'success' => true,
+            'data'    => $result,
+            'message' => $message,
+        ];
+
+        return response()->json($response, 200);
+    }
+
+    /**
+     * return error response.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function sendError($data = null, $errorMessages = '', $code = 404)
+    {
+        $response = [
+            'success' => false,
+            'data'    => $data, 
+        ];
+
+        if($errorMessages != null){
+            $response['message'] = $errorMessages;
+        }else{
+            $bagError = new \Illuminate\Support\MessageBag;
+            $bagError->add('exception', $data);
+            $response['message'] = $bagError;
+        }
+
+        return response()->json($response, $code);
+    }
+
+    public function getLang()
+    {
+        return 'vi';
     }
 }

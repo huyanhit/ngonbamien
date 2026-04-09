@@ -1,6 +1,9 @@
 <?php
 namespace App\Modules\Admin\Controllers;
 
+use App\Modules\Admin\Models\SOrderModel;
+use App\Modules\Admin\Requests\ConfirmPaymentRequest;
+use App\Modules\Admin\Requests\UpdatePaymentRequest;
 use App\Modules\Admin\Services\OrderService;
 use Illuminate\Http\Request;
 
@@ -20,22 +23,39 @@ class OrderController extends MyController
         $this->view['form'] = array(
             'name' => array('title'=> 'Tên khách', 'type' => self::TEXT, 'validate' => 'required|max:255'),
             'phone' => array('title'=> 'Điện thoại khách', 'type' => self::TEXT, 'validate' => 'required|max:50'),
-            'address' => array('title'=> 'Địa chỉ giao hàng', 'type' => self::TEXT, 'validate' => 'required|max:1000'),
-            'ship_type' => array('title'=> 'Cách giao hàng',
-                'data'=> array(1 => 'Giao nhanh', 2 => 'Giao tiết kiệm', 3 => 'Giao trong ngày', 4 => 'Giao thứ 7, CN'), 'type' =>  self::SELECT
-            ),
+            'address' => array('title'=> 'Địa chỉ giao hàng ', 'type' => self::TEXT, 'validate' => 'required|max:1000'),
             'order_status_id' => array(
-                'title'=> 'Trang thái đơn hàng',
+                'title'=> 'Trạng thái đơn hàng hiện tại',
                 'data' => $this->renderSelectByTable(
-                    $this->getDataTable('order_statuses', ['active' => 1], null), 'id', 'title'
+                    $this->getDataTable('order_statuses', ['active' => 1, 'type'=> 1], null), 'id', 'title'
                 ),
                 'type' => self::SELECT,
-                'validate' => 'required'
+                'validate' => ['required', function ($attribute, $value, $fail) {
+                    $order = $this->service->model->find(request()->route('order'));
+                    if ($order->order_status_id > $value) {
+                        return $fail('Trạng thái đơn hàng chọn phải theo trình tự quy định.');
+                    }
+                }],
+                'group' => 'Trạng thái đơn hàng', 
+                'column' => 1
+            ),
+            'order_order_status' => array(
+                'title'=> 'Cập nhật trạng thái đơn hàng', 'type' => self::HAS_MANY,
+                'form' => [
+                    'order_status_id' => array(
+                         'title'=> 'Trạng thái',
+                         'data' => $this->renderSelectByTable($this->getDataTable('order_statuses', ['active' => 1, 'type'=> 1], null), 'id', 'title'),
+                         'type' => self::SELECT,
+                         'validate' => 'required',
+                    ),
+                    'note' => array('title'=> 'Mô tả', 'type' => self::AREA, 'validate' => 'required|max:255'),
+                ],  'group' => 'Trạng thái đơn hàng', 'column' => 1
             ),
             'payment' => array('title'=> 'Thanh toán',
-                'data'=> array(1 => 'Thu tiền khi giao', 2 => 'Thanh toán qua QR', 3 => 'Thanh toán qua Ngân hàng'), 'type' =>  self::SELECT
+                'data'=> array(1 => 'Thu tiền khi giao', 2 => 'Thanh toán qua QR', 3 => 'Thanh toán qua Ngân hàng'), 
+                'type' =>  self::SELECT, 'group' => 'Giao hàng', 'column' => 2
             ),
-            'note' => array('title'=> 'Ghi chú', 'type' => self::AREA, 'validate' => 'required'),
+            'note' => array('title'=> 'Ghi chú', 'type' => self::AREA, 'validate' => 'required', 'group' => 'Giao hàng', 'column' => 2), 
         );
 
         $this->view['list'] = array(
@@ -91,16 +111,80 @@ class OrderController extends MyController
                     'value' => '',
                 ),
                 'data' => $this->renderSelectByTable(
-                    $this->getDataTable('order_statuses', ['active' => 1], null), 'id', 'title'
+                    $this->getDataTable('order_statuses', ['active' => 1, 'type'=> 1], null), 'id', 'title'
                 ),
                 'views' => array(
-                    'type' => self::SELECT ,
+                    'type' => self::SELECT,
+                ),
+            ),
+            'created_at' => array(
+                'width' => 3,
+                'title'=> 'Ngày tạo',
+                'views' => array(
+                    'type' => self::DATE,
                 ),
                 'sort' => [
-                    'order' => 'order_status_id',
-                    'by' => 'ASC',
+                    'order' => 'created_at',
+                    'by' => 'DESC',
                 ]
             ),
         );
 	}
+    
+    public function detail($id){
+        $order = $this->service->model->find($id);
+        if(!empty($order)){
+            return view('Admin::Orders.detail', ['order' => $order]);
+        }else{
+            return redirect('404');
+        }
+    }
+
+    public function invoice($id){
+        $order = $this->service->model->find($id);
+        if(!empty($order)){
+            return view('Admin::Orders.invoice', ['order' => $order]);
+        }else{
+            return redirect('404');
+        }
+    }
+
+    public function payment(){
+        $order = $this->service->getPayment();
+        if(!empty($order)){
+            return view('Admin::Orders.payment', ['order' => $order]);
+        }else{
+            return redirect('404');
+        }
+    }
+
+    public function updatePayment(UpdatePaymentRequest $request){
+        $sOrderIds   = $request->get('order_ids');
+        $supllier_id = $request->get('shop_id');
+        $filePath    = $this->service->upload($request->file('upload_payment'));
+            
+        $update = SOrderModel::where(['done' => 0, 'supplier_id' => $supllier_id])
+        ->whereIn('id', json_decode($sOrderIds))
+        ->update(['done' => 2,'pay_file' => $filePath]);
+
+        if($update){
+            return redirect(route('orders-payment'))->with('message_update', 'Cập nhật thành công!');
+        }else{
+            return redirect(route('orders-payment'))->with('message_error', 'Cập nhật that bại!');
+        }
+    }
+
+    public function confirmPayment(ConfirmPaymentRequest $request){
+        $sOrderIds   = $request->get('conf_ids');
+        $supllier_id = $request->get('shop_id');
+        $update = SOrderModel::where(['done' => 1, 'supplier_id' => $supllier_id])
+        ->whereIn('id', json_decode($sOrderIds))
+        ->update(['done' => 2]);
+        if($update){
+            return redirect(route('orders-payment'))->with('message_update', 'Cập nhật thành công!');
+        }else{
+            return redirect(route('orders-payment'))->with('message_error', 'Cập nhật thát bại!');
+        }
+    }
+    
 }

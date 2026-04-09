@@ -86,7 +86,6 @@
   }
 
   .footer__widget__social {
-
     a {
       display: inline-block;
       height: 41px;
@@ -129,4 +128,37 @@
 
 .footer__copyright__payment {
   float: right;
+}
+
+.nbm-messenger div.phonering-alo-sms {
+    background-color:#7fad39
+}
+.nbm-messenger div.phonering-alo-con {
+    background-color:#666
+}
+.nbm-messenger {
+    width:45px
+}
+.nbm-messenger > div >  a {
+    line-height: 45px;
+    display: block;
+    font-size: 24px;
+    text-align: center;
+    color: #fff;
+}
+.nbm-messenger {
+    display:block
+}
+
+.nbm-messenger > div {
+    margin: 14px 0;
+    box-shadow: 0 3px 10px #888;
+}
+ 
+.nbm-messenger {
+    text-align: center;
+    right:20px;
+    position: fixed;
+    bottom: 20px;
+    z-index: 999;
 }

@@ -11,4 +11,5 @@ class NewsModel extends Model
     use SoftDeletes;
     protected $softDelete = true;
     protected $table = 'news';
+    protected $guarded = [];
 }

@@ -188,10 +188,9 @@
         }
     }
     .btn_producer{
-        backdrop-filter: blur(6px);
         padding: 22px 0;
         position: relative;
-        top: 40px;
+        top: 100px;
         z-index: 0;
         button::after{
             content: 'Xem thêm';

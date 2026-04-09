@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug');
             $table->text('description')->nullable();
             $table->longtext('content')->nullable();
+            $table->longtext('make')->nullable();
 
             $table->integer('image_id')->nullable();
             $table->string('images')->nullable();
@@ -41,6 +42,8 @@ return new class extends Migration
 
             $table->integer('view')->default(0);
             $table->integer('like')->default(0);
+            $table->integer('auth_id')->nullable();
+            $table->integer('supplier_id')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

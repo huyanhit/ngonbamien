@@ -29,13 +29,19 @@
                     <div class="shoping__checkout mb-3">
                         <h5>Tổng tiền</h5>
                         <ul>
-                            <li class="ml-2 text-sm"> Giảm:
+                            <li class="ml-2 text-sm"> Phí vận chuyển:
+                                <span id="total-ship">0đ</span>
+                            </li>
+                            <li class="ml-2 text-sm"> Cửa hàng giảm:
+                                <span id="total-down">0đ</span>
+                            </li>
+                            <li class="ml-2 text-sm"> Mã giảm giá:
                                 @if(!empty($coupon['coupon']))
                                     <i class="ml-2 text-muted">{{ $coupon['coupon']->value }}{{$coupon['coupon']->type == 2? '%': 'đ'}}</i>
                                 @endif
                                 <span id="coupon-down" data-value="{{ $coupon['discount'] ?? 0}}">0đ</span>
                             </li>
-                            <li class="ml-2 text-sm"> Còn lại:
+                            <li class="ml-2 text-sm"> Thanh toán:
                                 <span id="total-check">0đ</span>
                             </li>
                         </ul>

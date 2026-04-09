@@ -15,11 +15,15 @@ class MyController extends BaseController
     const PASSWORD    = 'password';
     const CONFIRM     = 'confirm';
     const SELECT      = 'select';
+    const SELECTS     = 'selects';
+    
     const AREA        = 'area';
     const CODE        = 'code';
     const TEXT        = 'text';
+    const PHONE       = 'phone';
     const PRICE       = 'price';
-
+    const DATE        = 'date';
+    const AUTH        = 'auth';
     const HIDDEN      = 'hidden';
     const SLUG        = 'slug';
 
@@ -30,9 +34,15 @@ class MyController extends BaseController
     public $request;
     public $service;
     public $hookData;
-    public $view;
     public $route;
-
+    public $view = [
+        'form' => [],
+        'list' => [],
+        'form_option' => [],
+        'list_option' => [
+            'hide_action' => []
+        ],
+    ];
     function __construct($request, $service){
         $this->request          = $request;
         $this->service          = $service;
@@ -41,11 +51,11 @@ class MyController extends BaseController
 
     public function init(&$result){
         Session::put('page', $this->request->get('page'));
-        if($this->request->route()->getPrefix() != Session::get('router_prefix')){
+        if(request()->segment(2) != Session::get('router_prefix')){
             Session::forget('page');
             Session::forget('url_sort');
             Session::forget('filter');
-            Session::put('router_prefix', $this->request->route()->getPrefix());
+            Session::put('router_prefix', request()->segment(2));
         }
 
         $this->sort($result);
@@ -53,19 +63,92 @@ class MyController extends BaseController
         $this->paginate($result);
     }
 
+    public function index(){
+        $this->init($this->view);
+        $this->view['data'] = $this->service->generateList($this->view);
+        return view('Admin::list', $this->view);
+	}
+
+    public function create(){
+        return view('Admin::insert', $this->view);
+    }
+
+    public function store(){
+        if($this->request->get('process_mutil_record')){
+            $process = $this->request->get('process_mutil_record');
+            $ids = $this->request->get('ids');
+            $this->processMultilRecord($process, $ids);
+        }else{
+            $id = $this->service->addData($this->request, $this->view);
+            if($this->request->get('submit')){
+                return redirect(route($this->view['resource'].'.index'));
+            }
+            if($this->request->get('submit_edit')){
+                return redirect(route($this->view['resource'].'.edit', [$id]))->with('message_insert', 'Thêm thành công');
+            }
+            
+            return $id;
+        }
+    }
+
+    public function show($id){
+        $this->view['data'] = $this->service->model->where(['id'=> $id])->first();
+        if($this->view['data']){
+            return view('Admin::insert', $this->view);
+        }
+
+        return redirect('404');
+    }
+
+    public function edit($id){
+        $this->view['data'] = $this->service->model->where(['id'=> $id])->first();
+        if($this->view['data']){
+            return view('Admin::edit', $this->view);
+        }
+
+        return redirect('404');
+    }
+
+    public function update($id){
+        if($this->service->editData($this->request, $id, $this->view)){
+            if($this->request->get('submit')){
+                if($this->request->get('back')){
+                    return redirect($this->request('back').Session::get('url_sort'));
+                }else{
+                    return redirect(route($this->view['resource'].'.index').Session::get('url_sort'));
+                }
+            }
+            if($this->request->get('submit_edit')){
+                return redirect(route($this->view['resource'].'.edit', $id))
+                    ->with('message_update', 'Cập nhật thành công');
+            }
+        }else{
+            return redirect(route($this->view['resource'].'.edit', $id))
+                ->with('message_error', 'Cập nhật thất bại');
+        }
+    }
+
+    public function destroy($ids){
+        return $this->service->deleteData($ids);
+    }
+
+    public function getField($field, $id){
+        return $this->service->model->select($field)->where(['id'=> $id])->first();
+    }
+
     protected function sort(&$result){
         if($this->request->get('order') && $this->request->get('by')){
             $result['sort']['order'] = $this->request->get('order');
             $result['sort']['by']    = $this->request->get('by');
         }else{
+            $result['sort']['order'] = 'id';
+            $result['sort']['by']    = 'desc';
             foreach ($result['list'] as $value){
-                if( isset($value['sort']['order']) && isset($value['sort']['by'])){
+                if(isset($value['sort']['order']) && isset($value['sort']['by'])){
                     $result['sort']['order'] = $value['sort']['order'];
                     $result['sort']['by']    = $value['sort']['by'];
                     break;
                 }
-                $result['sort']['order'] = 'id';
-                $result['sort']['by']    = 'asc';
             }
         }
 
@@ -90,9 +173,9 @@ class MyController extends BaseController
         $filterData = Session::get('filter');
         if(!empty($filterData)){
             foreach($filterData as $key => $filter){
-                 if(isset($result['list'][$key])){
-                     $result['list'][$key]['filter']['value'] = $filter;
-                 }
+                if(isset($result['list'][$key])){
+                    $result['list'][$key]['filter']['value'] = $filter;
+                }
             }
         }
 
@@ -113,77 +196,7 @@ class MyController extends BaseController
         }
     }
 
-    public function index(){
-        $this->init($this->view);
-        $this->view['data'] = $this->service->generateList($this->view);
-        return view('Admin::list', $this->view);
-	}
-
-    public function create(){
-        return view('Admin::insert', $this->view);
-    }
-
-    public function store(){
-        $id = $this->service->addData($this->request, $this->view);
-
-        if($this->request->get('submit')){
-            return redirect(route($this->view['resource'].'.index'))->with('message_insert', 'Thêm thành công');
-        }
-        if($this->request->get('submit_edit')){
-            return redirect(route($this->view['resource'].'.edit', [$id]))->with('message_insert', 'Thêm thành công');
-        }
-
-        return $id;
-    }
-
-    public function show($id){
-        if($this->hookData === null){
-            $this->view['data'] = $this->service->model->where(['id'=> $id])->first();
-        }else{
-            $this->view['data'] = $this->hookData;
-        }
-
-        return view('Admin::insert', $this->view);
-    }
-
-    public function edit($id){
-        if($this->hookData === null){
-            $this->view['data'] = $this->service->model->where(['id'=> $id])->first();
-        }else{
-            $this->view['data'] = $this->hookData;
-        }
-
-        return view('Admin::edit', $this->view);
-    }
-
-    public function update($id){
-        $this->service->editData($this->request, $id, $this->view);
-        if($this->request->get('submit')){
-            if($this->request->get('back')){
-                return redirect($this->request('back').Session::get('url_sort'))
-                    ->with('message_update', 'Cập nhật thành công');
-            }else{
-                return redirect(route($this->view['resource'].'.index').Session::get('url_sort'))
-                    ->with('message_update', 'Cập nhật thành công');
-            }
-        }
-        if($this->request->get('submit_edit')){
-            return redirect(route($this->view['resource'].'.edit', $id))
-                ->with('message_update', 'Cập nhật thành công');
-        }
-
-        return $id;
-    }
-
-    public function destroy($id){
-        return $this->service->deleteData($id, $this->view['form']);
-    }
-
-    public function getField($field, $id){
-        return $this->service->model->select($field)->where(['id'=> $id])->first();
-    }
-
-    public function renderSelectByTable($data, $key = 'id', $val = 'name', $option = true){
+    protected function renderSelectByTable($data, $key = 'id', $val = 'name', $option = true){
         $render = [];
         if($option) $render[null] = self::CHOOSE;
         if(!empty($data)){
@@ -196,7 +209,19 @@ class MyController extends BaseController
         return $render;
     }
 
-    public function getDataTable($table, $where = null, $select = null){
+    protected function getDataTable($table, $where = null, $select = null){
         return $this->service->getDataTable($table, $where, $select);
+    }
+
+    private function processMultilRecord($process, $ids){
+        switch($process){
+            case "deletes":
+                return $this->service->deleteData($ids);
+            case "actives":
+                return $this->service->activeData($ids, true);
+            case "un-actives":
+                return $this->service->activeData($ids, false);
+                
+        }
     }
 }

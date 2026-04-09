@@ -11,4 +11,5 @@ class LayoutModel extends Model
     use SoftDeletes;
     protected $softDelete = true;
     protected $table = 'layouts';
+    protected $guarded = [];
 }

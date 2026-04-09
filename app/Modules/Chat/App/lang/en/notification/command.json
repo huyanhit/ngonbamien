@@ -1,0 +1,18 @@
+{
+    "message_send_title": "{room_name} has a message",
+    "message_send_content": "You have a message from {auth_name}.",
+    "message_approve_content": "Friend request accepted from {auth_name}.",
+    "thread_send_title": "{room_name} has a comment",
+    "thread_send_content": "You have a reply from {auth_name}.",
+    "chat_contact_add": "Friend request",
+    "chat_contact_add_content": "You have received a friend request from {auth_name}.",
+    "chat_contact_approve": "Friend request approved",
+    "chat_contact_approve_content": "Your friend request has been approved by {auth_name}.",
+    "comment_send_title": "{room_name} có bình luận",
+    "comment_send_content": "Bạn có một bình luận từ {auth_name}.",
+    "comment_reply_title": "{room_name} có trả lời bình luận",
+    "comment_reply_content": "{auth_name} đã trả lời bình luận của bạn.",
+    "chat_contact_remove": "Hủy kết bạn",
+    "agree": "Đồng ý",
+    "cancel": "Hủy bỏ"
+}

@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Image::class);
     }
+
+     public function supplier(): BelongsTo
+    {
+        return $this->belongsTo(Supplier::class, 'auth_id');
+    }
 }

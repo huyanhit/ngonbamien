@@ -45,9 +45,9 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-4 col-form-label text-right">Điện thoại <span class="text-danger">*</span></label>
+                <label class="col-4 col-form-label text-right">Điện thoại <span class="text-danger"></span></label>
                 <div class="col-8">
-                    <input class="form-control" id="comment_phone" type="number" placeholder="Nhập SĐT đã mua hàng"
+                    <input class="form-control" id="comment_phone" type="number" placeholder="Nhập số điện thoại mua hàng"
                         value="{{auth()->user()->phone}}">
                     <span id="comment_phone_error" class="text-danger text-xs hidden"></span>
                 </div>
@@ -153,7 +153,7 @@
                     rating += ' <i class="fa fa-star-o"></i> ';
                 }
             }
-            $('#comment_list').append(
+            $('#comment_list').prepend(
                 '<li class="comment-item border my-2 list-group-item">' +
                     '<div class="d-flex">' +
                         '<span class="mr-2 flex-grow-0 font-weight-bold"> ' + data.name + ' </span>' +
@@ -161,7 +161,7 @@
                         '</div>' +
                         '<div class="flex-shrink-1 text-muted"> ' + data.created_at + ' </div>' +
                     ' </div>' +
-                    '<div class="comment_content text-muted">' + data.content + '</div>' +
+                    '<div class="comment_content text-muted">' + data.content +  '<span class="pull-right"> Chờ duyệt </span></div>' +
                 '</li>'
             )
         }

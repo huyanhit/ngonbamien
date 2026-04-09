@@ -46,7 +46,7 @@
                                 <div class="blog__details__content mt-2">
                                     <div class="blog__details__author d-flex">
                                         <div class="avatar-auth p-2 border rounded">
-                                            @if($post->author->image_id)
+                                            @if(isset($post->author))
                                                 <img src="{{route('get-image-thumbnail', $post->author->image_id)}}" alt="">
                                             @endif
                                         </div>

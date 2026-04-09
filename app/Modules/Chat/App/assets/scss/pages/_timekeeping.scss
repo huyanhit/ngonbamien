@@ -1,0 +1,23 @@
+.timekeeping-form {
+    .toggler-link {
+        color: var(--vz-secondary);
+    }
+
+    .ri-add-circle-line {
+        font-size: 2rem;
+        color: var(--vz-secondary);
+        cursor: pointer;
+    }
+
+    .remove-row {
+        padding-left: 0;
+        padding-right: 0;
+
+        &:hover {
+            background-color: transparent !important;
+            border-color: #fff;
+            color: #000;
+            transform: scale(1.2);
+        }
+    }
+}

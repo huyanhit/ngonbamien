@@ -1,26 +1,30 @@
 @extends('layouts.app')
 @section('content')
-    <!-- Breadcrumb Section Begin -->
     <x-breadcrumb name="san-pham" title="Chi Tiết Sản Phẩm" :data="$product"></x-breadcrumb>
-    <!-- Breadcrumb Section End -->
-    <!-- Product Details Section Begin -->
     <section class="product-details spad">
         <div class="container">
             <div class="row">
                 @if(!empty($product))
                 <div class="col-lg-6 col-md-6">
-                    <div class="product__details__pic">
-                        <a class="product__details__pic__item" data-lightbox="roadtrip"
+                    <div class="product__details__pic border">
+                        <a class="product__details__pic__item" data-lightbox="roadtrip" id="product_details_pic_large"
                             data-title="{{$product->title}}"
                             href="{{$product->image->uri}}">
-                            <img class="product__details__pic__item--large"
+                            <img class="product__details__pic__item--large" 
                             src="{{Request::root()}}/{{$product->image->uri?? ''}}" alt="{{$product->title}}">
                         </a>
                         <div class="product__details__pic__slider owl-carousel">
                             @if($product->images)
-                                @foreach(explode(',',$product->images) as $id)
-                                    <img data-imgbigurl="{{route('get-image', $id)}}" src="{{route('get-image', $id)}}" alt="{{$product->title}}"
-                                         onerror="this.src='/images/no-image.png'">
+                                <img data-imgbigurl="{{Request::root()}}/{{$product->image->uri?? ''}}" 
+                                    src="{{Request::root()}}/{{$product->image->uri?? ''}}"
+                                    alt="{{$product->title}}"
+                                    onerror="this.src='/images/no-image.png'"
+                                    onclick="document.getElementById('product_details_pic_large').href=this.src">
+                                @foreach(json_decode($product->images) as $id)
+                                    <img data-imgbigurl="{{route('get-image', $id)}}" 
+                                         src="{{route('get-image', $id)}}" alt="{{$product->title}}"
+                                         onerror="this.src='/images/no-image.png'"
+                                         onclick="document.getElementById('product_details_pic_large').href=this.src">
                                 @endforeach
                             @endif
                         </div>
@@ -92,8 +96,89 @@
                                class="primary-btn bg-danger text-white add_cart_detail">Mua ngay</a>
                         </div>
                         <p>{!! $product->description !!}</p>
+                        @if($product->supplier)
+                            <div class="row bg-light p-2 border m-0">
+                                <div class="col-lg-7 col-sm-12">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar-sm">
+                                            <div class="avatar-title rounded bg-transparent text-success fs-24 p-2 border">
+                                                @if($product->supplier->image_id)
+                                                <img 
+                                                    src="{{route('get-image', $product->supplier->image_id)}}" 
+                                                    alt="{{$product->supplier->title}}"
+                                                    onerror="this.src='/images/no-image.png'" style="max-width: 50px"/>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ml-3">
+                                            <div class="shop">
+                                                <div class="shop-name text-bold">{{$product->supplier->title}}</div>
+                                                <div class="online small">Online 23 phút trước</div>
+                                            </div>
+                                            <div class="d-flex mt-2">
+                                                <button type="button" class="btn btn-outline-secondary waves-effect waves-light mr-3 btn-sm shop_chat"
+                                                    data-value="{{$product->supplier->id}}">
+                                                    <i class="ri-file-copy-2-fill"></i>Chat ngay
+                                                </button>
+                                                <a href="{{route('chi-tiet-san-pham', $product->supplier->slug)}}" 
+                                                        class="btn btn-outline-success waves-effect waves-light btn-sm">
+                                                        <i class="ri-file-copy-2-fill"></i>
+                                                    Xem shop
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end col -->
+                                <div class="col-lg-5 col-sm-12">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1 pt-1 small">
+                                            <div>
+                                                <span class="text-muted">Sản phẩm:</span>
+                                                <span class="text-body">50</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-muted">Đánh giá:</span>
+                                                <span class="text-body">4.5 <i class="fa fa-star text-warning"></i> - 123k</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-muted">Kho hàng:</span>
+                                                <span class="text-body">{{$product->supplier->warehouse}}</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-muted">Điện thoại:</span>
+                                                <span class="text-body">{{$product->supplier->phone}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="my-3 text-center">
+                                        <h6 class="text-body">Hổ trợ từ Shop</h6>
+                                        <div class="pt-1">
+                                            @php $supplier_support = $product->supplier->supplier_support @endphp
+                                            @foreach ($supplier_support as $sp)
+                                                @switch($sp->support_id)
+                                                    @case(1)
+                                                        <span class="badge badge border border-info text-info">
+                                                            # Miễn phí ship đơn từ {{$sp->value_1/1000}}k</span>
+                                                        @break
+                                                    @case(2)
+                                                        <span class="badge badge border border-success text-success">
+                                                            # Giảm {{$sp->value_1/1000}}k cho đơn từ {{$sp->value_2/1000}}k
+                                                            </span>
+                                                        @break
+                                                    @default
+                                                @endswitch
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
+               
                 <div class="col-lg-12">
                     <div class="product__details__tab" id="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
@@ -133,9 +218,8 @@
             </div>
         </div>
     </section>
-    <!-- Product Details Section End -->
 
-    <!-- Related Product Section Begin -->
+    <!-- Sản phẩm tương tự -->
     <section class="related-product">
         <div class="container">
             <div class="row">
@@ -154,6 +238,5 @@
             </div>
         </div>
     </section>
-
-    <!-- Related Product Section End -->
+    <!-- End sản phẩm tương tự -->
 @endsection

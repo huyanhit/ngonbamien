@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SearchOrderRequest;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
-use App\Models\OrderProduct;
+use App\Http\Resources\OrderResource;
+use App\Models\SupplierOrder;
+use App\Services\CartService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Jackiedo\Cart\Cart;
+use Exception;
 
 class OrderController extends Controller
 {
@@ -29,15 +31,19 @@ class OrderController extends Controller
             if(!empty($request->code)){
                 $orders->where('code', $request->code);
             }
-            $orders = $orders->orderBy('order_status_id', 'DESC')->paginate(4);
+            $orders = $orders->orderBy('created_at', 'DESC')->paginate(4);
+            
         }else{
             $request->phone = empty($request->phone)? Session::get('OD_PHONE'): $request->phone;
             $request->code  = empty($request->code)? Session::get('OD_CODE'): $request->code;
             $orders = Order::where(['phone' => $request->phone, 'code' => $request->code]);
-            $orders = $orders->orderBy('order_status_id', 'DESC')->paginate(4);
+            $orders = $orders->orderBy('created_at', 'DESC')->paginate(4);
         }
-
-        return view('pages.order', array_merge($this->getDataLayout(), ['orders'=> $orders]));
+       
+        //$supplierOrder = SupplierOrder::where('order_id', $orders->id)->get
+        return view('pages.order', array_merge($this->getDataLayout(), 
+            ['orders'=> OrderResource::collection($orders)])
+        );
     }
 
     public function store(StoreOrderRequest $request)
@@ -57,41 +63,36 @@ class OrderController extends Controller
                     $discount = $couponData['discount'];
                 }
             }
-            $total = $cart->total - $discount;
-            $shipping = ($total <= 185000)? 15000: (($total > 200000)? 0: (200000 - $total));
-
+            $cartService = new CartService();
+            $fee = $cartService->getFeeCart($cart);
+            $total    = $cart->total;
+            $shipping = $fee['shipping'];
+            $down     = $fee['down'];
             $order = Order::create([
                 'code'      => $this->randomCode(),
                 'name'      => $request->name,
                 'phone'     => $request->phone,
                 'address'   => $request->address,
                 'note'      => $request->note,
-                'total'     => $total + $shipping,
                 'coupon'    => Session::get('coupon'),
+                'total'     => $total,
+                'ship_price'=> $shipping,
+                'down_price'=> $down,
                 'discount'  => $discount,
                 'user_id'   => Auth::id(),
-                'ship_price'=> $shipping,
-                'order_status_id' => 1
+                'order_status_id' => 1,
+                'active'          => 1
             ]);
-
+            $cartService->saveSupplierOrder($order, $cart);
             Session::put('OD_CODE',  $order->code);
             Session::put('OD_PHONE', $order->phone);
-
-            foreach ($cart->items as $item){
-                OrderProduct::create([
-                    'order_id'   => $order->id,
-                    'product_id' => $item->id,
-                    'price'      => $item->price,
-                    'quantity'   => $item->quantity,
-                    'options'    => json_encode($item->options),
-                ]);
-            }
+            
             DB::commit();
             $this->cart->clearItems();
             Session::forget('coupon');
         }catch (\Exception $ex){
             DB::rollBack();
-            return view('pages.checkout', array_merge($this->getDataLayout(), []))->withErrors('Lỗi! cập nhật thông tin.');
+            return view('pages.shop-cart', array_merge($this->getDataLayout(), []))->withErrors('Lỗi! '.$ex->getMessage());
         }
 
         return redirect('/thanh-toan/'.$order->code);
@@ -117,14 +118,19 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderRequest $request, $code): RedirectResponse
     {
-        $order = Order::where(['code'=>$code])->first();
+        $order = Order::where(['code' => $code])->first();
         $order->payment = $request->payment;
         if($request->payment == 1){
             $order->order_status_id = 3;
+            SupplierOrder::where(['code' => $code])->update(
+                ['payment' => $order->payment,'order_status_id' => $order->order_status_id]
+            );
         }else{
-            $order->order_status_id = 2;
+            $order->order_status_id = 2; 
+            SupplierOrder::where(['code' => $code])->update(
+                ['payment' => $order->payment, 'order_status_id' => $order->order_status_id]
+            );
         }
-
         $order->save();
 
         if(Auth::check()){

@@ -7,6 +7,11 @@
  */
 
 namespace App\Modules;
+
+use App\Modules\Chat\Repositories\ChatRepository;
+use App\Modules\Chat\Repositories\ChatRepositoryInterface;
+use App\Modules\Notification\Repositories\NotificationRepository;
+use App\Modules\Notification\Repositories\NotificationRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class ModulesServiceProvider extends  ServiceProvider
@@ -24,5 +29,8 @@ class ModulesServiceProvider extends  ServiceProvider
         }
     }
 
-    public function register() {}
+    public function register() {
+        $this->app->bind(ChatRepositoryInterface::class, ChatRepository::class);
+        $this->app->bind(NotificationRepositoryInterface::class, NotificationRepository::class);
+    }
 }

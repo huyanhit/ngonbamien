@@ -10,5 +10,6 @@ class SiteModel extends Model
 {
     use SoftDeletes;
     protected $softDelete = true;
+    protected $guarded = [];
     protected $table = 'sites';
 }

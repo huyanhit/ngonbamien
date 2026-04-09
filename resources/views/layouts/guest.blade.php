@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name', 'Administrator') }}</title>
+        <link href="{{Request::root()}}/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{Request::root()}}/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{Request::root()}}/css/app.min.css" rel="stylesheet" type="text/css" />
         @vite(['resources/css/admin.css'])
     </head>
     <body>

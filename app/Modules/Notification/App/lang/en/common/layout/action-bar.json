@@ -1,0 +1,21 @@
+{
+  "label": {
+    "title": "Label",
+    "button-title": "Filter by selected label"
+  },
+  "view": {
+    "title": "View",
+    "list": "List"
+  },
+  "export": {
+    "title": "Export",
+    "export-all": "Export all",
+    "select-to-export": "Select to export"
+  },
+  "import": {
+    "title": "Import",
+    "import-project": "Import project",
+    "project-history": "Project history"
+  },
+  "help": "Help"
+}

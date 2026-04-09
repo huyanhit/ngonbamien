@@ -1,8 +1,10 @@
-@import "bootstrap.min.css";
-@import "icons.min.css";
-@import "app.min.css";
-@import "custom.min.css";
-
+@import "admin/custom.min.css";
 .breadcrumb{
+    margin: 0 !important;
+}
+.navbar-menu .navbar-nav .nav-sm .nav-link:before {
+    display: none;
+}
+.choices__list--dropdown .choices__list {
     margin: 0 !important;
 }

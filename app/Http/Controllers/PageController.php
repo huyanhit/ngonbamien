@@ -21,9 +21,9 @@ class PageController extends Controller
                 'pages' => $pages,
                 'product_categories' => ProductCategory::where(['active' => 1])->limit(9)->get(),
                 'meta' => collect([
-                    'title' => $pages?->title,
+                    'title'       => $pages?->title,
                     'description' => $pages?->meta,
-                    'keyword' =>  $pages?->meta,
+                    'keyword'     =>  $pages?->meta,
                 ])
             ]));
         }else{

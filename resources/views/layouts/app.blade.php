@@ -25,17 +25,26 @@
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
         <link href="{{Request::root()}}/css/lightbox.min.css" rel="stylesheet">
+        <link href="{{Request::root()}}/css/bootstrap.css" rel="stylesheet">
+        <link href="{{Request::root()}}/css/font-awesome.min.css" rel="stylesheet">
+        <link href="{{Request::root()}}/css/elegant-icons.css" rel="stylesheet">
+        <link href="{{Request::root()}}/css/nice-select.css" rel="stylesheet">
+        <link href="{{Request::root()}}/css/jquery-ui.min.css" rel="stylesheet">
+        <link href="{{Request::root()}}/css/nivo-slider.css" rel="stylesheet">
+        <link href="{{Request::root()}}/css/owl.carousel.min.css" rel="stylesheet">
+        <link href="{{Request::root()}}/css/slicknav.min.css" rel="stylesheet">
+
         <!-- Google tag (gtag.js) -->
         @if(isset($sites->analytic))
-        <script async src="https://www.googletagmanager.com/gtag/js?id={{$sites->analytic}}"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', {{$sites->analytic}});
-        </script>
+            <script async src="https://www.googletagmanager.com/gtag/js?id={{$sites->analytic}}"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', {{$sites->analytic}});
+            </script>
         @endif
-        <!-- Css Styles -->
+        <script src="{{Request::root()}}/js/jquery.min.js" ></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
@@ -45,6 +54,18 @@
         </div>
 
         @include('includes.header')
+
+        <div class="container">
+            @if ($errors->any())
+                <div class="alert alert-warning">
+                    <ul class="list-group">
+                        @foreach ($errors->all() as $error)
+                            <li class="list-group-item">{!! $error !!}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        </div>
 
         @yield('content')
 
@@ -59,7 +80,6 @@
     </body>
 
     <!-- Js Plugins -->
-    <script src="{{Request::root()}}/js/jquery.min.js" ></script>
     <script src="{{Request::root()}}/js/popper.min.js"></script>
     <script src="{{Request::root()}}/js/bootstrap.min.js" ></script>
     <script src="{{Request::root()}}/js/jquery.nivo.slider.js"></script>

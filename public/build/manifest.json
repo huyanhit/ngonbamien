@@ -1,11 +1,773 @@
 {
+  "MessageRender.css": {
+    "file": "assets/MessageRender-7f17ff3b.css",
+    "src": "MessageRender.css"
+  },
+  "ProductCbox.css": {
+    "file": "assets/ProductCbox-da84dac0.css",
+    "src": "ProductCbox.css"
+  },
+  "_FileSize-d2ccaa94.js": {
+    "file": "assets/FileSize-d2ccaa94.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js"
+    ]
+  },
+  "_ImageFile-e6724d06.js": {
+    "assets": [
+      "assets/no-image-7609a0c9.jpg"
+    ],
+    "file": "assets/ImageFile-e6724d06.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js"
+    ],
+    "isDynamicEntry": true
+  },
+  "_MessageRender-013dda24.js": {
+    "css": [
+      "assets/MessageRender-7f17ff3b.css"
+    ],
+    "file": "assets/MessageRender-013dda24.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_regex-d2b7d303.js",
+      "_emoji-54e02b56.js",
+      "_ProductCbox-6ced7835.js",
+      "_common-81f78b30.js",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "_ImageFile-e6724d06.js",
+      "_FileSize-d2ccaa94.js"
+    ]
+  },
+  "_ProductCbox-6ced7835.js": {
+    "css": [
+      "assets/ProductCbox-da84dac0.css"
+    ],
+    "file": "assets/ProductCbox-6ced7835.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js",
+      "_ImageFile-e6724d06.js"
+    ]
+  },
+  "__plugin-vue_export-helper-c27b6911.js": {
+    "file": "assets/_plugin-vue_export-helper-c27b6911.js"
+  },
+  "_bootstrap-vue-next-f099e7fc.js": {
+    "css": [
+      "assets/bootstrap-vue-next-13e52eba.css"
+    ],
+    "file": "assets/bootstrap-vue-next-f099e7fc.js"
+  },
+  "_common-81f78b30.js": {
+    "assets": [
+      "assets/loading-c-891d32fc.gif"
+    ],
+    "file": "assets/common-81f78b30.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_filter-c02a7075.js",
+      "_sweetalert2.esm.all-510fc7b2.js"
+    ]
+  },
+  "_emoji-54e02b56.js": {
+    "assets": [
+      "assets/emo_sad-2c8c3342.gif",
+      "assets/emo_more_smile-9d1ef3b1.gif",
+      "assets/emo_lucky-be130dae.gif",
+      "assets/emo_surprise-af77c68b.gif",
+      "assets/emo_wink-75f5f82a.gif",
+      "assets/emo_tears-697ed8d9.gif",
+      "assets/emo_sweat-456c8d7f.gif",
+      "assets/emo_mumu-ba447c26.gif",
+      "assets/emo_kiss-5c5cd44e.gif",
+      "assets/emo_tongueout-44af8e73.gif",
+      "assets/emo_blush-cf7995fa.gif",
+      "assets/emo_wonder-3da5c7e2.gif",
+      "assets/emo_snooze-26aa1633.gif",
+      "assets/emo_love-01a6e8c1.gif",
+      "assets/emo_grin-6196d6b0.gif",
+      "assets/emo_talk-21246794.gif",
+      "assets/emo_yawn-72cbffa6.gif",
+      "assets/emo_puke-49150838.gif",
+      "assets/emo_ikemen-9a634f40.gif",
+      "assets/emo_otaku-1431e5bc.gif",
+      "assets/emo_ninmari-15651d5e.gif",
+      "assets/emo_nod-2c62b258.gif",
+      "assets/emo_shake-49d192f2.gif",
+      "assets/emo_wry_smile-f359da31.gif",
+      "assets/emo_whew-32d4eb7b.gif",
+      "assets/emo_clap-b3c18957.gif",
+      "assets/emo_bow-db8f8d26.gif",
+      "assets/emo_roger-13283a81.gif",
+      "assets/emo_muscle-d14d5eed.gif",
+      "assets/emo_dance-6ead40ef.gif",
+      "assets/emo_komanechi-31ba81e6.gif",
+      "assets/emo_gogo-581bcfe0.gif",
+      "assets/emo_think-d8cc7616.gif",
+      "assets/emo_please-6c8af205.gif",
+      "assets/emo_quick-486f13a6.gif",
+      "assets/emo_anger-a28e8ead.gif",
+      "assets/emo_devil-380f712e.gif",
+      "assets/emo_lightbulb-c8d04c42.gif",
+      "assets/emo_star-5402c51c.gif",
+      "assets/emo_heart-d075b89e.gif",
+      "assets/emo_flower-603781b9.gif",
+      "assets/emo_cracker-0d9d49ea.gif",
+      "assets/emo_eat-b8c8cd13.gif",
+      "assets/emo_cake-f22a7ce8.gif",
+      "assets/emo_coffee-e6a49568.gif",
+      "assets/emo_beer-f4997cba.gif",
+      "assets/emo_handshake-78600420.gif",
+      "assets/emo_yes-525a8a7b.gif",
+      "assets/rolling-on-the-floor-laughing-b029c763.gif",
+      "assets/emo_smile-9fd5da99.gif"
+    ],
+    "file": "assets/emoji-54e02b56.js"
+  },
+  "_filter-c02a7075.js": {
+    "file": "assets/filter-c02a7075.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js"
+    ]
+  },
+  "_regex-d2b7d303.js": {
+    "file": "assets/regex-d2b7d303.js"
+  },
+  "_sweetalert2.esm.all-510fc7b2.js": {
+    "file": "assets/sweetalert2.esm.all-510fc7b2.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js"
+    ]
+  },
+  "_vee-validate-8e100c4e.js": {
+    "file": "assets/vee-validate-8e100c4e.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js"
+    ]
+  },
+  "_vue-multiselect.esm-dcf562df.js": {
+    "file": "assets/vue-multiselect.esm-dcf562df.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js"
+    ]
+  },
+  "app/Modules/Chat/App/assets/images/loading-c.gif": {
+    "file": "assets/loading-c-891d32fc.gif",
+    "src": "app/Modules/Chat/App/assets/images/loading-c.gif"
+  },
+  "app/Modules/Chat/App/assets/images/no-image.jpg": {
+    "file": "assets/no-image-7609a0c9.jpg",
+    "src": "app/Modules/Chat/App/assets/images/no-image.jpg"
+  },
+  "app/Modules/Chat/App/cbox/ChatInputCbox.css": {
+    "file": "assets/ChatInputCbox-53c23870.css",
+    "src": "app/Modules/Chat/App/cbox/ChatInputCbox.css"
+  },
+  "app/Modules/Chat/App/cbox/ChatInputCbox.vue": {
+    "css": [
+      "assets/ChatInputCbox-53c23870.css"
+    ],
+    "file": "assets/ChatInputCbox-79ec4943.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js",
+      "_emoji-54e02b56.js",
+      "_filter-c02a7075.js",
+      "_sweetalert2.esm.all-510fc7b2.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "app/Modules/Chat/App/cbox/ChatInputCbox.vue"
+  },
+  "app/Modules/Chat/App/cbox/ChatTimeLineCbox.css": {
+    "file": "assets/ChatTimeLineCbox-eb2a4833.css",
+    "src": "app/Modules/Chat/App/cbox/ChatTimeLineCbox.css"
+  },
+  "app/Modules/Chat/App/cbox/ChatTimeLineCbox.vue": {
+    "css": [
+      "assets/ChatTimeLineCbox-eb2a4833.css"
+    ],
+    "file": "assets/ChatTimeLineCbox-3bdc0da2.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_ProductCbox-6ced7835.js",
+      "_common-81f78b30.js",
+      "_ImageFile-e6724d06.js",
+      "_FileSize-d2ccaa94.js",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "_regex-d2b7d303.js",
+      "_emoji-54e02b56.js",
+      "_filter-c02a7075.js",
+      "_sweetalert2.esm.all-510fc7b2.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "app/Modules/Chat/App/cbox/ChatTimeLineCbox.vue"
+  },
+  "app/Modules/Chat/App/components/ChatHeader.css": {
+    "file": "assets/ChatHeader-156fbf9c.css",
+    "src": "app/Modules/Chat/App/components/ChatHeader.css"
+  },
+  "app/Modules/Chat/App/components/ChatHeader.vue": {
+    "css": [
+      "assets/ChatHeader-156fbf9c.css"
+    ],
+    "dynamicImports": [
+      "_ImageFile-e6724d06.js",
+      "app/Modules/Chat/App/components/UpdateMember.vue",
+      "app/Modules/Chat/App/components/message-partials/MessageSearchModal.vue",
+      "app/Modules/Chat/App/components/ContactManager.vue",
+      "app/Modules/Chat/App/components/file-partials/RoomFileModal.vue"
+    ],
+    "file": "assets/ChatHeader-0be75b5b.js",
+    "imports": [
+      "_filter-c02a7075.js",
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "_sweetalert2.esm.all-510fc7b2.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "app/Modules/Chat/App/components/ChatHeader.vue"
+  },
+  "app/Modules/Chat/App/components/ChatInput.css": {
+    "file": "assets/ChatInput-68a91a81.css",
+    "src": "app/Modules/Chat/App/components/ChatInput.css"
+  },
+  "app/Modules/Chat/App/components/ChatInput.vue": {
+    "css": [
+      "assets/ChatInput-68a91a81.css"
+    ],
+    "file": "assets/ChatInput-e1af7e58.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js",
+      "_emoji-54e02b56.js",
+      "_filter-c02a7075.js",
+      "_sweetalert2.esm.all-510fc7b2.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "app/Modules/Chat/App/components/ChatInput.vue"
+  },
+  "app/Modules/Chat/App/components/ChatTimeLine.css": {
+    "file": "assets/ChatTimeLine-cc9fbe6d.css",
+    "src": "app/Modules/Chat/App/components/ChatTimeLine.css"
+  },
+  "app/Modules/Chat/App/components/ChatTimeLine.vue": {
+    "css": [
+      "assets/ChatTimeLine-cc9fbe6d.css"
+    ],
+    "file": "assets/ChatTimeLine-877d1a94.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js",
+      "_filter-c02a7075.js",
+      "_emoji-54e02b56.js",
+      "_ProductCbox-6ced7835.js",
+      "_MessageRender-013dda24.js",
+      "_sweetalert2.esm.all-510fc7b2.js",
+      "_ImageFile-e6724d06.js",
+      "_regex-d2b7d303.js",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "_FileSize-d2ccaa94.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "app/Modules/Chat/App/components/ChatTimeLine.vue"
+  },
+  "app/Modules/Chat/App/components/ContactManager.css": {
+    "file": "assets/ContactManager-bbe4cd58.css",
+    "src": "app/Modules/Chat/App/components/ContactManager.css"
+  },
+  "app/Modules/Chat/App/components/ContactManager.vue": {
+    "css": [
+      "assets/ContactManager-bbe4cd58.css"
+    ],
+    "file": "assets/ContactManager-b1aa0970.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js",
+      "_filter-c02a7075.js",
+      "_sweetalert2.esm.all-510fc7b2.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "app/Modules/Chat/App/components/ContactManager.vue"
+  },
+  "app/Modules/Chat/App/components/RoomAdd.css": {
+    "file": "assets/RoomAdd-41b839c4.css",
+    "src": "app/Modules/Chat/App/components/RoomAdd.css"
+  },
+  "app/Modules/Chat/App/components/RoomAdd.vue": {
+    "css": [
+      "assets/RoomAdd-41b839c4.css"
+    ],
+    "file": "assets/RoomAdd-eecaff18.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js",
+      "_vee-validate-8e100c4e.js",
+      "_ImageFile-e6724d06.js",
+      "_vue-multiselect.esm-dcf562df.js",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "_filter-c02a7075.js",
+      "_sweetalert2.esm.all-510fc7b2.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "app/Modules/Chat/App/components/RoomAdd.vue"
+  },
+  "app/Modules/Chat/App/components/RoomDetail.css": {
+    "file": "assets/RoomDetail-60de9f1f.css",
+    "src": "app/Modules/Chat/App/components/RoomDetail.css"
+  },
+  "app/Modules/Chat/App/components/RoomDetail.vue": {
+    "css": [
+      "assets/RoomDetail-60de9f1f.css"
+    ],
+    "file": "assets/RoomDetail-0a71b2a9.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js",
+      "_ImageFile-e6724d06.js",
+      "_FileSize-d2ccaa94.js",
+      "_vee-validate-8e100c4e.js",
+      "_filter-c02a7075.js",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "_sweetalert2.esm.all-510fc7b2.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "app/Modules/Chat/App/components/RoomDetail.vue"
+  },
+  "app/Modules/Chat/App/components/RoomList.css": {
+    "file": "assets/RoomList-42ef508f.css",
+    "src": "app/Modules/Chat/App/components/RoomList.css"
+  },
+  "app/Modules/Chat/App/components/RoomList.vue": {
+    "css": [
+      "assets/RoomList-42ef508f.css"
+    ],
+    "file": "assets/RoomList-2349f9dd.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js",
+      "_filter-c02a7075.js",
+      "_ImageFile-e6724d06.js",
+      "_regex-d2b7d303.js",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "_sweetalert2.esm.all-510fc7b2.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "app/Modules/Chat/App/components/RoomList.vue"
+  },
+  "app/Modules/Chat/App/components/RoomSearch.vue": {
+    "file": "assets/RoomSearch-13a2e798.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js",
+      "_filter-c02a7075.js",
+      "_sweetalert2.esm.all-510fc7b2.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "app/Modules/Chat/App/components/RoomSearch.vue"
+  },
+  "app/Modules/Chat/App/components/UpdateMember.vue": {
+    "file": "assets/UpdateMember-8a3f2157.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js",
+      "_vee-validate-8e100c4e.js",
+      "_filter-c02a7075.js",
+      "_vue-multiselect.esm-dcf562df.js",
+      "_sweetalert2.esm.all-510fc7b2.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "app/Modules/Chat/App/components/UpdateMember.vue"
+  },
+  "app/Modules/Chat/App/components/file-partials/RoomFileModal.vue": {
+    "file": "assets/RoomFileModal-bd843a85.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js",
+      "_FileSize-d2ccaa94.js",
+      "_ImageFile-e6724d06.js",
+      "_filter-c02a7075.js",
+      "_sweetalert2.esm.all-510fc7b2.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "app/Modules/Chat/App/components/file-partials/RoomFileModal.vue"
+  },
+  "app/Modules/Chat/App/components/file-partials/ShowImageFile.vue": {
+    "file": "assets/ShowImageFile-ba3e57c6.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js",
+      "_filter-c02a7075.js",
+      "_sweetalert2.esm.all-510fc7b2.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "app/Modules/Chat/App/components/file-partials/ShowImageFile.vue"
+  },
+  "app/Modules/Chat/App/components/message-partials/MessageSearchModal.css": {
+    "file": "assets/MessageSearchModal-1816cf39.css",
+    "src": "app/Modules/Chat/App/components/message-partials/MessageSearchModal.css"
+  },
+  "app/Modules/Chat/App/components/message-partials/MessageSearchModal.vue": {
+    "css": [
+      "assets/MessageSearchModal-1816cf39.css"
+    ],
+    "file": "assets/MessageSearchModal-cd20c081.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js",
+      "_filter-c02a7075.js",
+      "_MessageRender-013dda24.js",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "_sweetalert2.esm.all-510fc7b2.js",
+      "_regex-d2b7d303.js",
+      "_emoji-54e02b56.js",
+      "_ProductCbox-6ced7835.js",
+      "_ImageFile-e6724d06.js",
+      "_FileSize-d2ccaa94.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "app/Modules/Chat/App/components/message-partials/MessageSearchModal.vue"
+  },
+  "app/Modules/Chat/App/components/user-patials/RoomInfoModal.vue": {
+    "file": "assets/RoomInfoModal-a72bae4a.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js",
+      "_ImageFile-e6724d06.js",
+      "_filter-c02a7075.js",
+      "_sweetalert2.esm.all-510fc7b2.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "app/Modules/Chat/App/components/user-patials/RoomInfoModal.vue"
+  },
+  "app/Modules/Chat/App/components/user-patials/UserInfoModal.vue": {
+    "file": "assets/UserInfoModal-514649b8.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js",
+      "_filter-c02a7075.js",
+      "_sweetalert2.esm.all-510fc7b2.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "app/Modules/Chat/App/components/user-patials/UserInfoModal.vue"
+  },
+  "app/Modules/Chat/App/emojis/emo_anger.gif": {
+    "file": "assets/emo_anger-a28e8ead.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_anger.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_beer.gif": {
+    "file": "assets/emo_beer-f4997cba.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_beer.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_blush.gif": {
+    "file": "assets/emo_blush-cf7995fa.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_blush.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_bow.gif": {
+    "file": "assets/emo_bow-db8f8d26.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_bow.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_cake.gif": {
+    "file": "assets/emo_cake-f22a7ce8.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_cake.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_clap.gif": {
+    "file": "assets/emo_clap-b3c18957.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_clap.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_coffee.gif": {
+    "file": "assets/emo_coffee-e6a49568.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_coffee.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_cracker.gif": {
+    "file": "assets/emo_cracker-0d9d49ea.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_cracker.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_dance.gif": {
+    "file": "assets/emo_dance-6ead40ef.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_dance.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_devil.gif": {
+    "file": "assets/emo_devil-380f712e.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_devil.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_eat.gif": {
+    "file": "assets/emo_eat-b8c8cd13.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_eat.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_flower.gif": {
+    "file": "assets/emo_flower-603781b9.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_flower.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_gogo.gif": {
+    "file": "assets/emo_gogo-581bcfe0.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_gogo.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_grin.gif": {
+    "file": "assets/emo_grin-6196d6b0.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_grin.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_handshake.gif": {
+    "file": "assets/emo_handshake-78600420.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_handshake.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_heart.gif": {
+    "file": "assets/emo_heart-d075b89e.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_heart.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_ikemen.gif": {
+    "file": "assets/emo_ikemen-9a634f40.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_ikemen.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_kiss.gif": {
+    "file": "assets/emo_kiss-5c5cd44e.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_kiss.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_komanechi.gif": {
+    "file": "assets/emo_komanechi-31ba81e6.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_komanechi.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_lightbulb.gif": {
+    "file": "assets/emo_lightbulb-c8d04c42.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_lightbulb.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_love.gif": {
+    "file": "assets/emo_love-01a6e8c1.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_love.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_lucky.gif": {
+    "file": "assets/emo_lucky-be130dae.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_lucky.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_more_smile.gif": {
+    "file": "assets/emo_more_smile-9d1ef3b1.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_more_smile.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_mumu.gif": {
+    "file": "assets/emo_mumu-ba447c26.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_mumu.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_muscle.gif": {
+    "file": "assets/emo_muscle-d14d5eed.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_muscle.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_ninmari.gif": {
+    "file": "assets/emo_ninmari-15651d5e.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_ninmari.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_nod.gif": {
+    "file": "assets/emo_nod-2c62b258.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_nod.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_otaku.gif": {
+    "file": "assets/emo_otaku-1431e5bc.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_otaku.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_please.gif": {
+    "file": "assets/emo_please-6c8af205.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_please.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_puke.gif": {
+    "file": "assets/emo_puke-49150838.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_puke.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_quick.gif": {
+    "file": "assets/emo_quick-486f13a6.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_quick.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_roger.gif": {
+    "file": "assets/emo_roger-13283a81.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_roger.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_sad.gif": {
+    "file": "assets/emo_sad-2c8c3342.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_sad.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_shake.gif": {
+    "file": "assets/emo_shake-49d192f2.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_shake.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_smile.gif": {
+    "file": "assets/emo_smile-9fd5da99.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_smile.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_snooze.gif": {
+    "file": "assets/emo_snooze-26aa1633.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_snooze.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_star.gif": {
+    "file": "assets/emo_star-5402c51c.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_star.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_surprise.gif": {
+    "file": "assets/emo_surprise-af77c68b.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_surprise.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_sweat.gif": {
+    "file": "assets/emo_sweat-456c8d7f.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_sweat.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_talk.gif": {
+    "file": "assets/emo_talk-21246794.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_talk.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_tears.gif": {
+    "file": "assets/emo_tears-697ed8d9.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_tears.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_think.gif": {
+    "file": "assets/emo_think-d8cc7616.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_think.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_tongueout.gif": {
+    "file": "assets/emo_tongueout-44af8e73.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_tongueout.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_whew.gif": {
+    "file": "assets/emo_whew-32d4eb7b.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_whew.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_wink.gif": {
+    "file": "assets/emo_wink-75f5f82a.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_wink.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_wonder.gif": {
+    "file": "assets/emo_wonder-3da5c7e2.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_wonder.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_wry_smile.gif": {
+    "file": "assets/emo_wry_smile-f359da31.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_wry_smile.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_yawn.gif": {
+    "file": "assets/emo_yawn-72cbffa6.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_yawn.gif"
+  },
+  "app/Modules/Chat/App/emojis/emo_yes.gif": {
+    "file": "assets/emo_yes-525a8a7b.gif",
+    "src": "app/Modules/Chat/App/emojis/emo_yes.gif"
+  },
+  "app/Modules/Chat/App/emojis/rolling-on-the-floor-laughing.gif": {
+    "file": "assets/rolling-on-the-floor-laughing-b029c763.gif",
+    "src": "app/Modules/Chat/App/emojis/rolling-on-the-floor-laughing.gif"
+  },
+  "app/Modules/Chat/App/views/Chat.css": {
+    "file": "assets/Chat-271a2a74.css",
+    "src": "app/Modules/Chat/App/views/Chat.css"
+  },
+  "app/Modules/Chat/App/views/Chat.vue": {
+    "css": [
+      "assets/Chat-271a2a74.css"
+    ],
+    "dynamicImports": [
+      "app/Modules/Chat/App/components/RoomList.vue",
+      "app/Modules/Chat/App/components/RoomSearch.vue",
+      "app/Modules/Chat/App/components/ChatInput.vue",
+      "app/Modules/Chat/App/components/ChatHeader.vue",
+      "app/Modules/Chat/App/components/RoomDetail.vue",
+      "app/Modules/Chat/App/components/ChatTimeLine.vue",
+      "app/Modules/Chat/App/components/RoomAdd.vue",
+      "app/Modules/Chat/App/components/user-patials/UserInfoModal.vue",
+      "app/Modules/Chat/App/components/file-partials/ShowImageFile.vue",
+      "app/Modules/Chat/App/components/user-patials/RoomInfoModal.vue"
+    ],
+    "file": "assets/Chat-2cdc5f65.js",
+    "imports": [
+      "_filter-c02a7075.js",
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_common-81f78b30.js",
+      "resources/js/chat.js",
+      "_sweetalert2.esm.all-510fc7b2.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "app/Modules/Chat/App/views/Chat.vue"
+  },
+  "app/Modules/Notification/App/assets/audios/clap.mp3": {
+    "file": "assets/clap-0c46d385.mp3",
+    "src": "app/Modules/Notification/App/assets/audios/clap.mp3"
+  },
+  "app/Modules/Notification/App/assets/audios/default.mp3": {
+    "file": "assets/default-ad653c5a.mp3",
+    "src": "app/Modules/Notification/App/assets/audios/default.mp3"
+  },
+  "app/Modules/Notification/App/assets/audios/ting.mp3": {
+    "file": "assets/ting-a05f5f45.mp3",
+    "src": "app/Modules/Notification/App/assets/audios/ting.mp3"
+  },
+  "app/Modules/Notification/App/assets/images/svg/bell.svg": {
+    "file": "assets/bell-cd010907.svg",
+    "src": "app/Modules/Notification/App/assets/images/svg/bell.svg"
+  },
+  "bootstrap-vue-next.css": {
+    "file": "assets/bootstrap-vue-next-13e52eba.css",
+    "src": "bootstrap-vue-next.css"
+  },
+  "node_modules/@mdi/font/fonts/materialdesignicons-webfont.eot": {
+    "file": "assets/materialdesignicons-webfont-0b183104.eot",
+    "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.eot"
+  },
+  "node_modules/@mdi/font/fonts/materialdesignicons-webfont.ttf": {
+    "file": "assets/materialdesignicons-webfont-61e8aba5.ttf",
+    "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.ttf"
+  },
+  "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff": {
+    "file": "assets/materialdesignicons-webfont-a5928a0d.woff",
+    "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff"
+  },
+  "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff2": {
+    "file": "assets/materialdesignicons-webfont-662fefa8.woff2",
+    "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff2"
+  },
+  "node_modules/boxicons/fonts/boxicons.eot": {
+    "file": "assets/boxicons-c23887bb.eot",
+    "src": "node_modules/boxicons/fonts/boxicons.eot"
+  },
+  "node_modules/boxicons/fonts/boxicons.svg": {
+    "file": "assets/boxicons-3fe502d8.svg",
+    "src": "node_modules/boxicons/fonts/boxicons.svg"
+  },
+  "node_modules/boxicons/fonts/boxicons.ttf": {
+    "file": "assets/boxicons-47509a2d.ttf",
+    "src": "node_modules/boxicons/fonts/boxicons.ttf"
+  },
+  "node_modules/boxicons/fonts/boxicons.woff": {
+    "file": "assets/boxicons-d5d511cf.woff",
+    "src": "node_modules/boxicons/fonts/boxicons.woff"
+  },
+  "node_modules/boxicons/fonts/boxicons.woff2": {
+    "file": "assets/boxicons-4b87cbc7.woff2",
+    "src": "node_modules/boxicons/fonts/boxicons.woff2"
+  },
+  "node_modules/remixicon/fonts/remixicon.eot": {
+    "file": "assets/remixicon-cb925337.eot",
+    "src": "node_modules/remixicon/fonts/remixicon.eot"
+  },
+  "node_modules/remixicon/fonts/remixicon.svg": {
+    "file": "assets/remixicon-88de16d2.svg",
+    "src": "node_modules/remixicon/fonts/remixicon.svg"
+  },
+  "node_modules/remixicon/fonts/remixicon.ttf": {
+    "file": "assets/remixicon-7ee969f2.ttf",
+    "src": "node_modules/remixicon/fonts/remixicon.ttf"
+  },
+  "node_modules/remixicon/fonts/remixicon.woff": {
+    "file": "assets/remixicon-763e2be8.woff",
+    "src": "node_modules/remixicon/fonts/remixicon.woff"
+  },
+  "node_modules/remixicon/fonts/remixicon.woff2": {
+    "file": "assets/remixicon-56fb2140.woff2",
+    "src": "node_modules/remixicon/fonts/remixicon.woff2"
+  },
   "resources/css/admin.css": {
-    "file": "assets/admin-eda91a32.css",
+    "file": "assets/admin-31ebd946.css",
     "isEntry": true,
     "src": "resources/css/admin.css"
   },
   "resources/css/app.css": {
-    "file": "assets/app-c8dd6133.css",
+    "file": "assets/app-4c895ac1.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -25,25 +787,29 @@
     "file": "assets/ElegantIcons-be1825e5.woff",
     "src": "resources/fonts/ElegantIcons.woff"
   },
+  "resources/fonts/FontAwesome.otf": {
+    "file": "assets/FontAwesome-444dd436.otf",
+    "src": "resources/fonts/FontAwesome.otf"
+  },
   "resources/fonts/boxicons.eot": {
     "file": "assets/boxicons-c23887bb.eot",
-    "src": "resources/fonts/boxicons.eot"
+    "src": "node_modules/boxicons/fonts/boxicons.eot"
   },
   "resources/fonts/boxicons.ttf": {
     "file": "assets/boxicons-47509a2d.ttf",
-    "src": "resources/fonts/boxicons.ttf"
+    "src": "node_modules/boxicons/fonts/boxicons.ttf"
   },
   "resources/fonts/boxicons.woff": {
     "file": "assets/boxicons-d5d511cf.woff",
-    "src": "resources/fonts/boxicons.woff"
+    "src": "node_modules/boxicons/fonts/boxicons.woff"
   },
   "resources/fonts/boxicons.woff2": {
     "file": "assets/boxicons-4b87cbc7.woff2",
-    "src": "resources/fonts/boxicons.woff2"
+    "src": "node_modules/boxicons/fonts/boxicons.woff2"
   },
   "resources/fonts/boxiconsd41d.svg": {
-    "file": "assets/boxiconsd41d-3fe502d8.svg",
-    "src": "resources/fonts/boxiconsd41d.svg"
+    "file": "assets/boxicons-3fe502d8.svg",
+    "src": "node_modules/boxicons/fonts/boxicons.svg"
   },
   "resources/fonts/fontawesome-webfont.eot": {
     "file": "assets/fontawesome-webfont-7bfcab6d.eot",
@@ -65,9 +831,13 @@
     "file": "assets/fontawesome-webfont-2adefcbc.woff2",
     "src": "resources/fonts/fontawesome-webfont.woff2"
   },
+  "resources/fonts/hkgrotesk-regular.woff": {
+    "file": "assets/hkgrotesk-regular-021db88a.woff",
+    "src": "resources/fonts/hkgrotesk-regular.woff"
+  },
   "resources/fonts/la-brands-400.eot": {
     "file": "assets/la-brands-400-c0e32387.eot",
-    "src": "resources/fonts/la-brands-400.eot"
+    "src": "resources/fonts/la-brands-400d41d.eot"
   },
   "resources/fonts/la-brands-400.svg": {
     "file": "assets/la-brands-400-4da18191.svg",
@@ -87,7 +857,7 @@
   },
   "resources/fonts/la-brands-400d41d.eot": {
     "file": "assets/la-brands-400-c0e32387.eot",
-    "src": "resources/fonts/la-brands-400.eot"
+    "src": "resources/fonts/la-brands-400d41d.eot"
   },
   "resources/fonts/la-regular-400.eot": {
     "file": "assets/la-regular-400-7dc456f0.eot",
@@ -115,7 +885,7 @@
   },
   "resources/fonts/la-solid-900.eot": {
     "file": "assets/la-solid-900-8a57f8a9.eot",
-    "src": "resources/fonts/la-solid-900.eot"
+    "src": "resources/fonts/la-solid-900d41d.eot"
   },
   "resources/fonts/la-solid-900.svg": {
     "file": "assets/la-solid-900-0ce0cc40.svg",
@@ -135,11 +905,11 @@
   },
   "resources/fonts/la-solid-900d41d.eot": {
     "file": "assets/la-solid-900-8a57f8a9.eot",
-    "src": "resources/fonts/la-solid-900.eot"
+    "src": "resources/fonts/la-solid-900d41d.eot"
   },
   "resources/fonts/materialdesignicons-webfont9445.eot": {
     "file": "assets/materialdesignicons-webfont9445-67d24abe.eot",
-    "src": "resources/fonts/materialdesignicons-webfont9445.eot"
+    "src": "resources/fonts/materialdesignicons-webfontd41d.eot"
   },
   "resources/fonts/materialdesignicons-webfont9445.ttf": {
     "file": "assets/materialdesignicons-webfont9445-a58ecb54.ttf",
@@ -155,7 +925,7 @@
   },
   "resources/fonts/materialdesignicons-webfontd41d.eot": {
     "file": "assets/materialdesignicons-webfont9445-67d24abe.eot",
-    "src": "resources/fonts/materialdesignicons-webfont9445.eot"
+    "src": "resources/fonts/materialdesignicons-webfontd41d.eot"
   },
   "resources/fonts/remixicone85e.eot": {
     "file": "assets/remixicone85e-25af6e92.eot",
@@ -177,33 +947,96 @@
     "file": "assets/remixicone85e-b0d0b7e5.woff2",
     "src": "resources/fonts/remixicone85e.woff2"
   },
-  "resources/images/auth-one-bg.jpg": {
-    "file": "assets/auth-one-bg-85095c4e.jpg",
-    "src": "resources/images/auth-one-bg.jpg"
-  },
-  "resources/images/flags/us.svg": {
-    "file": "assets/us-de148770.svg",
-    "src": "resources/images/flags/us.svg"
-  },
-  "resources/images/sidebar/img-1.jpg": {
-    "file": "assets/img-1-83ab24c3.jpg",
-    "src": "resources/images/sidebar/img-1.jpg"
-  },
-  "resources/images/sidebar/img-2.jpg": {
-    "file": "assets/img-2-54d3615d.jpg",
-    "src": "resources/images/sidebar/img-2.jpg"
-  },
-  "resources/images/sidebar/img-3.jpg": {
-    "file": "assets/img-3-9f918a9b.jpg",
-    "src": "resources/images/sidebar/img-3.jpg"
-  },
-  "resources/images/sidebar/img-4.jpg": {
-    "file": "assets/img-4-d7136dca.jpg",
-    "src": "resources/images/sidebar/img-4.jpg"
+  "resources/js/admin.js": {
+    "file": "assets/admin-697e5245.js",
+    "isEntry": true,
+    "src": "resources/js/admin.js"
   },
   "resources/js/app.js": {
-    "file": "assets/app-32fdc2f3.js",
+    "file": "assets/app-ea95f1c7.js",
     "isEntry": true,
     "src": "resources/js/app.js"
+  },
+  "resources/js/cbox.css": {
+    "file": "assets/cbox-3e1f4b95.css",
+    "src": "resources/js/cbox.css"
+  },
+  "resources/js/cbox.js": {
+    "assets": [
+      "assets/remixicon-cb925337.eot",
+      "assets/remixicon-56fb2140.woff2",
+      "assets/remixicon-763e2be8.woff",
+      "assets/remixicon-7ee969f2.ttf",
+      "assets/remixicon-88de16d2.svg",
+      "assets/boxicons-c23887bb.eot",
+      "assets/boxicons-4b87cbc7.woff2",
+      "assets/boxicons-d5d511cf.woff",
+      "assets/boxicons-47509a2d.ttf",
+      "assets/boxicons-3fe502d8.svg",
+      "assets/materialdesignicons-webfont-0b183104.eot",
+      "assets/materialdesignicons-webfont-662fefa8.woff2",
+      "assets/materialdesignicons-webfont-a5928a0d.woff",
+      "assets/materialdesignicons-webfont-61e8aba5.ttf"
+    ],
+    "css": [
+      "assets/cbox-3e1f4b95.css"
+    ],
+    "dynamicImports": [
+      "app/Modules/Chat/App/cbox/ChatInputCbox.vue",
+      "app/Modules/Chat/App/cbox/ChatTimeLineCbox.vue"
+    ],
+    "file": "assets/cbox-9b9f0e9f.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_filter-c02a7075.js",
+      "_common-81f78b30.js",
+      "_sweetalert2.esm.all-510fc7b2.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/cbox.js"
+  },
+  "resources/js/chat.css": {
+    "file": "assets/chat-565f909d.css",
+    "src": "resources/js/chat.css"
+  },
+  "resources/js/chat.js": {
+    "css": [
+      "assets/chat-565f909d.css"
+    ],
+    "dynamicImports": [
+      "app/Modules/Chat/App/views/Chat.vue",
+      "app/Modules/Chat/App/views/Chat.vue",
+      "app/Modules/Chat/App/views/Chat.vue"
+    ],
+    "file": "assets/chat-7793135c.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "_filter-c02a7075.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/chat.js"
+  },
+  "resources/js/notify.css": {
+    "file": "assets/notify-9a587e25.css",
+    "src": "resources/js/notify.css"
+  },
+  "resources/js/notify.js": {
+    "assets": [
+      "assets/bell-cd010907.svg",
+      "assets/default-ad653c5a.mp3",
+      "assets/clap-0c46d385.mp3",
+      "assets/ting-a05f5f45.mp3"
+    ],
+    "css": [
+      "assets/notify-9a587e25.css"
+    ],
+    "file": "assets/notify-ea32e9a5.js",
+    "imports": [
+      "_bootstrap-vue-next-f099e7fc.js",
+      "_sweetalert2.esm.all-510fc7b2.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/notify.js"
   }
 }

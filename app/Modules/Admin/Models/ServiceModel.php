@@ -10,5 +10,6 @@ class ServiceModel extends Model
 {
     use SoftDeletes;
     protected $softDelete = true;
+    protected $guarded = [];
     protected $table = 'services';
 }

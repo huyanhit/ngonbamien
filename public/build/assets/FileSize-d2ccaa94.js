@@ -1,0 +1,1 @@
+import{k as a,m as n,o as i,x as c,I as l}from"./bootstrap-vue-next-f099e7fc.js";const r={class:"small"},_={__name:"FileSize",props:["item"],setup(o){const e=a(""),s=o;return n(async()=>{s.item&&(e.value=((await fetch(s.item.blob).then(t=>t.blob())).size/1024).toFixed(2)+" KB")}),(t,m)=>(i(),c("span",r,l(e.value),1))}};export{_};

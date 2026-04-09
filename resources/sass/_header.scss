@@ -155,7 +155,6 @@
         font-size: 25px;
         font-weight: 600;
         line-height: 10px;
-        width: 28px;
         height: 28px;
         border-radius: 4px;
     }
@@ -206,14 +205,13 @@
     .menu-icon{
         width: 20px;
         display: inline-block;
-        position: relative;
-        top: -3px;
+        font-size: 20px;
     }
     ul {
         li {
             list-style: none;
             display: inline-block;
-            margin-right: 20px;
+            margin-right: 15px;
             position: relative;
             .header__menu__dropdown {
                 position: absolute;
@@ -237,7 +235,6 @@
 
                     a {
                         text-transform: capitalize;
-                        color: $black-color;
                         font-weight: 400;
                         padding: 10px 15px;
                     }

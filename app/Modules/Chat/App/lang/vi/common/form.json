@@ -1,0 +1,13 @@
+{
+    "success": "Thành công",
+    "fail": "Thất bại",
+    "cancel": "Hủy",
+    "save": "Lưu",
+    "delete": "Xóa",
+    "update": "Cập nhật",
+    "empty": "Trống",
+    "search": "Tìm kiếm",
+    "resetFilter": "Bỏ lọc",
+    "notice": "Thông báo",
+    "create": "Tạo mới"
+}

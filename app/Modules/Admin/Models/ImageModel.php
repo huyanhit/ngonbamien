@@ -11,4 +11,5 @@ class ImageModel extends Model
     use SoftDeletes;
     protected $softDelete = true;
     protected $table = 'images';
+    protected $guarded = [];
 }

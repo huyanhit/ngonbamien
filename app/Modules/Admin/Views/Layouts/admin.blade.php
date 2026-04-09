@@ -4,20 +4,35 @@
     data-sidebar-size="lg" data-preloader="disable">
     <head>
         <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="viewport"   content="width=device-width, initial-scale=1"/>
         <meta name="csrf-token" content="{{ csrf_token() }}"/>
-        <title> {{ config('app.name', 'Administrator') }} </title> @vite(['resources/css/admin.css'])
+        <meta name="user-id"    content="{{ Auth::user()->id }}">
+        <meta name="api-token"  content="{{ request()->cookie('api-token'); }}">
+
+        <title> {{ config('app.name', 'Administrator') }} </title> 
         <link   href="{{Request::root()}}/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+        <link   href="{{Request::root()}}/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+        <link   href="{{Request::root()}}/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link   href="{{Request::root()}}/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link   href="{{Request::root()}}/css/app.min.css" rel="stylesheet" type="text/css" />
+        <link   href="{{Request::root()}}/css/choices.min.css" rel="stylesheet" type="text/css" />
         <script src="{{Request::root()}}/js/jquery.min.js" type="text/javascript"></script>
+        <script src="{{Request::root()}}/js/jquery-ui.min.js"></script>
         <script src="{{Request::root()}}/js/layout.js"></script>
-        <script src="{{Request::root()}}/js/admin.js" type="text/javascript"></script>
-        <script src="{{Request::root()}}/js/admin-ajax.js" type="text/javascript"></script>
         <script src="{{Request::root()}}/js/ckeditor/ckeditor.js" type="text/javascript"></script>
+        <script src="{{Request::root()}}/js/choices.min.js"></script>
+
+        @vite(['resources/css/admin.css'])
+        @vite(['resources/js/admin.js'])
     </head>
     <body>
         <div id="layout-wrapper">
             @include('Admin::Components.topbar')
-            @include('Admin::Components.menu')
+            @if(Auth::user()->role == 1)
+                @include('Admin::Components.menu')
+            @else
+                @include('Admin::Components.smenu')
+            @endif
             <div class="vertical-overlay">
                 <div id="box-error">
                     @if (session('error'))
@@ -93,7 +108,6 @@
                                             'data'  => $data
                                         ])
                                         @break
-
                                     @default
                                         @include('Admin::Components.breadcrumb', ['name'=>'dashboard', 'title' => 'Tổng quan'])
                                         @break
@@ -135,8 +149,7 @@
         <script src="{{Request::root()}}/libs/simplebar/simplebar.min.js"></script>
         <script src="{{Request::root()}}/libs/node-waves/waves.min.js"></script>
         <script src="{{Request::root()}}/libs/feather-icons/feather.min.js"></script>
-        <script src="{{Request::root()}}/js/admin/pages/plugins/lord-icon-2.1.0.js"></script>
-
+        <script src="{{Request::root()}}/libs/flatpickr/flatpickr.min.js"></script>
         <!-- dropzone js -->
         <script src="{{Request::root()}}/libs/dropzone/dropzone-min.js"></script> <!-- Sweet Alerts js -->
         <script src="{{Request::root()}}/libs/sweetalert2/sweetalert2.min.js"></script>
@@ -144,28 +157,20 @@
         <script>
             @if($message = session('message_insert'))
                 Swal.fire(
-                'Thông báo',
-                '{{ $message }}',
-                'success'
-                )
+                'Thông báo', '{{ $message }}', 'success' )
             @endif
 
             @if($message = session('message_update'))
                 Swal.fire(
-                    'Thông báo',
-                    '{{ $message }}',
-                    'success'
+                    'Thông báo', '{{ $message }}',  'success'
                 )
             @endif
 
             @if($message = session('message_error'))
                 Swal.fire(
-                    'Cảnh báo',
-                    '{{ $message }}',
-                    'danger'
+                    'Cảnh báo', '{{ $message }}', 'danger'
                 )
             @endif
-
 
             let dataLayout      = sessionStorage.getItem("data-layout")?? 'vertical';
             let dataTheme       = sessionStorage.getItem("data-bs-theme")?? 'light';
@@ -195,6 +200,29 @@
                 document.documentElement.setAttribute("data-sidebar-size", dataSidebarSize);
                 $(e).children().toggleClass('open');
             }
+            
+            const slugify = function (text) {
+                return text
+                    .toString()
+                    .normalize('NFD')                   // Split accented characters
+                    .replace(/[\u0300-\u036f]/g, '')    // Remove accents
+                    .toLowerCase()                      // Convert to lowercase
+                    .trim()                             // Remove trailing spaces
+                    .replace(/\s+/g, '-')               // Replace spaces with hyphens
+                    .replace(/[^\w-]+/g, '')            // Remove non-word chars
+                    .replace(/--+/g, '-');              // Replace multiple hyphens
+            }
+
+            const choicesMultiple = document.querySelector('.choices-multiple-remove-button');
+            if(choicesMultiple){
+                const choices = new Choices(choicesMultiple, {
+                    removeItemButton: true,
+                });
+            }
+            
+            CKEDITOR.replaceAll('ckeditor_area', {filebrowserBrowseUrl: '{{ route('ckfinder_browser') }}'});
+            $('.datepicker').datepicker({dateFormat: "yy-mm-dd"});
+
         </script>
     </body>
 </html>

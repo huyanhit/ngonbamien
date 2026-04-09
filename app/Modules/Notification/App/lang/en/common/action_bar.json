@@ -1,0 +1,21 @@
+{
+  "label": "Label",
+  "filter_by_selected_label": "Filter by selected label",
+  "view": "View",
+  "list": "List",
+  "kanban": "Kanban",
+  "export": "Export",
+  "export_all": "Export all",
+  "select_to-export": "Select to export",
+  "import": "Import",
+  "import_project": "Import project",
+  "project_history": "Project history",
+  "help": "Help",
+  "participate": "Participate",
+  "category": "Category",
+  "add_work": "Add work",
+  "more": "More",
+  "choose_tag": "Choose tag",
+  "quick_filter": "Quick filter",
+  "time": "Time"
+}

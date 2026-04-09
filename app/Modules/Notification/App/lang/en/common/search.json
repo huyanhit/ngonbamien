@@ -1,0 +1,15 @@
+{
+    "search": "Search",
+    "search_project": "Search project",
+    "keyword": "Keyword",
+    "created_at": "Created at",
+    "from_date": "From date",
+    "to_date": "To date",
+    "participant": "Participant",
+    "manager": "Manager",
+    "month": "Month",
+    "department": "Department",
+    "position": "Position",
+    "title": "Title",
+    "start_paying": "Start paying"
+}

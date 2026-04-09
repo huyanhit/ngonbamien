@@ -99,7 +99,8 @@
 }
 
 .featured__item {
-    margin-bottom: 20px;
+    margin-bottom: 20px;    
+    box-shadow: 1px 1px 5px 0px #e1e1e1;
     &:hover {
         .featured__item__pic {
             .featured__item__pic__hover {
@@ -110,7 +111,7 @@
 }
 
 .featured__item__pic {
-    height: 270px;
+    height: 260px;
     position: relative;
     overflow: hidden;
     background-position: center center;
@@ -195,6 +196,8 @@
         background: $primary-color;
         padding-top: 8px;
         padding-bottom: 5px;
+        font-size: 14px;    
+        box-shadow: 1px 1px 5px 0px #e1e1e1;
     }
 }
 

@@ -29,10 +29,15 @@
 }
 
 .featured__item__pic {
-    height: 270px;
+    height: 260px;
     position: relative;
     overflow: hidden;
-
+    display: table;
+    width: 100%;
+    a{
+        display: table-cell;
+        vertical-align: middle;
+    }
     .product__discount__percent {
         height: 45px;
         width: 45px;
@@ -43,8 +48,8 @@
         line-height: 45px;
         text-align: center;
         position: absolute;
-        left: 15px;
-        top: 15px;
+        left: 5px;
+        top: 40px;
     }
 }
 

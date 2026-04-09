@@ -18,14 +18,15 @@ class Order extends Model
         'address',
         'note',
         'coupon',
-        'total',
-        'discount',
         'ship_type',
         'ship_price',
+        'down_price',
+        'discount',
+        'total',
         'user_id',
-        'order_status_id'
+        'order_status_id',
+        'active'
     ];
-
     protected $appends = ['date_ship'];
 
     public function products() :BelongsToMany
@@ -34,14 +35,8 @@ class Order extends Model
             ->withPivot(['quantity', 'options', 'price']);
     }
 
-    public function getDateShipAttribute()
+    public function supplier_orders():HasMany
     {
-        return Carbon::parse($this->created_at)->addDays(3);
+        return $this->hasMany(SupplierOrder::class, 'order_id');
     }
-
-    protected function serializeDate(\DateTimeInterface $date)
-    {
-        return $date->format('Y-m-d H:i:s');
-    }
-
 }

@@ -1,0 +1,22 @@
+{
+    "projects": {
+      "project": "Dự án"
+    },
+    "setting_project": {
+      "general_settings": "Cài đặt chung",
+      "working_hours": "Giờ làm việc",
+      "type_of_task": "Loại công việc",
+      "task_unit": "Đơn vị công việc",
+      "project_group": "Nhóm dự án",
+      "work_tags_setting": "Cài đặt nhãn",
+      "object_settings": "Cài đặt đối tượng",
+      "task_settings": "Công việc",
+      "project_settings": "Dự án"
+    },
+    "sample": {
+      "pagination": "Phân trang",
+      "action-button": "Action Button",
+      "procedure": "Quy trình"
+    }
+  }
+  

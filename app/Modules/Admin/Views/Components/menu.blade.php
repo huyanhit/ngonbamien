@@ -2,7 +2,7 @@
     <!-- LOGO -->
     <div class="navbar-brand-box">
         <!-- Dark Logo-->
-        <a href="index.html" class="logo logo-dark">
+        <a href="{{Request::root()}}" target="blank" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="/images/logo-sm.png" alt="" height="22">
                     </span>
@@ -11,7 +11,7 @@
                     </span>
         </a>
         <!-- Light Logo-->
-        <a href="index.html" class="logo logo-light">
+        <a href="{{Request::root()}}" target="blank" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="/images/logo-sm.png" alt="" height="22">
                     </span>
@@ -27,7 +27,7 @@
         <div class="container-fluid">
             <div id="two-column-menu">
             </div>
-            <ul class="navbar-nav" id="navbar-nav">
+            <ul class="navbar-nav" id="navbar-nav" data-simplebar style="max-height: calc(100vh - 110px);" >
                 <li class="nav-item">
                     <a class="nav-link menu-link {{Route::currentRouteName() == 'dashboard.index'? 'active': ''}}"
                         href="{{Request::root().'/admin/dashboard'}}">
@@ -55,9 +55,16 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link {{Route::currentRouteName() == 'producer.index'? 'active': ''}}"
-                       href="{{Request::root().'/admin/producer'}}">
+                       href="{{Request::root().'/admin/producers'}}">
                         <i class="ri-user-location-line"></i>
                         <span>Xuất xứ</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{Route::currentRouteName() == 'producer.index'? 'active': ''}}"
+                       href="{{Request::root().'/admin/suppliers'}}">
+                        <i class="ri-account-box-line"></i>
+                        <span>Nhà cung cấp</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -74,30 +81,53 @@
                         <span>Trang</span>
                     </a>
                 </li>
+               
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{Route::currentRouteName() == 'sliders.index'? 'active': ''}}"
-                       href="{{Request::root().'/admin/sliders'}}">
-                        <i class="ri-gallery-line"></i>
-                        <span>Slider</span>
+                    <a class="nav-link menu-link {{Route::currentRouteName() == 'chat'? 'active': ''}}"
+                       href="{{Request::root().'/chat'}}">
+                        <i class="ri-chat-1-line"></i>
+                        <span>Chat</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{Route::currentRouteName() == 'banners.index'? 'active': ''}}"
-                       href="{{Request::root().'/admin/banners'}}">
-                        <i class="ri-slideshow-2-line"></i>
-                        <span>Banner</span>
+                    <a class="nav-link menu-link {{Route::currentRouteName() == 'storages'? 'active': ''}}"
+                       href="{{Request::root().'/admin/storages'}}">
+                        <i class="ri-store-3-line"></i>
+                        <span>QL Kho Hàng</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{Route::currentRouteName() == 'contacts.index'? 'active': ''}}"
-                       href="{{Request::root().'/admin/contacts'}}">
-                        <i class="ri-contacts-book-2-line"></i>
-                        <span>Liên hệ</span>
+                    <a class="nav-link menu-link {{Route::currentRouteName() == 'bills'? 'active': ''}}"
+                       href="{{Request::root().'/admin/bills'}}">
+                        <i class="ri-bill-line"></i>
+                        <span>QL Hóa Đơn</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{Route::currentRouteName() == 'orders-payment'? 'active': ''}}"
+                       href="{{Request::root().'/admin/orders-payment'}}">
+                        <i class="ri-group-2-line"></i>
+                        <span>QL Thanh toán</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{Route::currentRouteName() == 'customers.index'? 'active': ''}}"
+                       href="{{Request::root().'/admin/customers'}}">
+                        <i class="ri-group-2-line"></i>
+                        <span>QL Khách Hàng</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{Route::currentRouteName() == 'reports'? 'active': ''}}"
+                       href="{{Request::root().'/admin/reports'}}">
+                        <i class="ri-currency-line"></i>
+                        <span>BC Doanh Thu</span>
+                    </a>
+                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link menu-link"
-                        href="#system" data-bs-toggle="collapse"
+                        href="#system" data-toggle="collapse"
                         role="button" aria-expanded="false" aria-controls="system">
                         <i class="ri-settings-2-line"></i>
                         <span >Hệ thống</span>
@@ -116,6 +146,34 @@
                                 <a class="nav-link {{Route::currentRouteName() == 'users.index'? 'active': ''}}"
                                    href="{{Request::root().'/admin/users'}}"><i class="ri-user-2-line"></i> Tài khoản</a>
                             </li>
+                             <li class="nav-item">
+                                <a class="nav-link menu-link {{Route::currentRouteName() == 'sliders.index'? 'active': ''}}"
+                                href="{{Request::root().'/admin/sliders'}}">
+                                    <i class="ri-gallery-line"></i>
+                                    <span>Slider</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{Route::currentRouteName() == 'banners.index'? 'active': ''}}"
+                                href="{{Request::root().'/admin/banners'}}">
+                                    <i class="ri-slideshow-2-line"></i>
+                                    <span>Banner</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{Route::currentRouteName() == 'contacts.index'? 'active': ''}}"
+                                href="{{Request::root().'/admin/contacts'}}">
+                                    <i class="ri-contacts-book-2-line"></i>
+                                    <span>Liên hệ</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{Route::currentRouteName() == 'contacts.comment'? 'active': ''}}"
+                                href="{{Request::root().'/admin/comments'}}">
+                                    <i class="ri-contacts-book-2-line"></i>
+                                    <span>Comment</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -123,6 +181,5 @@
         </div>
         <!-- Sidebar -->
     </div>
-
     <div class="sidebar-background"></div>
 </div>

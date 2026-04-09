@@ -87,9 +87,11 @@
                                         <li>{{$item->title}} <span>{{ number_format($item->price*$item->quantity, 0, ',', '.') }}đ</span></li>
                                     @endforeach
                                 </ul>
-                                <div class="checkout__order__shipping">Phí giao hàng <span>{{ number_format($shipping, 0, ',', '.') }}đ</span></div>
-                                <div class="checkout__order__subtotal">Giảm giá <span> -{{ number_format(($coupon['discount']?? 0), 0, ',', '.') }}đ</span></div>
-                                <div class="checkout__order__total">Tổng đơn <span>{{ number_format($cart->total + $shipping - ($coupon['discount']?? 0), 0, ',', '.') }}đ</span></div>
+                                
+                                <div class="checkout__order__shipping">Phí giao hàng <span> + {{ number_format($shipping, 0, ',', '.') }}đ</span></div>
+                                <div class="checkout__order__shipping">Cửa hàng giảm <span> - {{ number_format($down, 0, ',', '.') }}đ</span></div>
+                                <div class="checkout__order__subtotal">Mã Giảm giá   <span> - {{ number_format(($coupon['discount']?? 0), 0, ',', '.') }}đ</span></div>
+                                <div class="checkout__order__total">   Tổng đơn <span>        {{ number_format($total, 0, ',', '.') }}đ</span></div>
                                 <button type="submit" class="site-btn">Thanh Toán</button>
                             </div>
                             @else

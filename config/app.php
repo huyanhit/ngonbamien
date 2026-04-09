@@ -70,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => 'Asia/Ho_Chi_Minh',
+    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -192,11 +192,16 @@ return [
         'Form'  => Collective\Html\FormFacade::class,
         'Html'  => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Cart' => Jackiedo\Cart\Facades\Cart::class,
+        'Cart'  => Jackiedo\Cart\Facades\Cart::class,
     ])->toArray(),
 
 
     'modules' => [
-        'Admin'
+        'Admin',
+        'Chat',
+        'Notification'
     ],
+
+    'socket_key' => 'abc',
+    'socket_domain' => 'localhost:8081'
 ];

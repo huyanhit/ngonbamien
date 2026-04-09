@@ -1,55 +1,94 @@
-@props(['name' => null, 'key' => null, 'val' => null, 'data' => null])
+@props(['key_dot' => null, 'key' => null, 'val' => null, 'data' => null])
 <div class="row form-group">
     @switch($val['type'])
     @case('select')
-        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+        @include('Admin::Components.form_title', ['val' => $val])
         <div class="col-sm-9 my-1">
-            @if(isset($val['ajax']))
-                @switch($val['ajax']['type'])
-                    @case ('select')
-                        {{Form::select($name, $val['data'], isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
-                        array('class'=>'form-control select render_select', 'table'=>$val['ajax']['table'], 'reference'=>$val['ajax']['reference']))}}
-                        @break
-                @endswitch
-            @else
-                {{Form::select($name, $val['data'], isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null), array('class'=>'form-control select'))}}
-            @endif
-            @error($name)
-            <label class="alert alert-danger">{{ $message }}</label>
+            {{Form::select($key, $val['data'], $data? $data: (isset($val['value'])? $val['value']: null), array('class'=>'form-control select'))}}
+            @error($key_dot)
+            <label class="text-danger">{{ $message }}</label>
             @enderror
         </div>
         @break
     @case('text')
-        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+        <label class="control-label py-2 text-end lh-lg col-sm-3"> 
+                 @include('Admin::Components.form_title', ['val' => $val])</label>
         <div class="col-sm-9 my-1">
-            {{Form::input('text', $name, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
-                array('class' => 'form-control text', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
-            @error($name)
-            <span class="alert alert-danger">{{ $message }}</span>
+            {{Form::input('text', $key, $data? $data: (isset($val['value'])? $val['value']: null),
+                array('class' => 'form-control', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
+            @error($key_dot)
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+        @break
+    @case('date')
+        @include('Admin::Components.form_title', ['val' => $val])
+        <div class="col-sm-9 my-1">
+            {{Form::input('text', $key, $data? $data: (isset($val['value'])? $val['value']: null),
+                array('class' => 'datepicker form-control', 'placeholder' =>'Chọn ngày'))}}
+            @error($key_dot)
+                <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
         @break
     @case('number')
-        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+        @include('Admin::Components.form_title', ['val' => $val])
         <div class="col-sm-9 my-1">
-            {{Form::input('text', $name, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
-                array('class' => 'form-control number', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
-            @error($name)
-            <span class="alert alert-danger">{{ $message }}</span>
+                <div class="d-flex">
+                    {{Form::input('number', $key, $data? $data: (isset($val['value'])? $val['value']: null),
+                        array('class' => 'form-control number w-50', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
+                    <div class="w-50 review p-2 text-danger fs-16">
+                        {{ $val['placeholder']??($val['title']??'') }}
+                    </div>
+                </div>
+                @error($key_dot)
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        @break
+    @case('price')
+        @include('Admin::Components.form_title', ['val' => $val])
+        <div class="col-sm-9 my-1">
+            <script> 
+                function reviewValue(e){
+                    const parent = e.parentElement.parentElement; 
+                    parent.querySelector('.review').innerText =
+                        new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format( e.value)
+                } 
+            </script>
+            <div class="d-flex">
+                {{Form::input('number', $key, $data? $data: (isset($val['value'])? $val['value']: null),
+                    array('class' => 'form-control number w-50', 'onkeyup'=>'reviewValue(this)', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
+                <div class="w-50 review p-2 text-danger fs-16 fw-bold">
+                    {!! number_format($data? $data: (isset($val['value'])? $val['value']: 0), 0, ',', '.') !!} ₫
+                </div>
+            </div>
+            @error($key_dot)
+                <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
-        @break
+    @break
     @case('file')
-        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
-        <div class="col-sm-9 my-1">
-            <span class="inline text_box">{{preg_replace('/(.)*(?:\/)/','',isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null))}}</span>
+        @include('Admin::Components.form_title', ['val' => $val])
+        <div class="col-sm-9 my-2">
+            <span class="inline text_box">{{preg_replace('/(.)*(?:\/)/','',$data? $data: (isset($val['value'])? $val['value']: null))}}</span>
             <span class="inline">
-                {{Form::file($name, array('id'=>'feature', 'class'=>'form-control' , 'value'=>isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null)))}}
+                {{Form::file($key, array('id'=>'feature', 'class'=>'form-control' , 'value'=>$data? $data: (isset($val['value'])? $val['value']: null)))}}
             </span>
-            @error($name)
-            <span class="alert alert-danger">{{ $message }}</span>
+            @error($key_dot)
+                <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
-        @break
+    @break
+    @case('area')
+        @include('Admin::Components.form_title', ['val' => $val])
+        <div class="col-sm-9 my-1">
+            {{Form::textarea($key, $data? $data: (isset($val['value'])? $val['value']: null),
+                array('class'=>'form-control ckeditor_area', 'placeholder'=>($val['placeholder']??($val['title']??''))))}}
+            @error($key_dot)
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+    @break
 @endswitch
 </div>

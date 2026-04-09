@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Filters\ProductFilter;
 use App\Models\Comment;
 use App\Models\FavorProduct;
-use App\Models\PostCategory;
 use App\Models\Producer;
 use App\Models\Product;
 use App\Models\ProductCategory;
@@ -17,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
     public function index(Request $request, $slug = ''){
-        $product = Product::where(['products.active'=> 1])->join('product_option', 'product_option.product_id', '=', 'products.id');
+        $product = Product::inRandomOrder()->where(['products.active'=> 1])->join('product_option', 'product_option.product_id', '=', 'products.id');
         $selects = ['products.*','product_option.title as option_title', 'product_option.id as option_id', 'price', 'discount'];
         if($slug){
             $request = $request->merge(['product_category' => $slug]);
@@ -34,19 +33,21 @@ class ProductController extends Controller
 
         return view('pages.shop-grid', array_merge($this->getDataLayout(), [
             'producers' => Producer::where(['active'=> 1])->orderby('index', 'ASC')->limit(9)->get(),
-            'products'  => $product->select($selects)->filter(new ProductFilter($request))->paginate(9),
-            'discount_products' => Product::where('products.active', 1)
+            'products'  => $product->select($selects)->filter(new ProductFilter($request))->paginate(21),
+            'discount_products'  => Product::inRandomOrder()->where('products.active', 1)
                 ->select('products.id', 'product_option.title as option_title', 'product_option.id as option_id',
                     'products.title', 'price', 'discount', 'slug', 'images.uri')
                 ->join('product_option', 'product_option.product_id', '=', 'products.id')
                 ->join('images', 'images.id', '=', 'products.image_id')
-                ->where('discount', '>', 0)->get(),
+                ->where('discount', '>', 0)->limit(12)->get(),
             'product_categories' => ProductCategory::where(['active' => 1])->limit(9)->get(),
+            'category'           => ProductCategory::where(['slug' => $slug])->first(),
         ]));
+       
     }
     public function show($slug){
         $product  = Product::where(['active' => 1, 'slug' => $slug])->first();
-        $comments = Comment::where('product_id', $product->id)->where('active', 1)->paginate(10);
+        $comments = Comment::where('product_id', $product->id)->where('active', 1)->orderBy('id', 'desc')->paginate(10);
         if(Auth::check()){
             ProductRecent::updateOrCreate([
                 'product_id' => $product->id,
@@ -58,7 +59,7 @@ class ProductController extends Controller
         return view('pages.shop-detail', array_merge($this->getDataLayout(), [
             'product'    => $product,
             'comments'   => $comments,
-            'r_products' => Product::where(['active' => 1, 'product_category_id' => $product->product_category_id])
+            'r_products' => Product::inRandomOrder()->where(['active' => 1, 'product_category_id' => $product->product_category_id])
                 ->whereNotIn('id', [$product->id])->orderby('created_at', 'ASC')->limit(4)->get(),
             'meta'       => [
                 'title'  => $product->meta_title,
@@ -67,12 +68,13 @@ class ProductController extends Controller
             ]
         ]));
     }
+
     public function productCategory(Request $request){
-        $product = Product::select('id', 'title', 'price', 'image_id', 'product_category_id')->find($request->id);
-        $query   = Product::select('id', 'title', 'price', 'image_id')
+        $product = Product::inRandomOrder()->select('id', 'title', 'price', 'image_id', 'product_category_id')->find($request->id);
+        $query   = Product::inRandomOrder()->select('id', 'title', 'price', 'image_id')
             ->where('product_category_id', $product->product_category_id)
             ->where('title', 'like', '%' . $request->search . '%')
-            ->where('id', '!=', $request->id)->limit(20);
+            ->where('id', '!=', $request->id)->limit(40);
 
         return ['product' => $product, 'list' => $query->get()];
     }
@@ -130,10 +132,9 @@ class ProductController extends Controller
         ]));
     }
 
-    public function promotion()
-    {
+    public function promotion(){
         return view('pages.promotion', array_merge($this->getDataLayout(), [
-            'promotions' => Product::where('products.active', 1)
+            'promotions' => Product::inRandomOrder()->where('products.active', 1)
             ->select('products.id', 'product_option.title as option_title', 'product_option.id as option_id',
                 'products.title', 'price', 'discount', 'slug', 'images.uri')
             ->join('product_option', 'product_option.product_id', '=', 'products.id')

@@ -1,0 +1,1 @@
+import '../../app/Modules/Chat/App/main.js'

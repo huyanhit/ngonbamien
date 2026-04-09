@@ -1,4 +1,4 @@
-@props(['sites', 'showPhone' => true])
+@props(['sites', 'showPhone' => true, 'shop' => 0])
 <div class="hero__search d-flex">
     <div class="hero__search__form flex-grow-1">
         <form action="{{Request::root()}}/tim-kiem" method="get">
@@ -14,6 +14,9 @@
                 </option>
             </select>
             <input type="text" placeholder="Nhập từ khóa" name="tu-khoa" value="{{request('tu-khoa')}}">
+            @if (request()->route('slug'))
+                <input type="hidden" name="shop" value="{{request()->route('slug')??0}}">
+            @endif
             <button type="submit" class="site-btn">Tìm</button>
         </form>
     </div>

@@ -89,7 +89,7 @@ class MenuController extends MyController
             ),
             'index' => array(
                 'title' => 'Thứ tự',
-                'width' => 6,
+                'width' => 3,
                 'update'=> true,
                 'views' => array(
                     'type' => self::TEXT,

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CartAddRequest;
 use App\Models\Coupon;
 use App\Models\Product;
+use App\Models\Supplier;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -43,7 +44,8 @@ class CartController extends Controller
     }
 
     public function index():JsonResponse {
-        return response()->json($this->cart->getDetails());
+        $detail = $this->cart->getDetails();
+        return response()->json($detail);
     }
 
     public function show($id):JsonResponse {
@@ -52,9 +54,12 @@ class CartController extends Controller
 
     public function update(Request $request, $id):JsonResponse {
         if($request->quantity){
-            $this->cart->updateItem($id, [
-                'quantity' => $request->quantity,
-            ]);
+            $item = $this->cart->getItem($id);
+            if($request->quantity <= $item->get('options')['stock']){
+                $this->cart->updateItem($id, [
+                    'quantity' => $request->quantity,
+                ]);
+            }
         }
 
         return response()->json($this->cart->getDetails());
@@ -62,10 +67,23 @@ class CartController extends Controller
 
     public function store(CartAddRequest $request):JsonResponse {
         $product = Product::where('active', 1)->find($request->id);
+        $shops   = [];
         if(!empty($product)){
             if(isset($request->option_id)) {
                 foreach ($product->product_option as $option) {
                     if ($request->option_id == $option->id && $request->quantity <= $option->stock) {
+                        if(!isset($shops[$product->supplier_id])){
+                            $supplier = Supplier::find($product->supplier_id);
+                            if($supplier){
+                                $shops[$product->supplier_id] = [
+                                    "name"      => $supplier->title,
+                                    "image_id"  => $supplier->image_id,
+                                    "slug"      => $supplier->slug,
+                                    "support"   => $supplier->supplier_support,
+                                    "ship"      => $supplier->supplier_ship
+                                ];
+                            };
+                        }
                         $this->cart->addItem([
                             'id'       => $product->id,
                             'title'    => empty($product->title) ? 'No name' : $product->title,
@@ -73,24 +91,19 @@ class CartController extends Controller
                             'quantity' => $request->quantity,
                             'options'  => $option->toArray(),
                             'extra_info' => [
-                                'link' => route('san-pham', $product->slug),
+                                'supplier' => $product->supplier_id,
+                                'shop'     => $shops[$product->supplier_id]??[
+                                    "name"      => '',
+                                    "image_id"  => '',
+                                    "support"   => [],
+                                    "ship"      => [],
+                                ],
+                                'link'     => route('san-pham', $product->slug),
                                 'image_id' => $product->image_id,
                             ],
                         ]);
                     }
                 }
-            }else if($request->quantity <= $product->product_option[0]->stock){
-                $this->cart->addItem([
-                    'id'       => $product->id,
-                    'title'    => empty($product->title) ? 'No name' : $product->title,
-                    'price'    => $product->product_option[0]->price - ($product->product_option[0]->price * $product->product_option[0]->discount /100),
-                    'options'  => $product->product_option[0]->toArray(),
-                    'quantity' => $request->quantity,
-                    'extra_info' => [
-                        'link' => route('san-pham', $product->slug),
-                        'image_id' => $product->image_id,
-                    ],
-                ]);
             }
         }
 

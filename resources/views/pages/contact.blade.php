@@ -7,8 +7,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mr-auto">
-                    <div class="pr-3">
-                        <p class="text-muted"><i>Trong nhịp sống hiện đại, nhu cầu tìm kiếm những món ăn ngon, đặc sản độc đáo và thực phẩm sạch ngày càng được quan tâm. Đó cũng là lý do mà chúng tôi ra đời với sứ mệnh mang đến cho khách hàng những sản phẩm chất lượng cao, đảm bảo vệ sinh an toàn thực phẩm và hương vị tuyệt hảo.</i></p>
+                    <div class="pr-4">
+                        <p class="text-muted"><b>Trong nhịp sống hiện đại, nhu cầu tìm kiếm những món ăn ngon, đặc sản độc đáo và thực phẩm sạch ngày càng được quan tâm. Đó cũng là lý do mà chúng tôi ra đời với sứ mệnh mang đến cho khách hàng những sản phẩm chất lượng cao, đảm bảo vệ sinh an toàn thực phẩm và hương vị tuyệt hảo.</b></p>
                         <h5 class="mb-1 text-black"><span>1. Sứ Mệnh Và Tầm Nhìn</span></h5>
                         <p class="text-muted">Chúng tôi không chỉ đơn thuần là một đơn vị cung cấp thực phẩm mà còn là người bạn đồng hành đáng tin cậy của mọi gia đình. Với mục tiêu trở thành thương hiệu hàng đầu trong lĩnh vực cung cấp món ăn ngon, đặc sản và thực phẩm sạch, chúng tôi cam kết mang đến những sản phẩm đạt chuẩn chất lượng, giàu giá trị dinh dưỡng và bảo vệ sức khỏe người tiêu dùng.</p>
                         <h5 class="mb-1 text-black"><span>2. Quy Trình Lựa Chọn Và Kiểm Định Chất Lượng</span></h5>

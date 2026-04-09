@@ -5,145 +5,152 @@
         {{Form::input('hidden', $key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null), array())}}
         @break
     @case('has_many')
-        <label class="control-label lh-lg">{{$val['title']}}</label>
+        <span class="control-label py-2 text-center lh-lg">
+            {{$val['title']}}
+        </span>
         <div>
-            <div id="product_option"></div>
             <div class="options_append_{{$key}}">
                 <div class="update">
-                    @foreach($data->$key as $k => $items)
-                        <div class="card border p-2">
-                            @foreach($val['form'] as $skey => $sval)
-                                @include('Admin::Components.sub_updates', ['name' => $key.'_update['.$k.']['.$skey.']', 'key' => $skey, 'val'=> $sval, 'data'=> $items])
-                            @endforeach
-                            <div onclick="removeOption(this)" class="text-center my-2"><button class="btn btn-danger pull-right">Xóa</button></div>
-                        </div>
-                    @endforeach
+                    @if($data?->$key)
+                        @foreach($data->$key as $k => $items)
+                            <div class="card border p-2">
+                                @foreach($val['form'] as $skey => $sval)
+                                    @include('Admin::Components.sub_updates', [
+                                    'key_dot' => $key.'_update.'.$k.'.'.$skey, 
+                                    'key' => $key.'_update['.$k.']['.$skey.']', 
+                                    'val'=> $sval, 'data'=>$items[$skey]])
+                                @endforeach
+                                <div class="text-center my-2">
+                                    <button class="btn btn-danger pull-right" onclick="removeOption_{{$key}}(this)" >Xóa</button></div>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
                 <div class="append">
                     <div class="card border p-2">
                         @foreach($val['form'] as $skey => $sval)
-                            @include('Admin::Components.inserts', ['key' => $key.'_insert['.$skey.'][]', 'val'=> $sval])
+                            @include('Admin::Components.sub_inserts', [
+                                'key_dot' => $key.'_insert.'.$skey.'.0',
+                                'key' => $key.'_insert['.$skey.'][]', 'val'=> $sval, 'data'=>[]
+                            ])
                         @endforeach
-                        <div onclick="removeOption(this)" class="text-center my-2"><button class="btn btn-danger pull-right">Xóa</button></div>
+                        <div class="text-center my-2">
+                            <button class="btn btn-danger pull-right" onclick="removeOption_{{$key}}(this)" >Xóa</button>
+                        </div>
                     </div>
                 </div>
                 <div class="d-flex">
                     <div class="mr-2">
-                        <span onclick="addHtmlOption(this)" class="btn btn-info">
-                             Thêm phân loại
+                        <span onclick="addHtmlOption_{{$key}}(this)" class="btn btn-info">
+                           Thêm
                         </span>
                     </div>
                 </div>
             </div>
             <script>
-                let optionAppend = $('.options_append_{{$key}}').find(".append")
-                let html = optionAppend.html();
-                optionAppend.find(".card").remove();
-                function addHtmlOption(e){
-                    optionAppend.append(html);
+                let optionAppend_{{$key}} = $('.options_append_{{$key}}').find(".append")
+                let html_{{$key}} = optionAppend_{{$key}}.html();
+                optionAppend_{{$key}}.find(".card").remove();
+                function addHtmlOption_{{$key}}(e){
+                    optionAppend_{{$key}}.append(html_{{$key}});
                 }
-                function removeOption(e){
-                    $(e).parent().remove();
+                function removeOption_{{$key}}(e){
+                    $(e).parent().parent().remove();
                 }
             </script>
         </div>
         @break
     @case('text')
-        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+        @include('Admin::Components.form_title', ['val' => $val])
         <div class="col-sm-9 my-1">
             {{Form::input('text', $key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
                 array('class' => 'form-control text', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
             @error($key)
-            <span class="alert alert-danger">{{ $message }}</span>
+            <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
         @break
     @case('number')
-        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+        @include('Admin::Components.form_title', ['val' => $val])
         <div class="col-sm-9 my-1">
             {{Form::input('text', $key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
                 array('class' => 'form-control number', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
             @error($key)
-            <span class="alert alert-danger">{{ $message }}</span>
+            <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
         @break
     @case('date')
-        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+        @include('Admin::Components.form_title', ['val' => $val])
         <div class="col-sm-9 my-1">
             {{Form::input('text', $key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
-                array('id' => 'datepicker','class' => 'form-control text','data-date-format'=> "dd/mm/yyyy", 'placeholder' =>'dd/mm/yyyy'))}}
-            <script type="text/javascript">
-                $('#datepicker').datepicker({weekStart: 1,daysOfWeekHighlighted: "6,0", autoclose: true,todayHighlight: true,});
-                $('#datepicker').datepicker("setDate", new Date());
-            </script>
+                array('class' => 'datepicker form-control text', 'data-date-format'=> "dd/mm/yyyy", 'placeholder' =>'dd/mm/yyyy'))}}
             @error($key)
-            <span class="alert alert-danger">{{ $message }}</span>
+            <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
         @break
     @case('password')
-        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+        @include('Admin::Components.form_title', ['val' => $val])
         <div class="col-sm-9 my-1">
             {{Form::input('password', $key, null , array('class' => 'form-control text', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
             @error($key)
-            <span class="alert alert-danger">{{ $message }}</span>
+            <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
         @break
     @case('confirm')
-        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+        @include('Admin::Components.form_title', ['val' => $val])
         <div class="col-sm-9 my-1">
             {{Form::input('password', $key, null , array('class' => 'form-control text', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
             @error($key)
-            <span class="alert alert-danger">{{ $message }}</span>
+            <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
         @break
     @case('select')
-        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+        @include('Admin::Components.form_title', ['val' => $val])
         <div class="col-sm-9 my-1">
-            @if(isset($val['ajax']))
-                @switch($val['ajax']['type'])
-                    @case ('select')
-                        {{Form::select($key, $val['data'], isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
-                        array('class'=>'form-control select render_select', 'table'=>$val['ajax']['table'], 'reference'=>$val['ajax']['reference']))}}
-                        @break
-                @endswitch
-            @else
-                {{
-                    Form::select($key, $val['data'],
-                    isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
-                    array('class'=>'form-control select'))
-                }}
-            @endif
+            {{
+                Form::select($key, $val['data'],
+                isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
+                array('class'=>'form-control select'))
+            }}
             @error($key)
-            <label class="alert alert-danger">{{ $message }}</label>
+            <label class="text-danger">{{ $message }}</label>
+            @enderror
+        </div>
+        @break
+    @case('selects')
+        @include('Admin::Components.form_title', ['val' => $val])
+        <div class="col-sm-9 my-1">
+            {{
+                Form::select($key.'[]', $val['data'],
+                isset($data[$key])?json_decode($data[$key]):(isset($val['value'])?json_decode($val['value']):null),
+                array('class'=>'form-control select choices-multiple-remove-button', 'multiple'))
+            }}
+            @error($key)
+            <label class="text-danger">{{ $message }}</label>
             @enderror
         </div>
         @break
     @case('area')
-        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+        @include('Admin::Components.form_title', ['val' => $val])
         <div class="col-sm-9 my-1">
-            @include('ckfinder::setup')
             {{Form::textarea($key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
-            array('id'=>$key.'area', 'class'=>'form-control', 'placeholder'=>($val['placeholder']??($val['title']??''))))}}
+                array('class'=>'form-control ckeditor_area', 'placeholder'=>($val['placeholder']??($val['title']??''))))}}
             @error($key)
-            <span class="alert alert-danger">{{ $message }}</span>
+                <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
-        <script>
-            CKEDITOR.replace( '{{$key.'area'}}', {filebrowserBrowseUrl: '{{ route('ckfinder_browser') }}'});
-        </script>
-        @include('ckfinder::setup')
         @break
     @case('images')
-        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+        @include('Admin::Components.form_title', ['val' => $val])
         <div class="col-sm-9 my-1">
             <span class="images mt-3">
                 <span class="image_box_{{$key}}">
                     @if(!empty($data[$key]))
-                        @foreach(explode(',', $data[$key]) as $item)
+                        @foreach(json_decode($data[$key]) as $item)
                             @if($item)
                                 <span class="images-group images-delete"
                                     url="{{ route($resource.'.update', $data['id']) }}" fid="{{$item}}">
@@ -161,12 +168,12 @@
                 {{ Form::file($key.'[]', array('multiple', 'key'=> $key, 'class'=>'form-control upload_images_field')) }}
             </span>
             @error($key)
-                <span class="alert alert-danger">{{ $message }}</span>
+                <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
         @break
     @case('image')
-        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+        @include('Admin::Components.form_title', ['val' => $val])
         <div class="col-sm-9 my-1">
             <span class="inline image_box_{{$key}}">
                 <img class="avatar-lg border my-2"
@@ -179,12 +186,12 @@
                 }}
             </span>
             @error($key)
-                <span class="alert alert-danger">{{ $message }}</span>
+                <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
         @break
     @case('image_id')
-        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+        @include('Admin::Components.form_title', ['val' => $val])
         <div class="col-sm-9 my-1">
                 <span class="inline image_box_{{$key}}">
                     @if(isset($data[$key]))
@@ -200,12 +207,12 @@
                     }}
                 </span>
             @error($key)
-                <span class="alert alert-danger">{{ $message }}</span>
+                <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
         @break
     @case('file')
-        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+        @include('Admin::Components.form_title', ['val' => $val])
         <div class="col-sm-9 my-1">
             <span class="inline text_box">{{preg_replace('/(.)*(?:\/)/','',isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null))}}</span>
             <span class="inline">
@@ -218,25 +225,49 @@
                 }}
             </span>
             @error($key)
-                <span class="alert alert-danger">{{ $message }}</span>
+                <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
         @break
     @case('check')
-        <label class="control-label py-2 text-end lh-lg col-sm-3">{{$val['title']}}</label>
+        @include('Admin::Components.form_title', ['val' => $val])
         <div class="col-sm-9 my-1">
             <div class="form-check form-switch mt-2">
-                {{Form::input('hidden', $key, 0)}}
                 {{
                     Form::checkbox($key, 1, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
                     array('class'=>'form-check-input'))
                 }}
                 </span>
                 @error($key)
-                    <span class="alert alert-danger">{{ $message }}</span>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
         </div>
         @break
-@endswitch
+        @case('slug')
+            @include('Admin::Components.form_title', ['val' => $val])
+            <div class="col-sm-9 my-1">
+                <div class="d-flex">
+                    <div class="me-3 pt-2 text-muted text-nowrap"> {{$val['prefix']}}/ </div>
+                    <div class="w-100 ">
+                        {{Form::input('text', $key, isset($data[$key])?$data[$key]:(isset($val['value'])?$val['value']:null),
+                            array('class' => 'form-control text-muted', 'placeholder' => ($val['placeholder']??($val['title']??''))))}}
+                            @if(isset($val['reference']))
+                                <script> 
+                                    const slug = document.querySelector('[name="{{$key}}"]');
+                                    if(slug){
+                                        slug.addEventListener('keyup', function (event) {
+                                            slug.value = slugify(event.target.value);
+                                        })
+                                    }
+                                </script>
+                            @endif
+                    </div>
+                </div>
+                @error($key)
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        @break
+    @endswitch
 </div>

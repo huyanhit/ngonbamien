@@ -9,6 +9,7 @@ class ProductOption extends Model
 {
     use HasFactory;
     protected $table = 'product_option';
+    protected $hidden = ['price_root'];
     protected $fillable = [
         'product_id',
         'option_price_id',

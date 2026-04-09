@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Traits\Filterable;
+use DateTime;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -14,6 +16,8 @@ class Product extends Model
     use SoftDeletes, Filterable;
     protected $softDelete = true;
     protected $table = 'products';
+    
+    protected $appends = ['is_hot', 'is_new', 'is_promotion'];
 
     protected $hidden = [
        'price_root'
@@ -35,6 +39,16 @@ class Product extends Model
         return $this->belongsTo(ProductCategory::class, 'product_category_id');
     }
 
+    public function author(): BelongsTo
+    {
+        return $this->BelongsTo(User::class, 'auth_id');
+    }
+
+    public function supplier(): BelongsTo
+    {
+        return $this->BelongsTo(Supplier::class, 'supplier_id');
+    }
+
     public function producer(): BelongsTo
     {
         return $this->belongsTo(Producer::class, 'producer_id');
@@ -47,13 +61,34 @@ class Product extends Model
 
     public function product_option(): HasMany
     {
-        return $this->hasMany(ProductOption::class, 'product_id', 'id')
-            ->select('product_option.id', 'product_option.option_price_id', 'product_option.title',
-                'product_option.stock', 'product_option.discount', 'product_option.price_root', 'product_option.price');
+        return $this->hasMany(ProductOption::class, 'product_id', 'id');
     }
 
     public function recent(): HasMany{
         return $this->hasMany(ProductRecent::class, 'product_id', 'id')
             ->where('user_id', Auth::id());
+    }
+
+    protected function isHot(): Attribute
+    {
+        return Attribute::get(
+            fn () => $this->sell > 30,
+        );
+    }
+
+    protected function isNew(): Attribute
+    {
+        return Attribute::get(
+            fn () => $this->created_at > (new DateTime())->modify('-30 day'),
+        );
+    }
+
+    protected function isPromotion(): Attribute
+    {
+        return Attribute::get(
+            fn () => $this->product_option->every(function ($item) {
+                return $item->discount > 0;
+            })
+        );
     }
 }

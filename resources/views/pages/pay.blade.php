@@ -16,7 +16,7 @@
                                 <li>Điện thoại <span>{{$order->phone}}</span></li>
                                 <li>Địa chỉ <span>{{$order->address}}</span></li>
                                 <li>Ghi chú <span>{{$order->note??'Không có'}}</span></li>
-                                <li>Số tiền <span class="total text-danger">{{ number_format($order->total, 0, ',', '.') }}đ</span></li>
+                                <li>Số tiền <span class="total text-danger">{{ number_format($order->total + $order->ship_price - $order->down_price - $order->discount, 0, ',', '.') }}đ</span></li>
                             </ul>
                         </div>
                     </div>
@@ -72,7 +72,8 @@
                                                 </div>
                                                 <div>
                                                     <span class="text-sm font-bold">Số tiền:</span>
-                                                    <b class="text-red-600 text-xl"> {{ number_format($order->total, 0, ',', '.') }}đ </b>
+                                                    <b class="text-red-600 text-xl"> {{ 
+                                                    number_format($order->total + $order->ship_price - $order->down_price - $order->discount, 0, ',', '.') }}đ </b>
                                                 </div>
                                                 <div><span class="text-sm font-bold">Nội dung chuyển khoản:</span>
                                                     <b class="text-sm">TTĐH {{$order->code}}</b>

@@ -1,0 +1,21 @@
+{
+  "label": "Nhãn",
+  "filter_by_selected_label": "Lọc theo nhãn đã chọn",
+  "view": "Xem theo",
+  "list": "Danh sách",
+  "kanban": "Kanban",
+  "export": "Xuất",
+  "export_all": "Xuất tất cả",
+  "select_to-export": "Chọn trường để xuất",
+  "import": "Nhập",
+  "import_project": "Import dự án",
+  "project_history": "Xem lịch sử dự án",
+  "help": "HDSD",
+  "participate": "Tham gia",
+  "category": "Danh mục",
+  "add_work": "Thêm việc",
+  "more": "Thêm",
+  "choose_tag": "Chọn nhãn",
+  "quick_filter": "Lọc nhanh",
+  "time": "Thời gian"
+}

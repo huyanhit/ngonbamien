@@ -1,0 +1,71 @@
+@mixin sticky-col($left, $width) {
+  position: sticky;
+  z-index: 3;
+  text-align: left;
+  vertical-align: middle;
+  left: $left;
+  width: $width;
+  padding: 8px 12px;
+  background-color: white;
+  border-right: 1px solid #dee2e6;
+}
+
+.table__schedule {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: center;
+  &--status {
+    max-width: 10px
+  }
+
+  .sticky-col {
+    @include sticky-col(0, auto);
+  }
+
+  .sticky-col-1 {
+    @include sticky-col(0, 50px);
+  }
+
+  .sticky-col-2 {
+    @include sticky-col(42px, 120px);
+  }
+
+  .sticky-col-3 {
+    @include sticky-col(157px, 150px);
+  }
+
+  .sticky-col-4 {
+    @include sticky-col(285px, 200px);
+  }
+
+  /* Sticky header */
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+  }
+
+  .table-responsive {
+    overflow-x: hidden;
+    transition: overflow-x 0.3s ease;
+
+    &:hover {
+      overflow-x: auto;
+    }
+  }
+
+  .thead-light {
+    background-color: #f6f7f7;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px 12px;
+    font-size: 14px;
+    white-space: nowrap;
+    border: 1px solid #dee2e6;
+  }
+}

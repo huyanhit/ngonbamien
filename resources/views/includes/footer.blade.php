@@ -40,9 +40,9 @@
             <div class="col-lg-4 col-md-12">
                 <div class="footer__widget">
                     <h6>Đăng ký nhận thông báo</h6>
-                    <p><i>Đăng ký để chúng tôi gửi các thông tin hữu ích đến bạn.</i></p>
-                    <form action="{{Request::root()}}/">
-                        <input type="text" placeholder="Nhập Email của bạn">
+                    <p id="subscribe_notice"><i>Đăng ký để chúng tôi gửi các thông tin hữu ích đến bạn.</i></p>
+                    <form id="sendSubscribe" action="{{Request::root()}}/ax-subscribe">
+                        <input type="email" id="email_subscribe" name="email" required placeholder="Nhập Email của bạn">
                         <button type="submit" class="site-btn">Đăng Ký</button>
                     </form>
                     <div class="footer__widget__social">
@@ -52,7 +52,7 @@
                             <svg style="height: 15px;" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24"
                                 fill="currentColor">
-                                <path d="M16 8.24537V15.5C16 19.0899 13.0899 22 9.5 22C5.91015 22 3 19.0899 3 15.5C3 11.9101 5.91015 9 9.5 9C10.0163 9 10.5185 9.06019 11 9.17393V12.3368C10.5454 12.1208 10.0368 12 9.5 12C7.567 12 6 13.567 6 15.5C6 17.433 7.567 19 9.5 19C11.433 19 13 17.433 13 15.5V2H16C16 4.76142 18.2386 7 21 7V10C19.1081 10 17.3696 9.34328 16 8.24537Z"></path></svg>
+                            <path d="M16 8.24537V15.5C16 19.0899 13.0899 22 9.5 22C5.91015 22 3 19.0899 3 15.5C3 11.9101 5.91015 9 9.5 9C10.0163 9 10.5185 9.06019 11 9.17393V12.3368C10.5454 12.1208 10.0368 12 9.5 12C7.567 12 6 13.567 6 15.5C6 17.433 7.567 19 9.5 19C11.433 19 13 17.433 13 15.5V2H16C16 4.76142 18.2386 7 21 7V10C19.1081 10 17.3696 9.34328 16 8.24537Z"></path></svg>
                         </a>
                     </div>
                 </div>
@@ -75,5 +75,15 @@
             </div>
         </div>
     </div>
+    <div class="nbm-messenger style-for-position-br">
+        <div class="phonering-alo-con" id="scroll-top">
+            <a class="echbay-phonering-sms-event"><i class="fa fa-chevron-up"></i></a>
+        </div>
+        <div id="cbox" class="phonering-alo-sms">
+        </div>
+        @vite(['resources/js/cbox.js'])
+    </div>
+
 </footer>
+
 <!-- Footer Section End -->

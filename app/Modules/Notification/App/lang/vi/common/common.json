@@ -1,0 +1,70 @@
+{
+    "monday": "Thứ hai",
+    "tuesday": "Thứ ba",
+    "wednesday": "Thứ tư",
+    "thursday": "Thứ năm",
+    "friday": "Thứ sáu",
+    "saturday": "Thứ bảy",
+    "sunday": "Chủ nhật",
+    "button": {
+        "apply": "Áp dụng",
+        "update": "Cập nhật",
+        "cancel": "Hủy bỏ",
+        "filter_by_selected_label": "Lọc theo nhãn đã chọn"
+    },
+    "sweetalert": {
+        "confirm_button_text": "Đồng ý",
+        "cancel_button_text": "Hủy",
+        "delete_button_text": "Xóa",
+        "delete_confirm": "Bạn có chắc chắn muốn xóa <span class='fw-bold'>{0}</span> không?"
+    },
+    "toast": {
+        "delete_success": "Xóa thành công",
+        "delete_error": "Xóa thất bại"
+    },
+    "notification": "Thông báo",
+    "confirm": "Xác nhận",
+    "confirm_delete": "Bạn có chắc muốn thực hiện tác vụ này ?",
+    "confirm_change_status": "Bạn có muốn thay đổi trạng thái không?",
+    "search": "Tìm kiếm",
+    "keyword": "Từ khóa",
+    "no_result": "Không có dữ liệu",
+    "heading_employee": "Nhân sự",
+    "all": "Tất cả",
+    "active": "Hoạt động",
+    "inactive": "Không hoạt động",
+    "valid": "Có hiệu lực",
+    "in_valid": "Hết hiệu lực",
+    "approved": "Đã duyệt",
+    "unapproved": "Chưa duyệt",
+    "pending": "Chờ duyệt",
+    "approving": "Đang duyệt",
+    "rejected": "Không duyệt",
+    "autocomplete": {
+        "select_label": "Nhấn Enter để chọn",
+        "selected_label": "Đã chọn",
+        "deselect_label": "Nhấn Enter để bỏ"
+    },
+    "attachment": "Đính kèm",
+    "comment": "Thảo luận",
+    "not_comment": "Không có thảo luận nào",
+    "yes": "Có",
+    "no": "Không",
+    "general_information": "Thông tin chung",
+    "table": {
+        "created_at": "Ngày tạo",
+        "updated_at": "Ngày cập nhật",
+        "created_by": "Người tạo",
+        "updated_by": "Người cập nhật"
+    },
+    "detail": "Chi tiết",
+    "read_more": "Xem thêm",
+    "view": "Xem",
+    "description": "Mô tả",
+    "not_apply": "Không áp dụng",
+    "apply": "Áp dụng",
+    "status": "Trạng thái",
+    "created": "Tạo",
+    "edit": "Chỉnh sửa",
+    "delete": "Xóa"
+}

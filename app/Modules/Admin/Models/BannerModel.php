@@ -11,4 +11,5 @@ class BannerModel extends Model
     use SoftDeletes;
     protected $softDelete = true;
     protected $table = 'banners';
+    protected $guarded = [];
 }

@@ -17,10 +17,10 @@ class ProductController extends MyController
         parent::__construct($request, new ProductService());
         $this->view['resource'] = $this->request->segment(2);
         $this->view['form'] = array(
-            'sku'          => array('title'=> 'Mã sản phẩm', 'type' => self::TEXT, 'validate' => 'max:50'),
-            'title'        => array('title'=> 'Tên', 'type' => self::TEXT, 'validate' => 'required|max:255'),
-            'slug'         => array('title' => 'Slug', 'type' => self::SLUG),
-            'description'  => array('title'=> 'Mô tả ngắn', 'type' => self::TEXT),
+            'sku'          => array('title'=> 'Mã sản phẩm', 'type' => self::TEXT, 'validate' => 'required|unique:products,sku,:id|max:50|min:6'),
+            'title'        => array('title'=> 'Tên', 'type' => self::TEXT, 'validate'  => 'required|max:255|min:6'),
+            'slug'         => array('title'=> 'Link sản phẩm', 'type' => self::SLUG, 'reference' => "title", 'validate' => 'required|unique:products,slug,:id|max:255|min:6'),
+            'description'  => array('title'=> 'Mô tả ngắn', 'type' => self::TEXT, 'validate' => 'required|max:255'),
             'content'      => array('title'=> 'Nội dung chi tiết', 'type' => self::AREA),
             'make'         => array('title'=> 'Nội dung cách chế biến', 'type' => self::AREA),
 
@@ -39,8 +39,9 @@ class ProductController extends MyController
                     3 => 'Theo lịch'
                 ),
                 'type' => self::SELECT,
+                'validate' => 'required|numeric',
                 'column' => 2,
-                'group' => 'Trạng thái'
+                'group' => 'Trạng thái', 
             ),
             'active'       => array(
                 'title'=> 'Ẩn hiện',
@@ -49,6 +50,7 @@ class ProductController extends MyController
                     0 => 'Ẩn',
                 ),
                 'type' => self::SELECT,
+                'validate' => 'required|numeric',
                 'column' => 2,
                 'group' => 'Trạng thái'
             ),
@@ -58,6 +60,7 @@ class ProductController extends MyController
                     $this->getDataTable('product_categories', ['active' => 1], null), 'id', 'title'
                 ),
                 'type'     => self::SELECT,
+                'validate' => 'required|numeric',
                 'column'   => 2,
                 'group'    => 'Danh mục',
             ),
@@ -67,29 +70,34 @@ class ProductController extends MyController
                     $this->getDataTable('producers', ['active' => 1], null), 'id', 'title'
                 ),
                 'type' => self::SELECT,
+                'validate' => 'required|numeric',
+                'column'   => 2,
+                'group'    => 'Danh mục',
+            ),
+            'auth_id'  => array(
+                'title'    => 'Nguời tạo',
+                'type'     => self::AUTH,
                 'column'   => 2,
                 'group'    => 'Danh mục',
             ),
             'product_option' => array('title'=> '', 'type' => self::HAS_MANY,
-                 'form' => [
-                     'option_price_id' => array(
-                         'title'=> 'Phân loại',
-                         'data'=> array(1 => 'Trọng lượng, Kích thước, Loại hàng', 2 => 'Hình ảnh',  3 => 'Màu sắc'),
-                         'type' => self::SELECT,
-                         'validate' => 'required',
-                     ),
-                     'title'      => array('title'=> 'Mô tả', 'type' => self::TEXT, 'validate' => 'required|max:255'),
-                     'price_root' => array('title'=> 'Giá nhập', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'VND'),
-                     'price'      => array('title'=> 'Giá bán', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'VND'),
-                     'stock'      => array('title'=> 'Số lượng', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'0'),
-                     'discount'   => array('title'=> 'Giảm giá', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'%')
-                 ], 'column' => 2, 'group' => 'Phân loại hàng hóa'
+                'form' => [
+                    // 'option_price_id' => array(
+                    //     'title'=> 'Phân loại',
+                    //     'data'=> array(1 => 'Trọng lượng, Kích thước, Loại hàng', 2 => 'Hình ảnh',  3 => 'Màu sắc'),
+                    //     'type' => self::SELECT,
+                    //     'validate' => 'required',
+                    // ),
+                    'title'      => array('title'=> 'Mô tả', 'type' => self::TEXT, 'validate' => 'required|max:255'),
+                    'price_root' => array('title'=> 'Giá nhập', 'type' => self::PRICE, 'validate' => 'required|numeric', 'placeholder'=>'VND'),
+                    'price'      => array('title'=> 'Giá bán', 'type' => self::PRICE, 'validate' => 'nullable|numeric', 'placeholder'=>'VND'),
+                    'stock'      => array('title'=> 'Số lượng', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'0'),
+                    'discount'   => array('title'=> 'Giảm giá', 'type' => self::NUMBER, 'validate' => 'nullable|numeric', 'placeholder'=>'%'),
+                    'date_in'    => array('title'=> 'Ngày nhập', 'type' => self::DATE, 'validate' => 'nullable', 'placeholder'=>'dd/mm/yy'),
+                    'date_ex'    => array('title'=> 'Ngày hết hạn', 'type' => self::DATE, 'validate' => 'nullable', 'placeholder'=>'dd/mm/yy')
+                ],  'column'     => 2, 'group' => 'Phân loại hàng hóa'
             ),
-            'is_new'       => array('title'=> 'Sản phẩm mới', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2, 'group' => 'Loại'),
-            'is_promotion' => array('title'=> 'Khuyến mãi', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2, 'group' => 'Loại'),
-            'is_hot'       => array('title'=> 'Bán chạy', 'type' => self::CHECK, 'validate' => 'numeric|max:1', 'column' => 2, 'group' => 'Loại'),
         );
-
         $this->view['list'] = array(
             'image_id' => array(
                 'title' => 'Hình Ảnh',
@@ -129,42 +137,6 @@ class ProductController extends MyController
                 'update'=> true,
                 'filter' => array(
                     'type' => self::TEXT,
-                    'value' => '',
-                ),
-            ),
-            'is_new'  => array(
-                'title'=> 'Mới',
-                'width' => 5,
-                'update'=> true,
-                'views' => array(
-                    'type' => self::CHECK ,
-                ),
-                'filter' => array(
-                    'type' => self::CHECK,
-                    'value' => '',
-                ),
-            ),
-            'is_promotion'  => array(
-                'title'=> 'Khuyến mãi',
-                'width' => 5,
-                'update'=> true,
-                'views' => array(
-                    'type' => self::CHECK ,
-                ),
-                'filter' => array(
-                    'type' => self::CHECK,
-                    'value' => '',
-                ),
-            ),
-            'is_hot'  => array(
-                'title'=> 'Bán chạy',
-                'width' => 5,
-                'update'=> true,
-                'views' => array(
-                    'type' => self::CHECK,
-                ),
-                'filter' => array(
-                    'type' => self::CHECK,
                     'value' => '',
                 ),
             ),

@@ -1,6 +1,6 @@
 @extends('Admin::Layouts.admin')
 @section('content')
-    <form id="insert" method="post" action="{{ route($resource.'.update', $data['id']) }}" enctype="multipart/form-data">
+    <form id="insert" method="post" action="{{ route($resource.'.update', $data['id']??0) }}" enctype="multipart/form-data">
 		{{ csrf_field() }}{{ method_field('put') }}
         <div class="row">
             <div class="col-lg-7">

@@ -18,6 +18,7 @@ use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
 use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class Service {
     const UN_ACTIVE = 0;
@@ -36,37 +37,45 @@ class Service {
     function __construct($model){
         $this->model = $model;
     }
+  
     public function generateList($data){
         $this->filter($data);
         $this->sort($data);
         return $this->paginate($data);
     }
+
     protected function filter($data){
-        $filter = [];
+        $data['data'] = [];
         foreach($data["list"] as $key => $value){
             if(isset($value['filter']['type']) ){
                 switch ($value['filter']['type']){
                     case 'text':
                         if(!empty($value['filter']['value']))
-                            $filter[] = array($key, 'like', '%' . $value['filter']['value'] . '%');
+                            $data['data'][] = array($key, 'like', '%' . $value['filter']['value'] . '%');
                         break;
                     case 'select':
                         if($value['filter']['value'] != null)
-                            $filter[] = array($key, 'like', $value['filter']['value']);
+                            $data['data'][] = array($key, 'like', $value['filter']['value']);
+                        break;
+                    case 'selects':
+                        if($value['filter']['value'] != null)
+                            $this->model = $this->model->whereJsonContains($key, $value['filter']['value']);
                         break;
                 }
             }
         }
 
-        if(!empty($filter)){
-            $this->model = $this->model->where($filter);
+        if(!empty($data['data'])){
+            $this->model = $this->model->where($data['data']);
         }
     }
+
     protected function sort($data){
         if(!empty($data['sort'])){
-            $this->model = $this->model->orderby($data['sort']['order'], $data['sort']['by']);
+            $this->model = $this->model->orderBy($data['sort']['order'], $data['sort']['by']);
         }
     }
+
     protected function paginate($data){
         if(!empty($data['paginate'])){
             return $this->model->paginate($data['paginate']['page']);
@@ -91,7 +100,6 @@ class Service {
             }
         }
 
-        // sort
         foreach ($data["form"] as $key => $value) {
             if (isset($value['sort']) && $value['sort'] !== '') {
                 if ($value['sort'] === 'asc') {
@@ -105,9 +113,9 @@ class Service {
         return $this->paginateArray($data['items'], $data['paginate']['page']);
     }
 
-    public function filerFormType(&$data): array
+    public function filterFormType($request, &$data)
     {
-
+        $data['data'] = $request->input();
         foreach($data['form'] as $key => $value){
             if(isset($value['type'])){
                 if($value['type'] === 'password'){
@@ -120,24 +128,24 @@ class Service {
                 if($value['type'] === 'confirm'){
                     unset($data['data'][$key]);
                 }
-                if($value['type'] === 'slug' && isset($data['data']['title'])){
-                    $data['data'][$key] = Str::slug($data['data']['title']);
-                }
                 if($value['type'] === 'date'){
                     $data['data'][$key] = strtotime($data['data'][$key]);
                 }
+                if($value['type'] === 'auth'){
+                    $data['data'][$key] = Auth::id();
+                }
+                if($value['type'] === 'selects'){
+                    $data['data'][$key] = json_encode($data['data'][$key]);
+                }
             }
         }
-
-        return $data;
     }
+
     public function addData($request, $data){
         if($this->validateData($request, $data)){
+            $this->filterFormType($request, $data);
             DB::beginTransaction();
             try{
-                $data['data'] = $request->input();
-                $this->filerFormType($data);
-
                 $arrayInsert = array();
                 $keyHasMany  = '';
                 foreach($data["form"] as $key => $value){
@@ -152,7 +160,7 @@ class Service {
                     $arrayInsert = $this->uploadFiles($data['form'], $arrayInsert, $request->file());
                 }
 
-                $id = $this->model->insertGetId($arrayInsert);
+                $id = $this->model->create($arrayInsert)->id;
                 $this->updateHasMany($keyHasMany, $id, $data);
 
                 if($id){
@@ -161,7 +169,7 @@ class Service {
                 }
 
             }catch (Exception $e){
-                dd($e);
+                throw new Exception($e->getMessage());
                 DB::rollBack();
             }
         }
@@ -214,10 +222,9 @@ class Service {
     }
 
     public function editData($request, $id, $data){
-        $data['data'] = $request->input();
-        $this->editImages($id, $data);
-        $this->filerFormType($data);
-        if($this->validateData($request, $data, true)){
+        if($this->validateData($request, $data, $id)){
+            $this->editImages($id, $data);
+            $this->filterFormType($request, $data);
             DB::beginTransaction();
             try{
                 $arrayUpdate = array();
@@ -238,7 +245,7 @@ class Service {
                     return $arrayUpdate;
                 }
             }catch (Exception $e){
-                dd($e);
+                throw new Exception($e->getMessage());
                 DB::rollBack();
             }
         }
@@ -246,18 +253,12 @@ class Service {
         return false;
     }
 
-    public function deleteData($id){
-        DB::beginTransaction();
-        try{
-            $result = $this->model->where('id', $id)->delete();
-            DB::commit();
-            return $result;
+    public function deleteData($ids){
+        return $this->model->destroy($ids);
+    }
 
-        }catch (Exception $e){
-            DB::rollBack();
-        }
-
-        return false;
+    public function activeData($ids, $active = true){
+        return $this->model->whereIn('id', $ids)->update(['active' => $active]);
     }
 
     public function importModel($key){
@@ -279,31 +280,29 @@ class Service {
         return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 
-    private function validateData($request, $data, $skip = false){
+    private function validateData($request, $data, $id = null){
         $arrayValidate = [];
+        $requestData   = $request->all();
         foreach($data["form"] as $key => $value){
-            if($skip && empty($request->input($key))){
-                continue;
+            if(isset($value['validate']) && is_string($value['validate']) && array_key_exists($key, $requestData)){
+                $value['validate'] = str_replace(":id", $id?? 0, $value['validate']);
+                $value['validate'] = str_replace(":auth_id", Auth::id(), $value['validate']);
+                $arrayValidate[$key] = $value['validate'];
             }
-            if(isset($value['validate'])){
-                $regx = '/\|unique:[\w\,]+(?=,{id})/i';
-                $strReplace = $value['validate'];
-                $id = $request->input('id');
-                if(preg_match($regx, $value['validate'])){
-                    if(isset($id)){
-                        $strReplace = preg_replace('/{id}/i', $id, $value['validate']);
-                    }else{
-                        $strReplace = preg_replace('/{id}/i', '', $value['validate']);
+            if(isset($value['form'])){
+                foreach($value["form"] as $k => $v){
+                    if($request->get($key.'_update')){
+                        $arrayValidate[$key.'_update.*.'.$k] = $v['validate'];
+                    }
+                    if($request->get($key.'_insert')){
+                        $arrayValidate[$key.'_insert.'.$k.'.*'] = $v['validate'];
                     }
                 }
-                $arrayValidate[$key] = $strReplace;
             }
         }
-        $this->validateFile($arrayInsert,  $request->file());
-        if(empty($arrayValidate)){
-            return true;
-        }
-        return $request->validate($arrayValidate);
+        $this->validateFile($arrayInsert, $request->file());
+
+        return empty($arrayValidate)? $request: $request->validate($arrayValidate);
     }
 
     private function validateFile(&$arrayData, $file){
@@ -364,9 +363,9 @@ class Service {
                     $files[] = $this->importModel('images')->insertGetId(['uri' => $uri, 'active' => 1]);
                 }
                 if(isset($data)){
-                    $fileData[$key] = empty($data->$key)? implode(',', $files): $data->$key.','.implode(',', $files);
+                    $fileData[$key] = empty($data->$key)? json_encode($files): json_encode(array_merge(json_decode($data->$key), $files));
                 }else{
-                    $fileData[$key] = implode(',', $files);
+                    $fileData[$key] = json_encode($files);
                 }
             }else{
                 $uri = self::PUCLIC_STORAGE.$this->upload($value);
@@ -388,20 +387,5 @@ class Service {
         if(!empty($select)) $model = $model->select($select);
 
         return $model->get();
-    }
-
-    private function getFileLocal($name, $choose = true){
-        $result = [];
-        if($choose)
-            $result[null] = self::CHOOSE;
-
-        $allFile = Storage::disk($name)->files('');
-        foreach ($allFile as $value){
-            if($value = str_replace('.blade.php','',$value)){
-                $result[$value] = $value;
-            }
-        }
-
-        return $result;
     }
 }

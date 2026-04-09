@@ -1,0 +1,20 @@
+{
+    "d_users": {
+        "message": "Message",
+        "personel_record": "Personel Record",
+        "hr": "HR"
+    },
+    "d_progressbar": {
+        "actual": "Actual",
+        "expected": "Expected"
+    },
+    "d_filemanagement": {
+        "file": "File",
+        "folder": "Folder"
+    },
+    "d_dropzone": {
+        "attachment": "Attachment",
+        "message": "Drag and drop file here or click to select file",
+        "button": "Select file"
+    }
+}

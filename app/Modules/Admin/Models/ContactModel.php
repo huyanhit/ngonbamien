@@ -11,4 +11,5 @@ class ContactModel extends Model
     use SoftDeletes;
     protected $softDelete = true;
     protected $table = 'contacts';
+    protected $guarded = [];
 }

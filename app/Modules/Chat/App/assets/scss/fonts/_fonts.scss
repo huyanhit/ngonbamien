@@ -1,0 +1,17 @@
+//
+// Google font - Poppins
+//
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+//
+// Premium Font : HKGrotesk
+//
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+
+html[lang="jp"] {
+    * :not(svg, i) {
+        font-family: 'Noto Sans JP', sans-serif !important;
+    }
+}

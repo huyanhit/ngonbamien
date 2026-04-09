@@ -1,0 +1,63 @@
+{
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "button": {
+        "apply": "Apply",
+        "update": "Update",
+        "cancel": "Cancel",
+        "filter_by_selected_label": "Filter by selected label"
+    },
+    "sweetalert": {
+        "confirm_button_text": "Confirm",
+        "cancel_button_text": "Cancel",
+        "delete_button_text": "Delete",
+        "delete_confirm": "Are you sure you want to delete <span class='fw-bold'>{0}</span>?"
+    },
+    "toast": {
+        "delete_success": "Delete successful",
+        "delete_error": "Delete failed"
+    },
+    "notification": "Notification",
+    "confirm": "Confirm",
+    "confirm_delete": "Are you sure you want to perform this action?",
+    "search": "Search",
+    "keyword": "Keyword",
+    "no_result": "No data",
+    "heading_employee": "Employee",
+    "all": "All",
+    "active": "Active",
+    "inactive": "Inactive",
+    "valid": "Valid",
+    "in_valid": "Invalid",
+    "approved": "Approved",
+    "unapproved": "Unapproved",
+    "pending": "Pending",
+    "approving": "Approving",
+    "rejected": "Rejected",
+    "autocomplete": {
+        "select_label": "Press Enter to select",
+        "selected_label": "Selected",
+        "deselect_label": "Press Enter to deselect"
+    },
+    "attachment": "Attachment",
+    "comment": "Comment",
+    "not_comment": "No comments",
+    "yes": "Yes",
+    "no": "No",
+    "general_information": "General Information",
+    "table": {
+        "created_at": "Created At",
+        "updated_at": "Updated At",
+        "created_by": "Created By",
+        "updated_by": "Updated By"
+    },
+    "detail": "Detail",
+    "read_more": "Read More",
+    "view": "View",
+    "description": "Description"
+}

@@ -20,8 +20,12 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->integer('sex')->nullable();
             $table->integer('ship_type')->nullable();
-            $table->integer('total')->nullable();
             $table->string('coupon')->nullable();
+            $table->integer('payment')->nullable();
+            $table->integer('discount')->nullable();
+            $table->integer('ship_price')->nullable();
+            $table->integer('down_price')->nullable();
+            $table->integer('total')->nullable();
             $table->text('note')->nullable();
             $table->integer('user_id')->nullable();
             $table->softDeletes();

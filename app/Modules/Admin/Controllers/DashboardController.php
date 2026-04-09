@@ -1,14 +1,9 @@
 <?php
 namespace App\Modules\Admin\Controllers;
 
-use App\Models\Partner;
-use App\Models\ProductCategory;
-use App\Modules\Admin\Models\ContactModel;
 use App\Modules\Admin\Models\CounterModel;
 use App\Modules\Admin\Models\MenuModel;
-use App\Modules\Admin\Models\NewsModel;
 use App\Modules\Admin\Models\OrderModel;
-use App\Modules\Admin\Models\OrderProductModel;
 use App\Modules\Admin\Models\PageModel;
 use App\Modules\Admin\Models\BannerModel;
 use App\Modules\Admin\Models\PostCategoryModel;
@@ -16,8 +11,6 @@ use App\Modules\Admin\Models\PostModel;
 use App\Modules\Admin\Models\ProducerModel;
 use App\Modules\Admin\Models\ProductCategoryModel;
 use App\Modules\Admin\Models\ProductModel;
-use App\Modules\Admin\Models\ServiceModel;
-use App\Modules\Admin\Models\SiteModel;
 use App\Modules\Admin\Models\SliderModel;
 use App\Modules\Admin\Models\UserModel;
 use App\Modules\Admin\Services\DashboardService;

@@ -10,5 +10,6 @@ class UserModel extends Model
 {
     use SoftDeletes;
     protected $softDelete = true;
+    protected $guarded = [];
     protected $table = 'users';
 }

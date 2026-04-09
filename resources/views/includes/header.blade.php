@@ -3,7 +3,8 @@
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo my-1">
         <a href="{{Request::root()}}">
-            <img src="{{$sites->image->uri?? Request::root().'/img/logo.png'}}" alt="{{$sites->meta_title?? ''}}" style="max-width: 80%">
+            <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $sites->image->uri)?? Request::root().'/img/logo.png'}}" alt="{{$sites->meta_title?? ''}}" 
+            style="max-width: 80%">
         </a>
         <div class="dropdown header__top__right__auth pull-right">
             @if(isset(auth()->user()->image))
@@ -107,20 +108,22 @@
                             </ul>
                         </div>
                         <div class="header__top__right__auth">
-                            <a class="btn btn-sm rounded-1 border text-center" data-placement="bottom" id="popover_notify">
-                                <i class="fa fa-info"></i></a>
+                            <a class="btn btn-sm rounded-1 border text-center border" data-placement="bottom" id="popover_notify">
+                                <i class="fa fa-bell"></i>
+                            </a>
                             <div class="notify-container"></div>
                         </div>
                         <div class="dropdown header__top__right__auth">
                             @if(isset(auth()->user()->image))
-                                <a class="dropdown-auth border">
-                                    <img src="{{auth()->user()->image->uri}}">
+                                <a class="dropdown-auth border text-center px-1">
+                                    <img src="{{auth()->user()->image->uri}}" class="rounded-circle" style="height:25px">
                                 </a>
                             @else
-                                <a class="btn btn-sm rounded-1 border text-center dropdown-auth">
-                                    <i class="fa fa-sign-in"></i>
+                                <a class="btn btn-sm rounded-1 border text-center dropdown-auth ">
+                                    <i class="fa fa-user-circle-o"></i>
                                 </a>
                             @endif
+                           
                             <div class="dropdown-menu auth-container fw-bold">
                                 @if(auth()->id())
                                     <h6 class="dropdown-header font-weight-bold py-3 bg-light text-center">{{auth()->user()->name}}</h6>
@@ -145,11 +148,11 @@
                 <div class="col-lg-3">
                     <div class="header__logo">
                         <a href="{{Request::root()}}">
-                            <img src="{{$site->logo??Request::root().'/img/logo.png'}}" alt="ngon ba mien" style="max-width: 80%">
+                            <img src="{{ $site->logo??Request::root().'/img/logo.png'}}" alt="ngon ba mien" style="max-width: 80%">
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
                             @foreach ($menus as $item)
@@ -181,10 +184,10 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-3">
                     <div class="header__cart">
-                        <ul>
-                            <li><a href="{{Request::root()}}/yeu-thich">
+                        <ul> 
+                            <li><a href="{{Request::root()}}/yeu-thich"> 
                                     <i class="fa fa-heart favor_anchor"></i>
                                     <span id="favor_count">{{$favor?? 0}}</span>
                                 </a>
@@ -196,8 +199,8 @@
                                 </a>
                             </li>
                         </ul>
-                        <div class="header__cart__price">
-                            <a href="{{Request::root()}}/gio-hang" class="text-danger total-pill">0đ</a>
+                        <div class="header__cart__price bg-danger rounded-pill px-2 py-1 shadow cursor-pointer">
+                            <a href="{{Request::root()}}/gio-hang" class="total-pill text-white">0đ </a>
                         </div>
                     </div>
                 </div>

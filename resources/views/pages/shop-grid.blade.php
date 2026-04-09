@@ -29,56 +29,40 @@
                 </div>
                 <div class="col-lg-9">
                     <x-hero-search :sites="$sites"/>
+                    @if(isset($category->banner))
+                        <div class="mb-3">
+                            <img src="{{$category?->banner}}" alt="{{$category->title}}"/>
+                        </div>
+                    @endif
+                    @if(!empty($category))
+                    <div class="row mb-3 product__discount">
+                        <div class="col-5 product__details__pic">
+                            <a class="product__details__pic__item" data-lightbox="roadtrip"
+                                data-title="{{$category->title}}"
+                                href="{{$category->image->uri}}">
+                                <img class="product__details__pic__item--large border rounded"
+                                src="{{Request::root()}}/{{$category->image->uri?? ''}}" alt="{{$category->title}}">
+                            </a>
+                            <div class="product__details__pic__slider owl-carousel">
+                                @if($category->images)
+                                    @foreach(explode(',',$category->images) as $id)
+                                        <img data-imgbigurl="{{route('get-image', $id)}}" src="{{route('get-image', $id)}}" alt="{{$category->title}}"
+                                            onerror="this.src='/images/no-image.png'">
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <h3 class="text-muted text-center">{{$category->title}}</h3>
+                            <p class="bg-light p-2 text-italic">{!! $category->content !!}</p>
+                        </div>
+                    </div>
+                    @endif
                     <div class="product__discount">
                         <div class="product__discount__slider owl-carousel">
                             @foreach ($discount_products as $item)
                                 <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="product__discount__item" >
-                                        <div class="featured__item__pic">
-                                            <a href="{{Request::root()}}/san-pham/{{$item->slug}}" >
-                                                @if(isset($item->uri))
-                                                <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->uri??'')}}"
-                                                 alt="{{$item->title}}">
-                                                @endif
-                                            </a>
-                                            <div class="product__discount__percent">-{{$item->discount}}%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><span title="Yêu thích" class="add_favor"
-                                                    data-value="{{$item->id}}"
-                                                    option-value="{{$item->option_id}}">
-                                                    <i class="fa fa-heart"></i></span></li>
-                                                <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                <li>
-                                                    <span title="Thêm vào giỏ" class="add_cart"
-                                                        data-value="{{$item->id}}"
-                                                        option-value="{{$item->option_id}}">
-                                                        <i class="fa fa-shopping-cart"></i></span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <h5>
-                                                <a href="{{Request::root()}}/san-pham/{{$item->slug}}" >
-                                                    <b>{{$item->title?? 'Không tên'}}</b>
-                                                    @if(!empty($item->option_title))
-                                                        <span class="ml-1 text-muted text-sm" >({{ $item->option_title }})</span>
-                                                    @endif
-                                                </a>
-                                            </h5>
-                                            <div class="product__item__price text-danger">
-                                            @if(empty($item->price) || ($item->price < $item->price_root))
-                                                <h5 class="text-danger font-bold">Liên hệ</h5>
-                                            @else
-                                                @if($item->discount)
-                                                    {{ number_format($item->price - ($item->price * $item->discount /100), 0, ',', '.') }}đ
-                                                    <span class="text-muted"> {{ number_format($item->price, 0, ',', '.') }}đ</span>
-                                                @else
-                                                    {{ number_format($item->price, 0, ',', '.') }}đ
-                                                @endif
-                                            @endif
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <x-product-item-promotion :item="$item"/>
                                 </div>
                             @endforeach
                         </div>
@@ -181,7 +165,7 @@
                         </div>
                         <div class="row filter__list">
                             @foreach ($products as $item)
-                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="col-lg-3 col-md-4 col-sm-6">
                                     <x-product-item-single :item="$item"/>
                                 </div>
                             @endforeach
@@ -197,7 +181,6 @@
 
     <script>
         setTimeout(function () {
-            console.log(window.location.href.indexOf('?'))
             if(window.location.href.indexOf('?') !== -1){
                 window.scroll({
                     top: 420,

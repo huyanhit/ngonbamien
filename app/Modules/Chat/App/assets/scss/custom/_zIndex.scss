@@ -1,0 +1,7 @@
+// Generate z-index classes from 0 to 100
+@for $i from 0 through 100 {
+    .z-index-#{$i} {
+      z-index: #{$i};
+    }
+  }
+  

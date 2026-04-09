@@ -1,0 +1,24 @@
+{
+    "d_users": {
+        "message": "Nhắn tin",
+        "personel_record": "Hồ sơ",
+        "hr": "Nhân sự"
+    },
+    "d_progressbar": {
+        "actual": "Thực tế",
+        "expected": "Dự kiến"
+    },
+    "d_filemanagement": {
+        "file": "File",
+        "folder": "Folder"
+    },
+    "d_dropzone": {
+        "attachment": "Tệp đính kèm",
+        "message": "Kéo và thả file vào đây hoặc click để chọn file",
+        "button": "Chọn file"
+    },
+    "d_ckeditor": {
+        "link": "Đường dẫn",
+        "input_link": "Nhập đường dẫn"
+    }
+}

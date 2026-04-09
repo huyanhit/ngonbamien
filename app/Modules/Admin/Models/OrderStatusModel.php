@@ -9,6 +9,6 @@ class OrderStatusModel extends Model
 {
     use HasFactory;
     protected $softDelete = true;
-
+    protected $guarded = [];
     protected $table = 'order_statuses';
 }
