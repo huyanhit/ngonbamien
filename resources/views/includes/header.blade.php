@@ -158,7 +158,7 @@
                             @foreach ($menus as $item)
                                 @if (empty($item->parent_id))
                                     <li class="{{(request()->path() == $item->router)? 'active': ''}}">
-                                        <a href="{{Request::root()}}/{{$item->router}}">
+                                        <a href="{{Request::root()}}/{{$item->router == '/'?'':$item->router}}">
                                             @if(!empty($item->icon))
                                                 <span class="menu-icon">{!!$item->icon!!}</span>
                                             @endif

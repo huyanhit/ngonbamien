@@ -63,6 +63,7 @@ Route::get('/cua-hang/{slug}', [SupplierController::class, 'show'])->name('chi-t
 
 Route::get('/san-pham', [ProductController::class, 'index'])->name('san-pham');
 Route::get('/san-pham/{slug}', [ProductController::class, 'show'])->name('chi-tiet-san-pham');
+Route::get('/loai-san-pham/{slug}', [ProductController::class, 'index'])->name('loai-san-pham');
 
 Route::get('/bai-viet/{slug?}', [PostController::class, 'index'])->name('bai-viet');
 Route::get('/noi-dung/{slug}', [PostController::class, 'show'])->name('noi-dung');

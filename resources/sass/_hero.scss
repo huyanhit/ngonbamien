@@ -55,7 +55,7 @@
 .hero__categories {
     ul {
         border: 1px solid $border;
-        padding-left: 20px;
+        padding-left: 0;
         padding-top: 10px;
         padding-bottom: 15px;
         overflow-y: auto;
@@ -64,6 +64,7 @@
         scrollbar-color: #ccc #fff;
         li {
             list-style: none;
+            padding-left: 15px;
             a {
                 font-size: 16px;
                 color: $normal-color;
@@ -73,6 +74,9 @@
                     position: relative;
                     top: -2px;
                 }
+            }
+            &.active{
+                background-color: $background;
             }
         }
     }

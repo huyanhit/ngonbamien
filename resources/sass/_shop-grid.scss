@@ -167,8 +167,6 @@
 }
 
 .filter__item {
-    padding-top: 10px;
-    border-top: 1px solid $border;
     .filter__list{
         margin-right: -10px;
         margin-left: -10px;
@@ -178,7 +176,6 @@
 .filter__sort {
     margin-bottom: 5px;
     span {
-        font-size: 16px;
         color: $para-color;
         display: inline-block;
         font-weight: 600;
@@ -194,7 +191,6 @@
         line-height: 0;
         padding-left: 18px;
         padding-right: 30px;
-        font-size: 16px;
         color: $normal-color;
         font-weight: 700;
         cursor: pointer;
@@ -252,7 +248,7 @@
     span {
         font-size: 24px;
         color: $normal-color;
-        margin-right: 10px;
+        margin-right: 5px;
         cursor: pointer;
         @include transition(all, .3s);
         &.icon_ul{
@@ -276,19 +272,20 @@
     >div{
         max-width: 100%;
         flex: unset;
-        margin-bottom: 15px;
+        margin-bottom: 0;
+        width: 50%;
         .blog__item{
             height: calc(100% - 7px);
             border: 1px $border solid;
             padding: 2px;
         }
         .featured__item{
-            height: calc(100% - 10px);
+            height: calc(100% - 20px);
         }
         .featured__item, .blog__item{
             margin: 10px 0!important;
+            background: $background;
             a{
-                background: $background;
                 display: block;
             }
             .featured__item__text{
@@ -299,14 +296,14 @@
                     font-size: 16px;
                     height: 150px;
                     background: $background;
-                    margin: 3px 0;
+                    margin: 0;
                 }
                 h5{
                     color: $black-color;
                     background: $background-2;
                 }
                 h6{
-                    padding: 8px 0;
+                    padding: 13px 0;
                     border-top: $border solid 1px;
                     background: $background-2;
                     span{

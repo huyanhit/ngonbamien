@@ -767,7 +767,7 @@
     "src": "resources/css/admin.css"
   },
   "resources/css/app.css": {
-    "file": "assets/app-4c895ac1.css",
+    "file": "assets/app-2e3bc65e.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -953,7 +953,7 @@
     "src": "resources/js/admin.js"
   },
   "resources/js/app.js": {
-    "file": "assets/app-ea95f1c7.js",
+    "file": "assets/app-f197d056.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <!-- Hero Section End -->
-    <x-breadcrumb name="yeu-thich" title="Cửa hàng"></x-breadcrumb>
+    {{-- <x-breadcrumb name="yeu-thich" title="Cửa hàng"></x-breadcrumb> --}}
     <!-- Hero Section Begin -->
     <section class="spad">
         <div class="container">
@@ -45,19 +45,19 @@
                         <div class="sidebar__item mt-3">
                             <h4>Sắp xếp</h4>
                             <div class="sidebar__item__size">
-                                <button class="btn btn-outline-dark my-1 " name="loai" value="bai-moi" type="submit">
+                                <button class="btn my-1 bg-light text-body border" name="loai" value="bai-moi" type="submit">
                                     Lượt theo dõi
                                 </button>
-                                <button class="btn btn-outline-dark my-1 " name="loai" value="che-bien" type="submit">
+                                <button class="btn my-1 bg-primary text-white" name="loai" value="che-bien" type="submit">
                                     Lượt bán
                                 </button>
-                                <button class="btn btn-outline-dark my-1 " name="loai" value="du-lich" type="submit">
+                                <button class="btn my-1 bg-secondary text-white" name="loai" value="du-lich" type="submit">
                                     Đánh giá
                                 </button>
-                                <button class="btn btn-outline-dark my-1  " name="loai" value="review" type="submit">
+                                <button class="btn my-1 bg-info text-white" name="loai" value="review" type="submit">
                                     Vị trí
                                 </button>
-                                <button class="btn btn-outline-dark my-1 " name="loai" value="video" type="submit">
+                                <button class="btn my-1 bg-warning text-white" name="loai" value="video" type="submit">
                                     Hổ trợ
                                 </button>
                             </div>

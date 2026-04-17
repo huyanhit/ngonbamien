@@ -12,7 +12,7 @@
                         </div>
                         <ul>
                             @foreach ($producers as $item)
-                            <li>
+                            <li class="{{$item->slug == request()->route('slug')? 'active': ''}}">
                                 <a href="{{Request::root()}}/vung-mien/{{$item->slug}}" class="inline-block avatar">
                                     @if(isset($item->image->uri))
                                         <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}"
@@ -63,7 +63,7 @@
                 <div class="categories__slider owl-carousel">
                     @foreach ($product_categories as $item)
                     <div class="col-lg">
-                        <a href="./cua-hang/{{Str::slug($item->title)}}">
+                        <a href="./loai-san-pham/{{Str::slug($item->title)}}">
                             <div class="categories__item" >
                                 @if(isset($item->image->uri))
                                 <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}" alt="{{$item->title}}">

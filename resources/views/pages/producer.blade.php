@@ -12,7 +12,7 @@
                         </div>
                         <ul>
                             @foreach ($producers as $item)
-                                <li>
+                                <li class="{{$item->slug == request()->route('slug')? 'active': ''}}" >
                                     <a href="{{Request::root()}}/vung-mien/{{$item->slug}}" class="inline-block avatar">
                                         @if(isset($item->image->uri))
                                         <img src="{{str_replace('ngonbamien', 'thumb_ngonbamien', $item->image->uri)}}"

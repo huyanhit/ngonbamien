@@ -501,11 +501,13 @@ $(document).ready(function () {
         $(this).addClass('active');
         $('.filter__list').addClass('active');
         $('.filter__option_grid').removeClass('active');
+        localStorage.setItem('filter_product', 'list');
     });
     $('.filter__option_grid').on('click', function() {
         $(this).addClass('active');
         $('.filter__list').removeClass('active');
         $('.filter__option_ul').removeClass('active');
+        localStorage.setItem('filter_product', 'grid');
     });
     $('.add_cart').on('click', function(e) {
         e.preventDefault();
@@ -689,15 +691,15 @@ $(document).ready(function () {
             },
 
             480: {
-                items: 2,
+                items: 3,
             },
 
             768: {
-                items: 2,
+                items: 4,
             },
 
             992: {
-                items: 3,
+                items: 5,
             },
         }
     });
@@ -823,5 +825,21 @@ $(document).ready(function () {
                 emailInput.value  = '';
             })
         }
+    })
+    
+    let filter = localStorage.getItem('filter_product');
+    if(filter == 'list'){
+        $('.filter__option_ul').addClass('active');
+        $('.filter__list').addClass('active');
+        $('.filter__option_grid').removeClass('active');
+    }else{
+        $('.filter__list').removeClass('active');
+        $('.filter__option_ul').removeClass('active');
+    }
+    
+    $('#sort_list_product').on('change', function (event){
+        let value = event.target.value;
+        $('#hiden-sort-filter').val(value);
+        $('#form-shop').submit();
     })
 })

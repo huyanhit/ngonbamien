@@ -3,834 +3,152 @@
 <section class="hero background">
     <div class="container">
         <div class="row">
+            <div class="col-lg-3">
+                <div class="row bg-light p-2 mb-3 border m-0">
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar-sm">
+                                <div class="avatar-title rounded bg-transparent text-success fs-24 p-2 border">
+                                    <img src="http://ngonbamien.local/admin/get-image/86" alt="Ngon Ba Miền" onerror="this.src='/images/no-image.png'" style="max-width: 50px">
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ml-3">
+                                <div class="shop">
+                                    <div class="shop-name font-weight-bold">Ngon Ba Miền</div>
+                                    <div class="online small">Online 23 phút trước</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2">
+                            <button type="button" class="btn btn-outline-secondary waves-effect waves-light mr-2 btn-sm shop_chat" data-value="1">
+                            <i class="ri-file-copy-2-fill"></i>Chat ngay
+                            </button>
+                            <a href="http://ngonbamien.local/san-pham/ngon-ba-mien" class="btn btn-outline-success waves-effect waves-light btn-sm">
+                            <i class="ri-file-copy-2-fill"></i>
+                            Xem shop
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-12 mt-3">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1 small">
+                                <div>
+                                    <span class="text-muted">Sản phẩm:</span>
+                                    <span class="text-body">50 mặt hàng</span>
+                                </div>
+                                <div>
+                                    <span class="text-muted">Đã bán:</span>
+                                    <span class="text-body">50 đơn hàng</span>
+                                </div>
+                                <div>
+                                    <span class="text-muted">Đánh giá:</span>
+                                    <span class="text-body">4.5 <i class="fa fa-star text-warning"></i> - 123k</span>
+                                </div>
+                                <div>
+                                    <span class="text-muted">Lượt theo dõi:</span>
+                                    <span class="text-body">123k</span>
+                                </div>
+                                <div>
+                                    <span class="text-muted">Địa chỉ:</span>
+                                    <span class="text-body">An phú - Gia lai</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-12 mt-3">
+                        <div class="text-end">
+                            <h6 class="text-muted small font-weight-bold">Hổ trợ từ Shop</h6>
+                            <div class="mb-2">
+                                <span class="badge badge border border-info text-info">
+                                # Miễn phí ship nội thành pleiku</span>
+                                <span class="badge badge border border-info text-info">
+                                # Miễn phí ship đơn từ 200k</span>
+                                <span class="badge badge border border-success text-success">
+                                # Giảm 50k cho đơn từ 1000k</span>
+                                <span class="badge badge border border-info text-info">
+                                # Hổ trợ trả hàng miễn phí ship</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <form class="sidebar border p-3" id="form-shop" method="get" action="http://ngonbamien.local/san-pham">
+                    <h4 class="text-center font-weight-bold text-uppercase">Lọc theo</h4>
+                    <div class="sidebar__item my-3">
+                        <h4>Giá bán</h4>
+                        <select class="form-select w-100 mb-3" name="gia" onchange="this.form.submit()" style="display: none;">
+                            <option value=""> Chọn mức giá </option>
+                            <option value="duoi-100k"> Dưới 100.000đ </option>
+                            <option value="100k-200k"> 100.000đ đến 200.000đ </option>
+                            <option value="200k-500k"> 200.000đ đến 500.000đ </option>
+                            <option value="tren-500k"> Trên 500.000đ </option>
+                            <option value="lien-he"> Liên hệ </option>
+                        </select>
+                        <div class="nice-select form-select w-100 mb-3" tabindex="0">
+                            <span class="current"> Chọn mức giá </span>
+                            <ul class="list">
+                                <li data-value="" class="option selected"> Chọn mức giá </li>
+                                <li data-value="duoi-100k" class="option"> Dưới 100.000đ </li>
+                                <li data-value="100k-200k" class="option"> 100.000đ đến 200.000đ </li>
+                                <li data-value="200k-500k" class="option"> 200.000đ đến 500.000đ </li>
+                                <li data-value="tren-500k" class="option"> Trên 500.000đ </li>
+                                <li data-value="lien-he" class="option"> Liên hệ </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sidebar__item my-3">
+                        <h4>Loại sản phẩm</h4>
+                        <div class="sidebar__item__size">
+                            <button class="btn btn-outline-dark my-1" name="loai" value="mon-moi" type="submit">
+                            Đặc sản
+                            </button>
+                            <button class="btn btn-outline-dark my-1" name="loai" value="mon-mua-nhieu" type="submit">
+                            Món ngon
+                            </button>
+                            <button class="btn btn-outline-dark my-1" name="loai" value="dang-khuyen-mai" type="submit">
+                            Cà Phê
+                            </button>
+                            <button class="btn btn-outline-dark my-1" name="loai" value="mon-da-thich" type="submit">
+                            Quả tặng
+                            </button>
+                            <button class="btn btn-outline-dark my-1" name="loai" value="mon-da-mua" type="submit">
+                            Mắm
+                            </button>
+                        </div>
+                    </div>
+                    <div class="sidebar__item">
+                        <h4>Danh mục</h4>
+                        <div class="sidebar__item__size">
+                            <button class="btn btn-outline-dark my-1 " name="loai" value="mon-moi" type="submit">
+                            Món mới
+                            </button>
+                            <button class="btn btn-outline-dark my-1 " name="loai" value="mon-mua-nhieu" type="submit">
+                            Món mua nhiều
+                            </button>
+                            <button class="btn btn-outline-dark my-1 " name="loai" value="dang-khuyen-mai" type="submit">
+                            Đang khuyến mãi
+                            </button>
+                            <button class="btn btn-outline-dark my-1  " name="loai" value="mon-da-thich" type="submit">
+                            Món đã thích
+                            </button>
+                            <button class="btn btn-outline-dark my-1 " name="loai" value="mon-da-mua" type="submit">
+                            Món đã mua
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div class="col-lg-9">
                 <div class="tab-content p-3 border" id="myTabContent">
                     <div class="tab-pane fade show active" id="home">
                         <x-hero-search :sites="$sites"/>
                         <div class="product__discount">
-                            <div class="product__discount__slider owl-carousel owl-loaded owl-drag">
-                                <div class="owl-stage-outer">
-                                    <div class="owl-stage" style="transform: translate3d(-2970px, 0px, 0px); transition: 1.2s; width: 7920px;">
-                                        <div class="owl-item cloned" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/minus-qui-maxime">
-                                                        <img src="/storage/thumb_ngonbamien/img-10.png" alt="Minus qui maxime.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-30%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="555" option-value="1109">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="555" option-value="1109">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/minus-qui-maxime">
-                                                            <b>Minus qui maxime.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Error.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            277.200đ
-                                                            <span class="text-muted"> 396.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/ducimus-perferendis">
-                                                        <img src="/storage/thumb_ngonbamien/img-10.png" alt="Ducimus perferendis.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-10%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="435" option-value="870">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="435" option-value="870">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/ducimus-perferendis">
-                                                            <b>Ducimus perferendis.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Et.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            678.600đ
-                                                            <span class="text-muted"> 754.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/eos-minima-non">
-                                                        <img src="/storage/thumb_ngonbamien/img-3.png" alt="Eos minima non.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-20%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="457" option-value="914">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="457" option-value="914">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/eos-minima-non">
-                                                            <b>Eos minima non.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Quia.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            260.000đ
-                                                            <span class="text-muted"> 325.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/magni-doloremque">
-                                                        <img src="/storage/thumb_ngonbamien/img-8.png" alt="Magni doloremque.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-20%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="486" option-value="972">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="486" option-value="972">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/magni-doloremque">
-                                                            <b>Magni doloremque.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Molestias.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            426.400đ
-                                                            <span class="text-muted"> 533.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/amet-minus-ut">
-                                                        <img src="/storage/thumb_ngonbamien/img-5.png" alt="Amet minus ut.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-10%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="299" option-value="598">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="299" option-value="598">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/amet-minus-ut">
-                                                            <b>Amet minus ut.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Et dicta.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            737.100đ
-                                                            <span class="text-muted"> 819.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/molestiae-adipisci">
-                                                        <img src="/storage/thumb_ngonbamien/img-5.png" alt="Molestiae adipisci.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-20%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="428" option-value="856">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="428" option-value="856">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/molestiae-adipisci">
-                                                            <b>Molestiae adipisci.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Hic ipsa.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            530.400đ
-                                                            <span class="text-muted"> 663.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/quia-quidem-et">
-                                                        <img src="/storage/thumb_ngonbamien/img-2-1.png" alt="Quia quidem et.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-20%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="720" option-value="1440">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="720" option-value="1440">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/quia-quidem-et">
-                                                            <b>Quia quidem et.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Omnis.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            31.200đ
-                                                            <span class="text-muted"> 39.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/ea-nihil-dolorem">
-                                                        <img src="/storage/thumb_ngonbamien/img-5.png" alt="Ea nihil dolorem.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-30%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="878" option-value="1755">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="878" option-value="1755">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/ea-nihil-dolorem">
-                                                            <b>Ea nihil dolorem.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Itaque.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            151.200đ
-                                                            <span class="text-muted"> 216.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/ad-voluptate">
-                                                        <img src="/storage/thumb_ngonbamien/img-7.png" alt="Ad voluptate.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-30%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="377" option-value="754">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="377" option-value="754">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/ad-voluptate">
-                                                            <b>Ad voluptate.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Assumenda.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            245.700đ
-                                                            <span class="text-muted"> 351.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item active" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/ab-dignissimos">
-                                                        <img src="/storage/thumb_ngonbamien/img-7.png" alt="Ab dignissimos.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-30%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="865" option-value="1730">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="865" option-value="1730">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/ab-dignissimos">
-                                                            <b>Ab dignissimos.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Eos aut.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            172.900đ
-                                                            <span class="text-muted"> 247.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item active" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/non-ratione-eos-et">
-                                                        <img src="/storage/thumb_ngonbamien/img-7.png" alt="Non ratione eos et.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-20%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="98" option-value="195">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="98" option-value="195">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/non-ratione-eos-et">
-                                                            <b>Non ratione eos et.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Aliquid.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            278.400đ
-                                                            <span class="text-muted"> 348.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item active" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/sed-impedit-animi">
-                                                        <img src="/storage/thumb_ngonbamien/img-3.png" alt="Sed impedit animi.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-10%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="158" option-value="316">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="158" option-value="316">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/sed-impedit-animi">
-                                                            <b>Sed impedit animi.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Sit.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            58.500đ
-                                                            <span class="text-muted"> 65.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/minus-qui-maxime">
-                                                        <img src="/storage/thumb_ngonbamien/img-10.png" alt="Minus qui maxime.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-30%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="555" option-value="1109">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="555" option-value="1109">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/minus-qui-maxime">
-                                                            <b>Minus qui maxime.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Error.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            277.200đ
-                                                            <span class="text-muted"> 396.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/ducimus-perferendis">
-                                                        <img src="/storage/thumb_ngonbamien/img-10.png" alt="Ducimus perferendis.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-10%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="435" option-value="870">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="435" option-value="870">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/ducimus-perferendis">
-                                                            <b>Ducimus perferendis.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Et.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            678.600đ
-                                                            <span class="text-muted"> 754.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/eos-minima-non">
-                                                        <img src="/storage/thumb_ngonbamien/img-3.png" alt="Eos minima non.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-20%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="457" option-value="914">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="457" option-value="914">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/eos-minima-non">
-                                                            <b>Eos minima non.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Quia.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            260.000đ
-                                                            <span class="text-muted"> 325.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/magni-doloremque">
-                                                        <img src="/storage/thumb_ngonbamien/img-8.png" alt="Magni doloremque.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-20%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="486" option-value="972">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="486" option-value="972">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/magni-doloremque">
-                                                            <b>Magni doloremque.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Molestias.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            426.400đ
-                                                            <span class="text-muted"> 533.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/amet-minus-ut">
-                                                        <img src="/storage/thumb_ngonbamien/img-5.png" alt="Amet minus ut.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-10%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="299" option-value="598">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="299" option-value="598">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/amet-minus-ut">
-                                                            <b>Amet minus ut.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Et dicta.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            737.100đ
-                                                            <span class="text-muted"> 819.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/molestiae-adipisci">
-                                                        <img src="/storage/thumb_ngonbamien/img-5.png" alt="Molestiae adipisci.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-20%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="428" option-value="856">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="428" option-value="856">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/molestiae-adipisci">
-                                                            <b>Molestiae adipisci.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Hic ipsa.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            530.400đ
-                                                            <span class="text-muted"> 663.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/quia-quidem-et">
-                                                        <img src="/storage/thumb_ngonbamien/img-2-1.png" alt="Quia quidem et.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-20%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="720" option-value="1440">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="720" option-value="1440">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/quia-quidem-et">
-                                                            <b>Quia quidem et.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Omnis.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            31.200đ
-                                                            <span class="text-muted"> 39.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/ea-nihil-dolorem">
-                                                        <img src="/storage/thumb_ngonbamien/img-5.png" alt="Ea nihil dolorem.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-30%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="878" option-value="1755">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="878" option-value="1755">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/ea-nihil-dolorem">
-                                                            <b>Ea nihil dolorem.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Itaque.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            151.200đ
-                                                            <span class="text-muted"> 216.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/ad-voluptate">
-                                                        <img src="/storage/thumb_ngonbamien/img-7.png" alt="Ad voluptate.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-30%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="377" option-value="754">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="377" option-value="754">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/ad-voluptate">
-                                                            <b>Ad voluptate.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Assumenda.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            245.700đ
-                                                            <span class="text-muted"> 351.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/ab-dignissimos">
-                                                        <img src="/storage/thumb_ngonbamien/img-7.png" alt="Ab dignissimos.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-30%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="865" option-value="1730">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="865" option-value="1730">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/ab-dignissimos">
-                                                            <b>Ab dignissimos.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Eos aut.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            172.900đ
-                                                            <span class="text-muted"> 247.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/non-ratione-eos-et">
-                                                        <img src="/storage/thumb_ngonbamien/img-7.png" alt="Non ratione eos et.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-20%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="98" option-value="195">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="98" option-value="195">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/non-ratione-eos-et">
-                                                            <b>Non ratione eos et.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Aliquid.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            278.400đ
-                                                            <span class="text-muted"> 348.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 330px;">
-                                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                                <div class="product__discount__item">
-                                                    <div class="featured__item__pic">
-                                                        <a href="http://ngonbamien.local/san-pham/sed-impedit-animi">
-                                                        <img src="/storage/thumb_ngonbamien/img-3.png" alt="Sed impedit animi.">
-                                                        </a>
-                                                        <div class="product__discount__percent">-10%</div>
-                                                        <ul class="product__item__pic__hover">
-                                                            <li><span title="Yêu thích" class="add_favor" data-value="158" option-value="316">
-                                                                <i class="fa fa-heart"></i></span>
-                                                            </li>
-                                                            <li><span title="Nhắn tin"><i class="fa fa-comment"></i></span></li>
-                                                            <li>
-                                                                <span title="Thêm vào giỏ" class="add_cart" data-value="158" option-value="316">
-                                                                <i class="fa fa-shopping-cart"></i></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product__discount__item__text">
-                                                        <h5>
-                                                            <a href="http://ngonbamien.local/san-pham/sed-impedit-animi">
-                                                            <b>Sed impedit animi.</b>
-                                                            <span class="ml-1 text-muted text-sm">(Sit.)</span>
-                                                            </a>
-                                                        </h5>
-                                                        <div class="product__item__price text-danger">
-                                                            58.500đ
-                                                            <span class="text-muted"> 65.000đ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                            <div class="product__discount__slider owl-carousel">
+                                @foreach ($discount_products as $item)
+                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                        <x-product-item-promotion :item="$item"/>
                                     </div>
-                                </div>
-                                <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div>
-                                <div class="owl-dots disabled"></div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="d-flex align-items-center mt-3" style="padding: 0 5px">
@@ -1522,141 +840,6 @@
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
                 </div>
-            </div>
-             <div class="col-lg-3">
-                <div class="row bg-light p-2 mb-3 border m-0">
-                    <div class="col-lg-12 col-sm-12">
-                        <div class="d-flex align-items-center">
-                            <div class="avatar-sm">
-                                <div class="avatar-title rounded bg-transparent text-success fs-24 p-2 border">
-                                    <img src="http://ngonbamien.local/admin/get-image/86" alt="Ngon Ba Miền" onerror="this.src='/images/no-image.png'" style="max-width: 50px">
-                                </div>
-                            </div>
-                            <div class="flex-grow-1 ml-3">
-                                <div class="shop">
-                                    <div class="shop-name font-weight-bold">Ngon Ba Miền</div>
-                                    <div class="online small">Online 23 phút trước</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex mt-2">
-                            <button type="button" class="btn btn-outline-secondary waves-effect waves-light mr-2 btn-sm shop_chat" data-value="1">
-                            <i class="ri-file-copy-2-fill"></i>Chat ngay
-                            </button>
-                            <a href="http://ngonbamien.local/san-pham/ngon-ba-mien" class="btn btn-outline-success waves-effect waves-light btn-sm">
-                            <i class="ri-file-copy-2-fill"></i>
-                            Xem shop
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-sm-12 mt-3">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-grow-1 small">
-                                <div>
-                                    <span class="text-muted">Sản phẩm:</span>
-                                    <span class="text-body">50 mặt hàng</span>
-                                </div>
-                                <div>
-                                    <span class="text-muted">Đã bán:</span>
-                                    <span class="text-body">50 đơn hàng</span>
-                                </div>
-                                <div>
-                                    <span class="text-muted">Đánh giá:</span>
-                                    <span class="text-body">4.5 <i class="fa fa-star text-warning"></i> - 123k</span>
-                                </div>
-                                <div>
-                                    <span class="text-muted">Lượt theo dõi:</span>
-                                    <span class="text-body">123k</span>
-                                </div>
-                                <div>
-                                    <span class="text-muted">Địa chỉ:</span>
-                                    <span class="text-body">An phú - Gia lai</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-sm-12 mt-3">
-                        <div class="text-end">
-                            <h6 class="text-muted small font-weight-bold">Hổ trợ từ Shop</h6>
-                            <div class="mb-2">
-                                <span class="badge badge border border-info text-info">
-                                # Miễn phí ship nội thành pleiku</span>
-                                <span class="badge badge border border-info text-info">
-                                # Miễn phí ship đơn từ 200k</span>
-                                <span class="badge badge border border-success text-success">
-                                # Giảm 50k cho đơn từ 1000k</span>
-                                <span class="badge badge border border-info text-info">
-                                # Hổ trợ trả hàng miễn phí ship</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               
-                <form class="sidebar border p-3" id="form-shop" method="get" action="http://ngonbamien.local/san-pham">
-                    <h4 class="text-center font-weight-bold text-uppercase">Lọc theo</h4>
-                    <div class="sidebar__item my-3">
-                        <h4>Giá bán</h4>
-                        <select class="form-select w-100 mb-3" name="gia" onchange="this.form.submit()" style="display: none;">
-                            <option value=""> Chọn mức giá </option>
-                            <option value="duoi-100k"> Dưới 100.000đ </option>
-                            <option value="100k-200k"> 100.000đ đến 200.000đ </option>
-                            <option value="200k-500k"> 200.000đ đến 500.000đ </option>
-                            <option value="tren-500k"> Trên 500.000đ </option>
-                            <option value="lien-he"> Liên hệ </option>
-                        </select>
-                        <div class="nice-select form-select w-100 mb-3" tabindex="0">
-                            <span class="current"> Chọn mức giá </span>
-                            <ul class="list">
-                                <li data-value="" class="option selected"> Chọn mức giá </li>
-                                <li data-value="duoi-100k" class="option"> Dưới 100.000đ </li>
-                                <li data-value="100k-200k" class="option"> 100.000đ đến 200.000đ </li>
-                                <li data-value="200k-500k" class="option"> 200.000đ đến 500.000đ </li>
-                                <li data-value="tren-500k" class="option"> Trên 500.000đ </li>
-                                <li data-value="lien-he" class="option"> Liên hệ </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="sidebar__item my-3">
-                        <h4>Loại sản phẩm</h4>
-                        <div class="sidebar__item__size">
-                            <button class="btn btn-outline-dark my-1" name="loai" value="mon-moi" type="submit">
-                            Đặc sản
-                            </button>
-                            <button class="btn btn-outline-dark my-1" name="loai" value="mon-mua-nhieu" type="submit">
-                            Món ngon
-                            </button>
-                            <button class="btn btn-outline-dark my-1" name="loai" value="dang-khuyen-mai" type="submit">
-                            Cà Phê
-                            </button>
-                            <button class="btn btn-outline-dark my-1" name="loai" value="mon-da-thich" type="submit">
-                            Quả tặng
-                            </button>
-                            <button class="btn btn-outline-dark my-1" name="loai" value="mon-da-mua" type="submit">
-                            Mắm
-                            </button>
-                        </div>
-                    </div>
-                    <div class="sidebar__item">
-                        <h4>Danh mục</h4>
-                        <div class="sidebar__item__size">
-                            <button class="btn btn-outline-dark my-1 " name="loai" value="mon-moi" type="submit">
-                            Món mới
-                            </button>
-                            <button class="btn btn-outline-dark my-1 " name="loai" value="mon-mua-nhieu" type="submit">
-                            Món mua nhiều
-                            </button>
-                            <button class="btn btn-outline-dark my-1 " name="loai" value="dang-khuyen-mai" type="submit">
-                            Đang khuyến mãi
-                            </button>
-                            <button class="btn btn-outline-dark my-1  " name="loai" value="mon-da-thich" type="submit">
-                            Món đã thích
-                            </button>
-                            <button class="btn btn-outline-dark my-1 " name="loai" value="mon-da-mua" type="submit">
-                            Món đã mua
-                            </button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </div>

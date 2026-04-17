@@ -2,10 +2,9 @@
 
 namespace App\Filters;
 
-use App\Models\ProductCategory;
 use Illuminate\Support\Facades\Auth;
 
-class ProductFilter extends QueryFilter
+class SupplierProductFilter extends QueryFilter
 {
     protected $filterable = [
         'id',
@@ -33,36 +32,15 @@ class ProductFilter extends QueryFilter
         };
     }
 
-
-    public function filterSapXep($option)
+    public function filterLoai($option)
     {
-        return match ($option) {
-            'ten'      => $this->builder->orderBy('products.title', 'asc'),
-            'gia-giam' => $this->builder->orderBy('price', 'desc')->orderBy('discount', 'asc'),
-            'gia-tang' => $this->builder->orderBy('price', 'asc')->orderBy('discount', 'desc'),
-            default    => $this->builder->orderBy('products.title', 'asc')
-        };
-    }
-
-    public function filterProductCategory($slug)
-    {
-        $category = ProductCategory::where(['slug'=> $slug, 'active' => 1])->first();
-        if($category && $category->id){
-            return $this->builder->whereJsonContains('product_category_id', $category->id);
-        }
-
-        return $this->builder;
-    }
-
-    public function filterXuatXu($slug)
-    {
-        return $this->builder->join('producers', function ($join) use ($slug) {
-            $join->on('producers.id', '=', 'products.producer_id')
-                ->where('producers.slug', 'like', $slug);
+        return $this->builder->join('product_categories', function ($join) use ($option) {
+            $join->on('products.product_category_id', '=', 'product_categories.id')
+                ->where('product_categories.slug', 'like', $option);
         });
     }
 
-    public function filterLoai($option)
+    public function filterMuc($option)
     {
         return match ($option) {
             'mon-da-thich'      => $this->builder

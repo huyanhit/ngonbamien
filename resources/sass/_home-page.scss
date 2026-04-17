@@ -99,7 +99,7 @@
 }
 
 .featured__item {
-    margin-bottom: 20px;    
+    margin-bottom: 15px;    
     box-shadow: 1px 1px 5px 0px #e1e1e1;
     &:hover {
         .featured__item__pic {
@@ -133,7 +133,6 @@
     li {
         list-style: none;
         display: inline-block;
-        margin-right: 6px;
         span{
             cursor: pointer;
         }

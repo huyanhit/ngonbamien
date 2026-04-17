@@ -16,11 +16,15 @@ use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
     public function index(Request $request, $slug = ''){
-        $product = Product::inRandomOrder()->where(['products.active'=> 1])->join('product_option', 'product_option.product_id', '=', 'products.id');
+        if(empty(request('sap-xep'))){
+            $product = Product::inRandomOrder()->where(['products.active'=> 1])->join('product_option', 'product_option.product_id', '=', 'products.id');
+        }else{
+            $product = Product::where(['products.active'=> 1])->join('product_option', 'product_option.product_id', '=', 'products.id');
+        }
+       
         $selects = ['products.*','product_option.title as option_title', 'product_option.id as option_id', 'price', 'discount'];
         if($slug){
             $request = $request->merge(['product_category' => $slug]);
-            $selects = array_merge($selects, ['product_categories.title as categories_title']);
         }
 
         if($request->get('xuat-xu')){
